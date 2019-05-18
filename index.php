@@ -1,14 +1,24 @@
 <?php
 
     require_once "config.php";
+    
+    use \App\Model\ClassModel as ClassModel;
 
-    $app = new \Slim\App;
+    $app = new Slim\App([
+        'settings' =>[
+            'displayErrorDetails' => true,
+        ]
+    ]);
 
     $app->get("/", function(){
 
-        echo "Olá mundo. Teste do Slim";
+        $class = new ClassModel();
+
+        $class->teste();
 
     });
+
+
 
     $app->run();
 
