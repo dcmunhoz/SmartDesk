@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif|Lato:400,400i,700,700i,900&display=swap');
 
+:root{
+
+    --default-font-color: #47525E;
+
+}
+
 *{
     padding: 0px;
     margin: 0px;
@@ -17,26 +23,86 @@ html, body{
 }
 
 #app{
-    height: 100%;
+    height: 100vh;
     display: flex;
+    color: var(--default-font-color);
 }   
 
-.login-container{
+/* ================================================== User Login/Create Page ================================================== */
+
+.container{
     background-color: #FFF;
-    width: 750px;
+    width: 40%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
 }
+
+.container header{
+}
+
+.container .box{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .box .form-box{
+    position: relative;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .box .form-box img{
+    width: 70%;
+}
+
+.container .box .form-box .description{
+    width: 70%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.container .box .form-box form{
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .box .form-box form .form-group{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .box .redirect-links{
+    text-align: center;
+    font-size: 14px;
+}
+
+.container .box .redirect-links a{
+    color:#00A4FD;
+    text-decoration: none;
+}
+
+.container .box .redirect-links a:active{
+    color:rgb(0, 137, 211);
+}
+
+
 .system-welcome{
     background-color: #235153;
-    color:#fff;
+    color:#FFF !important;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     font-size: 28px;
-}
 
-#app div{
-    
 }

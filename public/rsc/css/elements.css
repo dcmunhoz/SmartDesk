@@ -1,0 +1,56 @@
+/* input{
+    padding: 15px;
+    background-color: #E5E5E5;
+    color: rgb(64, 67, 71);
+    border: 1px solid #E5E5E5;
+    border-bottom: 3px solid #E5E5E5;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 200ms;
+}
+
+input:active{
+    border: 1px solid #235153;
+}
+
+input:focus{
+    border-bottom: 3px solid #235153;
+} */
+
+input{
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(54, 54, 54);
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 200ms;
+}
+
+input:focus{
+    border: 1px solid #00A4FD;
+}
+
+input:focus{
+    
+}
+
+.form-group label{
+    margin-bottom: 10px;
+}
+
+.btn{
+
+    padding: 10px;
+    background-color: #727272;
+    color: #FFF;
+    border: #727272;
+    font-size: 18px;
+    border-radius: 3px;
+
+}
+
+.btn-login{
+    border: #235153;
+    background-color: #235153;
+}
