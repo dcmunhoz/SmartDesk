@@ -5,7 +5,8 @@
 
     $app->get("/", function(){
 
-        $view = new View();
+        $view = new View(false, false);
+        $view->draw('index');
 
     });
 

@@ -7,7 +7,7 @@ class View {
     private $viewsPath  = "";
     private $configs    = [];
 
-    public function __construct($header = true, $footer = true, $viewsPath = '/views'){
+    public function __construct($header = true, $footer = true, $viewsPath = 'views/'){
 
         $this->viewsPath = $viewsPath;
         $this->configs = [
@@ -23,12 +23,21 @@ class View {
 
     public function draw($pageName){
 
-        $fullPath = $this->viewsPath . "/" . $pageName . ".php";
+        if(file_exists($this->viewsPath . $pageName . ".php")){
 
-        if(\file_exists($fullPath)){
-            require($fullPath);
+            require($this->viewsPath . $pageName . ".php");
+
         }else{
-            echo "<h1>Page not exists</h1>";
+
+            if(file_exists($this->viewsPath . $pageName . ".html")){
+
+                require($this->viewsPath . $pageName . ".html");
+
+            }else{
+
+                echo "<h1> Page not exists ! </h1>";
+
+            }
         }
         
     }
