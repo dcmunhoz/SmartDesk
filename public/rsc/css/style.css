@@ -3,6 +3,7 @@
 :root{
 
     --default-font-color: #47525E;
+    --default-sys-color: #235153;
 
 }
 
@@ -24,7 +25,9 @@ html, body{
 
 #app{
     height: 100vh;
+    width: 100vw;
     display: flex;
+    flex-direction: row;
     color: var(--default-font-color);
 }   
 
@@ -39,17 +42,18 @@ html, body{
     padding: 30px;
 }
 
-.container header{
+header{
 }
 
-.container .box{
+.box{
     display: flex;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
+    background-color: #FFF; 
 }
 
-.container .box .form-box{
+.box .form-box{
     position: relative;
     width: 60%;
     display: flex;
@@ -57,46 +61,46 @@ html, body{
     flex-direction: column;
 }
 
-.container .box .form-box img{
+.box .form-box img{
     width: 70%;
 }
 
-.container .box .form-box .description{
+.box .form-box .description{
     width: 70%;
     text-align: center;
     font-size: 18px;
 }
 
-.container .box .form-box form{
+.box .form-box form{
     margin: 20px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.container .box .form-box form .form-group{
+.box .form-box form .form-group{
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
 }
 
-.container .box .redirect-links{
+.box .redirect-links{
     text-align: center;
     font-size: 14px;
 }
 
-.container .box .redirect-links a{
+.box .redirect-links a{
     color:#00A4FD;
     text-decoration: none;
 }
 
-.container .box .redirect-links a:active{
+.box .redirect-links a:active{
     color:rgb(0, 137, 211);
 }
 
 
 .system-welcome{
-    background-color: #235153;
+    background-color: var(--default-sys-color);
     color:#FFF !important;
     flex-grow: 1;
     display: flex;
@@ -105,4 +109,39 @@ html, body{
     justify-content: center;
     font-size: 28px;
 
+}
+
+
+/* ================================================== Admin Login Page ================================================== */
+.admin-container{
+    background-color: var(--default-sys-color);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-box{
+    flex-grow: 0 !important;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 40px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.219);
+}
+
+.admin-box p {
+    font-size: 18px;
+}
+
+.admin-box .form-box{
+    width: 100%;
+}
+
+.admin-company-logo-login{
+    width: 400px;
+    position: relative;
+    top: -100px;
 }

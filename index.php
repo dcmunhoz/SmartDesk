@@ -13,6 +13,7 @@
 
     require "app.php";
     require "api.php";
+    require "admin.php";
 
     $app->run();
 

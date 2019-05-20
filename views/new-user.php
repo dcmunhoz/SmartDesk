@@ -47,7 +47,7 @@
                                 <input type="text" id="create-confirm-pass" name="create-confirm-pass" placeholder="Confirme sua senha.">
                             </div>
 
-                            <button class="btn btn-login">Criar nova conta</button>
+                            <button class="btn btn-enviar">Criar nova conta</button>
                             
                         </form>
                         <div class="redirect-links">

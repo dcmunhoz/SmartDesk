@@ -32,11 +32,11 @@
                                 <input type="text" id="login-pass" name="login-pass" placeholder="Sua senha de no minimo 6 caracteres">
                             </div>
 
-                            <button class="btn btn-login">Entrar</button>
+                            <button class="btn btn-enviar">Entrar</button>
                             
                         </form>
                         <div class="redirect-links">
-                            <p><a href="#">Entrar como técnico. </a></p>
+                            <p><a href="/helpdesk/admin">Entrar como técnico. </a></p>
                             <p>Ainda não tem uma conta? <a href="/helpdesk/new-user">Clique aqui!</a></p>
                         </div>
 
