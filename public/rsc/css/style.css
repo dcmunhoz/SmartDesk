@@ -12,6 +12,7 @@
     margin: 0px;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
+    outline: none !important;
 }
 
 h1, h2, h3, h4{
