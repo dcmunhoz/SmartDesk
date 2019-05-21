@@ -40,10 +40,7 @@ html, body{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 30px;
-}
-
-header{
+    padding: 20px;
 }
 
 .box{
@@ -56,24 +53,24 @@ header{
 
 .box .form-box{
     position: relative;
-    width: 60%;
+    width: 70%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
 .box .form-box img{
-    width: 70%;
+    width: 50%;
 }
 
 .box .form-box .description{
     width: 70%;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .box .form-box form{
-    margin: 20px 0;
+    margin: 10px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -99,6 +96,9 @@ header{
     color:rgb(0, 137, 211);
 }
 
+.form-group label{
+    margin-bottom: 5px;
+}
 
 .system-welcome{
     background-color: var(--default-sys-color);
@@ -145,4 +145,66 @@ header{
     width: 400px;
     position: relative;
     top: -100px;
+}
+
+/* ================================================== User Page ================================================== */
+#user-container{
+    background-color: #E6E6E6;
+    width: 100%;
+}
+
+#user-container .nav-bar{
+    background-color: #235153;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 200px;
+}
+
+#user-container .nav-bar .logo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user-container .nav-bar .logo-container img{
+    width: 150px;
+}
+
+#user-container .nav-bar .user-options-container{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user-container .nav-bar .user-options-container .user-menu{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    color: #FFF;
+
+}
+
+#user-container .nav-bar .user-options-container .user-menu li{
+
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user-container .nav-bar .user-options-container .user-menu li i{
+
+    font-size: 32px !important;
+}
+
+.material-icons{
+
+}
+
+#user-container .nav-bar .user-options-container .user-menu li img{
+    width: 50px;
+    border-radius: 100px;
 }

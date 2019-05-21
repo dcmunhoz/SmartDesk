@@ -6,6 +6,13 @@
     $app->get("/", function(){
 
         $view = new View(false, false);
+        $view->draw("index");
+
+    });
+
+    $app->get("/login", function(){
+
+        $view = new View(false, false);
         $view->draw('login');
 
     });
