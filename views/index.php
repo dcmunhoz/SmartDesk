@@ -33,6 +33,24 @@
                     </div>
                 </nav>
 
+                <div id="page-container">
+                    <div id="content">
+                        <div class="background">
+                            <div class="background-title">
+                                <h1>Bem vindo ao Smart Desk</h1>
+                            </div>
+                        </div>
+
+                        <div class="content-body">
+                            <div class="system-description">
+                                <p>Este é um software de gerenciamento de ordens de serviço.</p>
+                                <p>Aqui você vai pode criar e acompanhar todas os seus tickets abertos. </p>
+                                <p>Após a abertura, um dos técnicos cadastrados vão assumir os tickets e entrar em contato com você para solucionar os problemas.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
             </section>
         </main>
