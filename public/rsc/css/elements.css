@@ -52,3 +52,23 @@ input:focus{
     border: #235153;
     background-color: #235153;
 }
+
+.btn.btn-option-system{
+    margin: 0 10px;
+    width: 20%;
+    background-color: #fff;
+    border: 1px solid #235153;
+    color: #235153;
+    border-radius: 2px;
+    padding: 20px;
+    transition: 200ms;
+    font-weight: bold;
+}
+
+.btn.btn-option-system:hover{
+
+    background-color: #235153;
+    border: 1px solid #235153;
+    color: #fff;
+
+}

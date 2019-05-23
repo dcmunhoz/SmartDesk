@@ -47,6 +47,11 @@
                                 <p>Aqui você vai pode criar e acompanhar todas os seus tickets abertos. </p>
                                 <p>Após a abertura, um dos técnicos cadastrados vão assumir os tickets e entrar em contato com você para solucionar os problemas.</p>
                             </div>
+                            <div class="system-options">
+                                <button class="btn btn-option-system" >Painel</button>
+                                <button class="btn btn-option-system" >Abrir Ticket</button>
+                                <button class="btn btn-option-system" >Colaboladores</button>
+                            </div>
                         </div>
 
                     </div>
