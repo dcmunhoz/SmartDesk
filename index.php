@@ -11,9 +11,9 @@
         ]
     ]);
 
-    require "app.php";
-    require "api.php";
-    require "admin.php";
+    require "routes/app.php";
+    require "routes/api.php";
+    require "routes/admin.php";
 
     $app->run();
 
