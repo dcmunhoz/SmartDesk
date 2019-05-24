@@ -50,7 +50,7 @@
                             <div class="system-options">
                                 <nav class="nav nav-track">
                                     <ul>
-                                        <li class="nav-button">
+                                        <li class="nav-button active">
                                             <button>Painel</button>
                                         </li>
                                         <li class="nav-button">

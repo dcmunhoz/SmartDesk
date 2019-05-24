@@ -2,7 +2,8 @@
 
 :root{
 
-    --default-font-color: #47525E;
+    /* --default-font-color: #47525E; */
+    --default-font-color: #2a2f35;
     --default-sys-color: #235153;
 
 }
@@ -216,12 +217,15 @@ html, body{
 #user-container #page-container{
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
+    
 }
 
 #user-container #page-container #content{
     background-color:#FFF;
     width: 60%;
     box-sizing: border-box;
+    border-radius: 0px 0px 10px 10px;
 }
 
 #user-container #page-container #content .background{
@@ -269,7 +273,8 @@ html, body{
     display: flex;
     width: 100%;
     padding: 0 100px;
-    border-bottom: 1px solid rgb(199, 199, 199);
+    border-bottom: 1px solid rgb(172, 172, 172);
+    /* box-shadow: inset 0px -5px 10px -10px rgba(0, 0, 0, 0.397); */
 }
 
 .nav ul{
@@ -277,6 +282,7 @@ html, body{
     display: flex;
     flex-direction: row;
     width: 100%;
+    
 }
 
 .nav ul li{
@@ -284,20 +290,38 @@ html, body{
 }
 
 .nav ul .nav-button button{
-    background-color: #FFF;
+    background-color: rgb(255, 255, 255);
     position: relative;
-    top: 1px;
+    top: 0px;
+    width: 110px;
     border-left: 1px;
     border-right: 1px;
     border-top: 1px;
-    border-bottom: 1px;
-    border-color: rgb(199, 199, 199);
+    border-bottom: 0px rgb(199, 199, 199);
+    border-color: rgb(255, 255, 255);
     border-style: solid;
     padding: 10px;
     border-radius: 5px 5px 0 0;
     z-index: 1;
     margin-bottom: 0px;
-    margin-right: -1px;
+    margin-right: 0px;
+    transition: 300ms;
+    color:#207479;
+
+}
+
+.nav ul .nav-button button:hover{
+    border: 1px solid rgb(224, 224, 224);
+    border-bottom: 0px;
+    background-color: rgb(247, 247, 247);
+    color:#1b5155;
+}
+
+.nav-button.active button{
+    color: var(--default-font-color) !important;
+    border: 1px solid rgb(172, 172, 172) !important;
+    border-bottom: 1px solid #FFF !important;
+    margin-bottom: -1px !important;
 }
 
 .panel{
