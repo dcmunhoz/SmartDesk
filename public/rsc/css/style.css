@@ -162,8 +162,8 @@ html, body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 100px;
-    padding: 0 200px;
+    height: 80px;
+    padding: 0 100px;
 }
 
 #user-container .nav-bar .logo-container{
@@ -173,7 +173,7 @@ html, body{
 }
 
 #user-container .nav-bar .logo-container img{
-    width: 150px;
+    width: 120px;
 }
 
 #user-container .nav-bar .user-options-container{
@@ -193,7 +193,7 @@ html, body{
 
 #user-container .nav-bar .user-options-container .user-menu li{
 
-    margin: 0 10px;
+    margin: 0 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,7 +209,7 @@ html, body{
 }
 
 #user-container .nav-bar .user-options-container .user-menu li img{
-    width: 50px;
+    width: 40px;
     border-radius: 100px;
 }
 
@@ -255,16 +255,52 @@ html, body{
     height: 100px;
     font-size: 14px;
     border-bottom: 1px solid rgb(236, 236, 236);
+    margin-bottom: 10px;
 }
 
 .content-body .system-options{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 10px;
     justify-content: center;
-    border-bottom: 1px solid rgb(255, 255, 255);
+}
+.nav{
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    padding: 0 100px;
+    border-bottom: 1px solid rgb(199, 199, 199);
 }
 
-.content-body .system-options button{
+.nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
 
+.nav ul li{
+    
+}
+
+.nav ul .nav-button button{
+    background-color: #FFF;
+    position: relative;
+    top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-color: rgb(199, 199, 199);
+    border-style: solid;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
+    margin-bottom: 0px;
+    margin-right: -1px;
+}
+
+.panel{
+    background-color: blue;
+    height: 1000px;
 }

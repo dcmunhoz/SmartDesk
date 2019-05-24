@@ -48,9 +48,23 @@
                                 <p>Após a abertura, um dos técnicos cadastrados vão assumir os tickets e entrar em contato com você para solucionar os problemas.</p>
                             </div>
                             <div class="system-options">
-                                <button class="btn btn-option-system" >Painel</button>
-                                <button class="btn btn-option-system" >Abrir Ticket</button>
-                                <button class="btn btn-option-system" >Colaboladores</button>
+                                <nav class="nav nav-track">
+                                    <ul>
+                                        <li class="nav-button">
+                                            <button>Painel</button>
+                                        </li>
+                                        <li class="nav-button">
+                                            <button>Abrir Ticket</button>
+                                        </li>
+                                        <li class="nav-button">
+                                            <button>Colaboradores</button>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <section class="panel">
+                                        aa
+
+                                </section>
                             </div>
                         </div>
 
