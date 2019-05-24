@@ -62,7 +62,24 @@
                                     </ul>
                                 </nav>
                                 <section class="panel">
-                                        aa
+                                    <table>
+                                        <thead>
+                                            
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Ticket</th>
+                                                <th>Prioridade</th>
+                                                <th>Data</th>
+                                            </tr>
+                                            <tr>
+                                                <td>aa</td>
+                                                <td>bb</td>
+                                                <td>cc</td>
+                                            </tr>
+                                        </tbody>
+                                        
+                                    </table>
 
                                 </section>
                             </div>

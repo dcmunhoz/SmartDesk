@@ -300,12 +300,12 @@ html, body{
     border-bottom: 0px rgb(199, 199, 199);
     border-color: rgb(255, 255, 255);
     border-style: solid;
-    padding: 10px;
+    padding: 15px 10px;
     border-radius: 5px 5px 0 0;
     z-index: 1;
     margin-bottom: 0px;
     margin-right: 0px;
-    transition: 300ms;
+    transition: 200ms;
     color:#207479;
 
 }
@@ -313,7 +313,7 @@ html, body{
 .nav ul .nav-button button:hover{
     border: 1px solid rgb(224, 224, 224);
     border-bottom: 0px;
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(250, 250, 250);
     color:#1b5155;
 }
 
@@ -325,6 +325,9 @@ html, body{
 }
 
 .panel{
-    background-color: blue;
+    display: flex;
     height: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
 }
