@@ -6,7 +6,7 @@
 
         $view = new View(false, false);
 
-        $view->draw("login-admin");
+        $view->draw("signin-admin");
 
     });
 

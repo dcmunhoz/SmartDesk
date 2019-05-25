@@ -10,17 +10,17 @@
 
     });
 
-    $app->get("/login", function(){
+    $app->get("/signin", function(){
 
         $view = new View(false, false);
-        $view->draw('login');
+        $view->draw('signin');
 
     });
 
-    $app->get("/new-user", function(){
+    $app->get("/signup", function(){
 
         $view = new View(false, false);
-        $view->draw("new-user");
+        $view->draw("signup");
 
 
     });
