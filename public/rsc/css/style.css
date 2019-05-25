@@ -330,4 +330,42 @@ html, body{
     width: 100%;
     box-sizing: border-box;
     padding: 10px 0;
+    
+}
+
+table, tr, td, th{
+    border: 1px solid var(--default-font-color);
+    border-collapse: collapse;
+}
+
+.panel .tickets-table{
+    width: 100%;
+    text-align: left;
+}
+
+.tickets-table caption{
+    background-color: rgb(221, 221, 221);
+    padding: 10px 100px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--default-font-color);
+}
+
+
+.search-select-fields .form-group{
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
+
+.search-select-fields .form-group label{
+    color: var(--default-font-color);
+    display: block;
+    position: relative;
+    left: 5px;
+}
+
+.tickets-table thead tr th{
+    font-weight: bold;
 }

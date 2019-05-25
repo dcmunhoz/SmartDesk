@@ -7,10 +7,12 @@
         <link href="public/rsc/css/style.css" rel="stylesheet" type="text/css">
         <link href="public/rsc/css/elements.css" rel="stylesheet" type="text/css">
         <link href="public/rsc/css/mq.css" rel="stylesheet" type="text/css">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <title>Bem Vindo - Painel de chamados</title>
+
     </head>
     
     <body>
@@ -62,21 +64,38 @@
                                     </ul>
                                 </nav>
                                 <section class="panel">
-                                    <table>
+                                    <table class="tickets-table">
+                                        <caption class="search-select-fields">
+                                            <div class="form-group">
+                                                <label for="select-priority">Prioridade:</label>
+                                                <select name="select-priority" id="select-priority" class="search-select-box">
+                                                    <option value="">test</option>
+                                                    <option value="">test2</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="select-order">Ordernar por:</label>
+                                                <select name="select-order" id="select-order" class="search-select-box">
+                                                    <option value="">test2</option>
+                                                    <option value="">test1</option>
+                                                </select>
+                                            </div>
+                                        </caption>
                                         <thead>
-                                            
-                                        </thead>
-                                        <tbody>
                                             <tr>
                                                 <th>Ticket</th>
                                                 <th>Prioridade</th>
                                                 <th>Data</th>
                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                            
                                             <tr>
                                                 <td>aa</td>
                                                 <td>bb</td>
                                                 <td>cc</td>
                                             </tr>
+
                                         </tbody>
                                         
                                     </table>
