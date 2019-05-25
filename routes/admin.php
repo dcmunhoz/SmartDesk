@@ -1,5 +1,7 @@
 <?php
 
+    // Comentario teste.
+
     use \App\Model\View as View;
 
     $app->get("/admin", function(){
