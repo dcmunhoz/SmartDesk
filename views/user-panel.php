@@ -64,10 +64,13 @@
                                     </ul>
                                 </nav>
                                 <section class="panel">
+                                    <header>
+                                        <h1>Seus Tickets</h1>
+                                    </header>
                                     <table class="tickets-table">
                                         <caption class="search-select-fields">
                                             <div class="form-group">
-                                                <label for="select-priority">Prioridade:</label>
+                                                <label for="select-priority">Status:</label>
                                                 <select name="select-priority" id="select-priority" class="search-select-box">
                                                     <option value="">test</option>
                                                     <option value="">test2</option>
@@ -83,17 +86,44 @@
                                         </caption>
                                         <thead>
                                             <tr>
-                                                <th>Ticket</th>
+                                                <th>Descrição</th>
                                                 <th>Prioridade</th>
-                                                <th>Data</th>
+                                                <th>Ultima interação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
                                             <tr>
-                                                <td>aa</td>
-                                                <td>bb</td>
-                                                <td>cc</td>
+                                                <td>
+                                                    <div class="ticket-row-details">
+                                                        <div class="img-status">
+                                                            <img src="public/rsc/imgs/ticket-open.png" alt="#">
+                                                        </div>
+                                                        <div class="tr-body">
+                                                            <h2>Ticket #2058</h2>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                            <p>Ticket sem atribuição</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>cccccccccccccccc</td>
+                                                <td>23/05/2019 16:40</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="ticket-row-details">
+                                                        <div class="img-status">
+                                                            <img src="public/rsc/imgs/ticket-done_2.png" alt="#">
+                                                        </div>
+                                                        <div class="tr-body">
+                                                            <h2>Ticket #2058</h2>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                            <p>Ticket sem atribuição</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>cccccccccccccccc</td>
+                                                <td>1234dddddddddddd</td>
                                             </tr>
 
                                         </tbody>

@@ -223,7 +223,7 @@ html, body{
 
 #user-container #page-container #content{
     background-color:#FFF;
-    width: 60%;
+    width: 65%;
     box-sizing: border-box;
     border-radius: 0px 0px 10px 10px;
 }
@@ -326,6 +326,7 @@ html, body{
 
 .panel{
     display: flex;
+    flex-direction: column;
     height: 1000px;
     width: 100%;
     box-sizing: border-box;
@@ -333,21 +334,20 @@ html, body{
     
 }
 
+.panel header{
+    padding: 10px;
+    font-size: 22px;
+
+}
+
 table, tr, td, th{
-    border: 1px solid var(--default-font-color);
     border-collapse: collapse;
 }
 
-.panel .tickets-table{
-    width: 100%;
-    text-align: left;
-}
-
 .tickets-table caption{
-    background-color: rgb(221, 221, 221);
-    padding: 10px 100px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--default-font-color);
+    background-color: #F3F3F3;
+    padding: 10px;
+    border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 
@@ -366,6 +366,63 @@ table, tr, td, th{
     left: 5px;
 }
 
+.panel .tickets-table{
+    width: 100%;
+    text-align: left;
+} 
+
+.tickets-table thead {
+    
+}
+
 .tickets-table thead tr th{
     font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.tickets-table thead tr th:nth-child(1){
+
+  
+}
+
+.tickets-table tbody tr td:nth-child(2),
+.tickets-table tbody tr td:nth-child(3){
+    text-align: center; 
+
+}
+
+.tickets-table tbody tr{
+    margin-bottom: 10px;
+}
+
+.ticket-row-details{
+    display: flex;
+    flex-direction: row;
+}
+
+.ticket-row-details .img-status{
+    background-color: rgb(44, 44, 44);
+    padding: 10px;
+
+}
+
+.ticket-row-details .img-status img{
+    width: 150px;
+}
+
+.ticket-row-details .tr-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.ticket-row-details .tr-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    box-sizing: border-box;
 }
