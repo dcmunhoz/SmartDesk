@@ -100,8 +100,8 @@
                                                         </div>
                                                         <div class="tr-body">
                                                             <h2>Ticket #2058</h2>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                            <p>Ticket sem atribuição</p>
+                                                            <span class="t-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                                            <span class="t-attr">Ticket sem atribuição</span>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -117,8 +117,8 @@
                                                         </div>
                                                         <div class="tr-body">
                                                             <h2>Ticket #2058</h2>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                            <p>Ticket sem atribuição</p>
+                                                            <span class="t-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                                                            <span class="t-attr">Ticket sem atribuição</span>
                                                         </div>
                                                     </div>
                                                 </td>
