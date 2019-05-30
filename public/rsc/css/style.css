@@ -72,14 +72,22 @@ html, body{
     font-size: 16px;
 }
 
-.box .form-box form{
+.form-box form,
+form{
     margin: 10px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.box .form-box form .form-group{
+form footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.box .form-box form .form-group,
+form .row .form-group{
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -328,7 +336,7 @@ html, body{
 .panel{
     display: flex;
     flex-direction: column;
-    height: 1000px;
+    min-height: 700px;
     width: 100%;
     box-sizing: border-box;
     padding: 10px 0;
@@ -444,4 +452,18 @@ table, tr, td, th{
 .ticket-row-details .tr-body .t-attr{
     font-size: 14px;
     color: #4f565f;
+}
+
+.row{
+    margin-bottom: 10px;
+}
+
+.row-2{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.row.row-2 .form-group{
+    width: 48%;
 }
