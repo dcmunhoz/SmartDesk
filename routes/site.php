@@ -5,7 +5,7 @@
 
     $app->get("/", function(){
 
-        $view = new View(false, false);
+        $view = new View();
         $view->draw("user-panel");
 
     });
@@ -22,6 +22,12 @@
         $view = new View(false, false);
         $view->draw("signup");
 
+
+    });
+
+    $app->get("/ticket/open", function(){
+        $view = new View();
+        $view->draw('user-ticket');
 
     });
 

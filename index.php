@@ -11,7 +11,7 @@
         ]
     ]);
 
-    require "routes/app.php";
+    require "routes/site.php";
     require "routes/api.php";
     require "routes/admin.php";
 
