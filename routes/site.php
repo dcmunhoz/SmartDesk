@@ -32,4 +32,11 @@
     });
 
 
+    $app->get("/team", function(){
+
+        $view = new View();
+        $view->draw("team");
+
+    });
+
 ?>

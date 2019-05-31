@@ -467,3 +467,32 @@ table, tr, td, th{
 .row.row-2 .form-group{
     width: 48%;
 }
+
+.team-box{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-box .card-team{
+    margin: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    width: 350px;
+    height: 120px;
+}
+
+.team-box .card-team .card-row{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-row .card-email{
+    font-size: 14px !important;
+}
