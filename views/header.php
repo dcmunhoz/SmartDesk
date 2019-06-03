@@ -46,22 +46,8 @@
                         <div class="content-body">
                         
                             <div class="system-description">
-                                    <p>Este é um software de gerenciamento de ordens de serviço.</p>
-                                    <p>Aqui você vai pode criar e acompanhar todas os seus tickets abertos. </p>
-                                    <p>Após a abertura, um dos técnicos cadastrados vão assumir os tickets e entrar em contato com você para solucionar os problemas.</p>
-                                </div>
-                                <div class="system-options">
-                                    <nav class="nav nav-track">
-                                        <ul>
-                                            <li class="nav-button active">
-                                                <button>Painel</button>
-                                            </li>
-                                            <li class="nav-button">
-                                                <button>Abrir Ticket</button>
-                                            </li>
-                                            <li class="nav-button">
-                                                <button>Colaboradores</button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <section class="panel">
+                                <p>Este é um software de gerenciamento de ordens de serviço.</p>
+                                <p>Aqui você vai pode criar e acompanhar todas os seus tickets abertos. </p>
+                                <p>Após a abertura, um dos técnicos cadastrados vão assumir os tickets e entrar em contato com você para solucionar os problemas.</p>
+                            </div>
+                                

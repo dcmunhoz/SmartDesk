@@ -20,7 +20,7 @@ input:focus{
 input,
 textarea,
 select{
-    padding: 15px;
+    padding: 10px;
     background-color: rgb(255, 255, 255);
     color: rgb(54, 54, 54);
     border: 1px solid #E5E5E5;
@@ -30,8 +30,9 @@ select{
     overflow: none;
 }
 
+
+
 .dark{
-    padding: 15px;
     background-color: #E5E5E5;
     color: rgb(64, 67, 71);
     border: 1px solid #E5E5E5;
@@ -55,6 +56,9 @@ input:focus,
 select:focus,
 textarea:focus{
     border: 1px solid #00A4FD;
+}
+textarea{
+    resize: none;
 }
 
 input:focus{

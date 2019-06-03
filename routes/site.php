@@ -39,4 +39,12 @@
 
     });
 
+    $app->get("/ticket/2058/details", function(){
+
+        $view = new View();
+        $view->draw("ticket-details");
+        
+
+    });
+
 ?>

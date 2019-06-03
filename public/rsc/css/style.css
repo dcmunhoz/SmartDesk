@@ -496,3 +496,52 @@ table, tr, td, th{
 .card-row .card-email{
     font-size: 14px !important;
 }
+
+.ticket-dt-panel{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.ticket-dt-panel aside{
+    box-sizing: border-box;
+    border-right: 1px solid rgb(231, 231, 231);
+    padding-right: 20px;
+    padding-left: 10px;
+    width: 250px;
+}
+
+.ticket-menu ul{
+    list-style: none;
+    padding-top: 20px;
+}
+
+.ticket-menu ul li{
+    width: 100%;
+    padding-bottom: 10px;
+
+}
+
+.ticket-menu ul li a {
+    display: flex;
+    color: var(--default-font-color);
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.ticket-menu ul li a:hover,
+.ticket-menu ul li a.active {
+    background-color: #4f565f;
+    color: #fff;
+    
+}
+
+.ticket-dt-panel .general-panel{
+    flex-grow: 1;
+    box-sizing: border-box;
+    padding: 10px 30px;
+}

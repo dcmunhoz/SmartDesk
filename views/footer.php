@@ -1,6 +1,4 @@
-                        
-                                </section>
-                            </div>
+
                         </div>
 
                     </div>
