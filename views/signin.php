@@ -19,7 +19,7 @@
                 </header>
                 <section class="box">
                     <div class="form-box">
-                        <img src="public/rsc/imgs/company-logo.png" alt="Company Logo">
+                        <img src="public/rsc/img/company-logo.png" alt="Company Logo">
                         <p class="description">Entre com seu usuário e senha para solicitar um suporte técnico.</p>
                         <form action="" method="POST">
                             <div class="form-group">

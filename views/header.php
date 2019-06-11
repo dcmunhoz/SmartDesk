@@ -20,7 +20,7 @@
             <section id="user-container">
                 <nav class="nav-bar">
                     <div class="logo-container">
-                        <img src="/public/rsc/imgs/company-logo.png" alt="Company logo">
+                        <img src="/public/rsc/img/company-logo.png" alt="Company logo">
                     </div>
                     <div class="user-options-container">
                         <ul class="user-menu">
@@ -28,7 +28,7 @@
                                 <i class="material-icons md-24">search</i>
                             </li>
                             <li>
-                                <img src="/public/rsc/imgs/no_user.png" alt="">
+                                <img src="/public/rsc/img/no_user.png" alt="">
                             </li>
                             
                         </ul>

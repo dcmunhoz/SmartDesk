@@ -45,7 +45,7 @@
                     <td>
                         <div class="ticket-row-details">
                             <div class="img-status">
-                                <img src="public/rsc/imgs/ticket-open.png" alt="#">
+                                <img src="public/rsc/img/ticket-open.png" alt="#">
                             </div>
                             <div class="tr-body">
                                 <h2>Ticket #2058</h2>
@@ -62,7 +62,7 @@
                     <td>
                         <div class="ticket-row-details">
                             <div class="img-status">
-                                <img src="public/rsc/imgs/ticket-done_2.png" alt="#">
+                                <img src="public/rsc/img/ticket-done_2.png" alt="#">
                             </div>
                             <div class="tr-body">
                                 <h2>Ticket #2058</h2>

@@ -14,7 +14,7 @@
     <body>
         <main id="app">
             <section class="admin-container">
-                <img class="admin-company-logo-login" src="public/rsc/imgs/company-logo.png" alt="">
+                <img class="admin-company-logo-login" src="public/rsc/img/company-logo.png" alt="">
                 <div class="box admin-box">
                     <p>Bem vindo técnico</p>
                     <p>Entre com seu usuário e senha para continuar.</p>

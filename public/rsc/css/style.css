@@ -237,7 +237,7 @@ form .row .form-group{
 }
 
 #user-container #page-container #content .background{
-    background-image: url("../imgs/background.jpg");
+    background-image: url("../img/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
