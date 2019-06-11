@@ -1,15 +1,23 @@
 <?php
+/**
+ * 
+ * @author Daniel Munhoz <dc.munhoz@hotmail.com>
+ *
+ * Classe contendo metodos padrões para todas as outras classes do sistema.
+ *  
+ */
 
-    namespace App\Model;
 
-    class ClassModel {
+namespace App\Model;
 
-        public function teste(){
+class ClassModel {
 
-            echo "Teste classe. PSR-4";
+    public function teste(){
 
-        }
+        echo "Teste classe. PSR-4";
 
     }
+
+}
 
 ?>
