@@ -6,7 +6,7 @@
 
             </section>
         </main>
-        <script src="/public/rsc/js/script.js"></script>
+        <script src="/public/rsc/js/bundle.js"></script>
     </body>
 
 

@@ -1,0 +1,28 @@
+{
+  "name": "smart-desk",
+  "version": "1.0.0",
+  "description": "_Smart Desk é um software para gerenciamento de ordens de serviço para empresas de pequeno ou médio porte._",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p --config webpack.config.js",
+    "live": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcmunhoz/helpdesk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcmunhoz/helpdesk/issues"
+  },
+  "homepage": "https://github.com/dcmunhoz/helpdesk#readme",
+  "dependencies": {
+    "webpack": "^4.33.0",
+    "webpack-dev-server": "^3.7.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.3"
+  }
+}
