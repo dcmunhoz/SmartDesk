@@ -213,9 +213,6 @@ form .row .form-group{
     font-size: 32px !important;
 }
 
-.material-icons{
-
-}
 
 #user-container .nav-bar .user-options-container .user-menu li img{
     width: 40px;
@@ -290,10 +287,6 @@ form .row .form-group{
     display: flex;
     flex-direction: row;
     width: 100%;
-    
-}
-
-.nav ul li{
     
 }
 
