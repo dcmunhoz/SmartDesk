@@ -6,7 +6,7 @@
  * 
  */
 
-namespace App\Model;
+namespace App;
 
 class View {
 

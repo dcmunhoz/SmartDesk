@@ -6,7 +6,7 @@
  * 
  */
 
-use \App\Model\View as View;
+use \App\View as View;
 
 // Pagina inicial do admin.
 $app->get("/admin", function(){
