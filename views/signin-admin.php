@@ -34,7 +34,7 @@
 
                         </form>
                         <div class="redirect-links">
-                            <p><a href="/helpdesk">Entrar como usuário. </a></p>
+                            <p><a href="/">Entrar como usuário. </a></p>
                         </div>
                     </div>
 

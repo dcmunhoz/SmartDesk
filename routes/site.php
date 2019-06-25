@@ -6,11 +6,13 @@
  *  
  */
 
-use \App\View as View;
-use \App\User as User;
+use \App\View;
+use \App\User;
 
 // Pagina principal
 $app->get("/", function(){
+
+    User::verifyLogin();
     
     $view = new View();
     $view->draw("user-panel");

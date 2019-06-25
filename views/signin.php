@@ -36,8 +36,8 @@
                             
                         </form>
                         <div class="redirect-links">
-                            <p><a href="/helpdesk/admin">Entrar como técnico. </a></p>
-                            <p>Ainda não tem uma conta? <a href="/helpdesk/new-user">Clique aqui!</a></p>
+                            <p><a href="/admin">Entrar como técnico. </a></p>
+                            <p>Ainda não tem uma conta? <a href="/signup">Clique aqui!</a></p>
                         </div>
 
                     </div>

@@ -8,15 +8,26 @@
 
 namespace App;
 
-use \App\Model\DB as DB;
-use \App\Model\ClassModel as ClassModel;
+use \App\Model\DB;
+use \App\Model\ClassModel;
 
 class User extends ClassModel{
 
-    public function __construct(){
-        
-        
+    private const SESSION_USER = "User_Session";
+
+    public static function verifyLogin(){
+
+        if(!isset($_SESSION[User::SESSION_USER]) || $_SESSION[User::SESSION_USER] === null){
+
+            header("Location: /signin");
+
+        }
+
     }
+
+
+
+
 
 }
 

@@ -51,7 +51,7 @@
                             
                         </form>
                         <div class="redirect-links">
-                            <p><a href="/helpdesk">Clique para entrar !</a></p>
+                            <p><a href="/">Clique para entrar !</a></p>
                         </div>
 
                     </div>
