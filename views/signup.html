@@ -12,6 +12,7 @@
     </head>
     
     <body>
+        <div style="display:hidden;" id="page" data-page="Signup"></div>
         <main id="app">
             <div class="container">
                 <header>
@@ -21,33 +22,33 @@
                     <div class="form-box">
                         <img src="public/rsc/img/company-logo.png" alt="Company Logo">
                         <p class="description">Digite seus dados para cadastrar um novo usuário</p>
-                        <form action="" method="POST">
+                        <form action="/signup" method="POST" id="form-create-new-account">
                             <div class="form-group">
                                 <label for="create-name">Nome:</label>
-                                <input type="text" id="create-name" name="create-name" placeholder="Seu nome completo.">
+                                <input type="text" id="create-name" name="create-name" placeholder="Seu nome completo." required>
                             </div>
 
                             <div class="form-group">
                                 <label for="create-username">Usuário:</label>
-                                <input type="text" id="create-username" name="create-username" placeholder="Seu usuário para acesso.">
+                                <input type="text" id="create-username" name="create-username" placeholder="Seu usuário para acesso." required>
                             </div>
 
                             <div class="form-group">
                                 <label for="create-email">E-mail:</label>
-                                <input type="text" id="create-email" name="create-email" placeholder="seu@email.com">
+                                <input type="email" id="create-email" name="create-email" placeholder="seu@email.com" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="create-pass">Senha:</label>
-                                <input type="text" id="create-pass" name="create-pass" placeholder="Sua senha de no minimo 6 caracteres.">
+                                <input type="text" id="create-pass" name="create-pass" placeholder="Sua senha de no minimo 6 caracteres." required>
                             </div>
 
                             <div class="form-group">
                                 <label for="create-confirm-pass">Confirmar Senha:</label>
-                                <input type="text" id="create-confirm-pass" name="create-confirm-pass" placeholder="Confirme sua senha.">
+                                <input type="text" id="create-confirm-pass" name="create-confirm-pass" placeholder="Confirme sua senha." required>
                             </div>
 
-                            <button class="btn btn-enviar">Criar nova conta</button>
+                            <button class="btn btn-enviar" id="btn-create-account">Criar nova conta</button>
                             
                         </form>
                         <div class="redirect-links">
@@ -67,7 +68,7 @@
 
 
         </main>
-        <script src="public/rsc/js/script.js"></script>
+        <script src="public/rsc/js/bundle.js"></script>
     </body>
 
 
