@@ -7,18 +7,13 @@
  */
 
 use \App\View as View;
-use \App\Model\DB;
+use \App\User as User;
 
 // Pagina principal
 $app->get("/", function(){
     
-    $dao = new DB();
-    $result = $dao->select("SELECT * FROM tb_users WHERE username = :username;", [":username"=>"admin"]);
-
-    var_dump($result);
-
-    //$view = new View();
-    //$view->draw("user-panel");
+    $view = new View();
+    $view->draw("user-panel");
 
 });
 
