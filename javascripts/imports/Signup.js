@@ -30,7 +30,7 @@ export default class Signup{
 
             let form = new FormData(document.querySelector("#form-create-new-account"));
             let formValidation = [];
-
+        
             form.forEach((value, key)=>{
 
                 let formGroup = document.querySelector(`#${key}`).parentNode;
@@ -64,6 +64,16 @@ export default class Signup{
                 }
 
             });    
+
+            if(document.querySelector("#create-pass").value !== document.querySelector("#create-confirm-pass").value){
+                document.querySelector("#create-pass").parentNode.classList.add('input-error');
+                document.querySelector("#create-confirm-pass").parentNode.classList.add('input-error');
+                formValidation.push(true)
+            }else{
+                document.querySelector("#create-pass").parentNode.classList.remove('input-error');
+                document.querySelector("#create-confirm-pass").parentNode.classList.remove('input-error');
+            }
+
 
             if(!formValidation.length > 0){
                 
