@@ -91,6 +91,48 @@ form .row .form-group{
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
+    transition: 300ms;
+}
+
+.form-group.input-error > label{
+    color: rgb(250, 95, 95);
+}
+
+.form-group > label::before{
+    content: "*";
+    position: relative;
+    left: -2px;
+    opacity: 0;
+    transition: 300ms;
+}
+
+.form-group > label::after{
+    content: "( E-mail precisa conter ' @ ' e ' . ' )";
+    position: relative;
+    font-size: 12px;
+    left: 5px;
+    opacity: 0;
+    transition: 300ms;
+}
+
+
+
+.form-group.input-error > label::before{
+    content: "*";
+    left: 0;
+    opacity: 1;
+}
+
+.form-group.input-error.input-email-error > label::after{
+    /* content: "( E-mail precisa conter ' @ ' e ' . ' )"; */
+    opacity: 1;
+    left: 0;
+ 
+}
+
+
+.form-group.input-error > input{
+    border-color: rgb(250, 95, 95);
 }
 
 .box .redirect-links{
@@ -109,6 +151,8 @@ form .row .form-group{
 
 .form-group label{
     margin-bottom: 5px;
+    position: relative;
+    left: -3px;
 }
 
 .system-welcome{

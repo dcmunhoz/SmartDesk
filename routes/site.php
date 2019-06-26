@@ -8,6 +8,8 @@
 
 use \App\View;
 use \App\User;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 // Pagina principal
 $app->get("/", function(){
@@ -33,8 +35,14 @@ $app->get("/signup", function(){
     $view = new View(false, false);
     $view->draw("signup");
 
+});
+$app->post('/signup', function(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+    return $res->withJson(['status'=>'tuducertu']);     
+
 
 });
+
 // Pagina para abrir novo ticket
 $app->get("/ticket/open", function(){
     $view = new View();
