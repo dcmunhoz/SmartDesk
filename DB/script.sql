@@ -17,11 +17,17 @@ CREATE TABLE tb_profiles(
 	id_profile 				INT NOT NULL AUTO_INCREMENT, # Id do perfil. 
     profile_name 			VARCHAR(30) NOT NULL,		 # Nome do perfil.
     profile_description		VARCHAR(100),				 # Descrição do perfil.
-    adminitrator			BOOL NOT NULL DEFAULT TRUE,	 # Perfil com direitos administrativos.
+    administrator			BOOL NOT NULL DEFAULT TRUE,	 # Perfil com direitos administrativos.
     CONSTRAINT pk_profile PRIMARY KEY (id_profile)
 )DEFAULT CHARACTER SET 'UTF8';
 
+INSERT INTO tb_profiles(profile_name, profile_description, administrator)
+VALUES('Administrador', 'Perfil de administração do sistema.', true);
+
 ALTER TABLE tb_users ADD CONSTRAINT fk_profiles_users FOREIGN KEY (id_profile) REFERENCES tb_profiles(id_profile);
+
+INSERT INTO tb_users(username, passw, email, active, id_profile)
+VALUES('admin', 'admin', 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
 
 CREATE TABLE tb_persons(
 	id_person 		INT NOT NULL AUTO_INCREMENT, 	# Id da pessoa. 
@@ -70,4 +76,3 @@ ALTER TABLE tb_persons ADD CONSTRAINT fk_sectors_persons FOREIGN KEY (id_sector)
 ALTER TABLE tb_places ADD CONSTRAINT fk_company_places FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
 ALTER TABLE tb_places ADD CONSTRAINT fk_city_places FOREIGN KEY (id_city) REFERENCES tb_cities(id_city);
 ALTER TABLE tb_sectors ADD CONSTRAINT fk_company_sectors FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
-
