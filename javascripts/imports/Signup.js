@@ -1,3 +1,5 @@
+const Notification = require('./../utils/Notification');
+
 export default class Signup{
 
     constructor(){
@@ -30,7 +32,7 @@ export default class Signup{
 
             let form = new FormData(document.querySelector("#form-create-new-account"));
             let formValidation = [];
-        
+
             form.forEach((value, key)=>{
 
                 let formGroup = document.querySelector(`#${key}`).parentNode;
@@ -63,17 +65,17 @@ export default class Signup{
                     }
                 }
 
-            });    
+                if(key === 'create-confirm-pass'){
 
-            if(document.querySelector("#create-pass").value !== document.querySelector("#create-confirm-pass").value){
-                document.querySelector("#create-pass").parentNode.classList.add('input-error');
-                document.querySelector("#create-confirm-pass").parentNode.classList.add('input-error');
-                formValidation.push(true)
-            }else{
-                document.querySelector("#create-pass").parentNode.classList.remove('input-error');
-                document.querySelector("#create-confirm-pass").parentNode.classList.remove('input-error');
-            }
+                    if(form.get('create-pass') !== value){
+                        formGroup.classList.add('input-error');
+                        formGroup.classList.add('input-error');
+                        formValidation.push(true);
+                    }
 
+                }
+
+            });
 
             if(!formValidation.length > 0){
                 
@@ -83,10 +85,12 @@ export default class Signup{
                     body: form
                 }).then(response => response.json())
                   .then(json=>{
-                      console.log(json);
+                        Notification.pop('danger', 'Lorem', 'Lorem ipsum dolore ammet');
                   });
             
             
+            }else{
+                Notification.pop('danger', 'Dados invalidos', 'Preencha corretamente os campos. dsadsadasdasdsadasddddddddd');
             }
 
         });
