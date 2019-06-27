@@ -107,11 +107,18 @@ export default class Signup{
                             Notification.pop("danger", "Usuário não cadastrado!",'Não foi possivel criar seu usuário, entre em contato com um administrador.' );
                         }else{
                             Notification.pop("success", "Usuário cadastrado!", "Seu usuário foi cadastrado com sucesso.");
+                            setTimeout(
+                                ()=>{
+                                    window.location.replace('/');
+                                }
+                            , 1500);
+                        
                         };
                         e.target.removeChild(loadGif);
                         e.target.innerHTML = "Criar nova conta"
 
                         formCreate.clear();
+                      
 
                     }, 1000);
  
