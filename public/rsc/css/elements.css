@@ -115,6 +115,10 @@ input:focus{
 
 }
 
+.button-load{
+    width: 30px !important;
+}
+
 .search-select-box{
     background-color: #ffffff;
     color:rgb(51, 51, 51);
