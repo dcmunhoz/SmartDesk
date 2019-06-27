@@ -33,11 +33,11 @@ class DB{
 
                 // Cria a conexão com o banco de dados.
                 $this->conn = new \PDO("mysql:host=". $host .";dbname=". $database .";charset=utf8", $user, $pass);
+                $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
             }catch(Exception $e){
 
                 throw new Exception($e->message, 1);
-                
 
             } 
 
@@ -53,13 +53,20 @@ class DB{
      * Binda os parametros.
      * 
      */
-    public function bindParams($stmt, $params = []){
+    public function setParams($stmt, $params = []){
 
         foreach($params as $key => $value){
 
-            $stmt->bindParam($key, $value);
+            $this->bindParam($stmt, $key, $value);
+
 
         }
+
+    }
+
+    public function bindParam($stmt, $key, $value){
+        
+        $stmt->bindParam($key, $value);
 
     }
 
@@ -74,7 +81,7 @@ class DB{
     public function query($query, $params = []){
 
         $stmt = $this->conn->prepare($query);
-        $this->bindParams($stmt, $params);
+        $this->setParams($stmt, $params);
 
         $stmt->execute();
 
@@ -88,14 +95,23 @@ class DB{
      * Executa um comando com retorno do banco de dados.
      * 
      */
-    public function select($query, $params = []){
+    public function exec($query, $params = []){
 
-        $stmt = $this->conn->prepare($query);
-        $this->bindParams($stmt, $params);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $this->setParams($stmt, $params);
 
-        $stmt->execute();
+            $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    
+        }catch(Exception $e){
+
+            throw new Exception($e->getMessage(), 1);
+        
+
+        }
+    
 
     }
 

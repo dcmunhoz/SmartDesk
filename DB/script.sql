@@ -1,7 +1,11 @@
 CREATE DATABASE db_smartdesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
 USE db_smartdesk;
 CREATE USER 'smart'@'localhost' IDENTIFIED BY 'smart';
+CREATE USER 'smart'@'%' IDENTIFIED BY 'smart';
+CREATE USER 'smart'@'127.0.0.1' IDENTIFIED BY 'smart';
 GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'localhost';
+GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'127.0.0.1';
+GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'%';
 
 CREATE TABLE tb_users(
 	id_user 	 	INT NOT NULL AUTO_INCREMENT,	# Id do usuário.
@@ -24,6 +28,9 @@ CREATE TABLE tb_profiles(
 INSERT INTO tb_profiles(profile_name, profile_description, administrator)
 VALUES('Administrador', 'Perfil de administração do sistema.', true);
 
+INSERT INTO tb_profiles(profile_name, profile_description, administrator)
+VALUES('Padrão', 'Perfil padrão de usuário', false);
+
 ALTER TABLE tb_users ADD CONSTRAINT fk_profiles_users FOREIGN KEY (id_profile) REFERENCES tb_profiles(id_profile);
 
 INSERT INTO tb_users(username, passw, email, active, id_profile)
@@ -35,9 +42,9 @@ CREATE TABLE tb_persons(
     dt_creation 	DATETIME DEFAULT NOW(),			# Data de criação.
     dt_alteration 	DATETIME, 						# Data de alteração.
     id_user			INT NOT NULL UNIQUE, 			# Id do usuário referente a esta pessoa.
-    id_company		INT NOT NULL,					# Id da empresa.
-    id_place		INT NOT NULL,					# Id do local de atuação.
-    id_sector	 	INT NOT NULL,					# Id do setor de atuação.
+    id_company		INT,					# Id da empresa.
+    id_place		INT,					# Id do local de atuação.
+    id_sector	 	INT,					# Id do setor de atuação.
     CONSTRAINT pk_person PRIMARY KEY (id_person)
 ) DEFAULT CHARACTER SET 'UTF8';
 
@@ -76,3 +83,44 @@ ALTER TABLE tb_persons ADD CONSTRAINT fk_sectors_persons FOREIGN KEY (id_sector)
 ALTER TABLE tb_places ADD CONSTRAINT fk_company_places FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
 ALTER TABLE tb_places ADD CONSTRAINT fk_city_places FOREIGN KEY (id_city) REFERENCES tb_cities(id_city);
 ALTER TABLE tb_sectors ADD CONSTRAINT fk_company_sectors FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
+
+DELIMITER $
+CREATE PROCEDURE proc_save_user(
+piduser INT,
+pusername VARCHAR(16),
+pfullname VARCHAR(100),
+ppassw VARCHAR(255),
+pemail VARCHAR(255),
+pactive BOOL,
+pidprofile INT
+)BEGIN
+
+	DECLARE lastUserId INT;
+	
+	IF piduser >= 1 THEN
+		UPDATE tb_users
+        SET username = pusername,
+			email = pemail,
+            active = pactive
+		WHERE id_user = piduser;
+        
+        SELECT piduser INTO lastUserId;
+	ELSE
+		
+        INSERT INTO tb_users (username, passw, email, active, id_profile)
+        VALUES (pusername, md5(ppassw), pemail, pactive, pidprofile);
+        
+        SELECT LAST_INSERT_ID() INTO lastUserId;
+        
+        INSERT INTO tb_persons (full_name, id_user)
+        VALUES (pfullname, lastUserId);
+        
+        
+    END IF;
+    
+    SELECT * FROM tb_users WHERE id_user = lastUserId;
+    
+END$	
+DELIMITER ;
+
+call proc_save_user(0, 'teste', 'teste', 'teste', 'teste', true, 2);

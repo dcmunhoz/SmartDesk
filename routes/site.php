@@ -8,6 +8,7 @@
 
 use \App\View;
 use \App\User;
+use \App\Model\DB;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -38,8 +39,13 @@ $app->get("/signup", function(){
 });
 $app->post('/signup', function(ServerRequestInterface $req, ResponseInterface $res, $args){
 
-    return $res->withJson(['status'=>'tuducertu']);     
+    $body = $req->getParsedBody();
 
+    $user = new User;
+    $result = $user->createUser($body);
+
+    // return $res;
+    // var_dump($body);
 
 });
 

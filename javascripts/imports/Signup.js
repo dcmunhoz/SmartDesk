@@ -83,14 +83,21 @@ export default class Signup{
                 fetch('/signup', {
                     method: 'POST',
                     body: form
-                }).then(response => response.json())
-                  .then(json=>{
-                        Notification.pop('danger', 'Lorem', 'Lorem ipsum dolore ammet');
-                  });
+                }).then(response => {
+                    console.clear();
+
+
+                    
+                    if(!response.ok){
+                        Notification.pop("danger", "Usuário não cadastrado!",'Não foi possivel criar seu usuário, entre em contato com um administrador.' );
+                    }else{
+                        Notification.pop("success", "Usuário cadastrado!", "Seu usuário foi cadastrado com sucesso.");
+                    };
+                });
             
             
             }else{
-                Notification.pop('danger', 'Dados invalidos', 'Preencha corretamente os campos. dsadsadasdasdsadasddddddddd');
+                Notification.pop('danger', 'Dados invalidos', 'Alguns campos precisam ser preenchidos corretamente.');
             }
 
         });
