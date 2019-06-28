@@ -1,1 +1,5 @@
+# Modulos do NODE
 node_modules/
+
+# Modulos do COMPOSER
+vendor/
