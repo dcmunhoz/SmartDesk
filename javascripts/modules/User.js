@@ -25,7 +25,21 @@ module.exports = {
 
     login(body){
 
-        console.log('loading')
+        return new Promise((resolve, reject)=>{
+
+            fetch('/signin', {
+                method: 'POST',
+                body
+            }).then(result => result.json() ).then(json=>{
+                if(json['error']){
+                    reject(json);
+                }
+                
+                resolve();
+                
+            });
+
+        });
 
     }
 

@@ -30,6 +30,22 @@ $app->get("/signin", function(){
 
 });
 
+$app->post("/signin", function(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+    $body = $req->getParsedBody();
+
+    $user = new User();
+    $result = $user->login($body);
+
+    if($result['error']){
+        $newResponse = $res->withStatus(500);
+    
+        return $newResponse->withJson($result);
+    }   
+    return $res->withJson([]);
+    
+});
+
 // Pagina de cadastro
 $app->get("/signup", function(){
 
@@ -37,6 +53,7 @@ $app->get("/signup", function(){
     $view->draw("signup");
 
 });
+
 $app->post('/signup', function(ServerRequestInterface $req, ResponseInterface $res, $args){
 
     $body = $req->getParsedBody();

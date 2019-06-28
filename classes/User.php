@@ -17,6 +17,8 @@ class User extends ClassModel{
 
     public static function verifyLogin(){
 
+        \session_start();
+
         if(!isset($_SESSION[User::SESSION_USER]) || $_SESSION[User::SESSION_USER] === null){
 
             header("Location: /signin");
@@ -39,6 +41,32 @@ class User extends ClassModel{
         ]);
 
         return $result[0];
+
+    }
+
+    public function login($body){
+
+        $dao = new DB();
+        $result = $dao->exec("SELECT * FROM tb_users WHERE username = :username AND passw = md5(:passw);", [
+            ":username" => $body['login-username'],
+            ":passw"    => $body['login-pass']
+        ]);
+
+        if(count($result[0]) > 0 ){
+            // Usuário existe
+            \session_start();
+            $_SESSION[User::SESSION_USER] = $result[0];
+                        
+    
+        }else{
+            // Usuário não existe.
+    
+            $error = [
+                "error"=>"Usuário ou senha invalidos."
+            ];
+    
+            return $error;
+        }
 
     }
 }
