@@ -21,54 +21,10 @@ export default class Signup{
             e.preventDefault();
 
             let formCreate = document.querySelector("#form-create-new-account");
-            let form = new FormData(formCreate);
-            let formValidation = [];
+            if(formCreate.validateFields()){
+                
+                let form = new FormData(formCreate);
 
-            form.forEach((value, key)=>{
-
-                let formGroup = document.querySelector(`#${key}`).parentNode;
-
-                if(value.trim() === ""){
-                    
-                    formGroup.classList.add('input-error');
-                    formValidation.push(true);
-
-                }else{
-
-                    if(formGroup.classList.contains('input-error')){
-                        formGroup.classList.remove('input-error');
-                    }
-                    
-                }
-
-                if(key === 'create-email'){
-
-                    if(value.includes("@")){
-                        if(!value.includes(".")){
-                            formGroup.classList.add('input-email-error');
-                            formGroup.classList.add('input-error');
-                            formValidation.push(true);
-                        }
-                    }else{
-                        formGroup.classList.add('input-email-error');
-                        formGroup.classList.add('input-error');
-                        formValidation.push(true)
-                    }
-                }
-
-                if(key === 'create-confirm-pass'){
-
-                    if(form.get('create-pass') !== value){
-                        formGroup.classList.add('input-error');
-                        formGroup.classList.add('input-error');
-                        formValidation.push(true);
-                    }
-
-                }
-
-            });
-
-            if(!formValidation.length > 0){
                 let loadGif = document.createElement('img');
                 loadGif.src="/public/rsc/img/dual-load.gif";
                 loadGif.classList.add("button-load");
@@ -89,8 +45,8 @@ export default class Signup{
     
                     e.target.removeChild(loadGif);
                     e.target.innerHTML = "Criar nova conta"
-                }, 1000);            
-            
+                }, 1000);          
+
             }else{
                 Notification.pop('danger', 'Dados invalidos', 'Alguns campos precisam ser preenchidos corretamente.');
             }

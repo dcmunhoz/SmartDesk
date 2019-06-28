@@ -1,4 +1,5 @@
 import Signup from '../imports/Signup';
+import Signin from '../imports/Signin';
 
 export default class SmartDesk{
 
@@ -10,6 +11,9 @@ export default class SmartDesk{
             switch(this._atualPage){
                 case 'Signup':
                     new Signup();
+                break;
+                case 'Signin':
+                    new Signin();
                 break;
             }
         }

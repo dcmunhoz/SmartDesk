@@ -12,6 +12,7 @@
     </head>
     
     <body>
+        <div style="display: hidden;" id="page" data-page="Signin"></div>
         <main id="app">
             <div class="container">
                 <header>
@@ -21,7 +22,7 @@
                     <div class="form-box">
                         <img src="public/rsc/img/company-logo.png" alt="Company Logo">
                         <p class="description">Entre com seu usuário e senha para solicitar um suporte técnico.</p>
-                        <form action="" method="POST">
+                        <form id="form-user-login" >
                             <div class="form-group">
                                 <label for="login-username">Usuário:</label>
                                 <input type="text" id="login-username" name="login-username" placeholder="Seu usuário de acesso.">
@@ -32,7 +33,7 @@
                                 <input type="text" id="login-pass" name="login-pass" placeholder="Sua senha de no minimo 6 caracteres">
                             </div>
 
-                            <button class="btn btn-enviar">Entrar</button>
+                            <button type="button" class="btn btn-enviar" id="btn-user-login">Entrar</button>
                             
                         </form>
                         <div class="redirect-links">
