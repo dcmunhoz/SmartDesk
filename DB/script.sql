@@ -34,7 +34,7 @@ VALUES('Padrão', 'Perfil padrão de usuário', false);
 ALTER TABLE tb_users ADD CONSTRAINT fk_profiles_users FOREIGN KEY (id_profile) REFERENCES tb_profiles(id_profile);
 
 INSERT INTO tb_users(username, passw, email, active, id_profile)
-VALUES('admin', 'admin', 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
+VALUES('admin', md5('admin'), 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
 
 CREATE TABLE tb_persons(
 	id_person 		INT NOT NULL AUTO_INCREMENT, 	# Id da pessoa. 
@@ -122,5 +122,3 @@ pidprofile INT
     
 END$	
 DELIMITER ;
-
-call proc_save_user(0, 'teste', 'teste', 'teste', 'teste', true, 2);

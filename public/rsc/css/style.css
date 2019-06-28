@@ -310,6 +310,7 @@ form .row .form-group{
     display: flex;
     flex-direction: row;
     color: #FFF;
+    height: 100%;
 
 }
 
@@ -318,18 +319,107 @@ form .row .form-group{
     margin: 0 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
+    width: 70px;
 }
 
 #user-container .nav-bar .user-options-container .user-menu li i{
 
-    font-size: 32px !important;
+    /* font-size: 32px !important; */
 }
 
 
 #user-container .nav-bar .user-options-container .user-menu li img{
     width: 40px;
     border-radius: 100px;
+}
+
+#btn-show-user-panel{
+    position: relative;
+    transition: 100ms;
+}
+
+#btn-show-user-panel:hover{
+    cursor: pointer;
+    background-color: #163d3f;
+}
+
+#btn-show-user-panel.active{
+    background-color: #163d3f;
+}
+
+#user-panel.active{
+    opacity: 1;
+    right: 0;
+}
+
+#user-panel{
+    cursor: default;
+    position: absolute;
+    background-color: #163d3f;
+    color: #FFF;
+    top: 80px;
+    right: -50px;
+    width: 190px;
+    box-sizing: border-box;
+    pointer-events: none;
+    border-radius: 0px 0px 5px 5px;
+    border-top: none;
+    display: none;
+    opacity: 0;
+    flex-direction: column;
+    transition: 200ms;
+}
+
+#user-panel header{
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    justify-content: center;
+    border-bottom: 1px solid #0b2c2e;
+}
+
+#user-panel .user-menu-option{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+#user-panel .user-menu-option span{
+    padding: 10px 5px;
+}
+
+#user-panel .user-menu-option span:hover{
+    background-color: #0b2c2e;
+}
+
+#user-panel footer,
+#user-panel header{    
+    display: flex;
+    height: 50px;    
+    align-items: center;
+}
+
+#user-panel footer span{
+    padding: 0 5px;
+}
+
+#user-panel footer{
+    pointer-events: all;
+    border-top: 1px solid #0b2c2e;
+}
+
+#btn-user-logout:hover{
+    background-color: rgb(124, 20, 20);
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+}
+
+
+#user-panel .fas{
+    color: #fff;
+    font-size: 16px !important;
+    margin-right: 5px;
 }
 
 #user-container #page-container{

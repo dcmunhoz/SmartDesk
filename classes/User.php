@@ -19,7 +19,7 @@ class User extends ClassModel{
 
         \session_start();
 
-        if(!isset($_SESSION[User::SESSION_USER]) || $_SESSION[User::SESSION_USER] === null){
+        if(isset($_SESSION[User::SESSION_USER])){
 
             header("Location: /signin");
 
@@ -52,7 +52,7 @@ class User extends ClassModel{
             ":passw"    => $body['login-pass']
         ]);
 
-        if(count($result[0]) > 0 ){
+        if(isset($result[0]) && count($result[0]) > 0){
             // Usuário existe
             \session_start();
             $_SESSION[User::SESSION_USER] = $result[0];
