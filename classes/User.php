@@ -19,9 +19,10 @@ class User extends ClassModel{
 
         \session_start();
 
-        if(isset($_SESSION[User::SESSION_USER])){
+        if(!isset($_SESSION[User::SESSION_USER])){
 
             header("Location: /signin");
+            exit;
 
         }
 
