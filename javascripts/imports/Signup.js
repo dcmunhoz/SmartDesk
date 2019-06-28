@@ -1,4 +1,6 @@
-const Notification = require('./../utils/Notification');
+const Notification  = require('./../utils/Notification');
+const Prototypes    = require('./../utils/Prototypes');
+const User          = require('./../modules/User');
 
 export default class Signup{
 
@@ -8,29 +10,9 @@ export default class Signup{
 
     initSignup(){
     
-        this.elementsPrototype();
+        Prototypes.initElementsPrototypes();
         this.initEvents();
     
-    }
-
-    elementsPrototype(){
-
-        Element.prototype.on = function(events, fn){
-
-            events.split(" ").forEach(event=>{
-                this.addEventListener(event, fn);
-            });
-
-        }
-
-        HTMLFormElement.prototype.clear = function(e){
-
-            [...this].forEach(el=>{
-                el.value = "";
-            })
-
-        }
-
     }
 
     initEvents(){
@@ -42,7 +24,6 @@ export default class Signup{
             let form = new FormData(formCreate);
             let formValidation = [];
 
-            
             form.forEach((value, key)=>{
 
                 let formGroup = document.querySelector(`#${key}`).parentNode;
@@ -95,35 +76,20 @@ export default class Signup{
                 e.target.innerHTML = "";
                 e.target.appendChild(loadGif);
 
-                
-                fetch('/signup', {
-                    method: 'POST',
-                    body: form
-                }).then(response => {
-                    console.clear();
-                    
-                    setTimeout(()=>{
-                        if(!response.ok){
-                            Notification.pop("danger", "Usuário não cadastrado!",'Não foi possivel criar seu usuário, entre em contato com um administrador.' );
-                        }else{
-                            Notification.pop("success", "Usuário cadastrado!", "Seu usuário foi cadastrado com sucesso.");
-                            setTimeout(
-                                ()=>{
-                                    window.location.replace('/');
-                                }
-                            , 1500);
-                        
-                        };
-                        e.target.removeChild(loadGif);
-                        e.target.innerHTML = "Criar nova conta"
-
-                        formCreate.clear();
-                      
-
-                    }, 1000);
- 
-                });
-            
+                setTimeout(()=>{
+                    User.saveAccount(form).then(success=>{
+                        Notification.pop("success", "Usuário cadastrado!", "Seu usuário foi cadastrado com sucesso.");
+    
+                        formCreate.clear(); 
+    
+    
+                    }).catch(fail=>{
+                        Notification.pop("danger", "Usuário não cadastrado!", fail['error'] );
+                    });
+    
+                    e.target.removeChild(loadGif);
+                    e.target.innerHTML = "Criar nova conta"
+                }, 1000);            
             
             }else{
                 Notification.pop('danger', 'Dados invalidos', 'Alguns campos precisam ser preenchidos corretamente.');

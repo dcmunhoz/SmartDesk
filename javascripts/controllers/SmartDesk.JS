@@ -1,4 +1,4 @@
-import Signup from './../imports/Signup';
+import Signup from '../imports/Signup';
 
 export default class SmartDesk{
 
