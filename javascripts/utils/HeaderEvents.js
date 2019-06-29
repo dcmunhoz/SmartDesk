@@ -1,4 +1,14 @@
-module.exports = {
+let User = require('./../modules/User');
+
+export default class Header{
+
+    constructor(){
+
+        this.initHeader();
+        this.getUserData();
+
+    }
+
     initHeader(){
 
         document.querySelector("#btn-show-user-panel").addEventListener('click', e=>{
@@ -26,4 +36,20 @@ module.exports = {
         });
 
     }
+
+    getUserData(){
+
+        User.getData().then(data=>{
+            
+            let userFullName = data.full_name.split(" ");
+            let displayName = "";
+
+            (userFullName.length > 1) ? displayName = `${userFullName[0]} ${userFullName[ userFullName.length - 1 ]}` : displayName = userFullName[0] ;
+            
+            document.querySelector("#panel-user-name").innerHTML = displayName;
+
+
+        });
+    }
+
 }

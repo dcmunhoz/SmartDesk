@@ -476,12 +476,14 @@ form .row .form-group{
     align-items: center;
     justify-content: center;
 }
+
 .nav{
     box-sizing: border-box;
     display: flex;
     width: 100%;
+    height: 35px;
     padding: 0 100px;
-    border-bottom: 1px solid rgb(172, 172, 172);
+    border-bottom: 1px solid rgb(172, 172, 172)
     /* box-shadow: inset 0px -5px 10px -10px rgba(0, 0, 0, 0.397); */
 }
 
@@ -493,7 +495,7 @@ form .row .form-group{
     
 }
 
-.nav ul .nav-button button{
+.nav ul .nav-button a{
     background-color: rgb(255, 255, 255);
     position: relative;
     top: 0px;
@@ -511,17 +513,18 @@ form .row .form-group{
     margin-right: 0px;
     transition: 200ms;
     color:#207479;
+    text-decoration: none;
 
 }
 
-.nav ul .nav-button button:hover{
+.nav ul .nav-button a:hover{
     border: 1px solid rgb(224, 224, 224);
     border-bottom: 0px;
     background-color: rgb(250, 250, 250);
     color:#1b5155;
 }
 
-.nav-button.active button{
+.nav-button.active a{
     background-color: #FFF !important;
     color: var(--default-font-color) !important;
     border: 1px solid rgb(172, 172, 172) !important;

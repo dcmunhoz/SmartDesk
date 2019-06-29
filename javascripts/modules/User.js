@@ -41,6 +41,20 @@ module.exports = {
 
         });
 
+    },
+
+    getData(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/user-logged').then(data => data.json()).then(json=>{
+
+                resolve(json);
+
+            });
+
+        });
+
     }
 
 }

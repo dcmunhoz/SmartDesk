@@ -6,10 +6,21 @@
  * 
  */
 
-$app->get("/api", function(){
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use App\User;
 
-    echo "Hello World, this is an API !";
 
+$app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+
+    $user = new User();
+
+    $data = $user->getAuthenticatedUser();
+
+    return $res->withJson($data);
+    
 });  
 
 ?>

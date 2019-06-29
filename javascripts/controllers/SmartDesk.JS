@@ -1,6 +1,6 @@
 import Signup from '../imports/Signup';
 import Signin from '../imports/Signin';
-const Header = require('./../utils/HeaderEvents');
+import Header from '../utils/HeaderEvents';
 
 export default class SmartDesk{
 
@@ -10,7 +10,7 @@ export default class SmartDesk{
         let excludePages = ['Signup', 'Signin'];
     
         if(!excludePages.includes(this._actualPage)){
-            Header.initHeader();
+            new Header();
         }
 
         if(this._actualPage){

@@ -83,6 +83,19 @@ class User extends ClassModel{
         }
         
     }
+
+    public function getAuthenticatedUser(){
+
+        $idUserAuthenticated = $_SESSION[User::SESSION_USER]['id_user'];
+
+        $dao = new DB();
+        $data = $dao->exec("SELECT * FROM tb_persons WHERE id_user = :id_user;", [
+            ":id_user" => $idUserAuthenticated
+        ]);
+
+        return $data[0];
+
+    }
 }
 
 ?>
