@@ -1,9 +1,10 @@
 let User = require('./../modules/User');
-
+let Prototype = require('./Prototypes');
 export default class Header{
 
     constructor(){
 
+        Prototype.initElementsPrototypes();
         this.initHeader();
         this.getUserData();
 
@@ -11,8 +12,8 @@ export default class Header{
 
     initHeader(){
 
-        document.querySelector("#btn-show-user-panel").addEventListener('click', e=>{
-            
+        document.querySelector("#btn-show-user-panel").on('click', e=>{
+
             document.querySelector("#btn-show-user-panel").classList.toggle('active');
             if(document.querySelector("#btn-show-user-panel").classList.contains('active')){
                 document.querySelector("#user-panel").style.display = 'flex';
@@ -29,10 +30,19 @@ export default class Header{
 
         });
 
-        document.querySelector("#btn-user-logout").addEventListener('click', e=>{
+        document.querySelector("#btn-user-logout").on('click', e=>{
 
             window.location.replace('/logout');
 
+        });
+
+        document.querySelector("#btn-open-user-profile").on("click", e=>{
+            User.getData().then(data=>{
+
+                let userId = data.id_user;
+                window.location.replace(` /profile/${userId}/edit `);
+
+            });  
         });
 
     }

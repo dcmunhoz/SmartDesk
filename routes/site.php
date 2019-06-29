@@ -98,4 +98,28 @@ $app->get("/ticket/2058/details", function(){
     
 });
 
+// Perfil do usuário
+$app->get("/profile/{userId}/edit", function($req, $res, $args){
+
+    User::verifyLogin();
+
+    $user = new User();
+
+    $authenticatedId = $user->getAuthenticatedUser()['id_user'];
+
+    $bodyUserId = $args['userId'];
+    
+    if($bodyUserId !== $authenticatedId){
+
+        $newResposne = $res->withStatus(500);
+
+        return $newResposne->withJson(["error" => "Acesso Negado."]);
+
+    }
+
+    $view = new View(false, false);
+
+    $view->draw('profile-edit');
+});
+
 ?>
