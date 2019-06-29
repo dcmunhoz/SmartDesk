@@ -1,6 +1,7 @@
 import Signup from '../imports/Signup';
 import Signin from '../imports/Signin';
 import Header from '../utils/HeaderEvents';
+import Home   from '../imports/Home';
 
 export default class SmartDesk{
 
@@ -20,6 +21,9 @@ export default class SmartDesk{
                 break;
                 case 'Signin':
                     new Signin();
+                break;
+                case 'Home':
+                    new Home();
                 break;
             }
         }
