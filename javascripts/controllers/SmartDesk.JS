@@ -6,11 +6,15 @@ export default class SmartDesk{
 
     constructor(){
 
-        this._atualPage = (document.querySelector("#page")) ? document.querySelector("#page").dataset.page : null;
-        // Header.initHeader();
+        this._actualPage = (document.querySelector("#page")) ? document.querySelector("#page").dataset.page : null;
+        let excludePages = ['Signup', 'Signin'];
+    
+        if(!excludePages.includes(this._actualPage)){
+            Header.initHeader();
+        }
 
-        if(this._atualPage){
-            switch(this._atualPage){
+        if(this._actualPage){
+            switch(this._actualPage){
                 case 'Signup':
                     new Signup();
                 break;

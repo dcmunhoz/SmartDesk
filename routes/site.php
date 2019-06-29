@@ -46,6 +46,15 @@ $app->post("/signin", function(ServerRequestInterface $req, ResponseInterface $r
     
 });
 
+$app->get("/logout", function(){
+
+    User::verifyLogin();
+
+    $user = new User();
+    $user->logout();
+
+});
+
 // Pagina de cadastro
 $app->get("/signup", function(){
 

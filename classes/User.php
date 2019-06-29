@@ -70,6 +70,19 @@ class User extends ClassModel{
         }
 
     }
+
+    public function logout(){
+
+        \session_start();
+
+        if(isset($_SESSION[User::SESSION_USER])){
+            \session_destroy();
+        
+            header("Location: /");
+            exit;
+        }
+        
+    }
 }
 
 ?>
