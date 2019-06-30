@@ -25,13 +25,13 @@ CREATE TABLE tb_profiles(
     CONSTRAINT pk_profile PRIMARY KEY (id_profile)
 )DEFAULT CHARACTER SET 'UTF8';
 
+ALTER TABLE tb_users ADD CONSTRAINT fk_profiles_users FOREIGN KEY (id_profile) REFERENCES tb_profiles(id_profile);
+
 INSERT INTO tb_profiles(profile_name, profile_description, administrator)
 VALUES('Administrador', 'Perfil de administração do sistema.', true);
 
 INSERT INTO tb_profiles(profile_name, profile_description, administrator)
 VALUES('Padrão', 'Perfil padrão de usuário', false);
-
-ALTER TABLE tb_users ADD CONSTRAINT fk_profiles_users FOREIGN KEY (id_profile) REFERENCES tb_profiles(id_profile);
 
 INSERT INTO tb_users(username, passw, email, active, id_profile)
 VALUES('admin', md5('admin'), 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
@@ -42,9 +42,10 @@ CREATE TABLE tb_persons(
     dt_creation 	DATETIME DEFAULT NOW(),			# Data de criação.
     dt_alteration 	DATETIME, 						# Data de alteração.
     id_user			INT NOT NULL UNIQUE, 			# Id do usuário referente a esta pessoa.
-    id_company		INT,					# Id da empresa.
-    id_place		INT,					# Id do local de atuação.
-    id_sector	 	INT,					# Id do setor de atuação.
+    id_company		INT,							# Id da empresa.
+    id_place		INT,							# Id do local de atuação.
+    id_sector	 	INT,							# Id do setor de atuação.
+    need_updates	BOOl DEFAULT TRUE,				# Precisa atualizar o cadastro.
     CONSTRAINT pk_person PRIMARY KEY (id_person)
 ) DEFAULT CHARACTER SET 'UTF8';
 
@@ -83,6 +84,37 @@ ALTER TABLE tb_persons ADD CONSTRAINT fk_sectors_persons FOREIGN KEY (id_sector)
 ALTER TABLE tb_places ADD CONSTRAINT fk_company_places FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
 ALTER TABLE tb_places ADD CONSTRAINT fk_city_places FOREIGN KEY (id_city) REFERENCES tb_cities(id_city);
 ALTER TABLE tb_sectors ADD CONSTRAINT fk_company_sectors FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
+
+CREATE TABLE tb_tickets(
+	id_ticket INT NOT NULL AUTO_INCREMENT,		# Id do ticket
+    ticket_title VARCHAR(255) NOT NULL,			# Titulo do ticket
+    ticket_details TEXT NOT NULL,				# Detalhes do ticket
+    id_user INT NOT NULL,						# Id do usuário que abriu o ticket
+    dt_creation DATETIME DEFAULT NOW(),			# Data de criação do ticket,
+    dt_updates DATETIME,						# Ultima atualização (mensagem/status)
+    id_status INT NOT NULL,						# Status do ticket
+    CONSTRAINT pk_ticket PRIMARY KEY (id_ticket)
+)DEFAULT CHARACTER SET 'UTF8';
+
+CREATE TABLE tb_status(
+	id_status  		INT NOT NULL AUTO_INCREMENT,
+    status_name 	VARCHAR(100) NOT NULL,
+    CONSTRAINT pk_status PRIMARY KEY(id_status)
+)DEFAULT CHARACTER SET 'UTF8';
+
+ALTER TABLE tb_tickets ADD CONSTRAINT fk_status_ticket FOREIGN KEY (id_status) REFERENCES tb_status(id_status);
+ALTER TABLE tb_tickets ADD CONSTRAINT fk_user_ticket FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
+
+CREATE TABLE tb_ticket_messages(
+	id_ticket_message 	INT NOT NULL AUTO_INCREMENT,
+    id_ticket 	INT NOT NULL,
+    id_user 	INT NOT NULL,
+    message 	TEXT NOT NULL,
+    CONSTRAINT pk_ticket_message PRIMARY KEY(id_ticket_message)
+)DEFAULT CHARACTER SET 'UTF8';
+
+ALTER TABLE tb_ticket_messages ADD CONSTRAINT fk_ticket_ticketmessage FOREIGN KEY (id_ticket) REFERENCES tb_tickets(id_ticket);
+ALTER TABLE tb_ticket_messages ADD CONSTRAINT fk_user_ticketmessage FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
 
 DELIMITER $
 CREATE PROCEDURE proc_save_user(

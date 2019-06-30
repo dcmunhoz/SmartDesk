@@ -95,6 +95,7 @@ html, body{
     box-sizing: border-box;
     overflow-y: none; 
     transition: 500ms;
+    z-index: 0;
 }   
 
 #app.login-fade{
@@ -156,7 +157,8 @@ form footer{
 }
 
 .box .form-box form .form-group,
-form .row .form-group{
+form .row .form-group,
+form .form-group{
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -669,7 +671,7 @@ table, tr, td, th{
 }
 
 .row.row-2 .form-group{
-    width: 48%;
+    width: 48% !important;
 }
 
 .team-box{
@@ -748,4 +750,95 @@ table, tr, td, th{
     flex-grow: 1;
     box-sizing: border-box;
     padding: 10px 30px;
+}
+
+/* ================================================== Modal complete user register ================================================== */
+.user-complete-register{
+    position: absolute;
+    display: flex;
+    top:0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.664);
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-user-register{
+    background-color: #FFF;
+    border-radius: 5px;
+    width: 500px;
+    padding: 20px;
+    display: flex;
+    transition: 300ms;
+}
+
+#modal-user-register.expand{
+    width: 700px !important;
+    height: 480px !important;
+}
+
+#modal-user-register div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#confirm-register-message{
+    opacity: 0;
+    transition: 300ms;
+}
+
+#confirm-register-message header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#confirm-register-message header img{
+    width: 300px;
+    
+}
+
+#confirm-register-message header h1{
+    font-size: 36px;    
+}
+
+#confirm-register-message header h1, span{
+    font-family: "Bree serif", serif
+}
+
+#modal-register-confirm{
+    opacity: 0;
+}
+
+#confirm-register-message.active,
+#modal-register-confirm.active{
+    opacity: 1;
+}
+
+#modal-register-confirm.active{
+
+}
+
+#confirm-register-message section{
+    display: flex;
+    flex-grow: 1;
+    box-sizing: border-box;
+    font-size: 22px;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+#modal-user-register div footer{
+
+    display: flex;
+    justify-content: flex-end;
+   
 }
