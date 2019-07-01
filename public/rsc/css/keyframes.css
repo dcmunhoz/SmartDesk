@@ -1,0 +1,16 @@
+@keyframes modal-expand{
+    0%{
+        height: 400px;
+        max-height: 400px;
+    }
+    50%{
+        width: 600px;        
+        height: 400px;
+        max-height: 400px;
+    }
+    100%{
+        width: 600px;
+        max-height: 500px;
+        height: 500px;
+    }
+}

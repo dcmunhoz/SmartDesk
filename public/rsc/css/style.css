@@ -753,7 +753,7 @@ table, tr, td, th{
 }
 
 /* ================================================== Modal complete user register ================================================== */
-.user-complete-register{
+#user-complete-register{
     position: absolute;
     display: flex;
     top:0;
@@ -770,14 +770,24 @@ table, tr, td, th{
     background-color: #FFF;
     border-radius: 5px;
     width: 500px;
+    height: 400px;
+    max-height: 400px;
     padding: 20px;
     display: flex;
     transition: 300ms;
+    overflow: hidden;
 }
 
 #modal-user-register.expand{
-    width: 700px !important;
-    height: 480px !important;
+
+    animation-name: modal-expand;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-delay: 0ms;
+    animation-direction: normal;
+
+    /* width: 700px !important;
+    height: 480px !important; */
 }
 
 #modal-user-register div{
@@ -789,6 +799,10 @@ table, tr, td, th{
 #confirm-register-message{
     opacity: 0;
     transition: 300ms;
+    left: 100px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 #confirm-register-message header{
@@ -796,6 +810,8 @@ table, tr, td, th{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    z-index: 0;
 }
 
 #confirm-register-message header img{
@@ -813,6 +829,11 @@ table, tr, td, th{
 
 #modal-register-confirm{
     opacity: 0;
+    transition: 300ms;
+}
+
+#confirm-register-message.active{
+    left: 0;
 }
 
 #confirm-register-message.active,
@@ -842,3 +863,4 @@ table, tr, td, th{
     justify-content: flex-end;
    
 }
+

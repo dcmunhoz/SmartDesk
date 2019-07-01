@@ -55,11 +55,15 @@ CREATE TABLE tb_cities(
 	CONSTRAINT pk_city PRIMARY KEY (id_city)
 )DEFAULT CHARACTER SET 'UTF8';
 
+insert into tb_cities (city_name) values('Default_city');
+
 CREATE TABLE tb_companies(
 	id_company INT NOT NULL AUTO_INCREMENT,		# Id da empresa.
     company_name VARCHAR(100) NOT NULL UNIQUE,	# Nome da empresa.
     CONSTRAINT pk_company PRIMARY KEY (id_company)
 )DEFAULT CHARACTER SET 'UTF8';
+
+insert into tb_companies(company_name) values("Default Companie");
 
 CREATE TABLE tb_places(
 	id_place INT NOT NULL AUTO_INCREMENT,		# Id do local de atuação.
@@ -69,12 +73,16 @@ CREATE TABLE tb_places(
     CONSTRAINT pk_place PRIMARY KEY (id_place)
 )DEFAULT CHARACTER SET 'UTF8';
 
+insert into tb_places(local_name, id_company, id_city) values('Default Local', 1, 1);
+
 CREATE TABLE tb_sectors(
 	id_sector INT NOT NULL AUTO_INCREMENT,		# Id do setor.
     sector_name VARCHAR(100) NOT NULL UNIQUE,	# Nome do setor.
     id_company INT NOT NULL,					# Id da compania que este setor pertence.
     CONSTRAINT pk_sector PRIMARY KEY (id_sector)
 )DEFAULT CHARACTER SET 'UTF8';
+
+insert into tb_sectors(sector_name, id_company) values('Default Sector', 1);
 
 ALTER TABLE tb_persons ADD CONSTRAINT fk_users_persons FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
 ALTER TABLE tb_persons ADD CONSTRAINT fk_companies_persons FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);

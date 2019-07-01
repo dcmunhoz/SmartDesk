@@ -89,7 +89,7 @@ class User extends ClassModel{
         $idUserAuthenticated = $_SESSION[User::SESSION_USER]['id_user'];
 
         $dao = new DB();
-        $data = $dao->exec("SELECT * FROM tb_persons WHERE id_user = :id_user;", [
+        $data = $dao->exec("SELECT * FROM tb_users JOIN tb_persons USING(id_user) WHERE id_user = :id_user;", [
             ":id_user" => $idUserAuthenticated
         ]);
 
