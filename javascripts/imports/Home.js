@@ -41,8 +41,23 @@ export default class Home {
         document.querySelector("#btn-send-user-register-updates").on('click', e=>{
             
             let formUpdateRegister = document.querySelector("#form-user-confirm-register");
-            console.log(formUpdateRegister.validateFields());
-            if(!formUpdateRegister.validateFields()){
+            if(formUpdateRegister.validateFields()){
+
+                let body = new FormData(formUpdateRegister);
+                
+                fetch('/user/update',{
+                    method: "POST",
+                    body
+                }).then(response => {
+                    if(response.ok){
+
+                        let modalPanel = document.querySelector("#user-complete-register");
+                        modalPanel.classList.remove('active');
+                        setTimeout(()=>{
+                            modalPanel.style.display = 'none';
+                        }, 500);
+                    }
+                });
 
             }
 
@@ -82,9 +97,7 @@ export default class Home {
     verifyUserNeedUpdates(){
 
         User.getData().then(data=>{
-            console.log(data);
-            if(data['need_updates']){
-
+            if(data['need_updates'] === "1"){
                 let modalPanel = document.createElement('div');
                 modalPanel.id = 'user-complete-register';
 
@@ -94,7 +107,7 @@ export default class Home {
                         <header>
                             <img src="/public/rsc/img/company-logo.png" alt="">
                             <h1>
-                                Bem vindo, <span>Daniel munhoz</span>
+                                Bem vindo, <span id="update-panel-user-name">Daniel munhoz</span>
                             </h1>
                         </header>
                         <section class="register-message">
@@ -113,6 +126,7 @@ export default class Home {
                         </header>
                         <div class="form-box">
                             <form id="form-user-confirm-register">
+                                <input type="hidden" id="update-user-id" name="update-user-id">
                                 <div class="form-group" >
                                     <label for="update-full-name">Nome:</label>
                                     <input type="text" id="update-full-name" name="update-full-name" placeholder="Seu nome completo">
@@ -165,6 +179,14 @@ export default class Home {
                 
                 `;
 
+
+                setTimeout(()=>{
+                    modalPanel.style.display = 'flex';
+                    setTimeout(()=>{
+                        modalPanel.classList.add('active');
+                    }, 100);
+                }, 1000);
+
                 modalPanel.innerHTML = modal;
                 document.querySelector('#app').appendChild(modalPanel);
                 this.initModal();
@@ -172,6 +194,8 @@ export default class Home {
                 document.querySelector("#update-full-name").value = data['full_name'];
                 document.querySelector("#update-username").value = data['username'];
                 document.querySelector("#update-email").value = data['email'];
+                document.querySelector("#update-user-id").value = data['id_user'];
+                document.querySelector("#update-panel-user-name").innerHTML = User.getUserName(data);
 
                 fetch('/api/company').then(response => response.json()).then(data=>{
 

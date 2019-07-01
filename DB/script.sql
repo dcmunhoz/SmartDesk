@@ -132,7 +132,10 @@ pfullname VARCHAR(100),
 ppassw VARCHAR(255),
 pemail VARCHAR(255),
 pactive BOOL,
-pidprofile INT
+pidprofile INT,
+pidcompany INT,
+pidplace INT,
+pidsector INT
 )BEGIN
 
 	DECLARE lastUserId INT;
@@ -142,6 +145,14 @@ pidprofile INT
         SET username = pusername,
 			email = pemail,
             active = pactive
+		WHERE id_user = piduser;
+        
+        UPDATE tb_persons
+        SET full_name = pfullname,
+			id_company = pidcompany,
+            id_place = pidplace,
+            id_sector = pidsector,
+            need_updates = 0
 		WHERE id_user = piduser;
         
         SELECT piduser INTO lastUserId;

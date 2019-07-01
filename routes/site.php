@@ -122,4 +122,16 @@ $app->get("/profile/{userId}/edit", function($req, $res, $args){
     $view->draw('profile-edit');
 });
 
+$app->post("/user/update", function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+
+    $body = $req->getParsedBody();
+    
+    $user = new User();
+    $result = $user->save($body);
+
+    return $res->withJson($result);
+});
+
 ?>

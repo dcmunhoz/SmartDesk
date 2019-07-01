@@ -202,7 +202,8 @@ form .form-group{
 }
 
 
-.form-group.input-error > input{
+.form-group.input-error > input,
+.form-group.input-error > select{
     border-color: rgb(250, 95, 95);
 }
 
@@ -755,7 +756,7 @@ table, tr, td, th{
 /* ================================================== Modal complete user register ================================================== */
 #user-complete-register{
     position: absolute;
-    display: flex;
+    display: none;
     top:0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.664);
@@ -764,7 +765,14 @@ table, tr, td, th{
     z-index: 2;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: 500ms;
 }
+
+#user-complete-register.active{
+    opacity: 1;
+}
+
 
 #modal-user-register{
     background-color: #FFF;

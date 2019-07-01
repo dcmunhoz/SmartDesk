@@ -96,6 +96,26 @@ class User extends ClassModel{
         return $data[0];
 
     }
+
+    public function save($body){
+
+        $dao = new DB();
+        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector);",[
+            ":piduser"    => $body['update-user-id'],
+            ":pusername"  => $body['update-username'],
+            ":pfullname"  => $body['update-full-name'],
+            ":ppassw"     => $body['update-pass'],
+            ":pemail"     => $body['update-email'],
+            ":pactive"    => true,
+            ":pidprofile" => 2,
+            ":pidcompany" => $body['update-user-company'],
+            ":pidplace"   => $body['update-user-place'],
+            ":pidsector"  => $body['update-user-sector']
+        ]);
+
+        return $result[0];
+
+    }
 }
 
 ?>

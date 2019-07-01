@@ -55,6 +55,13 @@ module.exports = {
 
         });
 
+    },
+    getUserName(data){
+        let userFullName = data.full_name.split(" ");
+
+        return (userFullName.length > 1) ? displayName = `${userFullName[0]} ${userFullName[ userFullName.length - 1 ]}` : displayName = userFullName[0] ;
+            
+           
     }
 
 }

@@ -51,11 +51,8 @@ export default class Header{
 
         User.getData().then(data=>{
             
-            let userFullName = data.full_name.split(" ");
-            let displayName = "";
+            let displayName = User.getUserName(data);
 
-            (userFullName.length > 1) ? displayName = `${userFullName[0]} ${userFullName[ userFullName.length - 1 ]}` : displayName = userFullName[0] ;
-            
             document.querySelector("#panel-user-name").innerHTML = displayName;
 
 

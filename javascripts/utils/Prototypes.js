@@ -61,6 +61,15 @@ module.exports = {
     
                     }
 
+                    if(el.type === 'select-one'){
+                        if(el.value === '0'){
+                            formGroup.classList.add('input-error');
+                            formGroup.classList.add('input-error');
+                            validation = true;
+                        }
+
+                    }
+
                 }
                 
 
