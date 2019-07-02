@@ -5,7 +5,7 @@
     /* --default-font-color: #47525E; */
     --default-font-color: #2a2f35;
     /* --default-sys-color: #235153; */
-    --default-sys-color: #0079BF;
+    --default-sys-color: #0083B0;
     
 }
 
@@ -230,7 +230,12 @@ form .form-group{
 }
 
 .system-welcome{
-    background-color: var(--default-sys-color);
+    background: -moz-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0,132,176,1)), color-stop(100%, rgba(0,160,209,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* ie10+ */
+    background: linear-gradient(92deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* w3c */
     color:#FFF !important;
     flex-grow: 1;
     display: flex;
@@ -244,7 +249,12 @@ form .form-group{
 
 /* ================================================== Admin Login Page ================================================== */
 .admin-container{
-    background-color: var(--default-sys-color);
+    background: -moz-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0,132,176,1)), color-stop(100%, rgba(0,160,209,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(358deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* ie10+ */
+    background: linear-gradient(92deg, rgba(0,132,176,1) 0%, rgba(0,160,209,1) 100%); /* w3c */
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -346,11 +356,11 @@ form .form-group{
 
 #btn-show-user-panel:hover{
     cursor: pointer;
-    background-color: #005180;
+    background-color: #006586;
 }
 
 #btn-show-user-panel.active{
-    background-color: #005180;
+    background-color: #006586;
 }
 
 #user-panel.active{
@@ -361,7 +371,7 @@ form .form-group{
 #user-panel{
     cursor: default;
     position: absolute;
-    background-color: #005180;
+    background-color: #006586;
     color: #FFF;
     top: 80px;
     right: -50px;
@@ -381,7 +391,7 @@ form .form-group{
     font-size: 16px;
     text-align: center;
     justify-content: center;
-    border-bottom: 1px solid #003d61;
+    border-bottom: 1px solid #005977;
 }
 
 #user-panel .user-menu-option{
@@ -397,7 +407,7 @@ form .form-group{
 }
 
 #user-panel .user-menu-option span:hover{
-    background-color: #003d61;
+    background-color: #005977;
     cursor: pointer;
 }
 
@@ -414,7 +424,7 @@ form .form-group{
 
 #user-panel footer{
     pointer-events: all;
-    border-top: 1px solid #003d61;
+    border-top: 1px solid #005977;
 }
 
 #btn-user-logout:hover{
