@@ -52,13 +52,16 @@ textarea:focus{
 
 select{
     background-color: rgb(228, 228, 228) !important;
+    transition: 100ms;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 select:focus{
-    background-color: rgb(85, 85, 85) !important;
+    background-color: #9c9c9c !important;
     color: #FFF;
-    border-color: rgb(85, 85, 85);
-
+    border-color: #9c9c9c !important;
+    outline: none;
 }
 
 

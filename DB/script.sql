@@ -124,6 +124,17 @@ CREATE TABLE tb_ticket_messages(
 ALTER TABLE tb_ticket_messages ADD CONSTRAINT fk_ticket_ticketmessage FOREIGN KEY (id_ticket) REFERENCES tb_tickets(id_ticket);
 ALTER TABLE tb_ticket_messages ADD CONSTRAINT fk_user_ticketmessage FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
 
+CREATE TABLE tb_ticket_assignment(
+	id_ticket_assignment INT NOT NULL AUTO_INCREMENT,
+    id_ticket INT NOT NULL,
+    id_user INT NOT NULL,
+    dt_assignment DATETIME DEFAULT NOW(),
+    CONSTRAINT pk_ticket_assignment PRIMARY KEY(id_ticket_assignment)
+)DEFAULT CHARACTER SET 'UTF8';
+
+ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_ticket_ticketassignment FOREIGN KEY(id_ticket) REFERENCES tb_tickets(id_ticket);
+ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_user_ticketassignment FOREIGN KEY(id_user) REFERENCES tb_users(id_user);
+
 DELIMITER $
 CREATE PROCEDURE proc_save_user(
 piduser INT,

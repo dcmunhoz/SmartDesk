@@ -217,7 +217,11 @@ export default class Home {
 
     getUserTickets(){
         
-        
+        User.getTicketList().then(data=>{
+
+
+            
+        });
 
     }
 
