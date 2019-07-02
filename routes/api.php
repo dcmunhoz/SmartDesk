@@ -62,5 +62,10 @@ $app->get('/api/company/{idCompany}/sectors', function(ServerRequestInterface $r
 
 });
 
+$app->get('/api/tickets/list', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    return $res->withJson(["msg"=>"Rota OK!"]);
+
+});
 
 ?>

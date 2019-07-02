@@ -62,6 +62,20 @@ module.exports = {
         return (userFullName.length > 1) ? displayName = `${userFullName[0]} ${userFullName[ userFullName.length - 1 ]}` : displayName = userFullName[0] ;
             
            
+    },
+
+    getTicketList(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/tickets/list').then(response=>{
+                
+                
+                
+            });
+
+        });
+
     }
 
 }
