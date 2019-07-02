@@ -4,7 +4,8 @@
     
     /* --default-font-color: #47525E; */
     --default-font-color: #2a2f35;
-    --default-sys-color: #235153;
+    /* --default-sys-color: #235153; */
+    --default-sys-color: #0079BF;
     
 }
 
@@ -205,6 +206,7 @@ form .form-group{
 .form-group.input-error > input,
 .form-group.input-error > select{
     border-color: rgb(250, 95, 95);
+    box-shadow: 0px 0px 5px 2px rgba(250, 95, 95, 0.219);
 }
 
 .box .redirect-links{
@@ -283,7 +285,7 @@ form .form-group{
 }
 
 #user-container .nav-bar{
-    background-color: #235153;
+    background-color: var(--default-sys-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -344,11 +346,11 @@ form .form-group{
 
 #btn-show-user-panel:hover{
     cursor: pointer;
-    background-color: #163d3f;
+    background-color: #005180;
 }
 
 #btn-show-user-panel.active{
-    background-color: #163d3f;
+    background-color: #005180;
 }
 
 #user-panel.active{
@@ -359,7 +361,7 @@ form .form-group{
 #user-panel{
     cursor: default;
     position: absolute;
-    background-color: #163d3f;
+    background-color: #005180;
     color: #FFF;
     top: 80px;
     right: -50px;
@@ -379,7 +381,7 @@ form .form-group{
     font-size: 16px;
     text-align: center;
     justify-content: center;
-    border-bottom: 1px solid #0b2c2e;
+    border-bottom: 1px solid #003d61;
 }
 
 #user-panel .user-menu-option{
@@ -395,7 +397,7 @@ form .form-group{
 }
 
 #user-panel .user-menu-option span:hover{
-    background-color: #0b2c2e;
+    background-color: #003d61;
     cursor: pointer;
 }
 
@@ -412,11 +414,11 @@ form .form-group{
 
 #user-panel footer{
     pointer-events: all;
-    border-top: 1px solid #0b2c2e;
+    border-top: 1px solid #003d61;
 }
 
 #btn-user-logout:hover{
-    background-color: rgb(124, 20, 20);
+    background-color: #CA141B;
     border-radius: 0 0 5px 5px;
     cursor: pointer;
 }
@@ -439,9 +441,12 @@ form .form-group{
 
 #user-container #page-container #content{
     background-color:#FFF;
-    width: 65%;
+    width: 100%;
     box-sizing: border-box;
-    border-radius: 0px 0px 10px 10px;
+    /* border-radius: 0px 0px 10px 10px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #user-container #page-container #content .background{
@@ -450,6 +455,7 @@ form .form-group{
     background-position: center;
     background-repeat: no-repeat;
     height: 400px;
+    width: 100%;
 
 }
 
@@ -465,6 +471,7 @@ form .form-group{
 
 .content-body{
     padding: 10px;
+    width: 80%;
 }
 .content-body .system-description{
     width: 100%;
@@ -520,7 +527,7 @@ form .form-group{
     margin-bottom: 0px;
     margin-right: 0px;
     transition: 200ms;
-    color:#207479;
+    color:#0079BF;
     text-decoration: none;
 
 }
@@ -529,7 +536,7 @@ form .form-group{
     border: 1px solid rgb(224, 224, 224);
     border-bottom: 0px;
     background-color: rgb(250, 250, 250);
-    color:#1b5155;
+    color:#00598C;
 }
 
 .nav-button.active a{
@@ -563,7 +570,7 @@ table, tr, td, th{
 }
 
 .tickets-table caption{
-    background-color: #F3F3F3;
+    background-color: rgb(253, 253, 253);
     padding: 10px;
     border-bottom: 1px solid rgb(180, 180, 180);
 }

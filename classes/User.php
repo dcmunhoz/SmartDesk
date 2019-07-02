@@ -31,14 +31,17 @@ class User extends ClassModel{
     public function createUser($body){
 
         $dao = new DB();
-        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile);",[
+        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector);",[
             ":piduser"    => 0,
             ":pusername"  => $body['create-username'],
             ":pfullname"  => $body['create-name'],
             ":ppassw"     => $body['create-pass'],
             ":pemail"     => $body['create-email'],
             ":pactive"    => true,
-            ":pidprofile" => 2
+            ":pidprofile" => 2,
+            ":pidcompany" => null,
+            ":pidplace"   => null,
+            ":pidsector"  => null
         ]);
 
         return $result[0];

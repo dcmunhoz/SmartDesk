@@ -48,7 +48,7 @@ export default class Signin{
                     });                   
 
                     e.target.removeChild(loadGif);
-                    e.target.innerHTML = "Criar nova conta"
+                    e.target.innerHTML = "Entrar"
 
                 },1000)
             }else{
