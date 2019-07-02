@@ -68,10 +68,13 @@ module.exports = {
 
         return new Promise((resolve, reject)=>{
 
-            fetch('/api/tickets/list').then(response=>{
-                
-                
-                
+            fetch('/api/tickets/list').then(response=>response.json()).then(data=>{
+                if(data.error){
+                    console.clear();
+                    reject(data);
+                }
+
+                resolve(data);
             });
 
         });

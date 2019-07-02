@@ -678,6 +678,22 @@ table, tr, td, th{
     color: #4f565f;
 }
 
+
+.tickets-table .no-tickets{
+    border:none !important;
+    font-size: 18px;
+    color:#a7a7a7;
+    font-style: italic;
+
+}
+
+.tickets-table .no-tickets td{
+    cursor: default;
+    border-bottom: 1px solid #FFF;
+    background-color: #FFF;
+}
+
+
 .row{
     margin-bottom: 10px;
 }

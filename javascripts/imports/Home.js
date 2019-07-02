@@ -8,13 +8,11 @@ export default class Home {
         Prototype.initElementsPrototypes();
         
         this.verifyUserNeedUpdates();
-        this.initEvents();
         this.getUserTickets();
 
     }
 
     initEvents(){
-
 
 
     }
@@ -216,11 +214,28 @@ export default class Home {
     }
 
     getUserTickets(){
-        
+
         User.getTicketList().then(data=>{
 
+            console.log(response);
 
-            
+        }).catch(reject=>{
+
+            let tbody = document.querySelector("#tickets-list tbody");
+
+            let tr = document.createElement("tr");
+            tr.classList.add('no-tickets');
+
+            let inner = `
+
+                <td colspan="3">... ${reject.msg}.</td>
+   
+            `;
+
+            tr.innerHTML = inner;
+
+            tbody.appendChild(tr);
+
         });
 
     }

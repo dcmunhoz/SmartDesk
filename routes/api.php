@@ -10,6 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use App\User;
 use App\Model\DB;
+use App\Ticket;
 
 
 $app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInterface $res){
@@ -18,7 +19,7 @@ $app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInte
 
     $user = new User();
 
-    $data = $user->getAuthenticatedUser();
+    $data = $user->getAuthenticatedPerson();
 
     return $res->withJson($data);
     
@@ -64,7 +65,22 @@ $app->get('/api/company/{idCompany}/sectors', function(ServerRequestInterface $r
 
 $app->get('/api/tickets/list', function(ServerRequestInterface $req, ResponseInterface $res){
 
-    return $res->withJson(["msg"=>"Rota OK!"]);
+    //User::verifyLogin();
+
+    $user = new User();
+    $ticket = new Ticket();
+
+    $result = $ticket->getTicket($user);
+
+    if(!count($result) > 0){
+
+        $newResponse = $res->withStatus(500);
+
+        return $newResponse->withJson(["error"=>true,"msg"=>"Nenhum ticket a ser exibido"]);
+
+    }
+
+    return $res->withJson($result);
 
 });
 

@@ -1,80 +1,5 @@
-<!-- <div id="user-complete-register">
-    <div id="modal-user-register">
-        <div id="confirm-register-message" style="display:flex;" class="active">
-            <header>
-                <img src="/public/rsc/img/company-logo.png" alt="">
-                <h1>
-                    Bem vindo, <span>Daniel munhoz</span>
-                </h1>
-            </header>
-            <section class="register-message">
-                Como este é seu primeiro login, precisamos que confirme alguns dados para poder dar continuidade na utilização do sistema.
-            </section>
-            <footer>    
-                <button class="btn btn-enviar">
-                    Avançar <i class="fas fa-chevron-right"></i>
-                </button>
-            </footer>
-        </div>
-
-        <div id="modal-register-confirm" style="display:none;" class="">
-            <header>
-                <h1>Atualização de cadastro.</h1>
-            </header>
-            <div class="form-box">
-                <form id="form-user-confirm-register">
-                    <div class="form-group" >
-                        <label for="">Nome:</label>
-                        <input type="text" placeholder="Seu nome completo">
-                    </div>
-    
-                    <div class="form-group" >
-                        <label for="">Usuário</label>
-                        <input type="text" placeholder="Seu usuário">
-                    </div>
-
-                    <div class="form-group" >
-                        <label for="">E-mail:</label>
-                        <input type="text" placeholder="Ex: smart@desk.com">
-                    </div>
-
-                    <div class="row row-2">
-
-                        <div class="form-group">
-                            <label for="">Empresa:</label>
-                            <select name="" id="">
-                                <option value="">Empresa</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Local atuação:</label>
-                            <select name="" id="">
-                                <option value="">Local</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Setor:</label>
-                        <select name="" id="">
-                            <option value="">Setores</option>                            
-                        </select>
-                    </div>
-
-                </form>
-            </div>
-            <footer>
-                <button class="btn btn-enviar">
-                    <i class="fas fa-check"></i> <b>Confirmar</b>
-                </button>
-            </footer>
-        </div>
-    </div>
-</div> -->
-
 <div style="display:none;" id="page" data-page="Home"></div>
+
 <div class="system-options">
     <nav class="nav nav-track">
         <ul>
@@ -93,7 +18,7 @@
         <header>
             <h1>Seus Tickets</h1>
         </header>
-        <table class="tickets-table">
+        <table class="tickets-table" id="tickets-list">
             <caption class="search-select-fields">
                 <div class="form-group">
                     <label for="select-priority">Status:</label>
@@ -117,8 +42,10 @@
                     <th>Ultima interação</th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
+
+                <!-- <tr>
                     <td>
                         <div class="ticket-row-details">
                             <div class="img-status">
@@ -150,7 +77,7 @@
                     </td>
                     <td>cccccccccccccccc</td>
                     <td>1234dddddddddddd</td>
-                </tr>
+                </tr> -->
 
             </tbody>
             

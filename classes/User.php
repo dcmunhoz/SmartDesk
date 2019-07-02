@@ -15,6 +15,16 @@ class User extends ClassModel{
 
     private const SESSION_USER = "User_Session";
 
+    public function __construct(){
+
+        // Carrega um usuário se existir na sessão;
+        \session_start();
+        if(isset($_SESSION[User::SESSION_USER])){
+            $this->setData($_SESSION[User::SESSION_USER]);
+        }
+
+    }
+
     public static function verifyLogin(){
 
         \session_start();
@@ -87,13 +97,11 @@ class User extends ClassModel{
         
     }
 
-    public function getAuthenticatedUser(){
-
-        $idUserAuthenticated = $_SESSION[User::SESSION_USER]['id_user'];
+    public function getAuthenticatedPerson(){
 
         $dao = new DB();
         $data = $dao->exec("SELECT * FROM tb_users JOIN tb_persons USING(id_user) WHERE id_user = :id_user;", [
-            ":id_user" => $idUserAuthenticated
+            ":id_user" => $this->getid_user()
         ]);
 
         return $data[0];
@@ -117,6 +125,20 @@ class User extends ClassModel{
         ]);
 
         return $result[0];
+
+    }
+
+    public function isAdmin(){
+
+        $profileId = $this->getid_profile();
+
+        $dao = new DB();
+
+        $result = $dao->exec("SELECT * FROM tb_profiles WHERE id_profile = :idprofile",[
+            ":idprofile" => $profileId
+        ]);
+
+        return $result[0]['administrator'];
 
     }
 }
