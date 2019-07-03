@@ -1,5 +1,6 @@
 const Prototype = require('./../utils/Prototypes');
 const Ticket    = require('./../modules/Ticket');
+const Notification = require('./../utils/Notification');
 
 export default class NewTicket {
 
@@ -12,6 +13,32 @@ export default class NewTicket {
 
 
     initEvents(){
+
+        document.querySelector("#btn-open-new-ticket").on('click', e=>{
+            e.preventDefault();
+            
+            let frmNewTicket = document.querySelector('#form-open-new-ticket');
+            
+            if(frmNewTicket.validateFields()){
+                
+                let frmData = new FormData(frmNewTicket);
+
+                Ticket.open(frmData).then(data=>{
+
+                    frmNewTicket.clear();
+
+                    Notification.pop('success', `Ticket #${data.id_ticket}`, `Ticket aberto, logo um técnico irá entrar em contato.`);
+                    
+                    
+                }).catch(error=>{
+                    
+                    Notification.pop('danger', `Error`, `${error.msg}`);
+                    
+                });
+
+            }
+
+        });
 
     }
 

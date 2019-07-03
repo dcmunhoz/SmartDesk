@@ -95,4 +95,19 @@ $app->get('/api/priorities', function(ServerRequestInterface $req, ResponseInter
 
 });
 
+$app->post('/ticket/open', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+
+    $body = $req->getParsedBody();
+
+    $ticket = new Ticket();
+    $user = new User();
+
+    $result = $ticket->open($user, $body);
+
+    return $res->withJson($result);
+
+});
+
 ?>

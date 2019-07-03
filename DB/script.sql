@@ -131,6 +131,11 @@ CREATE TABLE tb_status(
 ALTER TABLE tb_tickets ADD CONSTRAINT fk_status_ticket FOREIGN KEY (id_status) REFERENCES tb_status(id_status);
 ALTER TABLE tb_tickets ADD CONSTRAINT fk_user_ticket FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
 
+INSERT INTO tb_status (status_name) VALUES('Aberto');
+INSERT INTO tb_status (status_name) VALUES('Pendente Usuário');
+INSERT INTO tb_status (status_name) VALUES('Pendente Colaborador');
+INSERT INTO tb_status (status_name) VALUES('Fechado');
+
 CREATE TABLE tb_ticket_messages(
 	id_ticket_message 	INT NOT NULL AUTO_INCREMENT,
     id_ticket 	INT NOT NULL,
@@ -201,4 +206,29 @@ pidsector INT
     SELECT * FROM tb_users WHERE id_user = lastUserId;
     
 END$	
+DELIMITER ;
+
+DELIMITER $
+CREATE PROCEDURE proc_save_ticket(
+	pidticket 	INT,
+    piduser  	INT,
+    ptitle 		VARCHAR(255),
+    pdesc  		TEXT,
+    pidpriority INT
+)
+BEGIN
+	
+    DECLARE lastTicket INT;
+    
+	INSERT INTO tb_tickets (ticket_title, ticket_details, id_user, id_status, id_priority)
+	VALUES(ptitle, pdesc, piduser, 1, pidpriority);
+	
+    SELECT LAST_INSERT_ID() INTO lastTicket;
+    
+    INSERT INTO tb_ticket_messages (id_ticket, id_user, message)
+    VALUES(lastTicket, piduser, pdesc);
+
+	SELECT * FROM tb_tickets WHERE id_ticket = lastTicket;
+
+END $
 DELIMITER ;
