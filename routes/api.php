@@ -84,4 +84,15 @@ $app->get('/api/tickets/list', function(ServerRequestInterface $req, ResponseInt
 
 });
 
+$app->get('/api/priorities', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+
+    $ticket = new Ticket();
+    $results = $ticket->getPriorities();
+
+    return $res->withJson($results);
+
+});
+
 ?>

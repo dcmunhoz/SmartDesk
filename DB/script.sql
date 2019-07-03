@@ -1,11 +1,12 @@
-CREATE DATABASE db_smartdesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
-USE db_smartdesk;
 CREATE USER 'smart'@'localhost' IDENTIFIED BY 'smart';
 CREATE USER 'smart'@'%' IDENTIFIED BY 'smart';
 CREATE USER 'smart'@'127.0.0.1' IDENTIFIED BY 'smart';
 GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'localhost';
 GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'127.0.0.1';
 GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'%';
+
+CREATE DATABASE db_smartdesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
+USE db_smartdesk;
 
 CREATE TABLE tb_users(
 	id_user 	 	INT NOT NULL AUTO_INCREMENT,	# Id do usuário.
@@ -101,8 +102,25 @@ CREATE TABLE tb_tickets(
     dt_creation DATETIME DEFAULT NOW(),			# Data de criação do ticket,
     dt_updates DATETIME,						# Ultima atualização (mensagem/status)
     id_status INT NOT NULL,						# Status do ticket
+    id_priority INT NOT NULL,					# Id da prioridade
     CONSTRAINT pk_ticket PRIMARY KEY (id_ticket)
 )DEFAULT CHARACTER SET 'UTF8';
+
+CREATE TABLE tb_priorities(
+	id_priority 	INT NOT NULL AUTO_INCREMENT,
+    priority_name   VARCHAR(24) NOT NULL,
+    bg_color		VARCHAR(6) NOT NULL DEFAULT 'FFFFFF',
+    font_color		VARCHAR(6) NOT NULL DEFAULT '000000',
+    CONSTRAINT pk_priority PRIMARY KEY(id_priority)
+)DEFAULT CHARACTER SET 'UTF8';
+
+ALTER TABLE tb_tickets ADD CONSTRAINT fk_priority_ticket FOREIGN KEY(id_priority) REFERENCES tb_priorities(id_priority);
+
+INSERT INTO tb_priorities (priority_name) values('Neutra');
+INSERT INTO tb_priorities (priority_name) values('Baixa');
+INSERT INTO tb_priorities (priority_name) values('Média');
+INSERT INTO tb_priorities (priority_name) values('Alta');
+INSERT INTO tb_priorities (priority_name) values('Urgente');
 
 CREATE TABLE tb_status(
 	id_status  		INT NOT NULL AUTO_INCREMENT,

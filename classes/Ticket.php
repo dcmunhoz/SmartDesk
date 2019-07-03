@@ -31,6 +31,15 @@ class Ticket extends ClassModel{
 
     }
 
+    public function getPriorities(){
+        
+        $dao = new DB();
+        $results = $dao->exec("SELECT * FROM tb_priorities;");
+
+        return $results;
+
+    }
+
 
 }
 
