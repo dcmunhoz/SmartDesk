@@ -100,7 +100,7 @@ CREATE TABLE tb_tickets(
     ticket_details TEXT NOT NULL,				# Detalhes do ticket
     id_user INT NOT NULL,						# Id do usuário que abriu o ticket
     dt_creation DATETIME DEFAULT NOW(),			# Data de criação do ticket,
-    dt_updates DATETIME,						# Ultima atualização (mensagem/status)
+    dt_updates DATETIME DEFAULT NOW(),			# Ultima atualização (mensagem/status)
     id_status INT NOT NULL,						# Status do ticket
     id_priority INT NOT NULL,					# Id da prioridade
     CONSTRAINT pk_ticket PRIMARY KEY (id_ticket)

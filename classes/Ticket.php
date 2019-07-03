@@ -25,9 +25,33 @@ class Ticket extends ClassModel{
         }
 
         $dao = new DB();
-        $result = $dao->exec("SELECT * FROM tb_tickets $query"); 
+        $tickets = $dao->exec("
+            select t.id_ticket, t.ticket_title, t.ticket_details, t.dt_updates, s.status_name, p.priority_name from tb_tickets t
+            join tb_status s using(id_status)
+            join tb_priorities p using(id_priority)
+            $query;
+        "); 
 
-        return $result;
+        foreach ($tickets as $ticket) {
+            
+            $assign = $dao->exec("
+                select p.full_name from tb_ticket_assignment ta
+                join tb_users u using(id_user)
+                join tb_persons p using(id_user)
+                WHERE id_ticket = :idticket;
+            ",[
+                ":idticket"=>$ticket['id_ticket']
+            ]);
+
+            $data[] = [
+                "ticket"=>$ticket,
+                "assignments"=>$assign
+            ];
+            
+        }
+
+
+        return $data;
 
     }
 
@@ -56,7 +80,7 @@ class Ticket extends ClassModel{
             return $result[0];
         
         }else{
-            return ['error'=>true, 'msg'=>'Ocorreu um erro ao abrir o ticket, tente novamente'];
+            return ['error'=>true, 'msg'=>'Ocorreu um erro ao abrir o ticket.'];
         }
 
 

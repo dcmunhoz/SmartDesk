@@ -1,5 +1,6 @@
 const Prototype = require('./../utils/Prototypes');
 const User = require('./../modules/User');
+const Utils = require('./../utils/Utils');
 
 export default class Home {
 
@@ -217,13 +218,56 @@ export default class Home {
 
         User.getTicketList().then(data=>{
 
-            console.log(response);
+            data.forEach(data=>{
 
-        }).catch(reject=>{
+                let tbody = document.querySelector("#tickets-list tbody");
+                let tr = document.createElement("tr");
 
+                tr.dataset.ticketId = data['ticket'].id_ticket;
+
+                let dtUpdate = Utils.dateFormat(new Date(data['ticket'].dt_updates));
+
+                let assign = "Atribuido para: ";
+
+                if(data['assignments'].length >= 1){
+                    
+                    data['assignments'].map(assignment=>{
+
+                        assign += `<i>${assignment.full_name}</i>`;
+
+                    });
+
+                }else{
+
+                    assign = "Ticket sem atribuição.";
+
+                }      
+
+                tr.innerHTML = `
+                    <td>
+                        <div class="ticket-row-details">
+                            <div class="img-status">
+                                <img src="public/rsc/img/ticket-open.png" alt="#">
+                            </div>
+                            <div class="tr-body">
+                                <h2>Ticket #${data['ticket'].id_ticket}</h2>
+                                <span class="t-title">${data['ticket'].ticket_title}</span>
+                                <span class="t-attr">${assign}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${data['ticket'].priority_name}</td>
+                    <td>${dtUpdate}</td>
+                `;
+
+                tbody.appendChild(tr);
+
+            });
+
+        }).catch(reject=>{                
             let tbody = document.querySelector("#tickets-list tbody");
-
             let tr = document.createElement("tr");
+            
             tr.classList.add('no-tickets');
 
             let inner = `
