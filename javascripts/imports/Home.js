@@ -1,5 +1,6 @@
 const Prototype = require('./../utils/Prototypes');
 const User = require('./../modules/User');
+const Ticket = require('./../modules/Ticket');
 const Utils = require('./../utils/Utils');
 
 export default class Home {
@@ -10,6 +11,7 @@ export default class Home {
         
         this.verifyUserNeedUpdates();
         this.getUserTickets();
+        this.getStatusToOrder();
 
     }
 
@@ -280,6 +282,23 @@ export default class Home {
 
             tbody.appendChild(tr);
 
+        });
+
+    }
+
+    getStatusToOrder(){
+
+        Ticket.getStatus().then(data=>{
+            data.map(status=>{
+
+                    let select = document.querySelector("#select-priority");
+                    let option = document.createElement('option');
+                    option.id = status.id_status;
+                    option.innerHTML = status.status_name;
+
+                    select.appendChild(option);
+
+            });
         });
 
     }

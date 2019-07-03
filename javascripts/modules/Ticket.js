@@ -35,6 +35,20 @@ module.exports = {
 
         });
 
+    },
+
+    getStatus(){
+
+        return new Promise((resolve, reject)=>{
+            fetch('/api/ticket/status').then(function(result){
+                if(result.ok){
+                    resolve(result.json());
+                }else{
+                    reject(result.json());
+                }
+            });
+        });
+
     }
 
 }

@@ -110,4 +110,15 @@ $app->post('/ticket/open', function(ServerRequestInterface $req, ResponseInterfa
 
 });
 
+$app->get('/api/ticket/status', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+    $ticket = new Ticket();
+    $results = $ticket->getStatus();
+
+    return $res->withJson($results);
+
+
+});
+
 ?>

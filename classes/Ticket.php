@@ -86,6 +86,16 @@ class Ticket extends ClassModel{
 
     }
 
+    public function getStatus(){
+
+        $dao = new DB();
+        $results = $dao->exec("SELECT * FROM tb_status;");
+
+        return $results;
+
+
+    }
+
 
 }
 
