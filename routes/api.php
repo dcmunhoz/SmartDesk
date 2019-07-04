@@ -65,12 +65,22 @@ $app->get('/api/company/{idCompany}/sectors', function(ServerRequestInterface $r
 
 $app->get('/api/tickets/list', function(ServerRequestInterface $req, ResponseInterface $res){
 
-    //User::verifyLogin();
+    User::verifyLogin();
+
+    $status;
+
+    if(!isset($req->getQueryParams()['status']) || is_null($req->getQueryParams()['status']) || $req->getQueryParams()['status'] === "" || $req->getQueryParams()['status'] === "null"  ){
+
+        $status = "0";
+
+    }else{
+        $status = $req->getQueryParams()['status'];
+    }
 
     $user = new User();
     $ticket = new Ticket();
 
-    $result = $ticket->getTicket($user);
+    $result = $ticket->getTicket($user, $status);
 
     if(!count($result) > 0){
 

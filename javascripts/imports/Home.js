@@ -1,3 +1,5 @@
+import { type } from 'os';
+
 const Prototype = require('./../utils/Prototypes');
 const User = require('./../modules/User');
 const Ticket = require('./../modules/Ticket');
@@ -12,10 +14,22 @@ export default class Home {
         this.verifyUserNeedUpdates();
         this.getUserTickets();
         this.getStatusToOrder();
+        this.initEvents();
 
     }
 
     initEvents(){
+
+        document.querySelector(".search-select-box").on('change', e=>{
+            
+            let search = e.target.id.split('-')[1];
+            let statusId = e.target.value;
+
+            this.getUserTickets(statusId);
+            
+
+            
+        });
 
 
     }
@@ -216,13 +230,14 @@ export default class Home {
 
     }
 
-    getUserTickets(){
+    getUserTickets(statusId = null){
 
-        User.getTicketList().then(data=>{
+        User.getTicketList(statusId).then(data=>{
+            let tbody = document.querySelector("#tickets-list tbody");
+            tbody.innerHTML = "";
 
             data.forEach(data=>{
 
-                let tbody = document.querySelector("#tickets-list tbody");
                 let tr = document.createElement("tr");
 
                 tr.dataset.ticketId = data['ticket'].id_ticket;
@@ -268,6 +283,7 @@ export default class Home {
 
         }).catch(reject=>{                
             let tbody = document.querySelector("#tickets-list tbody");
+            tbody.innerHTML = "";
             let tr = document.createElement("tr");
             
             tr.classList.add('no-tickets');
@@ -291,9 +307,9 @@ export default class Home {
         Ticket.getStatus().then(data=>{
             data.map(status=>{
 
-                    let select = document.querySelector("#select-priority");
+                    let select = document.querySelector("#select-status");
                     let option = document.createElement('option');
-                    option.id = status.id_status;
+                    option.value = status.id_status;
                     option.innerHTML = status.status_name;
 
                     select.appendChild(option);

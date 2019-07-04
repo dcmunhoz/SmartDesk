@@ -64,11 +64,11 @@ module.exports = {
            
     },
 
-    getTicketList(){
+    getTicketList(statusId = null){
 
         return new Promise((resolve, reject)=>{
 
-            fetch('/api/tickets/list').then(response=>response.json()).then(data=>{
+            fetch(`/api/tickets/list?status=${statusId}`).then(response=>response.json()).then(data=>{
                 if(data.error){
                     console.clear();
                     reject(data);

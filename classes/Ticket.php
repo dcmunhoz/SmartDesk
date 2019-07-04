@@ -14,13 +14,22 @@ class Ticket extends ClassModel{
 
     }
 
-    public function getTicket(User $user = null){
+    public function getTicket(User $user = null, $status = "0"){
 
-        $query = "";
+        $queryUser = "";
+
+        if( $status !== "0" ){
+
+            $status = " = " . $status;
+
+        }else{
+            $status = "";
+        }
+
 
         if($user){
             
-            $query = "WHERE id_user = " . $user->getid_user();
+            $queryUser = "= " . $user->getid_user();
 
         }
 
@@ -29,7 +38,9 @@ class Ticket extends ClassModel{
             select t.id_ticket, t.ticket_title, t.ticket_details, t.dt_updates, s.status_name, p.priority_name from tb_tickets t
             join tb_status s using(id_status)
             join tb_priorities p using(id_priority)
-            $query;
+            where t.id_user $queryUser AND t.id_status $status
+            order by t.id_ticket desc
+            ;
         "); 
 
         foreach ($tickets as $ticket) {

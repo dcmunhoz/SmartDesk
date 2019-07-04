@@ -1,12 +1,14 @@
-CREATE USER 'smart'@'localhost' IDENTIFIED BY 'smart';
-CREATE USER 'smart'@'%' IDENTIFIED BY 'smart';
-CREATE USER 'smart'@'127.0.0.1' IDENTIFIED BY 'smart';
-GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'localhost';
-GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'127.0.0.1';
-GRANT ALL PRIVILEGES ON db_smartdesk.* TO 'smart'@'%';
+CREATE USER 'desk'@'localhost' IDENTIFIED BY 'desk';
+CREATE USER 'desk'@'%' IDENTIFIED BY 'desk';
+CREATE USER 'desk'@'127.0.0.1' IDENTIFIED BY 'desk';
 
-CREATE DATABASE db_smartdesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
-USE db_smartdesk;
+CREATE DATABASE db_idesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
+USE db_idesk;
+
+GRANT ALL PRIVILEGES ON db_idesk.* TO 'desk'@'localhost';
+GRANT ALL PRIVILEGES ON db_idesk.* TO 'desk'@'127.0.0.1';
+GRANT ALL PRIVILEGES ON db_idesk.* TO 'desk'@'%';
+
 
 CREATE TABLE tb_users(
 	id_user 	 	INT NOT NULL AUTO_INCREMENT,	# Id do usuário.
