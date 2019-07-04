@@ -3,6 +3,7 @@ import Signin from '../imports/Signin';
 import Header from '../utils/HeaderEvents';
 import Home   from '../imports/Home';
 import NewTicket from '../imports/NewTicket';
+import TicketDetails from '../imports/TicketDetails';
 
 export default class SmartDesk{
 
@@ -28,6 +29,9 @@ export default class SmartDesk{
                 break;
                 case 'NewTicket':
                     new NewTicket();
+                break;
+                case 'TicketDetails':
+                    new TicketDetails();
                 break;
             }
         }

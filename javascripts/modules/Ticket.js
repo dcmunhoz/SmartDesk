@@ -1,5 +1,17 @@
 module.exports = {
 
+    get(ticketId){
+
+        return new Promise((resolve, reject)=>{
+            
+            fetch(`/api/ticket/${ticketId}/details`).then(result=>{
+                resolve(result.json());
+            }); 
+
+        });
+
+    },
+
     getPriorities(){
 
         return new Promise((resolve, reject)=>{

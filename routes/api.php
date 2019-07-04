@@ -131,4 +131,17 @@ $app->get('/api/ticket/status', function(ServerRequestInterface $req, ResponseIn
 
 });
 
+$app->get("/api/ticket/{ticketId}/details", function(ServerRequestInterface $req, ResponseInterface $res, $args ){
+
+    User::verifyLogin();
+
+    $ticket = new Ticket();
+    $user = new User();
+
+    $results = $ticket->getTicket($user, "0", $args['ticketId']);
+
+    return $res->withJson($results);
+
+});
+
 ?>

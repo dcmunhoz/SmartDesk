@@ -1,5 +1,3 @@
-import { type } from 'os';
-
 const Prototype = require('./../utils/Prototypes');
 const User = require('./../modules/User');
 const Ticket = require('./../modules/Ticket');
@@ -232,15 +230,18 @@ export default class Home {
 
     getUserTickets(statusId = null){
 
-        User.getTicketList(statusId).then(data=>{
+        User.getTicketList(statusId).then(tickets=>{
             let tbody = document.querySelector("#tickets-list tbody");
             tbody.innerHTML = "";
 
-            data.forEach(data=>{
 
+            //console.log(Object.values(tickets));
+
+            Object.values(tickets).forEach(data=>{
+                
                 let tr = document.createElement("tr");
 
-                tr.dataset.ticketId = data['ticket'].id_ticket;
+                tr.dataset.ticket = data['ticket'].id_ticket;
 
                 let dtUpdate = Utils.dateFormat(new Date(data['ticket'].dt_updates));
 
@@ -281,6 +282,9 @@ export default class Home {
 
             });
 
+            
+            this.initTrEvents();
+
         }).catch(reject=>{                
             let tbody = document.querySelector("#tickets-list tbody");
             tbody.innerHTML = "";
@@ -319,4 +323,19 @@ export default class Home {
 
     }
 
+    initTrEvents(){
+
+        document.querySelectorAll("#tickets-list tbody tr").forEach(tr=>{
+
+            tr.on('click', e=>{
+
+                let ticketId = tr.dataset.ticket;
+
+                window.location.replace(`/ticket/${ticketId}/details`);
+
+            });
+
+        });
+
+    }
 }

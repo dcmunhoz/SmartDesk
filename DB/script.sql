@@ -143,6 +143,7 @@ CREATE TABLE tb_ticket_messages(
     id_ticket 	INT NOT NULL,
     id_user 	INT NOT NULL,
     message 	TEXT NOT NULL,
+    dt_send		DATETIME DEFAULT NOW(),
     CONSTRAINT pk_ticket_message PRIMARY KEY(id_ticket_message)
 )DEFAULT CHARACTER SET 'UTF8';
 

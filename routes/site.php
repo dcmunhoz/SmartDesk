@@ -91,7 +91,9 @@ $app->get("/team", function(){
 });
 
 // Pagina que exibe detalhes do ticket
-$app->get("/ticket/2058/details", function(){
+$app->get("/ticket/{ticketId}/details", function(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+    User::verifyLogin();
 
     $view = new View();
     $view->draw("ticket-details");
