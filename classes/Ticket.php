@@ -43,7 +43,7 @@ class Ticket extends ClassModel{
 
         $dao = new DB();
         $tickets = $dao->exec("
-            select t.id_ticket, t.ticket_title, t.ticket_details, t.dt_updates, s.status_name, p.priority_name from tb_tickets t
+            select t.id_ticket, t.ticket_title, t.ticket_details, t.dt_updates, s.status_name, p.priority_name, t.id_user from tb_tickets t
             join tb_status s using(id_status)
             join tb_priorities p using(id_priority)
             where t.id_user $queryUser AND t.id_status $status AND t.id_ticket $ticket 
@@ -75,7 +75,7 @@ class Ticket extends ClassModel{
             foreach ($tickets as $row) {
             
                 $messages = $dao->exec("
-                    select tm.id_ticket_message, tm.dt_send, p.full_name, tm.message from tb_ticket_messages tm
+                    select tm.id_ticket_message, tm.dt_send, p.full_name, tm.message, tm.id_user from tb_ticket_messages tm
                     join tb_users u using(id_user)
                     join tb_persons p using(id_user)
                     where id_ticket = :idTicket

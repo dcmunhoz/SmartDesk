@@ -52,6 +52,8 @@ CREATE TABLE tb_persons(
     CONSTRAINT pk_person PRIMARY KEY (id_person)
 ) DEFAULT CHARACTER SET 'UTF8';
 
+INSERT INTO tb_persons(full_name, id_user, id_company, id_place, id_sector, need_updates) VALUES("iDesk Admin", 1, 1, 1, 1, 0);
+
 CREATE TABLE tb_cities(
 	id_city		INT NOT NULL AUTO_INCREMENT,	# Id da cidade.
     city_name   VARCHAR(200) NOT NULL UNIQUE,	# Nome da cidade.
@@ -160,6 +162,7 @@ CREATE TABLE tb_ticket_assignment(
 
 ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_ticket_ticketassignment FOREIGN KEY(id_ticket) REFERENCES tb_tickets(id_ticket);
 ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_user_ticketassignment FOREIGN KEY(id_user) REFERENCES tb_users(id_user);
+
 
 DELIMITER $
 CREATE PROCEDURE proc_save_user(

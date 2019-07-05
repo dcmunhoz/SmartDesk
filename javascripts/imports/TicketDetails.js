@@ -1,4 +1,5 @@
 const Ticket = require('./../modules/Ticket');
+const Utils = require('./../utils/Utils');
 
 export default class TicketDetails {
 
@@ -19,6 +20,10 @@ export default class TicketDetails {
             });
         });
 
+        document.querySelector("#btn-new-message").on('click', e=>{
+            console.log("teste");
+        });
+
     }
 
     switchPanel(panelName){
@@ -35,18 +40,13 @@ export default class TicketDetails {
         document.querySelector(`#show-panel-${panelName}`).classList.add("active");
     }
 
-    hideAllPanels(){
-
-        
-
-    }
-
     loadTicketDetails(){
 
         let ticketId = window.location.pathname.split('/')[2];
 
         Ticket.get(ticketId).then(data=>{
 
+            // Detalhes
             document.querySelector("#ticket-title").value = data['ticket']['ticket_title'];
             document.querySelector("#ticket-priority").value = data['ticket']['priority_name'];
             document.querySelector("#ticket-update").value = data['ticket']['dt_updates'].split(" ")[0];
@@ -63,6 +63,38 @@ export default class TicketDetails {
                 
                 document.querySelector("#ticket-atr").innerHTML = 'Sem atribuição.';
             }
+
+            let ticket = data['ticket'];
+
+            // Acompanhamentos.
+            [...data['messages']].forEach(messageData=>{
+
+                let data = Utils.dateFormat(new Date(messageData['dt_send']));
+                let time = Utils.timeFormat(new Date(messageData['dt_send']));
+
+                let messagesBox = document.querySelector("#messages-box");
+
+                let message = document.createElement('div');
+                message.classList.add("message-row");
+
+
+                if(messageData['id_user'] !== ticket['id_user']){
+                    message.classList.add("out");
+                }
+
+                message.innerHTML = `
+                    <div class="message-body">
+                        <section class="ticket-message">
+                            ${messageData['message']}
+                        </section>
+                        <footer>
+                            ${messageData['full_name']} ás ${time} de ${data}
+                        </footer>
+                    </div>
+                `
+
+                messagesBox.appendChild(message);
+            });
 
         }).catch(fail=>{
             
