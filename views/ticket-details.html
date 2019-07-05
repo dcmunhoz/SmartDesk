@@ -21,11 +21,12 @@
         <div class="ticket-dt-panel"> 
             <aside class="ticket-menu">
                 <ul>
-                    <li> <a href="#" class="active"> Geral </a> </li>
-                    <li> <a href="#"> Acompanhamento </a> </li>
+                    <li> <a id="show-panel-general"  data-target="general"  class="show-panel active"> Geral </a> </li>
+                    <li> <a id="show-panel-messages" data-target="messages" class="show-panel "> Acompanhamento </a> </li>
                 </ul>
             </aside>
-            <div class="general-panel">
+
+            <div id="general-panel" class="panel ">
                 <form action="#">
                     <div class="row row-2">
                         <div class="form-group">
@@ -64,6 +65,42 @@
                     </div>
 
                 </form>
+            </div>
+            
+            <div id="messages-panel" class="panel active">
+                <div id="messages-box">
+                    
+                    <div class="message-row">
+                        <div class="message-body">
+                            <section class="ticket-message">
+                                abudalabaxuneba
+                            </section>
+                            <footer>
+                                Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="message-row out">
+                        <div class="message-body">
+                            <section  class="ticket-message">
+                                abudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsadabudalabaxuneba dasdsad
+                            </section>
+                            <footer>
+                                Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                            </footer>
+                        </div>
+                    </div>
+                    
+                </div>
+                <footer>
+                    <div id="new-message">
+                        <textarea name="text-new-message" id="text-new-message" rows="6"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" id="btn-new-message" class="btn btn-update">Novo Acompanhamento</button>
+                    </div>
+                </footer>
             </div>
         </div>
                         

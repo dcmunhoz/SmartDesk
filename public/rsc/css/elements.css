@@ -41,6 +41,7 @@ select{
     font-size: 16px;
     transition: 300ms;
     overflow: none;
+    box-sizing: border-box;
 }
 
 input:focus,
@@ -106,12 +107,23 @@ input:focus{
     border: #727272;
     font-size: 18px;
     border-radius: 3px;
+    cursor: pointer;
+    transition: 150ms;
 
 }
 
 .btn-enviar{
     border: #00a0d1;
     background-color: #00a0d1;
+}
+
+.btn-update{
+    border: #E34317;
+    background-color: #E34317;
+}
+
+.btn-update:hover{
+    background-color: rgb(248, 67, 17);
 }
 
 .btn-ok{

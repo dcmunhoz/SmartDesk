@@ -5,7 +5,40 @@ export default class TicketDetails {
     constructor(){
         
         this.loadTicketDetails();
+        this.initEvents();
+
+    }
+
+    initEvents(){
+
+        document.querySelectorAll(".show-panel").forEach(btn=>{
+            btn.on("click", e=>{
+            
+                this.switchPanel(btn.dataset.target);
+                
+            });
+        });
+
+    }
+
+    switchPanel(panelName){
+        document.querySelectorAll(".panel").forEach(panel=>{
+            panel.classList.remove('active')
+        });
+        document.querySelectorAll(".show-panel").forEach(btn=>{
+            btn.classList.remove("active");
+        });
+
+
         
+        document.querySelector(`#${panelName}-panel`).classList.add("active");
+        document.querySelector(`#show-panel-${panelName}`).classList.add("active");
+    }
+
+    hideAllPanels(){
+
+        
+
     }
 
     loadTicketDetails(){
@@ -13,8 +46,6 @@ export default class TicketDetails {
         let ticketId = window.location.pathname.split('/')[2];
 
         Ticket.get(ticketId).then(data=>{
-
-            console.log(data['assignments'])
 
             document.querySelector("#ticket-title").value = data['ticket']['ticket_title'];
             document.querySelector("#ticket-priority").value = data['ticket']['priority_name'];
@@ -34,7 +65,7 @@ export default class TicketDetails {
             }
 
         }).catch(fail=>{
-            console.log("fail", fail);
+            
 
         });
 
