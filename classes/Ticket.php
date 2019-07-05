@@ -33,6 +33,8 @@ class Ticket extends ClassModel{
 
         }
 
+     
+
         if ($ticket !== null) {
 
             $ticket = ' = ' . $ticket;            
@@ -49,7 +51,7 @@ class Ticket extends ClassModel{
             ;
         "); 
 
-        foreach ($tickets as $ticket) {
+        foreach ($tickets as $row) {
             
             $assign = $dao->exec("
                 select p.full_name from tb_ticket_assignment ta
@@ -57,31 +59,39 @@ class Ticket extends ClassModel{
                 join tb_persons p using(id_user)
                 WHERE id_ticket = :idticket;
             ",[
-                ":idticket"=>$ticket['id_ticket']
+                ":idticket"=>$row['id_ticket']
             ]);
 
-            $data[$ticket['id_ticket']] = [
-                "ticket"=>$ticket,
+            $data[$row['id_ticket']] = [
+                "ticket"=>$row,
                 "assignments"=>$assign
             ];
             
         }
 
-        foreach ($tickets as $ticket) {
-            
-            $messages = $dao->exec("
-                select tm.id_ticket_message, tm.dt_send, p.full_name, tm.message from tb_ticket_messages tm
-                join tb_users u using(id_user)
-                join tb_persons p using(id_user)
-                where id_ticket = :idTicket
-                ;
-            ",[
-                ":idTicket" => $ticket['id_ticket']
-            ]);
+ 
+        if ($ticket !== null) {
 
-            $data[$ticket['id_ticket']]['messages'] = $messages;
+            foreach ($tickets as $row) {
+            
+                $messages = $dao->exec("
+                    select tm.id_ticket_message, tm.dt_send, p.full_name, tm.message from tb_ticket_messages tm
+                    join tb_users u using(id_user)
+                    join tb_persons p using(id_user)
+                    where id_ticket = :idTicket
+                    ;
+                ",[
+                    ":idTicket" => $row['id_ticket']
+                ]);
+    
+                $data[$row['id_ticket']]['messages'] = $messages;
+    
+            }
+            
 
         }
+
+        
 
 
         return $data;

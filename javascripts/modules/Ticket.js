@@ -4,8 +4,8 @@ module.exports = {
 
         return new Promise((resolve, reject)=>{
             
-            fetch(`/api/ticket/${ticketId}/details`).then(result=>{
-                resolve(result.json());
+            fetch(`/api/ticket/${ticketId}/details`).then(result=>result.json()).then(data=>{
+                resolve(Object.values(data)[0]);
             }); 
 
         });

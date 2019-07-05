@@ -80,7 +80,7 @@ $app->get('/api/tickets/list', function(ServerRequestInterface $req, ResponseInt
     $user = new User();
     $ticket = new Ticket();
 
-    $result = $ticket->getTicket($user, $status);
+    $result = $ticket->getTicket($user, $status, null);
 
     if(!count($result) > 0){
 
