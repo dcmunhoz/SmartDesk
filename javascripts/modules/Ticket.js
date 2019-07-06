@@ -61,6 +61,23 @@ module.exports = {
             });
         });
 
+    },
+
+    addMessage(ticketId, body){
+
+        return new Promise((resolve, reject)=>{
+            fetch(`/api/ticket/${ticketId}/add-message`,{
+                method: "POST",
+                body
+            }).then(result=>{
+                if(result.ok){
+                    resolve(result.json())
+                }
+
+                reject(result.json())
+            });
+        });
+
     }
 
 }

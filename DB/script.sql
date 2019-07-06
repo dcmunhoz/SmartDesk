@@ -163,7 +163,6 @@ CREATE TABLE tb_ticket_assignment(
 ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_ticket_ticketassignment FOREIGN KEY(id_ticket) REFERENCES tb_tickets(id_ticket);
 ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_user_ticketassignment FOREIGN KEY(id_user) REFERENCES tb_users(id_user);
 
-
 DELIMITER $
 CREATE PROCEDURE proc_save_user(
 piduser INT,
@@ -237,4 +236,22 @@ BEGIN
 	SELECT * FROM tb_tickets WHERE id_ticket = lastTicket;
 
 END $
+DELIMITER ;
+
+DELIMITER $
+CREATE PROCEDURE proc_save_message(
+	pid_ticket  INT,
+    pid_user	INT,
+    pmessage	TEXT
+)
+BEGIN
+	
+    DECLARE lastMessageId INT;
+    
+    INSERT INTO tb_ticket_messages (id_ticket, id_user, message) VALUES(pid_ticket, pid_user, pmessage);
+    
+    SELECT LAST_INSERT_ID() INTO lastMessageId;
+		
+    SELECT lastMessageId as id_message;    
+END$
 DELIMITER ;

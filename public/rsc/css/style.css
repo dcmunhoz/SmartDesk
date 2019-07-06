@@ -817,7 +817,8 @@ table, tr, td, th{
     flex-grow: 1;
     margin-bottom: 10px;
     box-sizing: border-box;
-    max-height: 500px;
+    min-height: 500px !important;
+    max-height: 500px !important;
     overflow: auto;
 }
 

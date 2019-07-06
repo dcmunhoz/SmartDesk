@@ -91,9 +91,6 @@ class Ticket extends ClassModel{
 
         }
 
-        
-
-
         return $data;
 
     }
@@ -136,6 +133,20 @@ class Ticket extends ClassModel{
 
         return $results;
 
+
+    }
+
+    public function addMessage($ticketId, $user, $body){
+
+        $dao = new DB();
+
+        $result = $dao->exec("CALL proc_save_message(:pid_ticket, :pid_user, :pmessage)", [
+            ":pid_ticket" => $ticketId,
+            ":pid_user"   => $user->getid_user(),
+            ":pmessage"   => $body['text-new-message']
+        ]);
+
+        return $result;
 
     }
 

@@ -144,4 +144,18 @@ $app->get("/api/ticket/{ticketId}/details", function(ServerRequestInterface $req
 
 });
 
+$app->post('/api/ticket/{ticketId}/add-message', function(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+    User::verifyLogin();
+
+    $body = $req->getParsedBody();
+    $ticketId = $args['ticketId'];
+
+    $user = new User();
+    $ticket = new Ticket();
+    $result = $ticket->addMessage($ticketId, $user, $body);
+
+    return $res->withJson($result);
+
+});
 ?>

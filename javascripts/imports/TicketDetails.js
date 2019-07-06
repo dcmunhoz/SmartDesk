@@ -1,10 +1,13 @@
 const Ticket = require('./../modules/Ticket');
 const Utils = require('./../utils/Utils');
+const Prototype = require('./../utils/Prototypes');
+const Notification = require('../utils/Notification');
 
 export default class TicketDetails {
 
     constructor(){
         
+        Prototype.initElementsPrototypes();
         this.loadTicketDetails();
         this.initEvents();
 
@@ -21,7 +24,28 @@ export default class TicketDetails {
         });
 
         document.querySelector("#btn-new-message").on('click', e=>{
-            console.log("teste");
+            
+            let form = document.querySelector('#form-send-new-message');
+            if(form.validateFields()){
+
+                let formData = new FormData(form);
+                let ticketId = document.querySelector("#ticket-id").innerHTML;
+                
+                Ticket.addMessage(ticketId, formData).then(success=>{
+                    
+                    this.loadTicketDetails();
+                    form.clear();
+                    Notification.pop("success", "Sucesso", "Sua mensagem foi enviada.");
+
+                    
+                }).catch(fail=>{
+                    console.log(fail);
+                });
+
+
+
+            }
+
         });
 
     }
@@ -65,14 +89,14 @@ export default class TicketDetails {
             }
 
             let ticket = data['ticket'];
+            let messagesBox = document.querySelector("#messages-box");
+            messagesBox.innerHTML = "";
 
             // Acompanhamentos.
             [...data['messages']].forEach(messageData=>{
 
                 let data = Utils.dateFormat(new Date(messageData['dt_send']));
                 let time = Utils.timeFormat(new Date(messageData['dt_send']));
-
-                let messagesBox = document.querySelector("#messages-box");
 
                 let message = document.createElement('div');
                 message.classList.add("message-row");

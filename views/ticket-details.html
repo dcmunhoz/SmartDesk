@@ -26,7 +26,7 @@
                 </ul>
             </aside>
 
-            <div id="general-panel" class="panel active">
+            <div id="general-panel" class="panel ">
                 <form action="#">
                     <div class="row row-2">
                         <div class="form-group">
@@ -67,7 +67,7 @@
                 </form>
             </div>
             
-            <div id="messages-panel" class="panel ">
+            <div id="messages-panel" class="panel active" data-simplebar>
                 <div id="messages-box">
                     
                     <!-- <div class="message-row">
@@ -96,11 +96,13 @@
                 <footer>
                     <div id="new-message">
                         <form id="form-send-new-message">
-                            <textarea name="text-new-message" id="text-new-message" rows="6"></textarea>
+                            <div class="form-group">
+                                <textarea name="text-new-message" id="text-new-message" rows="6" placeholder="Escreva uma nova mensagem aqui para enviar..."></textarea>
+                            </div>
                         </form>
                     </div>
                     <div>
-                        <button type="submit" id="btn-new-message" class="btn btn-update" form="form-send-new-message">Novo Acompanhamento</button>
+                        <button type="submit" id="btn-new-message" class="btn btn-update">Novo Acompanhamento</button>
                     </div>
                 </footer>
             </div>
