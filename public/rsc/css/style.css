@@ -333,7 +333,7 @@ form .form-group{
     justify-content: center;
 }
 
-#user-container .nav-bar .user-options-container .user-menu{
+.user-menu{
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -342,7 +342,7 @@ form .form-group{
 
 }
 
-#user-container .nav-bar .user-options-container .user-menu li{
+.user-menu li{
 
     margin: 0 5px;
     display: flex;
@@ -351,13 +351,13 @@ form .form-group{
     width: 70px;
 }
 
-#user-container .nav-bar .user-options-container .user-menu li i{
+.user-menu li i{
 
     /* font-size: 32px !important; */
 }
 
 
-#user-container .nav-bar .user-options-container .user-menu li img{
+.user-menu li img{
     width: 40px;
     border-radius: 100px;
 }

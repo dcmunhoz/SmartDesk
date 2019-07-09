@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/public/rsc/css/style.css" />
+        <link rel="stylesheet" href="/public/rsc/css/elements.css" />
+        <link rel="stylesheet" href="/public/rsc/css/keyframes.css" />
+        <link rel="stylesheet" href="/public/rsc/css/mq.css" />
+        <link rel="stylesheet" href="/public/rsc/css/admin-style.css" />
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+        <title> Admin - Home </title>
+
+    </head>
+
+    <body>
+        <div style="display: none;" id="page" data-page="AdminHome"></div>
+        <div id="app-admin">
+
+            <div class="aside-container">
+                <aside id="aside-menu">
+                    <div class="menu-toggler">
+                        <a href="#" id="btn-menu-toggler">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </div>
+                    <ul>
+                        <li class="active">
+                            <a href="">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fas fa-tasks"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+           <div class="main-container">
+                <nav>
+                    <div class="nav-first-container">
+                        <div class="new-ticket-container">
+                            <button id="btn-new-ticket">+ New O.S.</button>
+                        </div>
+                    </div>
+
+                    <div class="nav-second-container">
+                        <div class="user-options-container">
+                            <ul class="user-menu">
+                                <li>
+                                    <i class="fas fa-search"></i>
+                                </li>
+                                <li id="btn-show-user-panel">
+                                    <img src="/public/rsc/img/no_user.png" alt="">
+                                    <div id="user-panel">
+                                        <header id="panel-user-name">
+                                            
+                                        </header>
+                                        <section>
+                                            <div class="user-menu-option">
+                                                <span id="btn-open-user-profile"> <i class="fas fa-user fa-sm"></i>  Meu Perfil </span> 
+                                            </div>
+                                        </section>
+                                        <footer class="user-logout" id="btn-user-logout">
+                                            <span >
+                                                <i class="fas fa-power-off fa-sm"></i> 
+                                                Sair
+                                            </span>
+                                        </footer>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="company-logo">
+                            <img src="/public/rsc/img/company-logo.png" alt="Company Logo">
+                        </div>
+                    </div>
+                </nav>
+    
+                <section>
+                    Page content
+                </section>
+           </div>
+
+
+        </div>
+        
+    <script src="/public/rsc/js/bundle.js"></script>
+    </body>
+
+</html>
