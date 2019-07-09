@@ -6,7 +6,7 @@
 }
 
 #app-admin aside{
-    background-color: #0083B0;
+    background-color: #006586;
     /* width: 65px; */
     height: 100vh;
     box-sizing: border-box;
@@ -15,6 +15,8 @@
 
 #app-admin .main-container{
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 #app-admin aside .fas{
@@ -92,4 +94,32 @@
 .new-ticket-container #btn-new-ticket:hover {
     background-color: rgb(235, 235, 235);
 
+}
+
+/* ================== Page content ================== */
+.page-content{
+    background-color: #FFF;
+    flex-grow: 1;
+}
+
+.page-content nav{
+    background-color: #DCDCDC;
+    display: flex;
+}
+
+.page-content nav button{
+    color: #303030;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+.page-content nav button:hover{
+background-color: #b8b8b8;
+}
+
+.page-content nav button.active{
+    background-color: #FFF;
 }
