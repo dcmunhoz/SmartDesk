@@ -12,7 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 
 $app->get("/admin", function(){
 
-    $view = new View(false, false);
+    $view = new View(true, false, false);
     $view->draw('admin-home');
 
 });
@@ -20,9 +20,17 @@ $app->get("/admin", function(){
 // Pagina login do admin.
 $app->get("/admin/signin", function(){
 
-    $view = new View(false, false);
+    $view = new View(true, false, false);
 
     $view->draw("signin-admin");
+
+});
+
+$app->get("/admin/tickets", function(){
+
+    $view = new View(true, false, false);
+
+    $view->draw("admin-tickets");
 
 });
 

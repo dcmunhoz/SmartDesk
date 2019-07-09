@@ -19,17 +19,23 @@ class View {
      * @param string $viewsPath Caminho para as views.
      * 
      */
-    public function __construct($header = true, $footer = true, $viewsPath = 'views/'){
+    public function __construct($amdinPage = false , $header = true, $footer = true, $viewsPath = 'views/'){
 
         $this->viewsPath = $viewsPath;
         $this->configs = [
             'header'=>$header,
-            'footer'=>$footer
+            'footer'=>$footer,
+            'adminPage'=>$amdinPage
         ];
-        
-        if($this->configs['header']){
-            $this->draw('header');
+
+        if($this->configs['adminPage'] == true){
+            $this->draw('admin-header');
+        }else{
+            if($this->configs['header']){
+                $this->draw('header');
+            }
         }
+
         
     }
 
@@ -61,8 +67,12 @@ class View {
 
     public function __destruct(){
 
-        if($this->configs['footer']){
-            $this->draw("footer");
+        if($this->configs['adminPage'] == true){
+            $this->draw('admin-footer');
+        }else{
+            if($this->configs['footer']){
+                $this->draw('footer');
+            }
         }
 
     }
