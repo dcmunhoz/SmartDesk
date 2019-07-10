@@ -25,6 +25,11 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * 
+     * Verifica se um usuário esta logado.
+     * 
+     */
     public static function verifyLogin(){
 
         \session_start();
@@ -38,6 +43,13 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * 
+     * @param object $body Campos recebidos com os dados do usuário para criar.
+     * 
+     * Cria um novo usuário no banco de dados.
+     * 
+     */
     public function createUser($body){
 
         $dao = new DB();
@@ -58,6 +70,13 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * 
+     * @param object $body Dados de login.
+     * 
+     * Faz o login do usuário.
+     * 
+     */
     public function login($body){
 
         $dao = new DB();
@@ -84,6 +103,11 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * 
+     * Faz o logout do usuário.
+     * 
+     */
     public function logout(){
 
         \session_start();
@@ -97,6 +121,12 @@ class User extends ClassModel{
         
     }
 
+
+    /**
+     * 
+     * Pega os dados da pessoa autenticada
+     * 
+     */
     public function getAuthenticatedPerson(){
 
         $dao = new DB();
@@ -108,6 +138,9 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * 
+     */
     public function save($body){
 
         $dao = new DB();

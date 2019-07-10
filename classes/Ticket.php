@@ -1,4 +1,10 @@
 <?php
+/**
+ *  @author Daniel Munhoz <dc.munhoz@hotmail.com>
+ * 
+ *  Classe responsavel por controlar as ações do ticket.
+ * 
+ */
 
 namespace App;
 
@@ -14,6 +20,16 @@ class Ticket extends ClassModel{
 
     }
 
+    /**
+     * 
+     * @param object $user Usuário para pegar os tickets.
+     * @param string $status Status do ticket.
+     * @param string $ticket Id do ticket que quer pegar.
+     * 
+     * Retorna os dados de todos os tickets, ou de um ticket especifico. 
+     * Se o usuário for informado, pega o ticket somente dele, caso contrario retorna de todos os usuários(Para ADM).
+     * 
+     */
     public function getTicket(User $user = null, $status = "0", $ticket = null){
 
         $queryUser = "";
@@ -95,6 +111,11 @@ class Ticket extends ClassModel{
 
     }
 
+    /**
+     * 
+     * Lista de prioridades existentes para um ticket.
+     * 
+     */
     public function getPriorities(){
         
         $dao = new DB();
@@ -104,6 +125,28 @@ class Ticket extends ClassModel{
 
     }
 
+    /**
+     * 
+     * Lista de status existentes para um ticket.
+     * 
+     */
+    public function getStatus(){
+
+        $dao = new DB();
+        $results = $dao->exec("SELECT * FROM tb_status;");
+
+        return $results;
+
+    }
+
+    /**
+     * 
+     * @param object $user Usuário que vai abrir o ticket.
+     * @param array $body Corpo do post enviado para inserir no ticket.
+     * 
+     * Abre um novo ticket.
+     * 
+     */
     public function open(User $user, $body){
 
         $dao = new DB();
@@ -126,16 +169,15 @@ class Ticket extends ClassModel{
 
     }
 
-    public function getStatus(){
-
-        $dao = new DB();
-        $results = $dao->exec("SELECT * FROM tb_status;");
-
-        return $results;
-
-
-    }
-
+    /**
+     * 
+     * @param int $ticketId Id do ticket para inserir mensagem.
+     * @param object $user Usuário que vai inserir a mensagem no ticket.
+     * @param array $body Corpo da mensagem que sera inserida.
+     * 
+     * Adiciona uma mensagem a um ticket.
+     * 
+     */
     public function addMessage($ticketId, $user, $body){
 
         $dao = new DB();
@@ -149,7 +191,6 @@ class Ticket extends ClassModel{
         return $result;
 
     }
-
 
 }
 

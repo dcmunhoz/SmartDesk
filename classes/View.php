@@ -19,15 +19,16 @@ class View {
      * @param string $viewsPath Caminho para as views.
      * 
      */
-    public function __construct($amdinPage = false , $header = true, $footer = true, $viewsPath = 'views/'){
+    public function __construct($adminPage = false , $header = true, $footer = true, $viewsPath = 'views/'){
 
         $this->viewsPath = $viewsPath;
         $this->configs = [
             'header'=>$header,
             'footer'=>$footer,
-            'adminPage'=>$amdinPage
+            'adminPage'=>$adminPage
         ];
 
+        // Verifica se é pagina da administração ou não e carrega o header especifico.
         if($this->configs['adminPage'] == true){
             $this->draw('admin-header');
         }else{
