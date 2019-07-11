@@ -1,5 +1,16 @@
-module.exports = {
+/**
+ * Modulo que contem funções assincronas para usuários.
+ */
 
+module.exports = {
+    
+    /**
+     * 
+     * @param {object} body Contem os dados do usuário a ser salvo.
+     * 
+     * Salva uma nova conta.
+     *  
+     */
     saveAccount(body){
 
         return new Promise((resolve, reject)=>{
@@ -23,6 +34,13 @@ module.exports = {
 
     },
 
+    /**
+     * 
+     * @param {object} body Contem dados do usuários.
+     * 
+     * Faz o login do usuário.
+     *  
+     */
     login(body){
 
         return new Promise((resolve, reject)=>{
@@ -43,6 +61,9 @@ module.exports = {
 
     },
 
+    /**
+     * Pega os dados do usuário logado.
+     */
     getData(){
 
         return new Promise((resolve, reject)=>{
@@ -56,6 +77,14 @@ module.exports = {
         });
 
     },
+
+    /**
+     * 
+     * @param {object} data Dados do usuário logado.
+     * 
+     * Retorna o nome do usuário formatado.
+     * 
+     */
     getUserName(data){
         let userFullName = data.full_name.split(" ");
 
@@ -64,6 +93,13 @@ module.exports = {
            
     },
 
+    /**
+     * 
+     * @param {integer} statusId Id do status para exibir.
+     * 
+     * Exibe a lista de tickets de acordo com o status informado.
+     * 
+     */
     getTicketList(statusId = null){
 
         return new Promise((resolve, reject)=>{

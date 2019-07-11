@@ -1,5 +1,10 @@
+/**
+ * Modulo que contem funções assincronas para os tickets.
+ */
+
 module.exports = {
 
+    // Pega as informações dos tickets.
     get(ticketId){
 
         return new Promise((resolve, reject)=>{
@@ -12,6 +17,7 @@ module.exports = {
 
     },
 
+    // Pega todos as prioridades disponiveis.
     getPriorities(){
 
         return new Promise((resolve, reject)=>{
@@ -28,6 +34,7 @@ module.exports = {
 
     },
 
+    // Abre um novo ticket.
     open(body){
         
         return new Promise((resolve, reject)=>{
@@ -49,6 +56,7 @@ module.exports = {
 
     },
 
+    // Pega os status disponiveis
     getStatus(){
 
         return new Promise((resolve, reject)=>{
@@ -63,6 +71,7 @@ module.exports = {
 
     },
 
+    // Adiciona uma mensagem a um ticket.
     addMessage(ticketId, body){
 
         return new Promise((resolve, reject)=>{

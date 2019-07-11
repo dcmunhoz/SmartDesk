@@ -1,3 +1,10 @@
+/**
+ * 
+ * Controller tela de cadastro de usuário.
+ * 
+ */
+
+ // Utilitários & Módulos.
 const Notification  = require('./../utils/Notification');
 const Prototypes    = require('./../utils/Prototypes');
 const User          = require('./../modules/User');
@@ -5,18 +12,18 @@ const User          = require('./../modules/User');
 export default class Signup{
 
     constructor(){
-        this.initSignup();
-    }
-
-    initSignup(){
-    
+        
         Prototypes.initElementsPrototypes();
         this.initEvents();
-    
+
     }
 
+    /**
+     * Inicia os eventos do controller.
+     */
     initEvents(){
 
+        // Cria a conta do usuário.
         document.querySelector("#btn-create-account").on('click', (e)=>{
             e.preventDefault();
 

@@ -1,3 +1,10 @@
+/**
+ * 
+ * Controller da pagina de login. 
+ * 
+ */
+
+ // Utilitários e Módulos.
 const Prototype     = require('./../utils/Prototypes');
 const User          = require('./../modules/User');
 const Notification  = require('./../utils/Notification');
@@ -11,8 +18,12 @@ export default class Signin{
 
     }
 
+    /**
+     * Inicia os eventos do controller.
+     */
     initEvents(){
 
+        // Faz o login do usuário.
         document.querySelector("#btn-user-login").on('click', e=>{
 
             let formLogin = document.querySelector("#form-user-login")

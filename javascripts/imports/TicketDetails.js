@@ -1,3 +1,10 @@
+/**
+ * 
+ * Controler tela visualização de ticket.
+ * 
+ */
+
+ // Utilitários & Módulos.
 const Ticket = require('./../modules/Ticket');
 const Utils = require('./../utils/Utils');
 const Prototype = require('./../utils/Prototypes');
@@ -13,8 +20,10 @@ export default class TicketDetails {
 
     }
 
+    // Inicia os eventos do controller.
     initEvents(){
 
+        // Troca o painel de exibição (Geral, mensagens).
         document.querySelectorAll(".show-panel").forEach(btn=>{
             btn.on("click", e=>{
             
@@ -23,6 +32,7 @@ export default class TicketDetails {
             });
         });
 
+        // Adiciona uma nova mensagem ao ticket.
         document.querySelector("#btn-new-message").on('click', e=>{
             
             let form = document.querySelector('#form-send-new-message');
@@ -50,6 +60,13 @@ export default class TicketDetails {
 
     }
 
+    /**
+     * 
+     * @param {string} panelName Nome do painel a ser exibido.
+     * 
+     * Desativa todos os painel possiveis e exibe somente o informado.
+     * 
+     */
     switchPanel(panelName){
         document.querySelectorAll(".panel").forEach(panel=>{
             panel.classList.remove('active')
@@ -64,6 +81,9 @@ export default class TicketDetails {
         document.querySelector(`#show-panel-${panelName}`).classList.add("active");
     }
 
+    /**
+     * Carrega na tela os detalhes do ticket.
+     */
     loadTicketDetails(){
 
         let ticketId = window.location.pathname.split('/')[2];

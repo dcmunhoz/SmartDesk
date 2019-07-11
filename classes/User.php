@@ -140,6 +140,10 @@ class User extends ClassModel{
 
     /**
      * 
+     * @param object $body Campos recebidos com os dados do usuário para salvar.
+     * 
+     * Salva ou altera um usuário.
+     * 
      */
     public function save($body){
 
@@ -161,6 +165,11 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * 
+     * Verifica se o usuário logado é administrador.
+     * 
+     */
     public function isAdmin(){
 
         $profileId = $this->getid_profile();

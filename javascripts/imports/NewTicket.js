@@ -1,3 +1,10 @@
+/**
+ * 
+ * Controller pagina criação de tickets.
+ * 
+ */
+
+ // Utilitários & Módulos.
 const Prototype = require('./../utils/Prototypes');
 const Ticket    = require('./../modules/Ticket');
 const Notification = require('./../utils/Notification');
@@ -11,7 +18,9 @@ export default class NewTicket {
         this.getPriorities();
     }
 
-
+    /**
+     * Inicia os eventos do controller
+     */
     initEvents(){
 
         document.querySelector("#btn-open-new-ticket").on('click', e=>{
@@ -42,6 +51,9 @@ export default class NewTicket {
 
     }
 
+    /**
+     * Pega a lista de prioridade disponiveis para um ticket.
+     */
     getPriorities(){
 
         Ticket.getPriorities().then(data=>{

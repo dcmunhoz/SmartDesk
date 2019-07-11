@@ -1,3 +1,10 @@
+/**
+ * 
+ * Controller da pagina principal do usuário.
+ * 
+ */
+
+ // Utilitários & Modulos.
 const Prototype = require('./../utils/Prototypes');
 const User = require('./../modules/User');
 const Ticket = require('./../modules/Ticket');
@@ -6,7 +13,7 @@ const Utils = require('./../utils/Utils');
 export default class Home {
 
     constructor(){
-
+        
         Prototype.initElementsPrototypes();
         
         this.verifyUserNeedUpdates();
@@ -16,8 +23,12 @@ export default class Home {
 
     }
 
+    /**
+     * Inicia os eventos do controlelr.
+     */
     initEvents(){
 
+        // Exibe os tickets de acordo com o status selecionado.
         document.querySelector(".search-select-box").on('change', e=>{
             
             let search = e.target.id.split('-')[1];
@@ -25,13 +36,11 @@ export default class Home {
 
             this.getUserTickets(statusId);
             
-
-            
         });
-
 
     }
 
+    // Inicia os eventos do modal de atualização de cadastro.
     initModal(){
 
         document.querySelector("#btn-modal-update-register-next-page").on('click', e=>{
@@ -107,6 +116,9 @@ export default class Home {
 
     }
 
+    /**
+     * Verifica se o usuário precisa fazer atualização cadastral assim que acessa a pagina.
+     */
     verifyUserNeedUpdates(){
 
         User.getData().then(data=>{
@@ -228,6 +240,13 @@ export default class Home {
 
     }
 
+    /**
+     * 
+     * @param {int} statusId Id do status a ser pego.
+     * 
+     * Pega os dados do ticket. Case o id não seja informado, retorna todos os tickets.
+     *  
+     */
     getUserTickets(statusId = null){
 
         User.getTicketList(statusId).then(tickets=>{
@@ -240,7 +259,6 @@ export default class Home {
             Object.values(tickets).forEach(data=>{
                 
                 let tr = document.createElement("tr");
-
                 tr.dataset.ticket = data['ticket'].id_ticket;
 
                 let dtUpdate = Utils.dateFormat(new Date(data['ticket'].dt_updates));
@@ -306,6 +324,10 @@ export default class Home {
 
     }
 
+    /**
+     * Pega os status existentes para ordenar os tickets
+     * 
+     */
     getStatusToOrder(){
 
         Ticket.getStatus().then(data=>{
@@ -323,6 +345,9 @@ export default class Home {
 
     }
 
+    /**
+     * Inicia os eventos na linha do ticket
+     */
     initTrEvents(){
 
         document.querySelectorAll("#tickets-list tbody tr").forEach(tr=>{
