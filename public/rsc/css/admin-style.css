@@ -7,6 +7,8 @@
     height: 100vh;
     display: flex;
     flex-direction: row;    
+    color: #2a2f35;
+    overflow: hidden;
 }
 
 #app-admin aside{
@@ -72,7 +74,7 @@
 }
 
 #app-admin nav div .user-options-container .user-menu li:nth-child(1){
-    color: rgb(90, 90, 90);
+    color: #5a5a5a;
     font-size: 28px;
 }
 
@@ -93,6 +95,7 @@
     transition: 100ms;
     padding: 0px 40px;
     cursor: pointer;
+    color: #2a2f35;
 }
 
 .new-ticket-container #btn-new-ticket:hover {
@@ -131,20 +134,20 @@ background-color: #b8b8b8;
 }
 
 /* ================== Admin Tickets ================== */
-.tickets-container{
+.content{
     background-color: #EEEEEE;
     display: flex;
     flex-grow: 1;
 }
 
-.tickets-container .options-menu{
+.content .content-left-panel{
     background-color: #F7F7F7;
     width: 300px;
     padding: 10px;
     box-sizing: border-box;
 }
 
-.tickets-container .options-menu header{
+.content .content-left-panel.options-menu header{
 
     padding: 10px;
     text-align: left;
@@ -152,18 +155,18 @@ background-color: #b8b8b8;
     font-size: 18px;
 }
 
-.tickets-container .options-menu ul{
+.content .content-left-panel.options-menu ul{
     list-style: none;
     font-weight: bold;
     font-size: 18px;
     margin: 10px 0;
 }
 
-.tickets-container .options-menu ul li{
+.content .content-left-panel.options-menu ul li{
     padding: 5px 0;
 }
 
-.tickets-container .options-menu ul li a{
+.content .content-left-panel.options-menu ul li a{
     text-decoration: none;
     display: flex;
     justify-content: space-between;
@@ -173,10 +176,68 @@ background-color: #b8b8b8;
     color: #47525E ;
 }
 
-.tickets-container .options-menu ul li a:hover{
+.content .content-left-panel.options-menu ul li a:hover{
     background-color: #e2e2e2;
 }
 .no-assignment-button{
     color: rgb(221, 87, 87) !important;
     
+}
+
+
+.content .content-main-panel{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.content .tickets-panel .ticket-list-header-container {
+    box-sizing: border-box;
+}
+
+.content .tickets-panel .ticket-list-header-container header {
+    box-sizing: border-box;
+    padding: 25px 50px;
+}
+
+.content .tickets-panel .ticket-list-header-container header .ticket-option-selected {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.content .tickets-panel .ticket-list-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+
+}
+
+.content .tickets-panel .ticket-list-container .ticket-list{
+    background-color: #fff;
+    border-radius: 5px 5px 0 0;
+    width: 95%;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: auto;
+
+}
+
+.content .tickets-panel .ticket-list-container .ticket-list table{
+    width:100%;  
+    height: 100%;
+}
+
+.content .tickets-panel .ticket-list-container .ticket-list table thead tr th{
+    font-weight: bold;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #868686;
+}
+
+.content .tickets-panel .ticket-list-container .ticket-list table tbody tr td{
+    font-weight: bold;
+    color: #47525E;
+    text-align: center;
+
 }
