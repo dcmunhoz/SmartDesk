@@ -4,19 +4,20 @@
     
     <div class="content-left-panel">
         <div class="fields-details">
+
             <div class="form-group">
                 <label for="">Requrente</label>
-                <input class="dark" type="text"  value="Daniel Munhoz">
+                <input class="dark" type="text"  value="Daniel Munhoz" disabled>
             </div>
             
             <div class="form-group">
                 <label for="">Atribuições</label>
-                <textarea class="dark" name="" id=""  rows="3" >Daniel Munhoz;  Eduardo;</textarea>
+                <textarea class="dark" name="" id=""  rows="3" disabled>Daniel Munhoz;  Eduardo;</textarea>
             </div>
 
             <div class="form-group">
                 <label for="">Audit.</label>
-                <input class="dark" type="text"  value="Daniel Munhoz">
+                <input class="dark" type="text"  value="Daniel Munhoz" disabled>
             </div>
         </div>           
     </div>
@@ -24,9 +25,9 @@
     <div class=" content-main-panel ticket-details">
 
         <div class=" header-container ticket-details-header-container">
-            <header class="ticket-list-header">
+            <header >
                 <div class="ticket-details-title">
-                    [# 2058] Lorem Impsum dolor ammet !
+                    [# 2058][<span id="ticket-status" style="color: red;">Aberto</span>] Lorem Impsum dolor ammet !
                 </div>
                 <div class="ticket-details-subtitle">
                     Eduardo &lt;eduardo@unimedaltamogiana.com.br&gt; | Ultima atualização: 22/05/2019 | Abertura: 12/05/2019 | Fechamento: --                
@@ -34,10 +35,83 @@
             </header>
         </div>
         
-        <div class="ticket-list-container" id="ticket-list-container">
-            <div class="ticket-list" id="ticket-list">
+        <div class="body-container" >
+            <div class="ticket-messages" id="messages-panel">
+                <div id="messages-box">
 
 
+
+                    <div class="message-row">
+                        <div class="message-body">
+                            <section class="ticket-message">
+                                abudalabaxuneba
+                            </section>
+                            <footer>
+                                Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="message-row out">
+                        <div class="message-body">
+                            <section  class="ticket-message">
+                                abudalabaxuneba dasdsadabudalabaxuneba 
+                            </section>
+                            <footer>
+                                Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                            </footer>
+                        </div>
+                    </div>
+
+                    <div class="message-row">
+                            <div class="message-body">
+                                <section class="ticket-message">
+                                    abudalabaxuneba
+                                </section>
+                                <footer>
+                                    Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                                </footer>
+                            </div>
+                        </div>
+    
+                        <div class="message-row out">
+                            <div class="message-body">
+                                <section  class="ticket-message">
+                                    abudalabaxuneba dasdsadabudalabaxuneba 
+                                </section>
+                                <footer>
+                                    Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                                </footer>
+                            </div>
+                        </div>
+
+                        <div class="message-row solved">
+                            <div class="message-body">
+                                <section class="ticket-message">
+                                    abudalabaxuneba
+                                </section>
+                                <footer>
+                                    Daniel Costa Munhoz ás 22:35 de 04/08/2019
+                                </footer>
+                            </div>
+                        </div>
+
+                    
+                    
+                </div>
+                <footer>
+                    <div id="new-message">
+                        <form id="form-send-new-message">
+                            <div class="form-group">
+                                <textarea name="text-new-message" id="text-new-message" rows="6" placeholder="Escreva uma nova mensagem aqui para enviar..."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <button type="submit" id="btn-new-message" class="btn btn-update">Novo Acompanhamento</button>
+                        <button type="submit" id="btn-new-message" class="btn btn-done">Finalizar Ticket</button>
+                    </div>
+                </footer>
             </div>
         </div>
 
@@ -47,5 +121,5 @@
 </div>
 
 <script>
-    document.querySelector("#ticket-list").style.maxHeight = document.querySelector("#ticket-list-container").offsetHeight + "px";
+    // document.querySelector("#ticket-list").style.maxHeight = document.querySelector("#ticket-list-container").offsetHeight + "px";
 </script>
