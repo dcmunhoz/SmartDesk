@@ -192,17 +192,17 @@ background-color: #b8b8b8;
 }
 
 
-.content .tickets-panel .ticket-list-header-container {
+.content .tickets-panel .header-container {
     box-sizing: border-box;
 }
 
-.content .tickets-panel .ticket-list-header-container header {
+.content .content-main-panel div header {
     box-sizing: border-box;
     padding: 25px 50px;
     color: #47525E;
 }
 
-.content .tickets-panel .ticket-list-header-container header .ticket-option-selected {
+.content .tickets-panel .header-container header .ticket-option-selected {
     font-weight: bold;
     font-size: 18px;
 }
@@ -247,7 +247,7 @@ background-color: #b8b8b8;
     text-align: center;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 5px;
+    padding: 0px;
     transition: 100ms;
 }
 
@@ -255,3 +255,38 @@ background-color: #b8b8b8;
 
     background-color: rgb(212, 212, 212);
 }
+
+.content .ticket-details{
+    background-color: #FFF;
+}
+
+.content .ticket-details .ticket-details-header-container{
+    border-bottom: 2px solid #e2e2e2;
+}
+
+.content .ticket-details .ticket-details-title{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content .ticket-details .ticket-details-subtitle{
+    font-size: 14px;
+    color: #838383;
+    padding: 5px 0;
+}
+
+.content div .fields-details{
+    padding: 10px 0;
+}
+
+.content div .fields-details .form-group{
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 10px;
+}
+
+.content div .fields-details .form-group label{
+    font-weight: bold;
+    font-size: 18px;
+    color: #47525E;
+ }

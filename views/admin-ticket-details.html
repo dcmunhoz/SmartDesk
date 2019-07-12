@@ -1,0 +1,51 @@
+<div id="page" style="display: none;" data-page="AdminTickets"></div>
+<div class="tickets-container content">
+
+    
+    <div class="content-left-panel">
+        <div class="fields-details">
+            <div class="form-group">
+                <label for="">Requrente</label>
+                <input class="dark" type="text"  value="Daniel Munhoz">
+            </div>
+            
+            <div class="form-group">
+                <label for="">Atribuições</label>
+                <textarea class="dark" name="" id=""  rows="3" >Daniel Munhoz;  Eduardo;</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="">Audit.</label>
+                <input class="dark" type="text"  value="Daniel Munhoz">
+            </div>
+        </div>           
+    </div>
+
+    <div class=" content-main-panel ticket-details">
+
+        <div class=" header-container ticket-details-header-container">
+            <header class="ticket-list-header">
+                <div class="ticket-details-title">
+                    [# 2058] Lorem Impsum dolor ammet !
+                </div>
+                <div class="ticket-details-subtitle">
+                    Eduardo &lt;eduardo@unimedaltamogiana.com.br&gt; | Ultima atualização: 22/05/2019 | Abertura: 12/05/2019 | Fechamento: --                
+                </div>
+            </header>
+        </div>
+        
+        <div class="ticket-list-container" id="ticket-list-container">
+            <div class="ticket-list" id="ticket-list">
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+    document.querySelector("#ticket-list").style.maxHeight = document.querySelector("#ticket-list-container").offsetHeight + "px";
+</script>

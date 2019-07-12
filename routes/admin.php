@@ -34,4 +34,12 @@ $app->get("/admin/tickets", function(){
 
 });
 
+$app->get("/admin/ticket/4", function(){
+
+    $view = new View(true, false, false);
+
+    $view->draw("admin-ticket-details");
+
+});
+
 ?>
