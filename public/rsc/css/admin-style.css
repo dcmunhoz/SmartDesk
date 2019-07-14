@@ -3,13 +3,17 @@
 } */
 
 #app-admin{
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;    
     color: #2a2f35;
-    overflow: auto;
+    overflow: hidden;
+}
+
+#app-admin .aside-container{
+    background-color: red;
+    display: flex;
 }
 
 #app-admin aside{
@@ -18,12 +22,10 @@
     height: 100%;
     box-sizing: border-box;
     text-align: center;
-    position: fixed;
 
 }
 
 #app-admin .main-container{
-    margin-left: 65px;
     height: 100%;
     max-height: 100%;
     flex-grow: 1;
@@ -32,7 +34,7 @@
 }
 
 #app-admin aside .fas{
-    font-size: 38px ;
+    font-size: 32px ;
     color: rgb(223, 243, 255);
 }
 
@@ -41,7 +43,7 @@
 }
 
 #app-admin aside ul li{
-    padding: 15px 10px;
+    padding: 10px 10px;
 }
 
 #app-admin aside ul li.active{
@@ -91,7 +93,7 @@
 
 #app-admin nav div .user-options-container .user-menu #user-panel{
     display: none;
-    top: 64px;
+    top: 59px;
 }
 
 #app-admin nav div .company-logo img{
@@ -153,7 +155,7 @@ background-color: #b8b8b8;
 
 .content .content-left-panel{
     background-color: #F7F7F7;
-    width: 300px;
+    width: 350px;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -226,8 +228,9 @@ background-color: #b8b8b8;
 .content .tickets-panel .ticket-list-container {
     display: flex;
     height: 100%;
-    max-height: 100%;
     justify-content: center;
+    position: relative;
+    
 
 }
 
@@ -237,12 +240,16 @@ background-color: #b8b8b8;
     width: 95%;
     box-sizing: border-box;
     padding: 10px;
-    height: 100%;
+    height: 100%;    
+    display: flex;
+    position: absolute;
 
 }
 
 .content .tickets-panel .ticket-list-container .ticket-list table{
     width: 100%;
+    border-collapse: collapse;
+
 
 }
 
@@ -262,13 +269,19 @@ background-color: #b8b8b8;
     text-align: center;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 0px;
+    padding: 10px;
     transition: 100ms;
+}
+
+.btn-assign-me{
+
+    color: #006586;
+
 }
 
 .content .tickets-panel .ticket-list-container .ticket-list table tbody tr:hover{
 
-    background-color: rgb(212, 212, 212);
+    background-color: rgb(238, 238, 238);
 }
 
 .content .ticket-details{
@@ -297,7 +310,7 @@ background-color: #b8b8b8;
 .content div .fields-details .form-group{
    display: flex;
    flex-direction: column;
-   margin-bottom: 10px;
+   margin-bottom: 15px;
 }
 
 .content div .fields-details .form-group label{
@@ -310,19 +323,81 @@ background-color: #b8b8b8;
      flex-grow: 1;
      display: flex;
      flex-direction: column;
- }
+     position: relative;
+    }
 
 .content .ticket-details .body-container .ticket-messages{
     /* background-color: red; */
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column-reverse;
     box-sizing: border-box;
-    padding: 10px 5px;
+    padding: 10px 20%;
+    position: relative;
+    top: 0
+}
+
+.content .ticket-details .body-container .ticket-messages .messages-container{
+    display: flex;
+    position: relative;
+    top: 0;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
  #messages-box{
      flex-grow: 1;
+     height: 100%;
+     max-height: 100% !important;
+     width: 100%;
+     position: absolute;
+     top: 0;
+     width: 100%;
+     overflow-y: auto;
  }
 
- 
-.content .ticket-details .body-container .ticket-messages footer div button{
+ .content .ticket-details .body-container .ticket-messages .messages-footer-container {
+    margin-bottom: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.content .ticket-details .body-container .ticket-messages .messages-footer-container div button{
     margin: 0 5px;
+}
+
+.form-group .new-assign{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.form-group .new-assign select{
+    border-radius: 1px;
+    padding: 3px;
+}
+
+.form-group .new-assign .assign-selected{
+    width: 10%;
+}
+
+.form-group .new-assign .assign-selected a{
+    height: 100%;
+    width: 100%;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #00569c;
+}
+
+.edit-ticket{
+    display: block;
+    position: absolute;
+    background: red;
+    padding: 10px;
+    
 }

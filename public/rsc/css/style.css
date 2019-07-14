@@ -397,6 +397,7 @@ form .form-group{
     opacity: 0;
     flex-direction: column;
     transition: 200ms;
+    z-index: 200;
 }
 
 #user-panel header{

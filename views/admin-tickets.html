@@ -39,11 +39,12 @@
         </div>
         
         <div class="ticket-list-container" id="ticket-list-container">
-            <div class="ticket-list" id="ticket-list">
+            <div class="ticket-list" id="ticket-list" data-simplebar>
                 <table cellspacing="0px;">
                     <thead>
                         <tr>
-                            <th>#ID</th>
+                            <th>#</th>
+                            <th>ID</th>
                             <th>Titulo</th>
                             <th>Solicitante</th>
                             <th>Atribuição</th>
@@ -54,6 +55,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
                             <td>#2058</td>
                             <td>Lorem impsum dolor ammet !</td>
                             <td>Eduardo</td>
@@ -63,6 +65,7 @@
                             <td>25/05/2019</td>
                         </tr>
                         <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
                             <td>#2058</td>
                             <td>Lorem impsum dolor ammet !</td>
                             <td>Eduardo</td>
@@ -72,6 +75,7 @@
                             <td>25/05/2019</td>
                         </tr>
                         <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
                             <td>#2058</td>
                             <td>Lorem impsum dolor ammet !</td>
                             <td>Eduardo</td>
@@ -81,338 +85,317 @@
                             <td>25/05/2019</td>
                         </tr>
                         <tr>
-                                <td>#2058</td>
-                                <td>Lorem impsum dolor ammet !</td>
-                                <td>Eduardo</td>
-                                <td>-</td>
-                                <td>25/05/2019</td>
-                                <td>Alta</td>
-                                <td>25/05/2019</td>
-                            </tr>
-                            <tr>
-                                <td>#2058</td>
-                                <td>Lorem impsum dolor ammet !</td>
-                                <td>Eduardo</td>
-                                <td>-</td>
-                                <td>25/05/2019</td>
-                                <td>Alta</td>
-                                <td>25/05/2019</td>
-                            </tr>
-                            <tr>
-                                <td>#2058</td>
-                                <td>Lorem impsum dolor ammet !</td>
-                                <td>Eduardo</td>
-                                <td>-</td>
-                                <td>25/05/2019</td>
-                                <td>Alta</td>
-                                <td>25/05/2019</td>
-                            </tr>
-                            <tr>
-                                <td>#2058</td>
-                                <td>Lorem impsum dolor ammet !</td>
-                                <td>Eduardo</td>
-                                <td>-</td>
-                                <td>25/05/2019</td>
-                                <td>Alta</td>
-                                <td>25/05/2019</td>
-                            </tr>
-                            <tr>
-                                    <td>#2058</td>
-                                    <td>Lorem impsum dolor ammet !</td>
-                                    <td>Eduardo</td>
-                                    <td>-</td>
-                                    <td>25/05/2019</td>
-                                    <td>Alta</td>
-                                    <td>25/05/2019</td>
-                                </tr>
-                                <tr>
-                                    <td>#2058</td>
-                                    <td>Lorem impsum dolor ammet !</td>
-                                    <td>Eduardo</td>
-                                    <td>-</td>
-                                    <td>25/05/2019</td>
-                                    <td>Alta</td>
-                                    <td>25/05/2019</td>
-                                </tr>
-                                <tr>
-                                    <td>#2058</td>
-                                    <td>Lorem impsum dolor ammet !</td>
-                                    <td>Eduardo</td>
-                                    <td>-</td>
-                                    <td>25/05/2019</td>
-                                    <td>Alta</td>
-                                    <td>25/05/2019</td>
-                                </tr>
-                                <tr>
-                                        <td>#2058</td>
-                                        <td>Lorem impsum dolor ammet !</td>
-                                        <td>Eduardo</td>
-                                        <td>-</td>
-                                        <td>25/05/2019</td>
-                                        <td>Alta</td>
-                                        <td>25/05/2019</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#2058</td>
-                                        <td>Lorem impsum dolor ammet !</td>
-                                        <td>Eduardo</td>
-                                        <td>-</td>
-                                        <td>25/05/2019</td>
-                                        <td>Alta</td>
-                                        <td>25/05/2019</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#2058</td>
-                                        <td>Lorem impsum dolor ammet !</td>
-                                        <td>Eduardo</td>
-                                        <td>-</td>
-                                        <td>25/05/2019</td>
-                                        <td>Alta</td>
-                                        <td>25/05/2019</td>
-                                    </tr>
-                                    <tr>
-                                            <td>#2058</td>
-                                            <td>Lorem impsum dolor ammet !</td>
-                                            <td>Eduardo</td>
-                                            <td>-</td>
-                                            <td>25/05/2019</td>
-                                            <td>Alta</td>
-                                            <td>25/05/2019</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2058</td>
-                                            <td>Lorem impsum dolor ammet !</td>
-                                            <td>Eduardo</td>
-                                            <td>-</td>
-                                            <td>25/05/2019</td>
-                                            <td>Alta</td>
-                                            <td>25/05/2019</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2058</td>
-                                            <td>Lorem impsum dolor ammet !</td>
-                                            <td>Eduardo</td>
-                                            <td>-</td>
-                                            <td>25/05/2019</td>
-                                            <td>Alta</td>
-                                            <td>25/05/2019</td>
-                                        </tr>
-                                        <tr>
-                                                <td>#2058</td>
-                                                <td>Lorem impsum dolor ammet !</td>
-                                                <td>Eduardo</td>
-                                                <td>-</td>
-                                                <td>25/05/2019</td>
-                                                <td>Alta</td>
-                                                <td>25/05/2019</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2058</td>
-                                                <td>Lorem impsum dolor ammet !</td>
-                                                <td>Eduardo</td>
-                                                <td>-</td>
-                                                <td>25/05/2019</td>
-                                                <td>Alta</td>
-                                                <td>25/05/2019</td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2058</td>
-                                                <td>Lorem impsum dolor ammet !</td>
-                                                <td>Eduardo</td>
-                                                <td>-</td>
-                                                <td>25/05/2019</td>
-                                                <td>Alta</td>
-                                                <td>25/05/2019</td>
-                                            </tr>
-                                            <tr>
-                                                    <td>#2058</td>
-                                                    <td>Lorem impsum dolor ammet !</td>
-                                                    <td>Eduardo</td>
-                                                    <td>-</td>
-                                                    <td>25/05/2019</td>
-                                                    <td>Alta</td>
-                                                    <td>25/05/2019</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#2058</td>
-                                                    <td>Lorem impsum dolor ammet !</td>
-                                                    <td>Eduardo</td>
-                                                    <td>-</td>
-                                                    <td>25/05/2019</td>
-                                                    <td>Alta</td>
-                                                    <td>25/05/2019</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#2058</td>
-                                                    <td>Lorem impsum dolor ammet !</td>
-                                                    <td>Eduardo</td>
-                                                    <td>-</td>
-                                                    <td>25/05/2019</td>
-                                                    <td>Alta</td>
-                                                    <td>25/05/2019</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#2058</td>
-                                                    <td>Lorem impsum dolor ammet !</td>
-                                                    <td>Eduardo</td>
-                                                    <td>-</td>
-                                                    <td>25/05/2019</td>
-                                                    <td>Alta</td>
-                                                    <td>25/05/2019</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#2058</td>
-                                                    <td>Lorem impsum dolor ammet !</td>
-                                                    <td>Eduardo</td>
-                                                    <td>-</td>
-                                                    <td>25/05/2019</td>
-                                                    <td>Alta</td>
-                                                    <td>25/05/2019</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#2058</td>
-                                                    <td>Lorem impsum dolor ammet !</td>
-                                                    <td>Eduardo</td>
-                                                    <td>-</td>
-                                                    <td>25/05/2019</td>
-                                                    <td>Alta</td>
-                                                    <td>25/05/2019</td>
-                                                </tr>
-                                                <tr>
-                                                        <td>#2058</td>
-                                                        <td>Lorem impsum dolor ammet !</td>
-                                                        <td>Eduardo</td>
-                                                        <td>-</td>
-                                                        <td>25/05/2019</td>
-                                                        <td>Alta</td>
-                                                        <td>25/05/2019</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>#2058</td>
-                                                        <td>Lorem impsum dolor ammet !</td>
-                                                        <td>Eduardo</td>
-                                                        <td>-</td>
-                                                        <td>25/05/2019</td>
-                                                        <td>Alta</td>
-                                                        <td>25/05/2019</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>#2058</td>
-                                                        <td>Lorem impsum dolor ammet !</td>
-                                                        <td>Eduardo</td>
-                                                        <td>-</td>
-                                                        <td>25/05/2019</td>
-                                                        <td>Alta</td>
-                                                        <td>25/05/2019</td>
-                                                    </tr>
-                                                    <tr>
-                                                            <td>#2058</td>
-                                                            <td>Lorem impsum dolor ammet !</td>
-                                                            <td>Eduardo</td>
-                                                            <td>-</td>
-                                                            <td>25/05/2019</td>
-                                                            <td>Alta</td>
-                                                            <td>25/05/2019</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>#2058</td>
-                                                            <td>Lorem impsum dolor ammet !</td>
-                                                            <td>Eduardo</td>
-                                                            <td>-</td>
-                                                            <td>25/05/2019</td>
-                                                            <td>Alta</td>
-                                                            <td>25/05/2019</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>#2058</td>
-                                                            <td>Lorem impsum dolor ammet !</td>
-                                                            <td>Eduardo</td>
-                                                            <td>-</td>
-                                                            <td>25/05/2019</td>
-                                                            <td>Alta</td>
-                                                            <td>25/05/2019</td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td>#2058</td>
-                                                                <td>Lorem impsum dolor ammet !</td>
-                                                                <td>Eduardo</td>
-                                                                <td>-</td>
-                                                                <td>25/05/2019</td>
-                                                                <td>Alta</td>
-                                                                <td>25/05/2019</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>#2058</td>
-                                                                <td>Lorem impsum dolor ammet !</td>
-                                                                <td>Eduardo</td>
-                                                                <td>-</td>
-                                                                <td>25/05/2019</td>
-                                                                <td>Alta</td>
-                                                                <td>25/05/2019</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>#2058</td>
-                                                                <td>Lorem impsum dolor ammet !</td>
-                                                                <td>Eduardo</td>
-                                                                <td>-</td>
-                                                                <td>25/05/2019</td>
-                                                                <td>Alta</td>
-                                                                <td>25/05/2019</td>
-                                                            </tr>
-                                                            <tr>
-                                                                    <td>#2058</td>
-                                                                    <td>Lorem impsum dolor ammet !</td>
-                                                                    <td>Eduardo</td>
-                                                                    <td>-</td>
-                                                                    <td>25/05/2019</td>
-                                                                    <td>Alta</td>
-                                                                    <td>25/05/2019</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>#2058</td>
-                                                                    <td>Lorem impsum dolor ammet !</td>
-                                                                    <td>Eduardo</td>
-                                                                    <td>-</td>
-                                                                    <td>25/05/2019</td>
-                                                                    <td>Alta</td>
-                                                                    <td>25/05/2019</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>#2058</td>
-                                                                    <td>Lorem impsum dolor ammet !</td>
-                                                                    <td>Eduardo</td>
-                                                                    <td>-</td>
-                                                                    <td>25/05/2019</td>
-                                                                    <td>Alta</td>
-                                                                    <td>25/05/2019</td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>#2058</td>
-                                                                        <td>Lorem impsum dolor ammet !</td>
-                                                                        <td>Eduardo</td>
-                                                                        <td>-</td>
-                                                                        <td>25/05/2019</td>
-                                                                        <td>Alta</td>
-                                                                        <td>25/05/2019</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>#2058</td>
-                                                                        <td>Lorem impsum dolor ammet !</td>
-                                                                        <td>Eduardo</td>
-                                                                        <td>-</td>
-                                                                        <td>25/05/2019</td>
-                                                                        <td>Alta</td>
-                                                                        <td>25/05/2019</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>#2058</td>
-                                                                        <td>Lorem impsum dolor ammet !</td>
-                                                                        <td>Eduardo</td>
-                                                                        <td>-</td>
-                                                                        <td>25/05/2019</td>
-                                                                        <td>Alta</td>
-                                                                        <td>25/05/2019</td>
-                                                                    </tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        <tr>
+                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                            <td>#2058</td>
+                            <td>Lorem impsum dolor ammet !</td>
+                            <td>Eduardo</td>
+                            <td>-</td>
+                            <td>25/05/2019</td>
+                            <td>Alta</td>
+                            <td>25/05/2019</td>
+                        </tr>
+                        
+                        
                     </tbody>
                 </table>
             </div>
