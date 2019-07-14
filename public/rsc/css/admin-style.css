@@ -330,11 +330,11 @@ background-color: #b8b8b8;
     /* background-color: red; */
     display: flex;
     flex-grow: 1;
-    flex-direction: column-reverse;
+    flex-direction: column;
     box-sizing: border-box;
-    padding: 10px 20%;
+    padding: 10px 10%;
     position: relative;
-    top: 0
+    top: 0;
 }
 
 .content .ticket-details .body-container .ticket-messages .messages-container{
