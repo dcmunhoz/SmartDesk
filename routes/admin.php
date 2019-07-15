@@ -50,4 +50,12 @@ $app->get("/admin/ticket/new", function(){
 
 });
 
+$app->get("/admin/configs", function(){
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-configs');
+
+});
+
 ?>
