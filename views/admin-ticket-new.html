@@ -1,0 +1,107 @@
+<div id="page" style="display: none;" data-page="AdminTicketNew"></div>
+<div class="tickets-container content">
+
+    
+    <div class="content-left-panel">
+        <!-- <div class="edit-ticket">
+                <i class="fas fa-edit"></i>
+        </div> -->
+        <div class="fields-details">
+
+            <div class="form-group">
+                <label for="">Requrente</label>
+                <input class="" type="text"  >
+            </div>
+            
+            <div class="form-group">
+                <label for=""> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> Atribuições</label>
+                <div class="new-assign">
+                    <select name="" id="">
+                        <option value="0">Selecione...</option>
+                    </select>
+                    <div class="assign-selected">
+                        <a href="" title="Adicionar nova atribuição">
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <textarea class="" name="" id=""  rows="3" disabled></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="">Cc's</label>
+                <div class="new-assign">
+                    <select name="" id="">
+                        <option value="0">Selecione...</option>
+                    </select>
+                    <div class="assign-selected">
+                        <a href="" title="Adicionar nova atribuição">
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <textarea class="" name="" id=""  rows="2" disabled></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="">Local</label>
+                <select name="" id="">
+                    <option value="0">Selecione...</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">Setor</label>
+                <select name="" id="">
+                    <option value="0">Selecione...</option>
+                </select>
+            </div>
+    
+
+        </div>           
+    </div>
+
+    <div class=" content-main-panel ticket-details">
+
+        <div class=" header-container ticket-details-header-container">
+            <header >
+                <div class="ticket-details-title" contenteditable="true" aria-multiline="false">
+                    <input type="text" placeholder="Titulo do ticket" class="new-ticket-title">
+                </div>
+            </header>
+        </div>
+        
+        <div class="body-container" >
+            <div class="ticket-messages" id="messages-panel">
+                <div class="messages-container">
+                    <div id="messages-box" data-simplebar>
+
+
+                        
+    
+                    </div>
+                </div>
+
+                <footer class="messages-footer-container">
+                    <div id="new-message">
+                        <form id="form-send-new-message">
+                            <div class="form-group">
+                                <textarea name="text-new-message" id="text-new-message" rows="6" placeholder="Descreva o problema detalhadamente...."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <button type="submit" id="btn-new-message" class="btn btn-done"><i class="far fa-paper-plane"></i> Enviar</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+    // document.querySelector("#ticket-list").style.maxHeight = document.querySelector("#ticket-list-container").offsetHeight + "px";
+</script>

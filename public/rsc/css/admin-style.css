@@ -109,6 +109,10 @@
     padding: 0px 40px;
     cursor: pointer;
     color: #2a2f35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .new-ticket-container #btn-new-ticket:hover {
@@ -348,6 +352,7 @@ background-color: #b8b8b8;
  #messages-box{
      flex-grow: 1;
      height: 100%;
+     min-height: 0% !important;
      max-height: 100% !important;
      width: 100%;
      position: absolute;
@@ -400,4 +405,13 @@ background-color: #b8b8b8;
     background: red;
     padding: 10px;
     
+}
+
+.new-ticket-title{
+    background-color: rgb(241, 241, 241);
+    border: 2px solid rgb(241, 241, 241);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 24px;
 }

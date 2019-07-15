@@ -42,4 +42,12 @@ $app->get("/admin/ticket/4", function(){
 
 });
 
+$app->get("/admin/ticket/new", function(){
+
+    $view = new View(true, false, false);
+
+    $view->draw("admin-ticket-new");
+
+});
+
 ?>
