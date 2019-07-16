@@ -155,10 +155,12 @@ background-color: #b8b8b8;
     background-color: #EEEEEE;
     display: flex;
     flex-grow: 1;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .content .content-left-panel{
-    background-color: #F7F7F7;
+    background-color: rgb(250, 250, 250);
     width: 350px;
     padding: 10px;
     box-sizing: border-box;
@@ -250,30 +252,32 @@ background-color: #b8b8b8;
 
 }
 
-.content .tickets-panel .ticket-list-container .ticket-list table{
+table{
     width: 100%;
     border-collapse: collapse;
-
-
 }
 
-.content .tickets-panel .ticket-list-container .ticket-list table thead tr th{
+table caption{
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 10px;
+}
+
+table thead tr th{
     font-weight: bold;
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #868686;
 }
 
-.content .tickets-panel .ticket-list-container .ticket-list table tbody tr{
 
-}
-.content .tickets-panel .ticket-list-container .ticket-list table tbody tr td{
+table tbody tr td{
     font-weight: bold;
     color: #47525E;
     text-align: center;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 5px;
     transition: 100ms;
 }
 
@@ -283,7 +287,7 @@ background-color: #b8b8b8;
 
 }
 
-.content .tickets-panel .ticket-list-container .ticket-list table tbody tr:hover{
+table tbody tr:hover{
 
     background-color: rgb(238, 238, 238);
 }
@@ -415,3 +419,59 @@ background-color: #b8b8b8;
     border-radius: 5px;
     font-size: 24px;
 }
+
+.config-content-panel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.config-content-panel .config-panel{
+    display: none;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.config-content-panel .config-panel.panel-active{
+    display: flex;
+}
+
+.config-content-panel .config-panel .panel-header{
+
+    box-sizing: border-box;
+    padding: 20px 50px;
+
+}
+
+.config-content-panel .config-panel .panel-table{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.config-content-panel .config-panel .panel-table .table-list{
+    box-sizing: border-box;
+    padding: 5px 10px;
+    background-color: #FFF;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px 5px 0 0;
+}
+
+.buttons-table{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 40px;
+}
+
