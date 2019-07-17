@@ -156,6 +156,27 @@ module.exports = {
 
         });
 
+    },
+
+    getUserQtd(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/admin/users/qtd').then(result=>{
+
+                console.log(result);
+
+                if(result.ok){
+                    return result.json();
+                }
+
+                reject();
+            }).then(data=>{
+                resolve(data);
+            });
+
+        });
+
     }
 
 }

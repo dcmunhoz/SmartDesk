@@ -169,6 +169,17 @@ $app->get('/api/admin/users/list', function(ServerRequestInterface $req, Respons
 
     return $res->withJson($result);
 
+});
+
+$app->get('/api/admin/users/qtd', function(ServerRequestInterface $req, ResponseInterface $res){
+    
+    User::verifyLogin(true);
+
+    $user = new User();
+
+    $result = $user->getQtd();
+
+    return $res->withJson($result);
 
 });
 

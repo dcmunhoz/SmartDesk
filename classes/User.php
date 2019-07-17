@@ -197,6 +197,9 @@ class User extends ClassModel{
 
     }
 
+    /**
+     * Lista os usuários cadastrados
+     */
     public function listUsers(){
 
         $dao = new DB();
@@ -204,6 +207,18 @@ class User extends ClassModel{
         $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user);");
 
         return $results;
+
+    }
+
+    /**
+     * Retorna a quantidade de usuários cadastrados
+     */
+    public function getQtd(){
+
+        $dao = new DB();
+        $resut = $dao->exec("SELECT COUNT(*) AS 'qtde' FROM tb_users;");
+
+        return $resut[0];
 
     }
 }

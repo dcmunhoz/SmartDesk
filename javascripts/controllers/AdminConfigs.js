@@ -46,8 +46,12 @@ export default class AdminConfigs {
 
     }
 
+    /**
+     * Carrega a lista de usuários
+     */
     loadUsersList(){
 
+        // Lista de usuários
         User.getUserList().then(result=>{
 
             let tbody = document.querySelector("#table-user-list tbody");
@@ -76,6 +80,12 @@ export default class AdminConfigs {
                 
 
             });
+
+        });
+
+        User.getUserQtd().then(result=>{
+
+            document.querySelector("#users-count").innerHTML = result['qtde'];
 
         });
 
