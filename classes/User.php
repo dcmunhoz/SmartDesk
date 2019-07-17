@@ -30,7 +30,7 @@ class User extends ClassModel{
      * Verifica se um usuário esta logado.
      * 
      */
-    public static function verifyLogin(){
+    public static function verifyLogin($adminRoute = false){
 
         \session_start();
 
@@ -81,16 +81,16 @@ class User extends ClassModel{
 
         $dao = new DB();
         $result = $dao->exec("SELECT * FROM tb_users WHERE username = :username AND passw = md5(:passw);", [
-            ":username" => $body['login-username'],
-            ":passw"    => $body['login-pass']
+            ":username" => $body['username'],
+            ":passw"    => $body['passw']
         ]);
 
         if(isset($result[0]) && count($result[0]) > 0){
             // Usuário existe
             \session_start();
             $_SESSION[User::SESSION_USER] = $result[0];
-                        
-    
+
+
         }else{
             // Usuário não existe.
     

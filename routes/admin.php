@@ -7,6 +7,7 @@
  */
 
 use \App\View as View;
+use \App\User;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -28,7 +29,18 @@ $app->get("/admin/signin", function(){
 
 $app->post("/admin/signin", function(ServerRequestInterface $req, ResponseInterface $res){
 
-    return $res->withJson(['msg', 'Rota Ok !']);
+    $body = $req->getParsedBody();
+
+    $user = new User();
+    $result = $user->login($body);    
+    
+    if($result['error']){
+        $newResponse = $res->withStatus(500);
+    
+        return $newResponse->withJson($result);
+    }    
+    
+    return $res->withJson([]);
 
 });
 

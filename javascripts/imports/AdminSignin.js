@@ -7,6 +7,7 @@
  // Utilitários & Módulos
  const Prototype = require("./../utils/Prototypes");
  const User      = require('./../modules/User');
+ const Notification = require('./../utils/Notification');
 
  export default class AdminSignin{
 
@@ -42,11 +43,22 @@
 
                     User.loginAdmin(formData).then(response=>{
 
-                        console.log(response);
+                        document.querySelector("#app").classList.add('login-fade');
+                        setTimeout(()=>{
+                            window.location.replace('/admin');
+                        }, 500);
                         
     
                     }).catch(err=>{
+                        Notification.pop('danger', "Erro no login", err.error);
+
                         
+                        document.querySelector("#passw").value = "";
+                        document.querySelector("#passw").focus();
+                        document.querySelector("#passw").parentNode.classList.add("input-error");
+                        document.querySelector("#username").parentNode.classList.add("input-error");
+
+
                     });
 
                     e.target.removeChild(loadGif);

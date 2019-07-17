@@ -296,9 +296,9 @@ form .form-group{
 }
 
 .admin-company-logo-login{
-    width: 400px;
+    width: 25%;
     position: relative;
-    top: -100px;
+    top: -10px;
 }
 
 /* ================================================== User Page ================================================== */

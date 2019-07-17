@@ -42,6 +42,7 @@ $app->post("/signin", function(ServerRequestInterface $req, ResponseInterface $r
     
         return $newResponse->withJson($result);
     }   
+    
     return $res->withJson([]);
     
 });
