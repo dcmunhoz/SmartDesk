@@ -48,6 +48,37 @@ export default class AdminConfigs {
 
     loadUsersList(){
 
+        User.getUserList().then(result=>{
+
+            let tbody = document.querySelector("#table-user-list tbody");
+            tbody.innerHTML = "";
+
+            [...result].forEach(row=>{
+
+                let tr = document.createElement('tr');
+                tr.dataset.id = row['id_user'];
+
+                let body = `
+                <tr>
+                    <td>${row['id_user']}</td>
+                    <td>${row['full_name']}</td>
+                    <td>${row['username']}</td>
+                    <td>
+                        <div class="option-buttons">
+                            <a href=""> <i class="fas fa-edit"></i> </a>
+                        </div>
+                    </td>
+                </tr>
+                `;
+
+                tr.innerHTML = body;
+                tbody.appendChild(tr);
+                
+
+            });
+
+        });
+
     }
 
     /**

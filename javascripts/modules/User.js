@@ -142,7 +142,17 @@ module.exports = {
 
         return new Promise((resolve, reject)=>{
 
-            
+            fetch('/api/admin/users/list').then(result=>{
+
+                if(result.ok){
+                    return result.json();
+                }
+
+                reject();
+
+            }).then(data=>{
+                resolve(data);
+            });
 
         });
 

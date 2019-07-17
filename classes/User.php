@@ -196,6 +196,16 @@ class User extends ClassModel{
         return $result[0]['administrator'];
 
     }
+
+    public function listUsers(){
+
+        $dao = new DB();
+
+        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user);");
+
+        return $results;
+
+    }
 }
 
 ?>

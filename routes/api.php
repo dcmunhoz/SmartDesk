@@ -158,4 +158,18 @@ $app->post('/api/ticket/{ticketId}/add-message', function(ServerRequestInterface
     return $res->withJson($result);
 
 });
+
+$app->get('/api/admin/users/list', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $user = new User();
+
+    $result = $user->listUsers();
+
+    return $res->withJson($result);
+
+
+});
+
 ?>
