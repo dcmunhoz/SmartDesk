@@ -50,6 +50,7 @@
                         
     
                     }).catch(err=>{
+                        console.clear();
                         Notification.pop('danger', "Erro no login", err.error);
 
                         
@@ -64,7 +65,7 @@
                     e.target.removeChild(loadGif);
                     e.target.innerHTML = "Entrar"
 
-                }, 2000);
+                }, 1000);
 
             }
 

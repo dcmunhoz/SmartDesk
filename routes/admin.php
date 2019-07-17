@@ -13,6 +13,8 @@ use Psr\Http\Message\ResponseInterface;
 
 $app->get("/admin", function(){
 
+    User::verifyLogin(true);
+
     $view = new View(true, false, false);
     $view->draw('admin-home');
 
@@ -46,6 +48,8 @@ $app->post("/admin/signin", function(ServerRequestInterface $req, ResponseInterf
 
 $app->get("/admin/tickets", function(){
 
+    User::verifyLogin(true);
+
     $view = new View(true, false, false);
 
     $view->draw("admin-tickets");
@@ -53,6 +57,8 @@ $app->get("/admin/tickets", function(){
 });
 
 $app->get("/admin/ticket/4", function(){
+
+    User::verifyLogin(true);
 
     $view = new View(true, false, false);
 
@@ -62,6 +68,8 @@ $app->get("/admin/ticket/4", function(){
 
 $app->get("/admin/ticket/new", function(){
 
+    User::verifyLogin(true);
+
     $view = new View(true, false, false);
 
     $view->draw("admin-ticket-new");
@@ -69,6 +77,8 @@ $app->get("/admin/ticket/new", function(){
 });
 
 $app->get("/admin/configs", function(){
+    
+    User::verifyLogin(true);
 
     $view = new View(true, false, false);
 

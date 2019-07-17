@@ -41,6 +41,19 @@ class User extends ClassModel{
 
         }
 
+        if($adminRoute){
+            
+            if( !$_SESSION[User::SESSION_USER]['administrator'] ){
+
+                \session_destroy();
+
+                header("Location: /signin");
+                exit;
+
+            }
+
+        }
+
     }
 
     /**
@@ -80,7 +93,7 @@ class User extends ClassModel{
     public function login($body){
 
         $dao = new DB();
-        $result = $dao->exec("SELECT * FROM tb_users WHERE username = :username AND passw = md5(:passw);", [
+        $result = $dao->exec("SELECT * FROM tb_users u JOIN tb_profiles p USING(id_profile) WHERE u.username = :username AND u.passw = md5(:passw);", [
             ":username" => $body['username'],
             ":passw"    => $body['passw']
         ]);

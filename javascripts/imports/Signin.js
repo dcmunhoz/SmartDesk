@@ -25,6 +25,7 @@ export default class Signin{
 
         // Faz o login do usuário.
         document.querySelector("#btn-user-login").on('click', e=>{
+            console.log("teste");
 
             let formLogin = document.querySelector("#form-user-login")
             if(formLogin.validateFields()){   
@@ -42,10 +43,7 @@ export default class Signin{
 
                     User.login(formBody).then(success=>{
 
-                        document.querySelector("#app").classList.add('login-fade');
-                        setTimeout(()=>{
-                            window.location.replace('/');
-                        }, 500);
+                        window.location.replace('/');
 
                     }).catch(failure=>{
                         console.clear();
