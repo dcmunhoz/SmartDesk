@@ -1,16 +1,16 @@
-<div style="display: none;" id="page" data-page="AdminHome"></div>
+<div style="display: none;" id="page" data-page="AdminConfigs"></div>
 <nav class="page-content-navbar">
     <div class="navbar">
-        <button class="active"><i class="fas fa-users"></i> Usuários</button>
-        <button class=""><i class="fas fa-building"></i> Empresas</button>
-        <button class=""><i class="fas fa-map-marker-alt"></i> Locais</button>
-        <button class=""><i class="fas fa-street-view"></i> Setores</button>
+        <button data-target="users"     class="button-panel active" id="button-panel-users"><i class="fas fa-users"></i> Usuários</button>
+        <button data-target="companies" class="button-panel"        id="button-panel-companies"><i class="fas fa-building"></i> Empresas</button>
+        <button data-target="locals"    class="button-panel"        id="button-panel-locals"><i class="fas fa-map-marker-alt"></i> Locais</button>
+        <button data-target="sectors"   class="button-panel"        id="button-panel-sectors"><i class="fas fa-street-view"></i> Setores</button>
     </div>
 </nav>      
 <div class="content">
     <div class="config-content-panel">
         
-        <div class="config-panel users-panel ">
+        <div class="config-panel" id="users-panel">
 
             <div class="panel-header">
                 <header>
@@ -379,7 +379,7 @@
             </div>
         </div>
 
-        <div class="config-panel companies-panel ">
+        <div class="config-panel" id="companies-panel">
             <div class="panel-header">
                 <header>
                     <h1>Lista de Empresas</h1>
@@ -425,7 +425,7 @@
             </div>
         </div>
 
-        <div class="config-panel locals-panel ">
+        <div class="config-panel" id="locals-panel">
             <div class="panel-header">
                 <header>
                     <h1>Lista de Locais</h1>
@@ -471,7 +471,7 @@
             </div>
         </div>
 
-        <div class="config-panel locals-panel ">
+        <div class="config-panel" id="sectors-panel">
             <div class="panel-header">
                 <header>
                     <h1>Lista de Setores</h1>
