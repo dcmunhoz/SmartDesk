@@ -1,3 +1,3 @@
-import SmartDesk from './Controllers/SmartDesk';
+import App from './App/AppController';
 
-window.app = new SmartDesk();
+window.app = new App();

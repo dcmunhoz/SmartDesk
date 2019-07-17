@@ -5,18 +5,18 @@
  * 
  */
 
- // Imports
-import Signup from '../imports/Signup';
-import Signin from '../imports/Signin';
-import Header from '../utils/HeaderEvents';
-import Home   from '../imports/Home';
-import NewTicket from '../imports/NewTicket';
-import TicketDetails from '../imports/TicketDetails';
-import AdminSignin from '../imports/AdminSignin';
-import AdminConfigs from '../imports/AdminConfigs';
+ // Import dos controllers
+import Signup from '../controllers/Signup';
+import Signin from '../controllers/Signin';
+import Header from '../controllers/Header';
+import Home   from '../controllers/Home';
+import NewTicket from '../controllers/NewTicket';
+import TicketDetails from '../controllers/TicketDetails';
+import AdminSignin from '../controllers/AdminSignin';
+import AdminConfigs from '../controllers/AdminConfigs';
 
 
-export default class SmartDesk{
+export default class AppController{
 
     constructor(){
 

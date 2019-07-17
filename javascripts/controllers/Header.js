@@ -1,5 +1,5 @@
-let User = require('./../modules/User');
-let Prototype = require('./Prototypes');
+let User = require('../modules/User');
+let Prototype = require('../utils/Prototypes');
 export default class Header{
 
     constructor(){
