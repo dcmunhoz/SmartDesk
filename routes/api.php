@@ -159,13 +159,14 @@ $app->post('/api/ticket/{ticketId}/add-message', function(ServerRequestInterface
 
 });
 
-$app->get('/api/admin/users/list', function(ServerRequestInterface $req, ResponseInterface $res){
+$app->post('/api/admin/users/list', function(ServerRequestInterface $req, ResponseInterface $res){
 
     User::verifyLogin(true);
 
     $user = new User();
 
-    $result = $user->listUsers();
+    $body = $req->getParsedBody();
+    $result = $user->listUsers($body['search']);
 
     return $res->withJson($result);
 

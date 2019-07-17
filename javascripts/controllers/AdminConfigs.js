@@ -47,12 +47,57 @@ export default class AdminConfigs {
     }
 
     /**
+     * Eventos da tela de configuração do usuário.
+     */
+    initUserConfigEvents(){
+
+        document.querySelector("#search").on('keyup', e=>{
+
+            this.getUsers(e.target.value);
+
+        });
+
+    }
+
+    /**
      * Carrega a lista de usuários
      */
     loadUsersList(){
 
         // Lista de usuários
-        User.getUserList().then(result=>{
+        this.getUsers();
+
+        // Quantidade de usuários.
+        User.getUserQtd().then(result=>{
+
+            document.querySelector("#users-count").innerHTML = result['qtde'];
+
+        });
+
+        this.initUserConfigEvents();
+
+    }
+
+    /**
+     * Desativa todos os paineis e botões (Remove a classe 'active' e 'panel-active'). 
+     */
+    disablePanels(){
+
+        // Paineis
+        document.querySelectorAll(`.config-panel`).forEach(panel=>{
+            panel.classList.remove('panel-active');
+        });
+
+        // Botões 
+        document.querySelectorAll(`.button-panel`).forEach(button=>{
+            button.classList.remove('active');
+        });
+
+
+    }
+
+    getUsers(search){
+        User.getUserList(search).then(result=>{
 
             let tbody = document.querySelector("#table-user-list tbody");
             tbody.innerHTML = "";
@@ -78,34 +123,9 @@ export default class AdminConfigs {
                 tr.innerHTML = body;
                 tbody.appendChild(tr);
                 
-
             });
 
         });
-
-        User.getUserQtd().then(result=>{
-
-            document.querySelector("#users-count").innerHTML = result['qtde'];
-
-        });
-
-    }
-
-    /**
-     * Desativa todos os paineis e botões (Remove a classe 'active' e 'panel-active'). 
-     */
-    disablePanels(){
-
-        // Paineis
-        document.querySelectorAll(`.config-panel`).forEach(panel=>{
-            panel.classList.remove('panel-active');
-        });
-
-        // Botões 
-        document.querySelectorAll(`.button-panel`).forEach(button=>{
-            button.classList.remove('active');
-        });
-
 
     }
 

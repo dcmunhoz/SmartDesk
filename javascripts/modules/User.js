@@ -138,11 +138,24 @@ module.exports = {
 
     },
 
-    getUserList(){
+    getUserList(search = null){
 
         return new Promise((resolve, reject)=>{
 
-            fetch('/api/admin/users/list').then(result=>{
+            let data = {
+                search
+            }
+
+            console.log(JSON.stringify(data));
+
+            fetch('/api/admin/users/list', {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+
+            }).then(result=>{
 
                 if(result.ok){
                     return result.json();
@@ -163,8 +176,6 @@ module.exports = {
         return new Promise((resolve, reject)=>{
 
             fetch('/api/admin/users/qtd').then(result=>{
-
-                console.log(result);
 
                 if(result.ok){
                     return result.json();

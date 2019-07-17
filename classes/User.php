@@ -200,11 +200,13 @@ class User extends ClassModel{
     /**
      * Lista os usuários cadastrados
      */
-    public function listUsers(){
+    public function listUsers($search = null){
 
         $dao = new DB();
 
-        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user);");
+        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user) WHERE p.full_name like :search OR u.username like :search;", [
+            ":search"=>"%".$search."%"
+        ]);
 
         return $results;
 
