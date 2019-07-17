@@ -12,6 +12,7 @@ import Header from '../utils/HeaderEvents';
 import Home   from '../imports/Home';
 import NewTicket from '../imports/NewTicket';
 import TicketDetails from '../imports/TicketDetails';
+import AdminSignin from '../imports/AdminSignin';
 
 
 export default class SmartDesk{
@@ -22,7 +23,7 @@ export default class SmartDesk{
         this._actualPage = (document.querySelector("#page")) ? document.querySelector("#page").dataset.page : null;
         
         // Paginas que estão na lista de exclusão, não executam o controller do Header.
-        let excludePages = ['Signup', 'Signin'];
+        let excludePages = ['Signup', 'Signin', 'AdminSignin'];
         if(!excludePages.includes(this._actualPage)){
             new Header();
         }
@@ -44,6 +45,9 @@ export default class SmartDesk{
                 break;
                 case 'TicketDetails':
                     new TicketDetails();
+                break;
+                case 'AdminSignin':
+                    new AdminSignin();
                 break;
             }
         }

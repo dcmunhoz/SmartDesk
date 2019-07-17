@@ -115,6 +115,33 @@ module.exports = {
 
         });
 
+    },
+
+    loginAdmin(body){
+
+        return new Promise((resolve, reject)=>{
+            
+            fetch('/admin/signin', {
+                method:'POST',
+                body
+            }).then(result=>{
+
+                if(result.ok){
+
+                    return result.json();
+
+                }
+
+                reject();
+
+            }).then(data=>{
+
+                resolve(data);
+
+            });
+            
+        });
+
     }
 
 }

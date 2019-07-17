@@ -20,9 +20,15 @@ $app->get("/admin", function(){
 // Pagina login do admin.
 $app->get("/admin/signin", function(){
 
-    $view = new View(true, false, false);
+    $view = new View(false, false, false);
 
-    $view->draw("signin-admin");
+    $view->draw("admin-signin");
+
+});
+
+$app->post("/admin/signin", function(ServerRequestInterface $req, ResponseInterface $res){
+
+    return $res->withJson(['msg', 'Rota Ok !']);
 
 });
 
