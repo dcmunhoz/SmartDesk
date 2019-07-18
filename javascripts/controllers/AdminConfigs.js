@@ -7,6 +7,7 @@
 // Utilitários & Módulos
 const Prototype = require('./../utils/Prototypes');
 const User      = require('./../modules/User');
+const Company   = require('./../modules/Company');
 
 export default class AdminConfigs {
 
@@ -39,6 +40,8 @@ export default class AdminConfigs {
                 switch(target){
                     case 'users':
                         this.loadUsersList();
+                    case 'companies':
+                        this.loadCompaniesList();
                 }
 
             });
@@ -51,10 +54,23 @@ export default class AdminConfigs {
      */
     initUserConfigEvents(){
 
-        document.querySelector("#search").on('keyup', e=>{
+        document.querySelector("#search-user").on('keyup', e=>{
 
             this.getUsers(e.target.value);
 
+        });
+
+    }
+
+    /**
+     * Eventos da tela de configuração de empresas.
+     */
+    initCompaniesConfigEvents(){
+
+        document.querySelector("#search-company").on('keyup', e=>{
+        
+            this.getCompanies(e.target.value);
+            
         });
 
     }
@@ -78,6 +94,22 @@ export default class AdminConfigs {
 
     }
 
+    loadCompaniesList(){
+
+        // Lista de Empresas.
+        this.getCompanies();
+
+        // Quantidade de empresas cadastradas.
+        Company.getQuantity().then(result=>{
+
+            document.querySelector("#companies-quantity").innerHTML = result['qtde'];
+
+        });
+
+        this.initCompaniesConfigEvents();
+
+    }
+
     /**
      * Desativa todos os paineis e botões (Remove a classe 'active' e 'panel-active'). 
      */
@@ -96,6 +128,13 @@ export default class AdminConfigs {
 
     }
 
+    /**
+     * 
+     * @param {string} search Usuário pesquisado.
+     * 
+     * Retorna a lsita de usuários.
+     *  
+     */
     getUsers(search){
         User.getUserList(search).then(result=>{
 
@@ -108,10 +147,48 @@ export default class AdminConfigs {
                 tr.dataset.id = row['id_user'];
 
                 let body = `
-                <tr>
                     <td>${row['id_user']}</td>
                     <td>${row['full_name']}</td>
                     <td>${row['username']}</td>
+                    <td>
+                        <div class="option-buttons">
+                            <a href=""> <i class="fas fa-edit"></i> </a>
+                        </div>
+                    </td>
+                `;
+
+                tr.innerHTML = body;
+                tbody.appendChild(tr);
+                
+            });
+
+        });
+
+    }
+
+    /**
+     * 
+     * @param {String} search Empresa pesquisada.
+     * 
+     * Retorna a lista de empresas.
+     * 
+     */
+    getCompanies(search){
+
+        Company.getCompanies(search).then(result=>{
+
+            let tbody = document.querySelector("#table-companies-list tbody");
+            tbody.innerHTML = "";
+
+            [...result].forEach(row=>{
+
+                let tr = document.createElement("tr");
+                tr.dataset.id = row['id_company'];
+
+                let body = `
+                <tr>
+                    <td>${row['id_company']}</td>
+                    <td>${row['company_name']}</td>
                     <td>
                         <div class="option-buttons">
                             <a href=""> <i class="fas fa-edit"></i> </a>
@@ -122,7 +199,7 @@ export default class AdminConfigs {
 
                 tr.innerHTML = body;
                 tbody.appendChild(tr);
-                
+
             });
 
         });

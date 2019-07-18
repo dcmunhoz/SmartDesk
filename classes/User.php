@@ -204,7 +204,7 @@ class User extends ClassModel{
 
         $dao = new DB();
 
-        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user) WHERE p.full_name like :search OR u.username like :search;", [
+        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user) WHERE p.full_name like :search OR u.username like :search ORDER BY p.full_name; ", [
             ":search"=>"%".$search."%"
         ]);
 

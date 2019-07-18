@@ -37,11 +37,11 @@
                                     <button class="btn btn-ok"><i class="fas fa-user-plus"></i> Novo</button>
                                 </div>
                                 <div class="search-user-field">
-                                    <div id="input-search-user">
-                                        <label for="search">
+                                    <div id="input-search-user" class="input-search">
+                                        <label for="search-user">
                                             <i class="fas fa-search"></i>
                                         </label>
-                                        <input type="text" id="search" name="search" placeholder="Pesquisar...">
+                                        <input type="text" id="search-user" name="search-user" placeholder="Pesquisar...">
                                     </div>
                                 </div>
                             </div>
@@ -82,16 +82,26 @@
                 </header>
                 
                 <div class="panel-header-subtitle">
-                    <span>1 empresa encontrada</span>
+                    <span id="companies-quantity"></span> empresa cadastrada
                 </div>
             </div>
             
             <div class="panel-table">
                 <div class="table-list" data-simplebar>
-                    <table>
+                    <table id="table-companies-list">
                         <caption>
-                            <div class="buttons-table">
-                                <button class="btn btn-ok"><i class="fas fa-plus-square"></i> Novo</button>
+                            <div class="table-caption">
+                                <div class="buttons-table">
+                                    <button class="btn btn-ok"><i class="fas fa-user-plus"></i> Novo</button>
+                                </div>
+                                <div class="search-user-field">
+                                    <div id="input-search-company" class="input-search">
+                                        <label for="search-company">
+                                            <i class="fas fa-search"></i>
+                                        </label>
+                                        <input type="text" id="search-company" name="search-company" placeholder="Pesquisar...">
+                                    </div>
+                                </div>
                             </div>
                         </caption>
                         <thead>
@@ -104,7 +114,7 @@
         
                         <tbody>
         
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>Empresa</td>
                                 <td>
@@ -112,7 +122,7 @@
                                         <a href=""> <i class="fas fa-edit"></i> </a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
         
                         </tbody>
                     </table>

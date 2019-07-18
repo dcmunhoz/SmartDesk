@@ -117,6 +117,13 @@ module.exports = {
 
     },
 
+    /**
+     * 
+     * @param {object} body Objeto com dados para login
+     * 
+     * Login na administração
+     *  
+     */
     loginAdmin(body){
 
         return new Promise((resolve, reject)=>{
@@ -138,6 +145,13 @@ module.exports = {
 
     },
 
+    /**
+     * 
+     * @param {string} search pesquisa de usuário. 
+     * 
+     * Retorna a lista de usuários.
+     * 
+     */
     getUserList(search = null){
 
         return new Promise((resolve, reject)=>{
@@ -145,8 +159,6 @@ module.exports = {
             let data = {
                 search
             }
-
-            console.log(JSON.stringify(data));
 
             fetch('/api/admin/users/list', {
                 headers: {
@@ -171,6 +183,11 @@ module.exports = {
 
     },
 
+    /**
+     * 
+     * Quantidade de usuários
+     * 
+     */
     getUserQtd(){
 
         return new Promise((resolve, reject)=>{
