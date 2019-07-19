@@ -8,10 +8,11 @@
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use App\User;
 use App\Model\DB;
+use App\User;
 use App\Ticket;
 use App\Company;
+use App\Local;
 
 
 $app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInterface $res){
@@ -204,6 +205,30 @@ $app->get('/api/admin/companies/quantity', function($req, ResponseInterface $res
     $company = new Company();
 
     $result = $company->getQuantity();
+
+    return $res->withJson($result);
+
+});
+
+$app->post('/api/admin/locals/list', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+
+    $local = new Local();
+
+    $result = $local->getLocals($req->getParsedBody()['search']);
+
+    return $res->withJson($result);
+
+});
+
+$app->get('/api/admin/locals/quantity', function($req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $local = new Local();
+
+    $result = $local->getQuantity();
 
     return $res->withJson($result);
 

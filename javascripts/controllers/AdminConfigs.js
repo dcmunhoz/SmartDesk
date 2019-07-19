@@ -8,6 +8,7 @@
 const Prototype = require('./../utils/Prototypes');
 const User      = require('./../modules/User');
 const Company   = require('./../modules/Company');
+const Locals    = require('./../modules/Locals');
 
 export default class AdminConfigs {
 
@@ -40,8 +41,13 @@ export default class AdminConfigs {
                 switch(target){
                     case 'users':
                         this.loadUsersList();
+                    break;
                     case 'companies':
                         this.loadCompaniesList();
+                    break;
+                    case 'locals':
+                        this.loadLocalsList();
+                    break;
                 }
 
             });
@@ -76,6 +82,19 @@ export default class AdminConfigs {
     }
 
     /**
+     * Eventos da tela de configuração de locais.
+     */
+    initLocalsEvents(){
+
+        document.querySelector("#search-local").on('keyup', e=>{
+
+            this.getLocals(e.target.value);
+
+        });
+
+    }
+
+    /**
      * Carrega a lista de usuários
      */
     loadUsersList(){
@@ -94,6 +113,9 @@ export default class AdminConfigs {
 
     }
 
+    /**
+     * Carrega as companias.
+     */
     loadCompaniesList(){
 
         // Lista de Empresas.
@@ -107,6 +129,26 @@ export default class AdminConfigs {
         });
 
         this.initCompaniesConfigEvents();
+
+    }
+
+    /**
+     * Carrega a lista de locais.
+     */
+    loadLocalsList(){
+
+        // Lista
+        this.getLocals();
+
+        // Quantidade
+        Locals.getQuantity().then(result=>{
+
+            document.querySelector("#locals-quantity").innerHTML = result['qtde'];
+
+        });
+
+        
+        this.initLocalsEvents();
 
     }
 
@@ -198,6 +240,46 @@ export default class AdminConfigs {
                 `;
 
                 tr.innerHTML = body;
+                tbody.appendChild(tr);
+
+            });
+
+        });
+
+    }
+
+    /**
+     * 
+     * @param {String} search Local pesquisado.
+     * 
+     * Retorna a lista dos locais.
+     *  
+     */
+    getLocals(search){
+
+        Locals.getLocals(search).then(result=>{
+
+            
+            let tbody = document.querySelector("#table-list-locals tbody");
+            tbody.innerHTML = "";
+
+            [...result].forEach(row=>{
+
+                let tr = document.createElement('tr');
+                tr.dataset.id = row['id_place'];
+
+                let body = `
+                    <td>${row['id_place']}</td>
+                    <td>${row['local_name']}</td>
+                    <td>
+                        <div class="option-buttons">
+                            <a href=""> <i class="fas fa-edit"></i> </a>
+                        </div>
+                    </td>
+                `;
+
+                tr.innerHTML = body;
+
                 tbody.appendChild(tr);
 
             });
