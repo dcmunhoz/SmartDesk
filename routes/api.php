@@ -13,6 +13,7 @@ use App\User;
 use App\Ticket;
 use App\Company;
 use App\Local;
+use App\Sector;
 
 
 $app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInterface $res){
@@ -229,6 +230,30 @@ $app->get('/api/admin/locals/quantity', function($req, ResponseInterface $res){
     $local = new Local();
 
     $result = $local->getQuantity();
+
+    return $res->withJson($result);
+
+});
+
+$app->post('/api/admin/sectors/list', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin();
+
+    $sector = new Sector();
+
+    $result = $sector->getSectors($req->getParsedBody()['search']);
+
+    return $res->withJson($result);
+
+});
+
+$app->get('/api/admin/sectors/quantity', function($req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $sector = new Sector();
+
+    $result = $sector->getQuantity();
 
     return $res->withJson($result);
 

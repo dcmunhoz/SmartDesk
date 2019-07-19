@@ -194,16 +194,26 @@
                 </header>
                 
                 <div class="panel-header-subtitle">
-                    <span>1 setor encontrados</span>
+                    <span id="sectors-quantity">0</span> setor encontrados
                 </div>
             </div>
             
             <div class="panel-table">
                 <div class="table-list" data-simplebar>
-                    <table>
+                    <table id="table-list-sectors">
                         <caption>
-                            <div class="buttons-table">
-                                <button class="btn btn-ok"><i class="fas fa-plus-square"></i> Novo</button>
+                            <div class="table-caption">
+                                <div class="buttons-table">
+                                    <button class="btn btn-ok"><i class="fas fa-user-plus"></i> Novo</button>
+                                </div>
+                                <div class="search-user-field">
+                                    <div id="input-search-sector" class="input-search">
+                                        <label for="search-sector">
+                                            <i class="fas fa-search"></i>
+                                        </label>
+                                        <input type="text" id="search-sector" name="search-sector" placeholder="Pesquisar...">
+                                    </div>
+                                </div>
                             </div>
                         </caption>
                         <thead>
@@ -216,7 +226,7 @@
         
                         <tbody>
         
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>Setor</td>
                                 <td>
@@ -224,7 +234,7 @@
                                         <a href=""> <i class="fas fa-edit"></i> </a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
         
                         </tbody>
                     </table>

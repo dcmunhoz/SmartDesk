@@ -9,6 +9,7 @@ const Prototype = require('./../utils/Prototypes');
 const User      = require('./../modules/User');
 const Company   = require('./../modules/Company');
 const Locals    = require('./../modules/Locals');
+const Sector    = require('./../modules/Sector');
 
 export default class AdminConfigs {
 
@@ -18,7 +19,6 @@ export default class AdminConfigs {
 
         this.initEvents();
         
-
     }
 
     initEvents(){
@@ -47,6 +47,9 @@ export default class AdminConfigs {
                     break;
                     case 'locals':
                         this.loadLocalsList();
+                    break;
+                    case 'sectors':
+                        this.loadSectorsList();
                     break;
                 }
 
@@ -89,6 +92,19 @@ export default class AdminConfigs {
         document.querySelector("#search-local").on('keyup', e=>{
 
             this.getLocals(e.target.value);
+
+        });
+
+    }
+
+    /**
+     * Eventos da tela de configuração de setores.
+     */
+    initSectorsEvents(){
+
+        document.querySelector("#search-sector").on('keyup', e=>{
+
+            this.getSectors(e.target.value);
 
         });
 
@@ -150,6 +166,25 @@ export default class AdminConfigs {
         
         this.initLocalsEvents();
 
+    }
+
+    /**
+     * Carrega a lista de setores.
+     */
+    loadSectorsList(){
+
+            // Lista
+            this.getSectors();
+
+            // Quantidade
+            Sector.getQuantity().then(result=>{
+    
+                document.querySelector("#sectors-quantity").innerHTML = result['qtde'];
+    
+            });
+    
+            
+            this.initSectorsEvents();
     }
 
     /**
@@ -271,6 +306,46 @@ export default class AdminConfigs {
                 let body = `
                     <td>${row['id_place']}</td>
                     <td>${row['local_name']}</td>
+                    <td>
+                        <div class="option-buttons">
+                            <a href=""> <i class="fas fa-edit"></i> </a>
+                        </div>
+                    </td>
+                `;
+
+                tr.innerHTML = body;
+
+                tbody.appendChild(tr);
+
+            });
+
+        });
+
+    }
+
+    /**
+     * 
+     * @param {String} search setor pesquisado.
+     * 
+     * Retorna a lista dos setores.
+     *  
+     */
+    getSectors(search){
+
+        Sector.getSectors(search).then(result=>{
+
+            
+            let tbody = document.querySelector("#table-list-sectors tbody");
+            tbody.innerHTML = "";
+
+            [...result].forEach(row=>{
+
+                let tr = document.createElement('tr');
+                tr.dataset.id = row['id_place'];
+
+                let body = `
+                    <td>${row['id_sector']}</td>
+                    <td>${row['sector_name']}</td>
                     <td>
                         <div class="option-buttons">
                             <a href=""> <i class="fas fa-edit"></i> </a>
