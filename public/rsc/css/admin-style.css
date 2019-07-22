@@ -518,3 +518,79 @@ table tbody tr:hover{
     font-size: 40px;
     color: rgb(219, 219, 219);
 }
+
+
+.main-content{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.center-panel{
+
+    border-top: 3px solid rgb(0, 162, 255);
+    background-color: #FFF;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.center-panel .main-panel{
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.main-panel section form{
+    width: 40%;
+}
+
+.main-panel header{
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    flex-grow: 0;
+    border-bottom: 2px solid rgb(216, 216, 216);
+
+}
+
+.main-panel header p{
+    
+    color: #7a7a7a;
+
+}
+
+
+.main-panel section {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+}
+
+.main-panel section .form-content{
+    display: flex;
+    background-color: yellow;
+    height: 100%;
+    width: 100%;
+
+}
+
+.main-panel footer {
+    background-color: blue;
+}

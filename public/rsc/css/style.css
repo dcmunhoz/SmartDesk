@@ -166,6 +166,17 @@ form .form-group{
     transition: 300ms;
 }
 
+.form-group.form-one-line{
+    flex-direction: row;
+
+}
+
+.form-group.form-one-line input[type='checkbox']{
+
+    position: relative;
+    top: 4px;
+}
+
 .form-group.input-error > label{
     color: rgb(250, 95, 95);
 }

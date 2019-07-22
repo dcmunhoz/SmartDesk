@@ -30,7 +30,9 @@ select{
     overflow: none;
 } */
 
-input,
+input[type='text'],
+input[type='email'],
+input[type='password'],
 textarea,
 select{
     padding: 7px;
