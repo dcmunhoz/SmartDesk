@@ -2,6 +2,10 @@
     color: #47525E;
 } */
 
+a{
+    text-decoration: none;
+}
+
 #app-admin{
     width: 100%;
     height: 100%;

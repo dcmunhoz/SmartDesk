@@ -86,4 +86,15 @@ $app->get("/admin/configs", function(){
 
 });
 
+$app->get("/admin/user/new", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-user-new');
+
+
+});
+
 ?>
