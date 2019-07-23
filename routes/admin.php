@@ -140,4 +140,34 @@ $app->get("/admin/user/4", function(){
 
 });
 
+$app->get("/admin/company/4", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-company-update');
+
+});
+
+$app->get("/admin/place/4", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-place-update');
+
+});
+
+$app->get("/admin/sector/4", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-sector-update');
+
+});
+
 ?>
