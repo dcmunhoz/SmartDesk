@@ -119,4 +119,15 @@ $app->get("/admin/place/new", function(){
 
 });
 
+$app->get("/admin/sector/new", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-sector-new');
+
+
+});
+
 ?>
