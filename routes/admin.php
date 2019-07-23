@@ -97,4 +97,15 @@ $app->get("/admin/user/new", function(){
 
 });
 
+$app->get("/admin/company/new", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-company-new');
+
+
+});
+
 ?>

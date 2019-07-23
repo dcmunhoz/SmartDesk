@@ -530,9 +530,20 @@ table tbody tr:hover{
     
 }
 
-.center-panel{
+.center-panel.new{
 
     border-top: 3px solid #00a0d1;
+
+}
+
+.center-panel.update{
+
+    border-top: 3px solid #E34317;
+
+}
+
+.center-panel{
+
     display: flex;
     height: 100%;
     width: 100%;
