@@ -108,4 +108,15 @@ $app->get("/admin/company/new", function(){
 
 });
 
+$app->get("/admin/place/new", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-place-new');
+
+
+});
+
 ?>
