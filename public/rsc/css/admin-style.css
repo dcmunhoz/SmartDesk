@@ -331,6 +331,8 @@ table tbody tr:hover{
     color: #47525E;
  }
 
+ 
+
  .content .ticket-details .body-container{
      flex-grow: 1;
      display: flex;
@@ -522,34 +524,38 @@ table tbody tr:hover{
 
 .main-content{
 
+    display: flex;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;    
-    align-items: center;
-    justify-content: flex-end;
-
+    
 }
 
 .center-panel{
 
-    border-top: 3px solid rgb(0, 162, 255);
-    background-color: #FFF;
-    width: 100%;
-    height: 100%;
+    border-top: 3px solid #00a0d1;
     display: flex;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
-
 }
 
 .center-panel .main-panel{
 
+    background-color: #FFF;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    /* display: flex;
     width: 100%;
     height: 100%;
     flex-direction: column;
     box-sizing: border-box;
     padding: 5px;
+    background-color: red; */
 }
 
 .main-panel section form{
@@ -574,7 +580,7 @@ table tbody tr:hover{
 
 
 .main-panel section {
-    background-color: red;
+    
     height: 100%;
     width: 100%;
     display: flex;
@@ -585,12 +591,16 @@ table tbody tr:hover{
 
 .main-panel section .form-content{
     display: flex;
-    background-color: yellow;
     height: 100%;
     width: 100%;
+    position: absolute;
 
 }
 
 .main-panel footer {
-    background-color: blue;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
 }
