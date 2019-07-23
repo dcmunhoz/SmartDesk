@@ -229,7 +229,7 @@ export default class AdminConfigs {
                     <td>${row['username']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href=""> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/user/4"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;
@@ -268,7 +268,7 @@ export default class AdminConfigs {
                     <td>${row['company_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href=""> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/company/4"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 </tr>
@@ -308,7 +308,7 @@ export default class AdminConfigs {
                     <td>${row['local_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href=""> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/place/4"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;
@@ -348,7 +348,7 @@ export default class AdminConfigs {
                     <td>${row['sector_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href=""> <i class="fas fa-edit"></i> </a>
+                            <a href="admin/sector/4"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;

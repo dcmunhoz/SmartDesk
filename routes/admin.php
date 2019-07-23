@@ -130,4 +130,14 @@ $app->get("/admin/sector/new", function(){
 
 });
 
+$app->get("/admin/user/4", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-user-update');
+
+});
+
 ?>
