@@ -430,7 +430,7 @@ export default class AdminConfigs {
                     <td style="color:#${row['font_color']};">#${row['font_color']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/sector/4"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/priority/4"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;

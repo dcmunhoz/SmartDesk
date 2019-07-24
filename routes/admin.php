@@ -130,6 +130,17 @@ $app->get("/admin/sector/new", function(){
 
 });
 
+$app->get("/admin/priority/new", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-priority-new');
+
+
+});
+
 $app->get("/admin/user/4", function(){
 
     User::verifyLogin(true);
@@ -167,6 +178,16 @@ $app->get("/admin/sector/4", function(){
     $view = new View(true, false, false);
 
     $view->draw('admin-sector-update');
+
+});
+
+$app->get("/admin/priority/4", function(){
+
+    User::verifyLogin(true);
+
+    $view = new View(true, false, false);
+
+    $view->draw('admin-priority-update');
 
 });
 

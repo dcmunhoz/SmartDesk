@@ -47,6 +47,28 @@ select{
     width: 100%;
 }
 
+input[type='color']{
+    background-color: rgb(228, 228, 228);
+    border: 2px solid rgb(228, 228, 228);
+    width: 40px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    border-radius: 3px;
+}
+
+input[type='color']::before{
+    position: relative;
+    content: '⯆';
+    font-size: 18px;
+    box-sizing: border-box;
+    padding-top:2px;
+}
+
+input[type='color']:hover::before{
+    background-color: rgb(201, 201, 201);
+}
+
 input:focus,
 textarea:focus{
     border: 2px solid #0084ac;
