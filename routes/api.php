@@ -14,6 +14,7 @@ use App\Ticket;
 use App\Company;
 use App\Local;
 use App\Sector;
+use App\Priority;
 
 
 $app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInterface $res){
@@ -213,7 +214,7 @@ $app->get('/api/admin/companies/quantity', function($req, ResponseInterface $res
 
 $app->post('/api/admin/locals/list', function(ServerRequestInterface $req, ResponseInterface $res){
 
-    User::verifyLogin();
+    User::verifyLogin(true);
 
     $local = new Local();
 
@@ -237,7 +238,7 @@ $app->get('/api/admin/locals/quantity', function($req, ResponseInterface $res){
 
 $app->post('/api/admin/sectors/list', function(ServerRequestInterface $req, ResponseInterface $res){
 
-    User::verifyLogin();
+    User::verifyLogin(true);
 
     $sector = new Sector();
 
@@ -248,6 +249,30 @@ $app->post('/api/admin/sectors/list', function(ServerRequestInterface $req, Resp
 });
 
 $app->get('/api/admin/sectors/quantity', function($req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $sector = new Sector();
+
+    $result = $sector->getQuantity();
+
+    return $res->withJson($result);
+
+});
+
+$app->post('/api/admin/priorities/list', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $priority = new Priority();
+
+    $result = $priority->getPriorities($req->getParsedBody()['search']);
+
+    return $res->withJson($result);
+
+});
+
+$app->get('/api/admin/priorities/quantity', function($req, ResponseInterface $res){
 
     User::verifyLogin(true);
 

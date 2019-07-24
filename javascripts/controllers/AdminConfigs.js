@@ -10,6 +10,7 @@ const User      = require('./../modules/User');
 const Company   = require('./../modules/Company');
 const Locals    = require('./../modules/Locals');
 const Sector    = require('./../modules/Sector');
+const Priority    = require('./../modules/Priority');
 
 export default class AdminConfigs {
 
@@ -50,6 +51,9 @@ export default class AdminConfigs {
                     break;
                     case 'sectors':
                         this.loadSectorsList();
+                    break;
+                    case 'priorities':
+                        this.loadPrioritiesList();
                     break;
                 }
 
@@ -108,6 +112,24 @@ export default class AdminConfigs {
 
         });
 
+    }
+
+    /**
+     * Eventos da tela de configuração de prioridades.
+     */
+    initSectorsEvents(){
+
+        document.querySelector("#search-priority").on('keyup', e=>{
+
+            this.getPriorities(e.target.value);
+
+        });
+
+    }
+
+    initPrioritiesEvents(){
+
+        
     }
 
     /**
@@ -186,6 +208,25 @@ export default class AdminConfigs {
             
             this.initSectorsEvents();
     }
+
+        /**
+     * Carrega a lista de Priotidade.
+     */
+    loadPrioritiesList(){
+
+        // Lista
+        this.getPriorities();
+
+        // Quantidade
+        // Priority.getQuantity().then(result=>{
+
+        //     document.querySelector("#priorities-quantity").innerHTML = result['qtde'];
+
+        // });
+
+        
+        this.initPrioritiesEvents();
+}
 
     /**
      * Desativa todos os paineis e botões (Remove a classe 'active' e 'panel-active'). 
@@ -341,11 +382,52 @@ export default class AdminConfigs {
             [...result].forEach(row=>{
 
                 let tr = document.createElement('tr');
-                tr.dataset.id = row['id_place'];
+                tr.dataset.id = row['id_sector'];
 
                 let body = `
                     <td>${row['id_sector']}</td>
                     <td>${row['sector_name']}</td>
+                    <td>
+                        <div class="option-buttons">
+                            <a href="/admin/sector/4"> <i class="fas fa-edit"></i> </a>
+                        </div>
+                    </td>
+                `;
+
+                tr.innerHTML = body;
+
+                tbody.appendChild(tr);
+
+            });
+
+        });
+
+    }
+
+        /**
+     * 
+     * @param {String} search prioridade pesquisado.
+     * 
+     * Retorna a lista das prioridades.
+     *  
+     */
+    getPriorities(search){
+
+        Priority.getPriorities(search).then(result=>{
+
+            
+            let tbody = document.querySelector("#table-list-priorities tbody");
+            tbody.innerHTML = "";
+
+            [...result].forEach(row=>{
+
+                let tr = document.createElement('tr');
+                tr.dataset.id = row['id_priority'];
+
+                let body = `
+                    <td>${row['id_priority']}</td>
+                    <td>${row['priority_name']}</td>
+                    <td style="color:#${row['font_color']};">#${row['font_color']}</td>
                     <td>
                         <div class="option-buttons">
                             <a href="/admin/sector/4"> <i class="fas fa-edit"></i> </a>
