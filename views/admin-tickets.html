@@ -8,17 +8,17 @@
         </header>
         <ul>
             <li>
-                <a href="">
+                <a class="btn-switch-panel" data-target="all">
                     <span>Todos os tickets</span> <span>60</span>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a class="btn-switch-panel" data-target="assign-me">
                     <span>Seus tickets</span> <span>11</span>
                 </a>
             </li>
             <li >
-                <a href="" class="no-assignment-button">
+                <a class=" btn-switch-panel no-assignment-button" data-target="no-assign">
                     <span>Tickets sem atribuição</span> <span>4</span>
                 </a>
             </li>
@@ -27,380 +27,1109 @@
 
     <div class=" content-main-panel tickets-panel">
 
-        <div class=" header-container ticket-list-header-container">
-            <header class="ticket-list-header">
-                <div class="ticket-option-selected">
-                    <h1>Todos os Tickets</h1>
-                </div>
-                <div class="ticket-qtd">
-                    <span id="ticket-qtd">60</span> Tickets
-                </div>
-            </header>
-        </div>
-        
-        <div class="ticket-list-container" id="ticket-list-container">
-            <div class="ticket-list" id="ticket-list" data-simplebar>
-                <table cellspacing="0px;">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>ID</th>
-                            <th>Titulo</th>
-                            <th>Solicitante</th>
-                            <th>Atribuição</th>
-                            <th>Abertura</th>
-                            <th>Prioridade</th>
-                            <th>Ultima Alteração</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        <tr>
-                            <td> <a id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
-                            <td>#2058</td>
-                            <td>Lorem impsum dolor ammet !</td>
-                            <td>Eduardo</td>
-                            <td>-</td>
-                            <td>25/05/2019</td>
-                            <td>Alta</td>
-                            <td>25/05/2019</td>
-                        </tr>
-                        
+        <div class="target-panel panel-active" id="tickets-all">
+            <div class=" header-container ticket-list-header-container">
+                <header class="ticket-list-header">
+                    <div class="ticket-option-selected">
+                        <h1>Todos os Tickets</h1>
+                    </div>
+                    <div class="ticket-qtd">
+                        <span id="ticket-qtd">60</span> Tickets
+                    </div>
+                </header>
+            </div>
+            
+            <div class="ticket-list-container" id="ticket-list-container">
 
-                    </tbody>
-                </table>
+                <div class="ticket-list" id="ticket-list" data-simplebar>
+                    <table cellspacing="0px;">
+                        <caption>
+                                            
+                            <div class="tickets-list-header search-options" >
+
+                                <div class="form-group">
+                                    <label for="">Status:</label>
+                                    <select name="" id="">
+                                        <option value="">--</option>
+                                    </select>
+                                </div>
+            
+                            </div>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>Titulo</th>
+                                <th>Solicitante</th>
+                                <th>Atribuição</th>
+                                <th>Abertura</th>
+                                <th>Prioridade</th>
+                                <th>Ultima Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
+        <div class="target-panel" id="tickets-assign-me">
+            <div class=" header-container ticket-list-header-container">
+                <header class="ticket-list-header">
+                    <div class="ticket-option-selected">
+                        <h1>Seus Tickets</h1>
+                    </div>
+                    <div class="ticket-qtd">
+                        <span id="ticket-qtd">10</span> Tickets
+                    </div>
+                </header>
+            </div>
+            
+            <div class="ticket-list-container" id="ticket-list-container">
+
+                <div class="ticket-list" id="ticket-list" data-simplebar>
+                    <table cellspacing="0px;">
+                        <caption>
+                                            
+                            <div class="tickets-list-header search-options" >
+
+                                <div class="form-group">
+                                    <label for="">Status:</label>
+                                    <select name="" id="">
+                                        <option value="">--</option>
+                                    </select>
+                                </div>
+            
+                            </div>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>Titulo</th>
+                                <th>Solicitante</th>
+                                <th>Atribuição</th>
+                                <th>Abertura</th>
+                                <th>Prioridade</th>
+                                <th>Ultima Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="target-panel" id="tickets-no-assign">
+            <div class=" header-container ticket-list-header-container">
+                <header class="ticket-list-header">
+                    <div class="ticket-option-selected">
+                        <h1>Tickets sem atribuição</h1>
+                    </div>
+                    <div class="ticket-qtd">
+                        <span id="ticket-qtd">60</span> Tickets
+                    </div>
+                </header>
+            </div>
+            
+            <div class="ticket-list-container" id="ticket-list-container">
+
+                <div class="ticket-list" id="ticket-list" data-simplebar>
+                    <table cellspacing="0px;">
+                        <caption>
+                                            
+                            <div class="tickets-list-header search-options" >
+
+                                <div class="form-group">
+                                    <label for="">Status:</label>
+                                    <select name="" id="">
+                                        <option value="">--</option>
+                                    </select>
+                                </div>
+            
+                            </div>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>Titulo</th>
+                                <th>Solicitante</th>
+                                <th>Atribuição</th>
+                                <th>Abertura</th>
+                                <th>Prioridade</th>
+                                <th>Ultima Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                            <tr>
+                                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> </td>
+                                <td>#2058</td>
+                                <td><span class="status-ticket status-open">Aberto</span></td>
+                                <td>Lorem impsum dolor ammet !</td>
+                                <td>Eduardo</td>
+                                <td>-</td>
+                                <td>25/05/2019</td>
+                                <td>Alta</td>
+                                <td>25/05/2019</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
 
