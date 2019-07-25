@@ -192,6 +192,47 @@ class Ticket extends ClassModel{
 
     }
 
+    /**
+     * 
+     * Retorna os dados da quantidade de tickets para a pagina inicial dos tickets.
+     * 
+     */
+    public function getTicketPageData(){
+
+        $dao = new DB();
+        $user = new User();
+
+        $query = "
+            select (
+
+                # Todos os tickets.
+                select count(*) from tb_tickets
+
+            ) as 'all', (
+
+                # Tickets atribuidos ao adm.
+                select count(*) from tb_tickets t
+                join tb_ticket_assignment ta using(id_ticket)
+                where ta.id_user = :id_user
+
+            ) as 'assign-me', (
+
+                # Tickets sem atribuição.
+                select count(distinct ta.id_ticket) from tb_tickets t
+                join tb_ticket_assignment ta using(id_ticket)
+
+            ) as 'no-assign';
+        ";
+
+
+        $result = $dao->exec($query, [
+            ":id_user" => $user->getid_user()
+        ]);
+
+        return $result[0];
+
+    }
+
 }
 
 ?>

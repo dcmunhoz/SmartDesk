@@ -87,6 +87,28 @@ module.exports = {
             });
         });
 
+    },
+
+    // Pega os dados inicais da pagina de tickets
+    getPageData(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/admin/ticket-page-data').then(result=>{
+
+                if(result.ok){
+                    return result.json();
+                }
+
+                reject();
+            }).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
+
     }
 
 }

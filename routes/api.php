@@ -284,4 +284,16 @@ $app->get('/api/admin/priorities/quantity', function($req, ResponseInterface $re
 
 });
 
+$app->get('/api/admin/ticket-page-data', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+    
+    $ticket = new Ticket();
+
+    $result = $ticket->getTicketPageData();
+
+    return $res->withJson($result);
+
+});
+
 ?>

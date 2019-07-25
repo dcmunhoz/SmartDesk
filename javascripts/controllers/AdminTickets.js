@@ -15,6 +15,8 @@ export default class AdminTickets{
         Prototype.initElementsPrototypes();
 
         this.initEvents();
+        this.loadInitialDatas();
+        this.loadAllTicketsList();
 
     }
 
@@ -28,6 +30,10 @@ export default class AdminTickets{
                 let target = btn.dataset.target;
 
                 this.switchPanel(target);
+                switch(target){
+                    case 'all':
+                        this.loadAllTicketsList();
+                }
 
             });
 
@@ -36,18 +42,50 @@ export default class AdminTickets{
 
     }
 
+    /**
+     * 
+     * @param {String} target Nome do painel para exibir.
+     * 
+     * Exibe o painel de tickets selecionado para o usuário.
+     *  
+     */
     switchPanel(target){
         this.disablePanels();
         document.querySelector(`#tickets-${target}`).classList.add('panel-active');
 
     }
 
+    /**
+     * Desativa todos os paineis de ticket.
+     */
     disablePanels(){
         document.querySelectorAll(".target-panel").forEach(panel=>{
 
             panel.classList.remove('panel-active');
 
         });
+    }
+
+
+    loadInitialDatas(){
+
+        Ticket.getPageData().then(result=>{
+
+            document.querySelector("#all-tickets-button-qtt").innerHTML = result['all'];
+            document.querySelector("#assign-me-tickets-button-qtt").innerHTML = result['assign-me'];
+            document.querySelector("#no-assign-tickets-button-qtt").innerHTML = result['no-assign'];
+            document.querySelector("#all-tickets-panel-qtt").innerHTML = result['all'];
+            document.querySelector("#assign-me-tickets-panel-qtt").innerHTML = result['assign-me'];
+            document.querySelector("#no-assign-tickets-panel-qtt").innerHTML = result['no-assign'];
+
+        });
+
+    }
+
+    loadAllTicketsList(){
+        
+        
+
     }
 
 }
