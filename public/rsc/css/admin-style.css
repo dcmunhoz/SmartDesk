@@ -271,6 +271,15 @@ background-color: #b8b8b8;
     padding: 0 10px;
     display: flex;
 
+
+}
+
+.tickets-list-header .input-search{
+    
+    height: 38px;
+    position: relative;
+    top: 15px;
+    margin-left: 20px;
 }
 
 table{
@@ -503,6 +512,7 @@ table tbody tr:hover{
 
 .input-search{
     display: flex;
+    flex-grow: 1;
     flex-direction: row;
     border: 2px solid #e7e7e7;
     border-radius: 5px;

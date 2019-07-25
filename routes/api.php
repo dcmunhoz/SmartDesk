@@ -296,4 +296,29 @@ $app->get('/api/admin/ticket-page-data', function(ServerRequestInterface $req, R
 
 });
 
+$app->get('/api/admin/tickets/list/all', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $ticket = new Ticket();
+
+    $data = $ticket->getAll();
+
+    return $res->withJson($data);
+
+});
+
+$app->get('/api/admin/tickets/list/assign-me', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $ticket = new Ticket();
+
+    $data = $ticket->getAssignMe();
+
+    return $res->withJson($data);
+
+});
+
+
 ?>

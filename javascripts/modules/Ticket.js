@@ -109,6 +109,57 @@ module.exports = {
 
         });
 
+    },
+
+    // Retorna todos os tickets para o admin
+    getAllTicketsList(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/admin/tickets/list/all').then(result=>{
+
+                if(result.ok){
+
+                    return result.json();
+
+                }
+
+                reject();
+
+            }).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
+        
+    },
+
+    // Retorna somente os tickets atribuidos para o admin logado
+    getAssignMeTicketsList(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/admin/tickets/list/assign-me').then(result=>{
+
+                if(result.ok){
+
+                    return result.json();
+
+                }
+
+                reject();
+
+            }).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
+
+
     }
 
 }

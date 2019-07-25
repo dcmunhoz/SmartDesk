@@ -1,3 +1,5 @@
+import { type } from 'os';
+
 /**
  * 
  * Controller que gerencia a pagina geral de tickets.
@@ -7,6 +9,7 @@
 // Utilitários & Módulos
 const Prototype = require('./../utils/Prototypes');
 const Ticket    = require('./../modules/Ticket');
+const Utils     = require('./../utils/Utils');
 
 export default class AdminTickets{
 
@@ -16,7 +19,7 @@ export default class AdminTickets{
 
         this.initEvents();
         this.loadInitialDatas();
-        this.loadAllTicketsList();
+        this.loadLists();
 
     }
 
@@ -30,15 +33,24 @@ export default class AdminTickets{
                 let target = btn.dataset.target;
 
                 this.switchPanel(target);
-                switch(target){
-                    case 'all':
-                        this.loadAllTicketsList();
-                }
 
             });
 
         });
 
+
+    }
+
+    /**
+     * 
+     * Carrega todas as listas de tickets ao abrir a pagina.
+     * 
+     */
+    loadLists(){
+
+        this.loadAllTicketsList();
+        this.loadAssignMeTicketsList();
+        this.loadNoAssignTicketsList();
 
     }
 
@@ -84,8 +96,96 @@ export default class AdminTickets{
 
     loadAllTicketsList(){
         
-        
+        this.getAllTicketsList();
 
     }
+
+    loadAssignMeTicketsList(){
+
+        this.getAssignMeTicketsList();
+
+    }
+
+    loadNoAssignTicketsList(){
+
+
+    }
+
+    getAllTicketsList(){
+
+        Ticket.getAllTicketsList().then(result=>{
+
+            this.setTableData('table-all-tickets', result);
+            
+
+        }).catch(err=>{
+
+
+            
+        });
+
+    }
+
+    getAssignMeTicketsList(){
+
+        // Ticket.getAssignMeTicketsList().then(result=>{
+
+        //     this.setTableData('table-all-tickets', result);
+            
+
+        // }).catch(err=>{
+
+
+            
+        // });
+
+    }
+
+
+    /**
+     * 
+     * @param {String} tableId Nome da tabela que serão exibido os dados.
+     * @param {Object} result  Objeto com os dados da consulta ao banco de dados.
+     * 
+     * Seta os dados na tabela informada.
+     * 
+     */
+    setTableData(tableId, result){
+        
+        let tbody = document.querySelector(`#${tableId} tbody`);
+        tbody.innerHTML = "";
+
+        [...result].forEach(row=>{
+            let tr = document.createElement('tr');
+            tr.dataset.id_ticket = row['id_ticket'];
+            console.log(tr);
+
+            let ticketStatusClassName = "";
+            switch(row['status_name']){
+                case 'Aberto':
+                    ticketStatusClassName = 'open';
+            }
+
+            let trBody = `
+                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href="/api/admin/ticket/assign-me/${row['id_ticket']}"><i class="fas fa-arrow-circle-down"></i></a> </td>
+                <td>#${row['id_ticket']}</td>
+                <td><span class="status-ticket status-${ticketStatusClassName}">${row['status_name']}</span></td>
+                <td>${row['ticket_title']}</td>
+                <td>${row['full_name']}</td>
+                <td>-</td>
+                <td>${Utils.dateFormat( new Date(row['dt_creation']) )}</td>
+                <td style="color: #${row['font_color']};" >${row['priority_name']}</td>
+                <td>${Utils.dateFormat( new Date(row['dt_updates']) )}</td>
+            `;
+
+            tr.innerHTML = trBody;
+            tbody.appendChild(tr);
+
+
+        });
+
+    }
+
+
 
 }
