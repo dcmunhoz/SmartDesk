@@ -143,13 +143,15 @@ module.exports = {
 
             fetch('/api/admin/tickets/list/assign-me').then(result=>{
 
+                console.log(result);
+
                 if(result.ok){
 
                     return result.json();
 
                 }
 
-                reject();
+                reject(result);
 
             }).then(data=>{
 

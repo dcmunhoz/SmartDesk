@@ -709,19 +709,19 @@ table, tr, td, th{
     color: #4f565f;
 }
 
-
-.tickets-table .no-tickets{
+.no-tickets{
     border:none !important;
     font-size: 18px;
-    color:#a7a7a7;
-    font-style: italic;
+    font-style: italic !important;
 
 }
 
-.tickets-table .no-tickets td{
+.no-tickets td{
     cursor: default;
     border-bottom: 1px solid #FFF;
-    background-color: #FFF;
+    background-color:#FFF !important;
+    text-align: left !important;
+    color:#a7a7a7 !important;
 }
 
 

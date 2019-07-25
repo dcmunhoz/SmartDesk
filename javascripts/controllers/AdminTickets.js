@@ -128,16 +128,16 @@ export default class AdminTickets{
 
     getAssignMeTicketsList(){
 
-        // Ticket.getAssignMeTicketsList().then(result=>{
+        Ticket.getAssignMeTicketsList().then(result=>{
 
-        //     this.setTableData('table-all-tickets', result);
+            this.setTableData('table-assign-me-tickets', result);
             
 
-        // }).catch(err=>{
-
-
+        }).catch(err=>{
+            console.log(err);
+            this.setTableNoData('table-assign-me-tickets');
             
-        // });
+        });
 
     }
 
@@ -158,7 +158,6 @@ export default class AdminTickets{
         [...result].forEach(row=>{
             let tr = document.createElement('tr');
             tr.dataset.id_ticket = row['id_ticket'];
-            console.log(tr);
 
             let ticketStatusClassName = "";
             switch(row['status_name']){
@@ -186,6 +185,24 @@ export default class AdminTickets{
 
     }
 
+    setTableNoData(tableId){
+
+        let tbody = document.querySelector(`#${tableId} tbody`);
+        tbody.innerHTML = "";
+
+        let tr = document.createElement('tr');
+        tr.classList.add('no-tickets');
+
+        let inner = `
+
+            <td colspan="9">... Você não tem nenhum ticket atribuido.</td>
+
+        `;
+
+        tr.innerHTML = inner;
+        tbody.appendChild(tr);
+
+    }
 
 
 }

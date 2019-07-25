@@ -316,6 +316,10 @@ $app->get('/api/admin/tickets/list/assign-me', function(ServerRequestInterface $
 
     $data = $ticket->getAssignMe();
 
+    if (count($data) == 0) {
+        return $res->withStatus(500);
+    }
+
     return $res->withJson($data);
 
 });

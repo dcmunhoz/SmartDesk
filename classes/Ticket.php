@@ -92,47 +92,10 @@ class Ticket extends ClassModel{
             SELECT * FROM tb_tickets t
             JOIN tb_status s USING(id_status)
             JOIN tb_priorities pr USING(id_priority)
-            JOIN tb_users u USING(id_user)
-            JOIN tb_persons p ON p.id_user = u.id_user
-            LEFT JOIN tb_ticket_assignment ta ON u.id_user = ta.id_user
+            JOIN tb_persons p ON p.id_user = t.id_user
+            JOIN tb_ticket_assignment ta USING(id_ticket)
             WHERE ta.id_user = :id_user
         ";
-
-        // $where = "WHERE ";
-        // $filter = "";
-        // $bind = [];
-
-
-
-        // if ($this->searchFilters !== NULL) {
-    
-            
-        //     if(count($this->searchFilters) > 1){
-        //         foreach ($this->searchFilters as $key => $value) {
-                
-        //             $filter .= " $value = :$value AND ";
-
-        //             $bind[":$value"] = $this->bindParams[$key];
-                    
-        //         }
-
-        //         $filter = \substr($filter, 0, \strlen($filter) - 4 );
-
-        //     }else{
-
-        //         $search = $this->searchFilters[0];
-
-        //         $bind[":$search"] = $this->bindParams[0];
-
-        //         $filter .= " $search = :$search ";
-
-        //     }
-
-        //     $where .= $filter;
-            
-        //     $query .= $where;
-
-        // }
 
         $results = $dao->exec($query, [
             ":id_user"=>(new User)->getid_user() 
