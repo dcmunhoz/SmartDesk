@@ -313,8 +313,9 @@ class Ticket extends ClassModel{
             ) as 'assign-me', (
 
                 # Tickets sem atribuição.
-                select count(distinct ta.id_ticket) from tb_tickets t
-                join tb_ticket_assignment ta using(id_ticket)
+                select count(*) from tb_tickets t
+                left join tb_ticket_assignment ta using(id_ticket)
+                where ta.id_user is null
 
             ) as 'no-assign';
         ";
