@@ -111,62 +111,20 @@ module.exports = {
 
     },
 
-    // Retorna todos os tickets para o admin
-    getAllTicketsList(search = ""){
+    /**
+     * 
+     * @param {string} type Tipo da lista que será retornada (Todos, sem atribuição, atribuidos ao usuário) 
+     * @param {string} search Parametro para pesquisar o id do ticket. 
+     * @param {string} select Parametro para exibir tickets com um status especifico.
+     * 
+     *  Retorna a lista de tickets de acordo com os parametros passados.
+     * 
+     */
+    getTickets(type, search = "", select = ""){
 
         return new Promise((resolve, reject)=>{
 
-            fetch(`/api/admin/tickets/list/all?s=${search}`).then(result=>{
-
-                if(result.ok){
-
-                    return result.json();
-
-                }
-
-                reject();
-
-            }).then(data=>{
-
-                resolve(data);
-
-            });
-
-        });
-        
-    },
-
-    // Retorna somente os tickets atribuidos para o admin logado
-    getAssignMeTicketsList(search = ""){
-
-        return new Promise((resolve, reject)=>{
-
-            fetch(`/api/admin/tickets/list/assign-me?s=${search}`).then(result=>{
-
-                if(result.ok){
-
-                    return result.json();
-
-                }
-
-                reject(result);
-
-            }).then(data=>{
-
-                resolve(data);
-
-            });
-
-        });
-
-    },
-
-    // Retorna a lista dos tickets sem atribuição
-    getNoAssignTicketsList(search = ""){
-
-        return new Promise((resolve, reject)=>{
-
-            fetch(`/api/admin/tickets/list/no-assign?s=${search}`).then(result=>{
+            fetch(`/api/admin/tickets/list/${type}?s=${search}&q=${select}`).then(result=>{
 
                 if(result.ok){
 

@@ -296,15 +296,22 @@ $app->get('/api/admin/ticket-page-data', function(ServerRequestInterface $req, R
 
 });
 
-$app->get('/api/admin/tickets/list/all', function(ServerRequestInterface $req, ResponseInterface $res){
+$app->get('/api/admin/tickets/list/{type}', function(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+    $newType = "";
+
+    foreach (explode("-", $args['type']) as $key => $value) {
+        $newType .= ucfirst($value);
+    }
 
     User::verifyLogin(true);
 
     $ticket = new Ticket();
 
     $search = $req->getQueryParams()['s'];
+    $select = $req->getQueryParams()['q'];
 
-    $data = $ticket->getAll($search);
+    $data = $ticket->{"get$newType"}($search, $select);
 
     if (count($data) == 0) {
         return $res->withStatus(500);
@@ -313,42 +320,5 @@ $app->get('/api/admin/tickets/list/all', function(ServerRequestInterface $req, R
     return $res->withJson($data);
 
 });
-
-$app->get('/api/admin/tickets/list/assign-me', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin(true);
-
-    $ticket = new Ticket();
-
-    $search = $req->getQueryParams()['s'];
-
-    $data = $ticket->getAssignMe($search);
-
-    if (count($data) == 0) {
-        return $res->withStatus(500);
-    }
-
-    return $res->withJson($data);
-
-});
-
-$app->get('/api/admin/tickets/list/no-assign', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin(true);
-
-    $ticket = new Ticket();
-
-    $search = $req->getQueryParams()['s'];
-
-    $data = $ticket->getNoAssign($search);
-
-    if (count($data) == 0) {
-        return $res->withStatus(500);
-    }
-
-    return $res->withJson($data);
-
-});
-
 
 ?>

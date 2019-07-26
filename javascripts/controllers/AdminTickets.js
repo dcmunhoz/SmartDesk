@@ -19,18 +19,18 @@ export default class AdminTickets{
 
         this.initEvents();
         this.loadInitialDatas();
-        this.loadLists();
         this.loadStatusSelect();
+        this.loadLists();
 
     }
 
     initEvents(){
 
+        // Troca de paineis
         document.querySelectorAll(".btn-switch-panel").forEach(btn=>{
             
             btn.on('click', e=>{
                 
-
                 let target = btn.dataset.target;
 
                 this.switchPanel(target);
@@ -39,30 +39,46 @@ export default class AdminTickets{
 
         });
 
-
+        // Faz a pesquisa de ticket de acordo com a pesquisa.
         document.querySelectorAll('.search-ticket').forEach(search=>{
 
             search.on('keyup', e=>{
                 
                 let target = search.dataset.target;
                 let searchValue = search.value;
-                console.log(searchValue);
-                switch(target){
-                    case 'all':
-                        this.getAllTicketsList(searchValue);
-                    break;
-                    case 'assign-me':
-                        this.getAssignMeTicketsList(searchValue);
-                    break;
-                    case 'no-assign':
-                        this.getNoAssignTicketsList(searchValue);
-                    break;
-                }
+                let selectValue = "";
+
+                selectValue = document.querySelector(`#status-${target}-tickets`).value;                            
+                this.getTickets(target, searchValue, selectValue);
 
             });
 
         });
 
+        // Exibe os tickets com o status especificado.
+        document.querySelectorAll('.ticket-status-options').forEach(select=>{
+
+            select.on('change', e=>{
+
+                let target = select.dataset.target;
+                let selectValue = select.value;
+                let searchValue = "";
+                
+                searchValue = document.querySelector(`#search-${target}`).value;                            
+                this.getTickets(target, searchValue, selectValue);
+
+            });
+
+        });
+
+    }
+
+    /**
+     * Inicia os eventos das rows.
+     */
+    initTableRowEvents(){
+        
+        
 
     }
 
@@ -73,9 +89,9 @@ export default class AdminTickets{
      */
     loadLists(){
 
-        this.getAllTicketsList();
-        this.getAssignMeTicketsList();
-        this.getNoAssignTicketsList();
+        this.getTickets('all');
+        this.getTickets('assign-me');
+        this.getTickets('no-assign');
 
     }
 
@@ -103,7 +119,9 @@ export default class AdminTickets{
         });
     }
 
-
+    /**
+     * Carrega os dados de quantidade de tickets na pagina.
+     */
     loadInitialDatas(){
 
         Ticket.getPageData().then(result=>{
@@ -119,47 +137,26 @@ export default class AdminTickets{
 
     }
 
-    getAllTicketsList(search){
+    /**
+     * 
+     * @param {string} type Tipo da lista que será retornada (Todos, sem atribuição, atribuidos ao usuário) 
+     * @param {string} search Parametro para pesquisar o id do ticket. 
+     * @param {string} select Parametro para exibir tickets com um status especifico.
+     * 
+     *  Retorna a lista de tickets de acordo com os parametros passados.
+     * 
+     */
+    getTickets(type, search = "", select = ""){
 
-        Ticket.getAllTicketsList(search).then(result=>{
+        Ticket.getTickets(type, search, select).then(result=>{
 
-            this.setTableData('table-all-tickets', result);
-            
+            this.setTableData(`table-${type}-tickets`, result);
 
-        }).catch(err=>{
-
-            this.setTableNoData('table-all-tickets');
-            
-        });
-
-    }
-
-    getAssignMeTicketsList(search){
-
-        Ticket.getAssignMeTicketsList(search).then(result=>{
-
-            this.setTableData('table-assign-me-tickets', result);
-            
+            this.initTableRowEvents();
 
         }).catch(err=>{
-            
-            this.setTableNoData('table-assign-me-tickets');
-            
-        });
-
-    }
-
-    getNoAssignTicketsList(search){
-
-        Ticket.getNoAssignTicketsList(search).then(result=>{
-
-            this.setTableData('table-no-assign-tickets', result);
-            
-
-        }).catch(err=>{
-            
-            this.setTableNoData('table-no-assign-tickets');
-            
+            this.setTableNoData(`table-${type}-tickets`);
+            console.clear();
         });
 
     }
@@ -208,6 +205,13 @@ export default class AdminTickets{
 
     }
 
+    /**
+     * 
+     * @param {string} tableId Nome da tabela.
+     * 
+     * Insere os dados retornados do banco na tabela especifica.
+     * 
+     */
     setTableNoData(tableId){
 
         let tbody = document.querySelector(`#${tableId} tbody`);
@@ -218,7 +222,7 @@ export default class AdminTickets{
 
         let inner = `
 
-            <td colspan="9">... Você não tem nenhum ticket atribuido.</td>
+            <td colspan="9">... Nenhum ticket a ser listado. </td>
 
         `;
 
@@ -227,19 +231,24 @@ export default class AdminTickets{
 
     }
 
+    /**
+     * Carrega os status dentro do <select>
+     */
     loadStatusSelect(){
 
         Ticket.getStatus().then(data=>{
 
-            document.querySelectorAll(".ticket-status-options").forEach(select=>{
-
-                select.innerHTML = "";                
+            document.querySelectorAll(".ticket-status-options").forEach(select=>{             
                 
                 [...data].forEach(row=>{
                     let option = document.createElement('option');
                     
                     option.value = row['id_status'];
                     option.innerHTML = row['status_name']
+
+                    if(row['id_status'] == 1){
+                        option.selected = true;
+                    }
 
                     select.appendChild(option);
 

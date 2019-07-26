@@ -662,3 +662,8 @@ table tbody tr:hover{
 .btn-switch-panel {
     cursor: pointer;
 }
+
+.search-options .form-group{
+    
+    width: 30%;
+}

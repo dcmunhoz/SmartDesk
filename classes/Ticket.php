@@ -35,10 +35,13 @@ class Ticket extends ClassModel{
 
         }
 
-        if($status !== ""){
-
+        if($status !== "" && $status !== "0"){
+            
             $status = "= " . $status;
+        }
 
+        if($status == '0'){
+            $status = "";
         }
 
         $query = "
@@ -64,10 +67,13 @@ class Ticket extends ClassModel{
 
         }
 
-        if($status !== ""){
-
+        if($status !== "" && $status !== "0"){
+            
             $status = "= " . $status;
+        }
 
+        if($status == '0'){
+            $status = "";
         }
 
         $query = "
@@ -95,18 +101,22 @@ class Ticket extends ClassModel{
 
         }
 
-        if($status !== ""){
-
+        if($status !== "" && $status !== "0"){
+            
             $status = "= " . $status;
-
         }
+
+        if($status == '0'){
+            $status = "";
+        }
+
         $query = "
             SELECT * FROM tb_tickets t
             JOIN tb_status s USING(id_status)
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user
             LEFT JOIN tb_ticket_assignment ta USING(id_ticket)
-            WHERE ta.id_user IS NULL AND t.id_ticket $search AND t.id_status $status
+            WHERE ta.id_user IS NULL AND t.id_ticket $search AND t.id_status $status 
         ";
 
         
