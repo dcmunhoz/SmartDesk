@@ -143,8 +143,6 @@ module.exports = {
 
             fetch('/api/admin/tickets/list/assign-me').then(result=>{
 
-                console.log(result);
-
                 if(result.ok){
 
                     return result.json();
@@ -161,6 +159,30 @@ module.exports = {
 
         });
 
+    },
+
+    // Retorna a lista dos tickets sem atribuição
+    getNoAssignTicketsList(){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch('/api/admin/tickets/list/no-assign').then(result=>{
+
+                if(result.ok){
+
+                    return result.json();
+
+                }
+
+                reject(result);
+
+            }).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
 
     }
 

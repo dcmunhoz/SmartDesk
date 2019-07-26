@@ -48,9 +48,9 @@ export default class AdminTickets{
      */
     loadLists(){
 
-        this.loadAllTicketsList();
-        this.loadAssignMeTicketsList();
-        this.loadNoAssignTicketsList();
+        this.getAllTicketsList();
+        this.getAssignMeTicketsList();
+        this.getNoAssignTicketsList();
 
     }
 
@@ -94,23 +94,6 @@ export default class AdminTickets{
 
     }
 
-    loadAllTicketsList(){
-        
-        this.getAllTicketsList();
-
-    }
-
-    loadAssignMeTicketsList(){
-
-        this.getAssignMeTicketsList();
-
-    }
-
-    loadNoAssignTicketsList(){
-
-
-    }
-
     getAllTicketsList(){
 
         Ticket.getAllTicketsList().then(result=>{
@@ -120,7 +103,7 @@ export default class AdminTickets{
 
         }).catch(err=>{
 
-
+            this.setTableNoData('table-all-tickets');
             
         });
 
@@ -134,8 +117,23 @@ export default class AdminTickets{
             
 
         }).catch(err=>{
-            console.log(err);
+            
             this.setTableNoData('table-assign-me-tickets');
+            
+        });
+
+    }
+
+    getNoAssignTicketsList(){
+
+        Ticket.getNoAssignTicketsList().then(result=>{
+
+            this.setTableData('table-no-assign-tickets', result);
+            
+
+        }).catch(err=>{
+            
+            this.setTableNoData('table-no-assign-tickets');
             
         });
 

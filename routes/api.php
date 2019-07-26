@@ -304,6 +304,10 @@ $app->get('/api/admin/tickets/list/all', function(ServerRequestInterface $req, R
 
     $data = $ticket->getAll();
 
+    if (count($data) == 0) {
+        return $res->withStatus(500);
+    }
+
     return $res->withJson($data);
 
 });
@@ -315,6 +319,22 @@ $app->get('/api/admin/tickets/list/assign-me', function(ServerRequestInterface $
     $ticket = new Ticket();
 
     $data = $ticket->getAssignMe();
+
+    if (count($data) == 0) {
+        return $res->withStatus(500);
+    }
+
+    return $res->withJson($data);
+
+});
+
+$app->get('/api/admin/tickets/list/no-assign', function(ServerRequestInterface $req, ResponseInterface $res){
+
+    User::verifyLogin(true);
+
+    $ticket = new Ticket();
+
+    $data = $ticket->getNoAssign();
 
     if (count($data) == 0) {
         return $res->withStatus(500);

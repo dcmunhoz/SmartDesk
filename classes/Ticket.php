@@ -14,12 +14,6 @@ use App\User;
 
 class Ticket extends ClassModel{
 
-    private $where;
-
-    private $searchFilters;
-
-    private $bindParams;
-
     public function __construct(){
 
 
@@ -33,8 +27,6 @@ class Ticket extends ClassModel{
      */
     public function getAll(){
 
-        $dao = new DB();
-
         $query = "
             SELECT * FROM tb_tickets t
             JOIN tb_status s USING(id_status)
@@ -42,51 +34,13 @@ class Ticket extends ClassModel{
             JOIN tb_persons p ON p.id_user = t.id_user
         ";
 
-        // $where = "WHERE ";
-        // $filter = "";
-        // $bind = [];
-
-
-
-        // if ($this->searchFilters !== NULL) {
-    
-            
-        //     if(count($this->searchFilters) > 1){
-        //         foreach ($this->searchFilters as $key => $value) {
-                
-        //             $filter .= " $value = :$value AND ";
-
-        //             $bind[":$value"] = $this->bindParams[$key];
-                    
-        //         }
-
-        //         $filter = \substr($filter, 0, \strlen($filter) - 4 );
-
-        //     }else{
-
-        //         $search = $this->searchFilters[0];
-
-        //         $bind[":$search"] = $this->bindParams[0];
-
-        //         $filter .= " $search = :$search ";
-
-        //     }
-
-        //     $where .= $filter;
-            
-        //     $query .= $where;
-
-        // }
-
-        $results = $dao->exec($query);
-
-        return $results;
+        $data = $this->getTicketsList($query);
+        
+        return $data;
 
     }
 
     public function getAssignMe(){
-
-        $dao = new DB();
 
         $query = "
             SELECT * FROM tb_tickets t
@@ -97,22 +51,33 @@ class Ticket extends ClassModel{
             WHERE ta.id_user = :id_user
         ";
 
-        $results = $dao->exec($query, [
-            ":id_user"=>(new User)->getid_user() 
+        
+        $data = $this->getTicketsList($query, [
+            ":id_user" => (new User)->getid_user()
         ]);
-
-        return $results;
-
+        
+        return $data;
 
     }
 
-    public function filter(array $params, array $bind): Ticket{
+    public function getNoAssign(){
 
-        $this->searchFilters = $params;
-        $this->bindParams    = $bind;
+        $query = "
+            SELECT * FROM tb_tickets t
+            JOIN tb_status s USING(id_status)
+            JOIN tb_priorities pr USING(id_priority)
+            JOIN tb_persons p ON p.id_user = t.id_user
+            LEFT JOIN tb_ticket_assignment ta USING(id_ticket)
+            WHERE ta.id_user IS NULL
+        ";
 
-        return $this;
-    
+        
+        $data = $this->getTicketsList($query, [
+            ":id_user" => (new User)->getid_user()
+        ]);
+        
+        return $data;
+
     }
 
     /**
@@ -326,6 +291,24 @@ class Ticket extends ClassModel{
         ]);
 
         return $result[0];
+
+    }
+
+    /**
+     * 
+     *  @param string $query Query customizada que a classe irá executar.
+     * 
+     * Retorna a lista de tickets de acordo com a query passada.
+     * 
+     */
+    public function getTicketsList(string $query, array $params = []): array{
+
+        $dao = new DB();
+
+        $results = $dao->exec($query, $params);
+
+        return $results;
+
 
     }
 
