@@ -20,6 +20,7 @@ export default class AdminTickets{
         this.initEvents();
         this.loadInitialDatas();
         this.loadLists();
+        this.loadStatusSelect();
 
     }
 
@@ -199,6 +200,32 @@ export default class AdminTickets{
 
         tr.innerHTML = inner;
         tbody.appendChild(tr);
+
+    }
+
+    loadStatusSelect(){
+
+        Ticket.getStatus().then(data=>{
+
+            document.querySelectorAll(".ticket-status-options").forEach(select=>{
+
+                select.innerHTML = "";                
+                
+                [...data].forEach(row=>{
+                    let option = document.createElement('option');
+                    
+                    option.value = row['id_status'];
+                    option.innerHTML = row['status_name']
+
+                    select.appendChild(option);
+
+
+                });
+
+
+            });
+
+        });
 
     }
 
