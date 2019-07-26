@@ -40,6 +40,30 @@ export default class AdminTickets{
         });
 
 
+        document.querySelectorAll('.search-ticket').forEach(search=>{
+
+            search.on('keyup', e=>{
+                
+                let target = search.dataset.target;
+                let searchValue = search.value;
+                console.log(searchValue);
+                switch(target){
+                    case 'all':
+                        this.getAllTicketsList(searchValue);
+                    break;
+                    case 'assign-me':
+                        this.getAssignMeTicketsList(searchValue);
+                    break;
+                    case 'no-assign':
+                        this.getNoAssignTicketsList(searchValue);
+                    break;
+                }
+
+            });
+
+        });
+
+
     }
 
     /**
@@ -95,9 +119,9 @@ export default class AdminTickets{
 
     }
 
-    getAllTicketsList(){
+    getAllTicketsList(search){
 
-        Ticket.getAllTicketsList().then(result=>{
+        Ticket.getAllTicketsList(search).then(result=>{
 
             this.setTableData('table-all-tickets', result);
             
@@ -110,9 +134,9 @@ export default class AdminTickets{
 
     }
 
-    getAssignMeTicketsList(){
+    getAssignMeTicketsList(search){
 
-        Ticket.getAssignMeTicketsList().then(result=>{
+        Ticket.getAssignMeTicketsList(search).then(result=>{
 
             this.setTableData('table-assign-me-tickets', result);
             
@@ -125,9 +149,9 @@ export default class AdminTickets{
 
     }
 
-    getNoAssignTicketsList(){
+    getNoAssignTicketsList(search){
 
-        Ticket.getNoAssignTicketsList().then(result=>{
+        Ticket.getNoAssignTicketsList(search).then(result=>{
 
             this.setTableData('table-no-assign-tickets', result);
             

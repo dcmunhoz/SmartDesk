@@ -25,22 +25,50 @@ class Ticket extends ClassModel{
      * Retorna 
      * 
      */
-    public function getAll(){
+    public function getAll(string $search = "", string $status = ""): array{
+
+        $params = [];
+
+        if($search !== ""){
+
+            $search = "= " . $search;
+
+        }
+
+        if($status !== ""){
+
+            $status = "= " . $status;
+
+        }
 
         $query = "
             SELECT * FROM tb_tickets t
             JOIN tb_status s USING(id_status)
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user
+            WHERE t.id_ticket $search AND t.id_status $status
         ";
 
-        $data = $this->getTicketsList($query);
+
+        $data = $this->getTicketsList($query, $params);
         
         return $data;
 
     }
 
-    public function getAssignMe(){
+    public function getAssignMe(string $search = "", string $status = ""){
+
+        if($search !== ""){
+
+            $search = "= " . $search;
+
+        }
+
+        if($status !== ""){
+
+            $status = "= " . $status;
+
+        }
 
         $query = "
             SELECT * FROM tb_tickets t
@@ -48,10 +76,9 @@ class Ticket extends ClassModel{
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user
             JOIN tb_ticket_assignment ta USING(id_ticket)
-            WHERE ta.id_user = :id_user
+            WHERE ta.id_user = :id_user AND t.id_ticket $search AND t.id_status $status
         ";
 
-        
         $data = $this->getTicketsList($query, [
             ":id_user" => (new User)->getid_user()
         ]);
@@ -60,15 +87,26 @@ class Ticket extends ClassModel{
 
     }
 
-    public function getNoAssign(){
+    public function getNoAssign(string $search = "", string $status = ""){
 
+        if($search !== ""){
+
+            $search = "= " . $search;
+
+        }
+
+        if($status !== ""){
+
+            $status = "= " . $status;
+
+        }
         $query = "
             SELECT * FROM tb_tickets t
             JOIN tb_status s USING(id_status)
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user
             LEFT JOIN tb_ticket_assignment ta USING(id_ticket)
-            WHERE ta.id_user IS NULL
+            WHERE ta.id_user IS NULL AND t.id_ticket $search AND t.id_status $status
         ";
 
         

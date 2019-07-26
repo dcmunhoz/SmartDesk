@@ -302,7 +302,9 @@ $app->get('/api/admin/tickets/list/all', function(ServerRequestInterface $req, R
 
     $ticket = new Ticket();
 
-    $data = $ticket->getAll();
+    $search = $req->getQueryParams()['s'];
+
+    $data = $ticket->getAll($search);
 
     if (count($data) == 0) {
         return $res->withStatus(500);
@@ -318,7 +320,9 @@ $app->get('/api/admin/tickets/list/assign-me', function(ServerRequestInterface $
 
     $ticket = new Ticket();
 
-    $data = $ticket->getAssignMe();
+    $search = $req->getQueryParams()['s'];
+
+    $data = $ticket->getAssignMe($search);
 
     if (count($data) == 0) {
         return $res->withStatus(500);
@@ -334,7 +338,9 @@ $app->get('/api/admin/tickets/list/no-assign', function(ServerRequestInterface $
 
     $ticket = new Ticket();
 
-    $data = $ticket->getNoAssign();
+    $search = $req->getQueryParams()['s'];
+
+    $data = $ticket->getNoAssign($search);
 
     if (count($data) == 0) {
         return $res->withStatus(500);

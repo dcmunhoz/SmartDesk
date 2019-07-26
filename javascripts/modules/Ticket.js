@@ -112,11 +112,11 @@ module.exports = {
     },
 
     // Retorna todos os tickets para o admin
-    getAllTicketsList(){
+    getAllTicketsList(search = ""){
 
         return new Promise((resolve, reject)=>{
 
-            fetch('/api/admin/tickets/list/all').then(result=>{
+            fetch(`/api/admin/tickets/list/all?s=${search}`).then(result=>{
 
                 if(result.ok){
 
@@ -137,11 +137,11 @@ module.exports = {
     },
 
     // Retorna somente os tickets atribuidos para o admin logado
-    getAssignMeTicketsList(){
+    getAssignMeTicketsList(search = ""){
 
         return new Promise((resolve, reject)=>{
 
-            fetch('/api/admin/tickets/list/assign-me').then(result=>{
+            fetch(`/api/admin/tickets/list/assign-me?s=${search}`).then(result=>{
 
                 if(result.ok){
 
@@ -162,11 +162,11 @@ module.exports = {
     },
 
     // Retorna a lista dos tickets sem atribuição
-    getNoAssignTicketsList(){
+    getNoAssignTicketsList(search = ""){
 
         return new Promise((resolve, reject)=>{
 
-            fetch('/api/admin/tickets/list/no-assign').then(result=>{
+            fetch(`/api/admin/tickets/list/no-assign?s=${search}`).then(result=>{
 
                 if(result.ok){
 
