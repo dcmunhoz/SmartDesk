@@ -104,9 +104,12 @@ export default class AdminTickets{
      */
     switchPanel(target){
         this.disablePanels();
+        this.disableButtonPanel();
         document.querySelector(`#tickets-${target}`).classList.add('panel-active');
+        document.querySelector(`#btn-panel-${target}`).classList.add('btn-panel-active');
 
     }
+
 
     /**
      * Desativa todos os paineis de ticket.
@@ -117,6 +120,19 @@ export default class AdminTickets{
             panel.classList.remove('panel-active');
 
         });
+    }
+
+    /**
+     * Desativa todos os botões da troca de painel.
+     */
+    disableButtonPanel(){
+
+        document.querySelectorAll(".btn-switch-panel").forEach(btn=>{
+
+            btn.classList.remove('btn-panel-active');
+
+        });
+
     }
 
     /**
