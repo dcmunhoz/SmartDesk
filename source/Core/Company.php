@@ -5,10 +5,10 @@
  * 
  */
 
-namespace App;   
+namespace Source\Core;
 
-use \App\Model\CLassModel;
-use \App\Model\DB;
+use \Source\Model\CLassModel;
+use \Source\Model\DB;
 
 class Company extends ClassModel{
 

@@ -2,139 +2,50 @@
 /**
  * @author Daniel Munhoz <dc.munhoz@hotmail.com>
  * 
- * Arquivo de rotas para as views de usuáarios.
+ * Arquivo de rotas para as views de usuários.
  *  
  */
 
-use \App\View;
-use \App\User;
-use \App\Model\DB;
+
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Source\App\Web;
 
-// Pagina principal
-$app->get("/", function(){
 
-    User::verifyLogin();
+
+/**
+ * WEB
+ */
+$app->group("", function(Slim\App $app){
+
+    $app->get("/", Web::class . ":home");
+    $app->get("/signin", Web::class . ":signin");
+    $app->post("/signin", Web::class . ':signinPost');
+    $app->get("/logout", Web::class . ':logout');
+    $app->get("/signup", Web::class . ":signup");
+    $app->post("/signup", Web::class . ":signupPost");
+    $app->get("/ticket/open", Web::class . ":ticketOpen");
+    $app->get("/team", Web::class . ":team");
+    $app->get("/ticket/{ticketId}/details", Web::class . ":ticketDetails");
+    $app->get("/profile/{userId}/edit", Web::class . ":profileEdit");
+    $app->post("/user/update", Web::class . "updateUser");
+
+})->add(function($req, $res, $next){
+
+    // Middleware que verifica se o usuário esta logado, para acessar as rotas.
+
+    $path = $req->getUri()->getPath();
+    $excluded = ['/signin', '/signup'];
     
-    $view = new View();
-    $view->draw("user-panel");
+    if( !in_array($path, $excluded) ){
 
-});
+        User::verifyLogin();
 
-// Pagina de login
-$app->get("/signin", function(){
-
-    $view = new View(false, false);
-    $view->draw('signin');
-
-});
-
-$app->post("/signin", function(ServerRequestInterface $req, ResponseInterface $res, $args){
-
-    $body = $req->getParsedBody();
-
-    $user = new User();
-    $result = $user->login($body);
-
-    if($result['error']){
-        $newResponse = $res->withStatus(500);
+    }    
     
-        return $newResponse->withJson($result);
-    }   
-    
-    return $res->withJson([]);
-    
-});
+    $res = $next($req, $res);
+    return $res;
 
-$app->get("/logout", function(){
-
-    User::verifyLogin();
-
-    $user = new User();
-    $user->logout();
-
-});
-
-// Pagina de cadastro
-$app->get("/signup", function(){
-
-    $view = new View(false, false);
-    $view->draw("signup");
-
-});
-
-$app->post('/signup', function(ServerRequestInterface $req, ResponseInterface $res, $args){
-
-    $body = $req->getParsedBody();
-
-    $user = new User;
-    $result = $user->createUser($body);
-
-    // return $res;
-    // var_dump($body);
-
-});
-
-// Pagina para abrir novo ticket
-$app->get("/ticket/open", function(){
-    $view = new View();
-    $view->draw('user-ticket');
-
-});
-
-// Pagina para exibir a equipe cadastrada
-$app->get("/team", function(){
-
-    $view = new View();
-    $view->draw("team");
-
-});
-
-// Pagina que exibe detalhes do ticket
-$app->get("/ticket/{ticketId}/details", function(ServerRequestInterface $req, ResponseInterface $res, $args){
-
-    User::verifyLogin();
-
-    $view = new View();
-    $view->draw("ticket-details");
-    
-});
-
-// Perfil do usuário
-$app->get("/profile/{userId}/edit", function($req, $res, $args){
-
-    User::verifyLogin();
-
-    $user = new User();
-
-    $authenticatedId = $user->getAuthenticatedUser()['id_user'];
-
-    $bodyUserId = $args['userId'];
-    
-    if($bodyUserId !== $authenticatedId){
-
-        $newResposne = $res->withStatus(500);
-
-        return $newResposne->withJson(["error" => "Acesso Negado."]);
-
-    }
-
-    $view = new View(false, false);
-
-    $view->draw('profile-edit');
-});
-
-$app->post("/user/update", function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin();
-
-    $body = $req->getParsedBody();
-    
-    $user = new User();
-    $result = $user->save($body);
-
-    return $res->withJson($result);
 });
 
 ?>

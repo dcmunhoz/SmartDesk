@@ -6,11 +6,11 @@
  * 
  */
 
-namespace App;
+namespace Source\Core;
 
-use App\Model\DB;
-use App\Model\ClassModel;
-use App\User;
+use Source\Model\DB;
+use Source\Model\ClassModel;
+use Source\Core\User;
 
 class Ticket extends ClassModel{
 

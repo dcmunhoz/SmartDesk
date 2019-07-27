@@ -5,10 +5,10 @@
  *  
  */
 
-namespace App;
+namespace Source\Core;
 
-use \App\Model\ClassModel;
-use \App\Model\DB;
+use \Source\Model\ClassModel;
+use \Source\Model\DB;
 
 class Priority extends ClassModel{
 

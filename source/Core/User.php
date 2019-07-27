@@ -6,10 +6,10 @@
  * 
  */
 
-namespace App;
+namespace Source\Core;
 
-use \App\Model\DB;
-use \App\Model\ClassModel;
+use Source\Model\DB;
+use Source\Model\ClassModel;
 
 class User extends ClassModel{
 
