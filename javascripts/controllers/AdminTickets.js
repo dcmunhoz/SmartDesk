@@ -204,7 +204,7 @@ export default class AdminTickets{
             let trBody = `
                 <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href="/api/admin/ticket/assign-me/${row['id_ticket']}"><i class="fas fa-arrow-circle-down"></i></a> </td>
                 <td>#${row['id_ticket']}</td>
-                <td><span class="status-ticket status-${ticketStatusClassName}">${row['status_name']}</span></td>
+                <td><span class="status-ticket status-${ticketStatusClassName}"></span> ${row['status_name']}</td>
                 <td>${row['ticket_title']}</td>
                 <td>${row['full_name']}</td>
                 <td>-</td>

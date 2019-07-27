@@ -643,8 +643,7 @@ table tbody tr:hover{
     flex-direction: row;
 }
 
-.status-ticket::before{
-    content: " ";
+.status-ticket{
     width: 15px;
     height: 15px;
     display: inline-block;
@@ -652,11 +651,11 @@ table tbody tr:hover{
     top: 2px;
     margin-right: 5px;
     border-radius: 100px;
-
+    background-color: purple;
 }
 
-.status-ticket.status-open::before{
-    background-color: #1DE9B6;
+.status-ticket.status-open{
+    background-color: rgb(15, 192, 148);
 }
 
 .btn-switch-panel {
