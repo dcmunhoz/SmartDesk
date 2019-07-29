@@ -14,7 +14,201 @@ use Source\Core\User;
 
 class Admin {
 
+    /**
+     * Pagina inicial
+     */
+    public function home(){
 
+        $view = new View(true, false, false);
+        $view->draw('admin-home');
+
+    }
+    
+    /**
+     * Pagina autenticação
+     */
+    public function signin(){
+        
+        $view = new View(false, false, false);
+
+        $view->draw("admin-signin");
+
+    }
+
+    /**
+     * Post autenticação
+     */
+    public function signinPost(ServerRequestInterface $req, ResponseInterface $res){
+
+        $body = $req->getParsedBody();
+
+        $user = new User();
+        $result = $user->login($body);    
+        
+        if($result['error']){
+            $newResponse = $res->withStatus(500);
+        
+            return $newResponse->withJson($result);
+        }    
+        
+        return $res->withJson([]);
+
+    }
+
+    /**
+     * Pagina tickets
+     */
+    public function tickets(){
+
+        $view = new View(true, false, false);
+
+        $view->draw("admin-tickets");
+
+    }
+
+    /**
+     * Pagina detalhe tickets
+     */
+    public function ticketDetails(){
+
+        $view = new View(true, false, false);
+
+        $view->draw("admin-ticket-details");
+
+    }
+
+    /**
+     * Pagina novo ticket.
+     */
+    public function ticketNew(){
+
+        $view = new View(true, false, false);
+
+        $view->draw("admin-ticket-new");
+
+    }
+
+    /**
+     * Pagina configurações
+     */
+    public function configs(){
+
+        $view = new View(true, false, false);
+
+        $view->draw('admin-configs');
+
+    }
+
+    /**
+     * Pagina novo usuário
+     */
+    public function userNew(){
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-user-new');
+        
+    }
+
+    /**
+     * Pagina nova empresa
+     */
+    public function comanyNew(){
+
+        $view = new View(true, false, false);
+
+        $view->draw('admin-company-new');
+
+    }
+
+    /**
+     * Pagina novo local
+     */
+    public function placeNew(){
+
+        $view = new View(true, false, false);
+
+        $view->draw('admin-place-new');
+
+    }
+
+    /**
+     * Pagina novo setor
+     */
+    public function sectorNew(){
+
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-sector-new');
+
+    }
+
+    /**
+     * Pagina nova prioridade
+     */
+    public function priorityNew(){
+
+        $view = new View(true, false, false);
+
+        $view->draw('admin-priority-new');
+
+    }
+
+    /**
+     * Pagina atualização usuário
+     */
+    public function userUpdate(){
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-user-update');
+
+    }
+
+    /**
+     * Pagina atualização empresa
+     */
+    public function companyUpdate(){
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-company-update');
+
+    }
+
+    /**
+     * Pagina atualização local
+     */
+    public function placeUpdate(){
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-place-update');
+
+    }
+
+    /**
+     * Pagina atualização setor
+     */
+    public function sectorUpdate(){
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-sector-update');
+
+    }
+
+    /**
+     * Pagina atualização prioridade
+     */
+    public function priorityUpdate(){
+        
+        $view = new View(true, false, false);
+
+        $view->draw('admin-priority-update');
+
+    }
 
 }
 

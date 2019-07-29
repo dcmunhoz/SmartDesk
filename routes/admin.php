@@ -6,188 +6,46 @@
  * 
  */
 
-use \App\View as View;
-use \App\User;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Source\App\Admin;
+use Source\Core\User;
 
-$app->get("/admin", function(){
+$app->group('/admin', function(Slim\App $app){
 
-    User::verifyLogin(true);
+    $app->get("", Admin::class . ":home");
+    $app->get("/signin", Admin::class . ":signin");
+    $app->post("/signin", Admin::class . ":signinPost");
+    $app->get("/tickets", Admin::class . ":tickets");
+    $app->get("/ticket/4", Admin::class . ":ticketDetails");
+    $app->get("/ticket/new", Admin::class . ":ticketNew");
+    $app->get("/configs", Admin::class . ":configs");
+    $app->get("/user/new", Admin::class . ":userNew");
+    $app->get("/company/new", Admin::class . ":companyNew");
+    $app->get("/place/new", Admin::class . ":placeNew");
+    $app->get("/sector/new", Admin::class . ":sectorNew");
+    $app->get("/priority/new", Admin::class . ":priorityNew");
+    $app->get("/user/4", Admin::class . ":userUpdate");
+    $app->get("/company/4", Admin::class . ":companyUpdate");
+    $app->get("/place/4", Admin::class . ":placeUpdate");
+    $app->get("/sector/4", Admin::class . ":sectorUpdate");
+    $app->get("/priority/4", Admin::class . ":priorityUpdate");
 
-    $view = new View(true, false, false);
-    $view->draw('admin-home');
+})->add(function($req, $res, $next){
 
-});
-
-// Pagina login do admin.
-$app->get("/admin/signin", function(){
-
-    $view = new View(false, false, false);
-
-    $view->draw("admin-signin");
-
-});
-
-$app->post("/admin/signin", function(ServerRequestInterface $req, ResponseInterface $res){
-
-    $body = $req->getParsedBody();
-
-    $user = new User();
-    $result = $user->login($body);    
     
-    if($result['error']){
-        $newResponse = $res->withStatus(500);
+    $path = $req->getUri()->getPath();
+    $excluded = ['/admin/signin', '/admin/signup'];
     
-        return $newResponse->withJson($result);
+    if( !in_array($path, $excluded) ){
+
+        User::verifyLogin(true);
+
     }    
     
-    return $res->withJson([]);
+    $res = $next($req, $res);
+    return $res;
 
-});
-
-$app->get("/admin/tickets", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw("admin-tickets");
-
-});
-
-$app->get("/admin/ticket/4", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw("admin-ticket-details");
-
-});
-
-$app->get("/admin/ticket/new", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw("admin-ticket-new");
-
-});
-
-$app->get("/admin/configs", function(){
-    
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-configs');
-
-});
-
-$app->get("/admin/user/new", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-user-new');
-
-
-});
-
-$app->get("/admin/company/new", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-company-new');
-
-
-});
-
-$app->get("/admin/place/new", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-place-new');
-
-
-});
-
-$app->get("/admin/sector/new", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-sector-new');
-
-
-});
-
-$app->get("/admin/priority/new", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-priority-new');
-
-
-});
-
-$app->get("/admin/user/4", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-user-update');
-
-});
-
-$app->get("/admin/company/4", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-company-update');
-
-});
-
-$app->get("/admin/place/4", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-place-update');
-
-});
-
-$app->get("/admin/sector/4", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-sector-update');
-
-});
-
-$app->get("/admin/priority/4", function(){
-
-    User::verifyLogin(true);
-
-    $view = new View(true, false, false);
-
-    $view->draw('admin-priority-update');
 
 });
 
