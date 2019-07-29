@@ -39,7 +39,7 @@ module.exports = {
         
         return new Promise((resolve, reject)=>{
 
-            fetch('/ticket/open', {
+            fetch('/api/ticket/open', {
                 method: 'POST',
                 body
             }).then(result=>result.json()).then(data=>{

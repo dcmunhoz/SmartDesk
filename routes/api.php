@@ -8,209 +8,52 @@
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use App\Model\DB;
-use App\User;
-use App\Ticket;
-use App\Company;
-use App\Local;
-use App\Sector;
-use App\Priority;
+use Source\App\Api;
 
+/**
+ * API:Web
+ */
+$app->group("/api", function(Slim\App $app){
 
-$app->get("/api/user-logged", function(ServerRequestInterface $req, ResponseInterface $res){
+    $app->get("/user-logged", Api::class . ":userLogged");
+    $app->get("/company", Api::class . ":getCompanies");
+    $app->get("/company/{idCompany}/places", Api::class . ":getPlaces");
+    $app->get("/company/{idCompany}/sectors", Api::class . ":getSectors");
+    $app->get("/tickets/list", Api::class . ":getTicketsList");
+    $app->get("/priorities", Api::class . ":getPriorities");
+    $app->post("/ticket/open", Api::class . ":ticketOpen");
+    $app->get("/ticket/status", Api::class . ":ticketStatus");
+    $app->get("/ticket/{ticketId}/details", Api::class . ":ticketDetails");
+    $app->post("/ticket/{ticketId}/add-message", Api::class . ":ticketAddMessage");
+
+})->add(function($req, $res, $next){
 
     User::verifyLogin();
-
-    $user = new User();
-
-    $data = $user->getAuthenticatedPerson();
-
-    return $res->withJson($data);
     
-});  
-
-$app->get("/api/company", function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin();
-
-    $dao = new DB();
-    $result = $dao->exec("SELECT * FROM tb_companies");
-
-    return $res->withJson($result);
+    $res = $next($req, $res);
+    return $res;
 
 });
 
-
-$app->get('/api/company/{idCompany}/places', function(ServerRequestInterface $req, ResponseInterface $res, $args){
-
-    User::verifyLogin();
-
-    $dao = new DB();
-    $result = $dao->exec("SELECT * FROM tb_places WHERE id_company = :id_company", [
-        ":id_company"=> $args['idCompany']
-    ]);
-
-    return $res->withJson($result);
-
-});
-
-$app->get('/api/company/{idCompany}/sectors', function(ServerRequestInterface $req, ResponseInterface $res, $args){
-
-    User::verifyLogin();
-
-    $dao = new DB();
-    $result = $dao->exec("SELECT * FROM tb_sectors WHERE id_company = :id_company", [
-        ":id_company"=> $args['idCompany']
-    ]);
-        
-    return $res->withJson($result);
-
-});
-
-$app->get('/api/tickets/list', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin();
-
-    $status;
-
-    if(!isset($req->getQueryParams()['status']) || is_null($req->getQueryParams()['status']) || $req->getQueryParams()['status'] === "" || $req->getQueryParams()['status'] === "null"  ){
-
-        $status = "0";
-
-    }else{
-        $status = $req->getQueryParams()['status'];
-    }
-
-    $user = new User();
-    $ticket = new Ticket();
-
-    $result = $ticket->getTicket($user, $status, null);
-
-    if(!count($result) > 0){
-
-        $newResponse = $res->withStatus(500);
-
-        return $newResponse->withJson(["error"=>true,"msg"=>"Nenhum ticket a ser exibido"]);
-
-    }
-
-    return $res->withJson($result);
-
-});
-
-$app->get('/api/priorities', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin();
-
-    $ticket = new Ticket();
-    $results = $ticket->getPriorities();
-
-    return $res->withJson($results);
-
-});
-
-$app->post('/ticket/open', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin();
-
-    $body = $req->getParsedBody();
-
-    $ticket = new Ticket();
-    $user = new User();
-
-    $result = $ticket->open($user, $body);
-
-    return $res->withJson($result);
-
-});
-
-$app->get('/api/ticket/status', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin();
-    $ticket = new Ticket();
-    $results = $ticket->getStatus();
-
-    return $res->withJson($results);
-
-
-});
-
-$app->get("/api/ticket/{ticketId}/details", function(ServerRequestInterface $req, ResponseInterface $res, $args ){
-
-    User::verifyLogin();
-
-    $ticket = new Ticket();
-    $user = new User();
-
-    $results = $ticket->getTicket($user, "0", $args['ticketId']);
-
-    return $res->withJson($results);
-
-});
-
-$app->post('/api/ticket/{ticketId}/add-message', function(ServerRequestInterface $req, ResponseInterface $res, $args){
-
-    User::verifyLogin();
-
-    $body = $req->getParsedBody();
-    $ticketId = $args['ticketId'];
-
-    $user = new User();
-    $ticket = new Ticket();
-    $result = $ticket->addMessage($ticketId, $user, $body);
-
-    return $res->withJson($result);
-
-});
-
-$app->post('/api/admin/users/list', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin(true);
-
-    $user = new User();
-
-    $body = $req->getParsedBody();
-    $result = $user->listUsers($body['search']);
-
-    return $res->withJson($result);
-
-});
-
-$app->get('/api/admin/users/qtd', function(ServerRequestInterface $req, ResponseInterface $res){
+/**
+ * API:Admin
+ */
+$app->group("/api/admin", function(Slim\App $app){
     
+    $app->get("/users/list", Api::class . ":getUsersList");
+    $app->get("/users/qtd", Api::class . ":getUsersQtt");
+    $app->get("/companies/list", Api::class . ":getCompaniesList");
+    $app->get("/companies/quantity", Api::class . ":getCompaniesQtt");
+
+})->add(function($req, $res, $next){
+
     User::verifyLogin(true);
-
-    $user = new User();
-
-    $result = $user->getQtd();
-
-    return $res->withJson($result);
+    
+    $res = $next($req, $res);
+    return $res;
 
 });
 
-$app->post('/api/admin/companies/list', function(ServerRequestInterface $req, ResponseInterface $res){
-
-    User::verifyLogin(true);
-
-    $company = new Company();
-    $body = $req->getParsedBody();
-
-    $result = $company->getCompanies($body['search']);
-
-    return $res->withJson($result);
-});
-
-$app->get('/api/admin/companies/quantity', function($req, ResponseInterface $res){
-
-    User::verifyLogin(true);
-
-    $company = new Company();
-
-    $result = $company->getQuantity();
-
-    return $res->withJson($result);
-
-});
 
 $app->post('/api/admin/locals/list', function(ServerRequestInterface $req, ResponseInterface $res){
 

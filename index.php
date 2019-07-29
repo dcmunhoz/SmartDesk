@@ -10,11 +10,7 @@
     
 require_once "config.php";
 
-$app = new Slim\App([
-    'settings' =>[
-        'displayErrorDetails' => true,
-    ]
-]);
+$app = new Slim\App($configs);
 
 
 // Rotas

@@ -9,6 +9,10 @@
 // Requires.
 require "vendor/autoload.php"; // Composer
 
-    
+$configs = [
+    'settings' =>[
+        'displayErrorDetails' => true,
+    ]
+];
 
 

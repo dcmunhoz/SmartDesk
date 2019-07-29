@@ -148,7 +148,7 @@ class Web{
     public function userUpdate(ServerRequestInterface $req, ResponseInterface $res){
 
         $body = $req->getParsedBody();
-    
+
         $user = new User();
         $result = $user->save($body);
     

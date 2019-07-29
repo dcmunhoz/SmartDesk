@@ -11,6 +11,9 @@ use Psr\Http\Message\ResponseInterface;
 use Source\App\Admin;
 use Source\Core\User;
 
+/**
+ * ADMIN
+ */
 $app->group('/admin', function(Slim\App $app){
 
     $app->get("", Admin::class . ":home");
