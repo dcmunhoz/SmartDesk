@@ -205,6 +205,34 @@ module.exports = {
 
         });
 
+    },
+
+    /**
+     * 
+     * Adiciona um novo usuário pela administração.
+     * 
+     */
+    newUser(body){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch("/admin/user/new",{
+                method: "POST",
+                body
+            }).then(result=>{
+
+                if(result.ok){
+
+                    resolve();
+
+                }
+
+                reject();
+
+            });            
+
+        });
+
     }
 
 }

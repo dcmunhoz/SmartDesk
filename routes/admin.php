@@ -24,6 +24,7 @@ $app->group('/admin', function(Slim\App $app){
     $app->get("/ticket/new", Admin::class . ":ticketNew");
     $app->get("/configs", Admin::class . ":configs");
     $app->get("/user/new", Admin::class . ":userNew");
+    $app->post("/user/new", Admin::class . ":postUserNew");
     $app->get("/company/new", Admin::class . ":companyNew");
     $app->get("/place/new", Admin::class . ":placeNew");
     $app->get("/sector/new", Admin::class . ":sectorNew");

@@ -15,6 +15,7 @@ use Source\Core\Ticket;
 use Source\Core\Local;
 use Source\Core\Sector;
 use Source\Core\Priority;
+use Source\Core\Profile;
 
 class Api{
 
@@ -300,6 +301,9 @@ class Api{
 
     }
 
+    /**
+     * Lista de Tickets
+     */
     public function getTickets(ServerRequestInterface $req, ResponseInterface $res, $args){
 
         $newType = "";
@@ -323,6 +327,15 @@ class Api{
     
         return $res->withJson($data);        
 
+    }
+
+    /**
+     * Retorna a lista de perfis disponiveis
+     */
+    public function getProfilesList(ServerRequestInterface $req, ResponseInterface $res){
+
+        return $res->withJson((new Profile)->getProfiles());
+        
     }
 
 }

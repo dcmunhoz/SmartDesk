@@ -111,6 +111,20 @@ class Admin {
     }
 
     /**
+     * 
+     * Adiciona um novo usuário.
+     * 
+     */
+    public function postUserNew(ServerRequestInterface $req, ResponseInterface $res){
+
+        $body = $req->getParsedBody();
+
+        \var_dump($body);
+        die;
+
+    }
+
+    /**
      * Pagina nova empresa
      */
     public function comanyNew(){

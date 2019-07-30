@@ -632,7 +632,8 @@ table tbody tr:hover{
     height: 100%;
     width: 100%;
     position: absolute;
-
+    padding: 0px 10px;
+    box-sizing: border-box;
 }
 
 .main-panel footer {

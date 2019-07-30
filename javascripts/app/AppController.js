@@ -15,6 +15,7 @@ import TicketDetails from '../controllers/TicketDetails';
 import AdminSignin from '../controllers/AdminSignin';
 import AdminConfigs from '../controllers/AdminConfigs';
 import AdminTickets from '../controllers/AdminTickets';
+import AdminNewUser from '../controllers/AdminNewUser';
 
 
 export default class AppController{
@@ -56,6 +57,9 @@ export default class AppController{
                 break;
                 case 'AdminTickets':
                     new AdminTickets();
+                break;
+                case 'AdminNewUser':
+                    new AdminNewUser();
                 break;
             }
         }

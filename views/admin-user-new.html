@@ -19,63 +19,63 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form>
+                        <form id="user-creation">
 
                             <div class="form-group">
-                                <label for="">Nome completo:</label>
-                                <input type="text">
+                                <label for="full-name">Nome completo:</label>
+                                <input type="text" id="full-name" name="full-name">
                             </div>
     
                             <div class="form-group">
-                                <label for="">E-mail:</label>
-                                <input type="email">
+                                <label for="email">E-mail:</label>
+                                <input type="email" id="email" name="email">
                             </div>
     
                             <div class="form-group">
-                                <label for="">Usuário:</label>
-                                <input type="text">
+                                <label for="username">Usuário:</label>
+                                <input type="text" id="username" name="username">
                             </div>
     
                             <div class="form-group">
-                                <label for="">Senha:</label>
-                                <input type="text">
+                                <label for="passw">Senha:</label>
+                                <input type="text" id="passw" name="passw">
                             </div>
     
                             <div class="form-group">
-                                <label for="">Confirmar Senha:</label>
-                                <input type="text">
+                                <label for="passw-confirm">Confirmar Senha:</label>
+                                <input type="text" id="passw-confirm" name="passw-confirm">
                             </div>
     
                             <div class="form-group form-one-line"> 
-                                <input type="checkbox" checked>
-                                <label for="">Ativo</label>
+                                <input type="checkbox" id="user-active" name="user-active" checked>
+                                <label for="user-active">Ativo</label>
                             </div>
     
                             <div class="form-group">
-                                <label for="">Perfil de acesso:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="profile">Perfil de acesso:</label>
+                                <select name="profile" id="profile">
+                                    <option value="0">Selecione uma opção</option>
                                 </select>
                             </div>
     
                             <div class="form-group">
-                                <label for="">Empresa:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="company">Empresa:</label>
+                                <select name="company" id="company">
+                                    <option value="0">Selecione uma opção</option>
                                 </select>
                             </div>
     
                             <div class="form-group">
-                                <label for="">Local:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="local">Local:</label>
+                                <select name="local" id="local">
+                                    <option value="0">Selecione uma opção</option>
                                 </select>
                             </div>
     
                             <div class="form-group">
-                                <label for="">Setor:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="sector">Setor:</label>
+                                <select name="sector" id="sector">
+                                    <option value="0">Selecione uma opção</option>
                                 </select>
                             </div>
     
@@ -87,7 +87,7 @@
 
                 <footer>
 
-                    <button class="btn btn-enviar">Criar</button>
+                    <button class="btn btn-enviar" id="btn-new-user">Criar</button>
 
                 </footer>
     

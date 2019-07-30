@@ -52,6 +52,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->post("/priorities/list", Api::class . ":getPrioritiesList");
     $app->get("/ticket-page-data", Api::class . ":getTicketPagedata");
     $app->get("/tickets/list/{type}", Api::class . ":getTickets");
+    $app->get("/profiles/list", Api::class . ":getProfilesList");
 
 })->add(function($req, $res, $next){
 
