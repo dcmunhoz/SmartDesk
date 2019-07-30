@@ -12,6 +12,9 @@ use Psr\Http\Message\ResponseInterface;
 use Source\Core\User;
 use Source\Core\Company;
 use Source\Core\Ticket;
+use Source\Core\Local;
+use Source\Core\Sector;
+use Source\Core\Priority;
 
 class Api{
 
@@ -213,6 +216,112 @@ class Api{
         $result = $company->getQuantity();
     
         return $res->withJson($result);
+
+    }
+
+    /**
+     * Lista de locais
+     */
+    public function getLocalsList(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $local = new Local();
+        $body = $req->getParsedBody();
+    
+        $result = $local->getLocals($body['search']);
+    
+        return $res->withJson($result);
+
+    }
+
+    /**
+     * Quantidade de locais
+     */
+    public function getLocalsQtt(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $local = new Local();
+
+        $result = $local->getQuantity();
+    
+        return $res->withJson($result);
+
+    }
+
+    /**
+     * Lista de setores
+     */
+    public function getSectorsList(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $sector = new Sector();
+        $body = $req->getParsedBody();
+    
+        $result = $sector->getSectors($body['search']);
+    
+        return $res->withJson($result);
+
+    }
+
+    /**
+     * Quantidade de setores
+     */
+    public function getSectorsQtt(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $sector = new Sector();
+
+        $result = $sector->getQuantity();
+    
+        return $res->withJson($result);
+
+    }
+
+    /**
+     * Lista de prioridades
+     */
+    public function getPrioritiesList(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $priority = new Priority();
+        $body = $req->getParsedBody();
+    
+        $result = $priority->getPriorities($body['search']);
+    
+        return $res->withJson($result);
+
+    }
+
+    /**
+     * Dados da pagina de tickets.
+     */
+    public function getTicketPagedata(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $ticket = new Ticket();
+
+        $result = $ticket->getTicketPageData();
+
+        return $res->withJson($result);
+
+    }
+
+    public function getTickets(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $newType = "";
+
+        foreach (explode("-", $args['type']) as $key => $value) {
+            $newType .= ucfirst($value);
+        }
+    
+        User::verifyLogin(true);
+    
+        $ticket = new Ticket();
+    
+        $search = $req->getQueryParams()['s'];
+        $select = $req->getQueryParams()['q'];
+    
+        $data = $ticket->{"get$newType"}($search, $select);
+    
+        if (count($data) == 0) {
+            return $res->withStatus(500);
+        }
+    
+        return $res->withJson($data);        
 
     }
 
