@@ -39,10 +39,17 @@ export default class AdminNewUser {
 
                 User.newUser(formBody).then(data=>{
 
-                    console.log(formBody);
+                    Notification.pop("success", "Usuário cadastrado", "Usuário cadastrado com sucesso.");
+                    
+                    setTimeout(function(){
+
+                        window.location.replace("/admin/configs");
+
+                    }, 3000);
 
                 }).catch(err=>{
-
+                    
+                    Notification.pop("danger", "Usuário não cadastrado", "Houve um erro ao cadastrar o usuário.");
 
                 });
 
@@ -100,7 +107,7 @@ export default class AdminNewUser {
             [...data].forEach(row=>{
 
                 let option = document.createElement("option");
-                option.value = row['id_local'];
+                option.value = row['id_place'];
                 option.innerHTML = row['local_name'];
 
                 select.appendChild(option);

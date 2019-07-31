@@ -43,7 +43,7 @@ $app->group('/admin', function(Slim\App $app){
     
     if( !in_array($path, $excluded) ){
 
-        User::verifyLogin(true);
+        // User::verifyLogin(true);
 
     }    
     

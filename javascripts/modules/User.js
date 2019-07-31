@@ -222,12 +222,16 @@ module.exports = {
             }).then(result=>{
 
                 if(result.ok){
-
-                    resolve();
+                    
+                    return result.json();
 
                 }
 
                 reject();
+
+            }).then(data=>{
+
+                resolve(data);
 
             });            
 

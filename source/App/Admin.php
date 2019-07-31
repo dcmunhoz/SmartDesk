@@ -119,9 +119,21 @@ class Admin {
 
         $body = $req->getParsedBody();
 
-        \var_dump($body);
-        die;
+        $user = new User();
+        $user->setid_company($body['company']);
+        $user->setpassw($body['pascreate-passsw']);
+        $user->setemail($body['email']);
+        $user->setfull_name($body['full-name']);
+        $user->setid_place($body['local']);
+        $user->setid_profile($body['profile']);
+        $user->setid_sector($body['sector']);
+        $user->setuser_active( ( $body['user-active'] === "on" ) ? 1 : 0 );
+        $user->setusername($body['username']);
 
+        $result = $user->save();
+                
+        return $res->withJson($result);
+        
     }
 
     /**

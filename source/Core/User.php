@@ -17,7 +17,15 @@ class User extends ClassModel{
 
     public function __construct(){
 
-        // Carrega um usuário se existir na sessão;
+
+
+    }
+
+    /**
+     * Carrega o usuário da sessão
+     */
+    public function loadSessionUser(){
+
         \session_start();
         if(isset($_SESSION[User::SESSION_USER])){
             $this->setData($_SESSION[User::SESSION_USER]);
@@ -153,25 +161,23 @@ class User extends ClassModel{
 
     /**
      * 
-     * @param object $body Campos recebidos com os dados do usuário para salvar.
-     * 
      * Salva ou altera um usuário.
      * 
      */
-    public function save($body){
+    public function save(){
 
         $dao = new DB();
         $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector);",[
-            ":piduser"    => $body['update-user-id'],
-            ":pusername"  => $body['update-username'],
-            ":pfullname"  => $body['update-full-name'],
-            ":ppassw"     => $body['update-pass'],
-            ":pemail"     => $body['update-email'],
-            ":pactive"    => true,
-            ":pidprofile" => 2,
-            ":pidcompany" => $body['update-user-company'],
-            ":pidplace"   => $body['update-user-place'],
-            ":pidsector"  => $body['update-user-sector']
+            ":piduser"    => $this->getid_user(),
+            ":pusername"  => $this->getusername(),
+            ":pfullname"  => $this->getfull_name(),
+            ":ppassw"     => $this->getpassw(),
+            ":pemail"     => $this->getemail(),
+            ":pactive"    => $this->getuser_active(),
+            ":pidprofile" => $this->getid_profile(),
+            ":pidcompany" => $this->getid_company(),
+            ":pidplace"   => $this->getid_place(),
+            ":pidsector"  => $this->getid_sector()
         ]);
 
         return $result[0];

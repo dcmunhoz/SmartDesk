@@ -23,8 +23,11 @@ class Api{
      * Usuário logado
      */
     public function userLogged(ServerRequestInterface $req, ResponseInterface $res){
-    
-        return $res->withJson((new User)->getAuthenticatedPerson());
+        
+        $user = new User();
+        $user->loadSessionUser();
+
+        return $res->withJson($user->getAuthenticatedPerson());
 
     }
 
