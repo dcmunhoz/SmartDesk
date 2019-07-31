@@ -1,6 +1,5 @@
 <?php
 /**
- * @author Daniel Munhoz <dc.munhoz@hotmail.com> 
  * 
  * Classe responsavel por gerenciar todo conteudo dos usuários.
  * 

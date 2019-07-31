@@ -7,10 +7,43 @@
 
 namespace Source\Core;
 
-use \Source\Model\CLassModel;
-use \Source\Model\DB;
+use Source\Model\CLassModel;
+use Source\Model\DB;
 
 class Company extends ClassModel{
+
+    /**
+     * 
+     * Salva uma nova empresa no banco.
+     * 
+     */
+    public function save(){
+
+        $dao = new DB();
+
+        $exist = $dao->exec("SELECT count(*) as 'qtt' FROM tb_companies WHERE company_name = :name",[
+            ":name" => $this->getcompany_name()
+        ]);
+
+        if((Int) $exist[0]['qtt'] > 0){
+
+            return [
+                'error'   => true,
+                'message' => "Empresa já cadastrada."
+            ];
+
+        }
+
+        $result = $dao->exec("CALL proc_save_company(:pidcompany, :pname)",[
+            ":pidcompany" => $this->getid_company(),
+            ":pname"      => $this->getcompany_name()
+        ]);
+
+        $this->setData($result[0]);
+
+        return $this->getData();
+
+    }
 
     /**
      * 

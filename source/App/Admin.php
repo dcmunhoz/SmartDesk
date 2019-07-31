@@ -11,6 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Source\Utils\View;
 use Source\Core\User;
+use Source\Core\Company;
 
 class Admin {
 
@@ -147,11 +148,35 @@ class Admin {
     /**
      * Pagina nova empresa
      */
-    public function comanyNew(){
+    public function companyNew(){
 
         $view = new View(true, false, false);
 
         $view->draw('admin-company-new');
+
+    }
+
+    /**
+     * Adiciona uma empresa.
+     */
+    public function postCompanyNew(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $body = $req->getParsedBody();
+
+        $company = new Company();
+
+        $company->setcompany_name($body['name']);
+
+        $result = $company->save();
+
+        if( $result['error'] ){
+
+            $newRes = $res->withStatus(500);
+
+            return $newRes->withJson($result);
+        }
+
+        return $res->withJson($result);
 
     }
 

@@ -257,3 +257,32 @@ BEGIN
     SELECT lastMessageId as id_message;    
 END$
 DELIMITER ;
+
+DELIMITER $
+CREATE PROCEDURE proc_save_company(
+	pidcompany INT,
+    pname	   TEXT
+)
+BEGIN
+	
+    DECLARE lastCompanyId INT;
+        
+    IF pidcompany >= 1 THEN
+		
+		UPDATE tb_companies
+        SET company_name = pname
+        WHERE id_company = pidcompany;
+        
+    ELSE
+		
+		INSERT INTO tb_companies (company_name)
+        VALUES (pname);
+        
+        SELECT LAST_INSERT_ID() INTO lastCompanyId;
+        
+    END IF;
+    
+	SELECT * FROM tb_companies WHERE id_company = lastCompanyId;
+    
+END $
+DELIMITER ; 

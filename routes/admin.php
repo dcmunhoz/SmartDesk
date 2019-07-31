@@ -26,6 +26,7 @@ $app->group('/admin', function(Slim\App $app){
     $app->get("/user/new", Admin::class . ":userNew");
     $app->post("/user/new", Admin::class . ":postUserNew");
     $app->get("/company/new", Admin::class . ":companyNew");
+    $app->post("/company/new", Admin::class . ":postCompanyNew");
     $app->get("/place/new", Admin::class . ":placeNew");
     $app->get("/sector/new", Admin::class . ":sectorNew");
     $app->get("/priority/new", Admin::class . ":priorityNew");
@@ -45,7 +46,7 @@ $app->group('/admin', function(Slim\App $app){
     
     if( !in_array($path, $excluded) ){
 
-        // User::verifyLogin(true);
+        User::verifyLogin(true);
 
     }    
     

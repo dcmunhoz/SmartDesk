@@ -40,6 +40,8 @@ html, body{
     box-sizing: border-box;
     padding: 10px;
     overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .notification{
@@ -51,12 +53,14 @@ html, body{
     width: 250px;
     height: 80px;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 3px;
     transition: 300ms;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.521);
     margin-bottom: 20px;
     right: -350px;
     opacity: 0;
+    z-index: 999;
+    pointer-events: all;
 }
 
 .notification h1{
@@ -74,7 +78,7 @@ html, body{
 
 .notification.success{
 
-    background-color: green;
+    background-color: rgb(26, 170, 103);
     color: #FFF;
 
 }
