@@ -165,8 +165,23 @@ class User extends ClassModel{
      * 
      */
     public function save(){
-
+        
         $dao = new DB();
+        
+                
+        $exist = $dao->exec("SELECT count(*) as 'qtt' FROM tb_users WHERE username like :username",[
+            ":username"=>$this->getusername()
+        ]);
+
+        if( \is_null($this->getid_user()) && (Int) $exist[0]['qtt'] >= 1 ){
+
+            return [
+                "error"=> true,
+                "message"=> "Usuário já cadastrado no sistema."
+            ];
+
+        }    
+
         $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector);",[
             ":piduser"    => $this->getid_user(),
             ":pusername"  => $this->getusername(),
@@ -180,7 +195,9 @@ class User extends ClassModel{
             ":pidsector"  => $this->getid_sector()
         ]);
 
-        return $result[0];
+        $this->setData($result[0]);
+
+        return $this->getData();               
 
     }
 

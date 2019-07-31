@@ -219,19 +219,16 @@ module.exports = {
             fetch("/admin/user/new",{
                 method: "POST",
                 body
-            }).then(result=>{
+            }).then(result => result.json()).then(data=>{
 
-                if(result.ok){
-                    
-                    return result.json();
+                if ( data['error'] ) {
+
+                    reject(data);
 
                 }
 
-                reject();
-
-            }).then(data=>{
-
                 resolve(data);
+                
 
             });            
 

@@ -48,8 +48,8 @@ export default class AdminNewUser {
                     }, 3000);
 
                 }).catch(err=>{
-                    
-                    Notification.pop("danger", "Usuário não cadastrado", "Houve um erro ao cadastrar o usuário.");
+                    console.clear();
+                    Notification.pop("danger", "Usuário não cadastrado", err['message']);
 
                 });
 

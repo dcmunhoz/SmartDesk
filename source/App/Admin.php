@@ -131,6 +131,14 @@ class Admin {
         $user->setusername($body['username']);
 
         $result = $user->save();
+
+        if( $result['error'] ){
+
+            $newRes = $res->withStatus(500);
+
+            return $newRes->withJson($result);
+
+        }
                 
         return $res->withJson($result);
         
