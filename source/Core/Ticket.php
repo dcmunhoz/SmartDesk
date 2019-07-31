@@ -85,8 +85,11 @@ class Ticket extends ClassModel{
             WHERE ta.id_user = :id_user AND t.id_ticket $search AND t.id_status $status
         ";
 
+        $user = new User();
+        $user->loadSessionUser();
+
         $data = $this->getTicketsList($query, [
-            ":id_user" => (new User)->getid_user()
+            ":id_user" => $user->getid_user()
         ]);
         
         return $data;
@@ -309,6 +312,7 @@ class Ticket extends ClassModel{
 
         $dao = new DB();
         $user = new User();
+        $user->loadSessionUser();
 
         $query = "
             select (
