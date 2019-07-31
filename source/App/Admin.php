@@ -225,13 +225,15 @@ class Admin {
         $user->setid_user($body['id_user']);
         $user->setfull_name($body['full_name']);
         $user->setusername($body['username']);
+        $user->setold_username($body['old_username']);
         $user->setemail($body['email']);
         $user->setuser_active( ($body['active'] === 'on') ? true : false );
         $user->setid_profile($body['profile']);
         $user->setid_company($body['company']);
         $user->setid_place($body['local']);
         $user->setid_sector($body['sector']);
-        
+
+
         $result = $user->save();
 
         if( $result['error'] ){

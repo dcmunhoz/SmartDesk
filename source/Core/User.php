@@ -173,7 +173,7 @@ class User extends ClassModel{
             ":username"=>$this->getusername()
         ]);
 
-        if( \is_null($this->getid_user()) && (Int) $exist[0]['qtt'] >= 1 ){
+        if( \is_null($this->getid_user()) && (Int) $exist[0]['qtt'] >= 1 || !\is_null($this->getid_user()) && $this->getold_username() !== $this->getusername()  ){
 
             return [
                 "error"=> true,

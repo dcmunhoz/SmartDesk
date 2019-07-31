@@ -52,7 +52,7 @@ export default class AdminNewUser {
 
                 }).catch(err=>{
 
-                    Notification.pop("danger", "Erro", "Houve um erro ao tentar alterar o usuário.");
+                    Notification.pop("danger", "Erro na alteração", err['message']);
 
                 });
 
@@ -84,6 +84,8 @@ export default class AdminNewUser {
     showUserData(){
 
         let form = document.querySelector("#form-user");
+
+        form['old_username'].value = this._user['username'];
 
         Object.keys(this._user).forEach(key=>{
 
