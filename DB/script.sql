@@ -163,8 +163,8 @@ CREATE TABLE tb_ticket_assignment(
 ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_ticket_ticketassignment FOREIGN KEY(id_ticket) REFERENCES tb_tickets(id_ticket);
 ALTER TABLE tb_ticket_assignment ADD CONSTRAINT fk_user_ticketassignment FOREIGN KEY(id_user) REFERENCES tb_users(id_user);
 
-DELIMITER $
-CREATE PROCEDURE proc_save_user(
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_save_user`(
 piduser INT,
 pusername VARCHAR(16),
 pfullname VARCHAR(100),
@@ -174,8 +174,10 @@ pactive BOOL,
 pidprofile INT,
 pidcompany INT,
 pidplace INT,
-pidsector INT
-)BEGIN
+pidsector INT,
+pneedup	INT
+)
+BEGIN
 
 	DECLARE lastUserId INT;
 	
@@ -183,7 +185,8 @@ pidsector INT
 		UPDATE tb_users
         SET username = pusername,
 			email = pemail,
-            active = pactive
+            active = pactive,
+            id_profile = pidprofile
 		WHERE id_user = piduser;
         
         UPDATE tb_persons
@@ -191,7 +194,7 @@ pidsector INT
 			id_company = pidcompany,
             id_place = pidplace,
             id_sector = pidsector,
-            need_updates = 0
+            need_updates = pneedup
 		WHERE id_user = piduser;
         
         SELECT piduser INTO lastUserId;
@@ -202,15 +205,14 @@ pidsector INT
         
         SELECT LAST_INSERT_ID() INTO lastUserId;
         
-        INSERT INTO tb_persons (full_name, id_user)
-        VALUES (pfullname, lastUserId);
-        
+        INSERT INTO tb_persons (full_name, id_user, id_company, id_place, id_sector, need_updates)
+        VALUES (pfullname, lastUserId, pidcompany, pidplace, pidsector, pneedup);
         
     END IF;
     
     SELECT * FROM tb_users WHERE id_user = lastUserId;
     
-END$	
+END$$
 DELIMITER ;
 
 DELIMITER $

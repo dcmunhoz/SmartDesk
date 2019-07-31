@@ -29,7 +29,9 @@ $app->group('/admin', function(Slim\App $app){
     $app->get("/place/new", Admin::class . ":placeNew");
     $app->get("/sector/new", Admin::class . ":sectorNew");
     $app->get("/priority/new", Admin::class . ":priorityNew");
-    $app->get("/user/4", Admin::class . ":userUpdate");
+    $app->get("/user/{idUser}", Admin::class . ":userUpdate");
+    $app->get("/user/{idUser}/find", Admin::class . ":userFind");
+    $app->post("/user/{idUser}", Admin::class . ":postUserUpdate");
     $app->get("/company/4", Admin::class . ":companyUpdate");
     $app->get("/place/4", Admin::class . ":placeUpdate");
     $app->get("/sector/4", Admin::class . ":sectorUpdate");

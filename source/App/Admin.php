@@ -192,11 +192,58 @@ class Admin {
     /**
      * Pagina atualização usuário
      */
-    public function userUpdate(){
-        
+    public function userUpdate(ServerRequestInterface $req, ResponseInterface $res, $args){
+
         $view = new View(true, false, false);
 
         $view->draw('admin-user-update');
+
+    }
+
+    /**
+     * Retorna os dados do usuário selecionado.
+     */
+    public function userFind(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $user = new User();
+
+        $user->find((Int) $args['idUser']);
+
+        return $res->withJson($user->getData());
+
+    }
+
+    /**
+     * Atualiza um usuário.
+     */
+    public function postUserUpdate(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $body = $req->getParsedBody();
+        
+        $user = new User();
+
+        $user->setid_user($body['id_user']);
+        $user->setfull_name($body['full_name']);
+        $user->setusername($body['username']);
+        $user->setemail($body['email']);
+        $user->setuser_active( ($body['active'] === 'on') ? true : false );
+        $user->setid_profile($body['profile']);
+        $user->setid_company($body['company']);
+        $user->setid_place($body['local']);
+        $user->setid_sector($body['sector']);
+        
+        $result = $user->save();
+
+        if( $result['error'] ){
+
+            $newRes = $res->withStatus(500);
+
+            return $newRes->withJson($result);
+
+        }
+                
+        return $res->withJson($result);
+
 
     }
 

@@ -234,6 +234,46 @@ module.exports = {
 
         });
 
+    },
+
+    /**
+     * 
+     * @param {Integer} idUser Id do usuário
+     */
+    find(idUser){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/admin/user/${idUser}/find`).then(result => result.json()).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
+
+    },
+    
+    update(body){
+
+        return new Promise((resolve, reject)=>{
+
+
+            fetch(`/admin/user/${body.get('id_user')}`, {
+                method: "POST",
+                body
+            }).then(result => result.json()).then(data=>{
+                
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        });
+
     }
 
 }

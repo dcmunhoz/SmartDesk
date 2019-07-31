@@ -16,6 +16,7 @@ import AdminSignin from '../controllers/AdminSignin';
 import AdminConfigs from '../controllers/AdminConfigs';
 import AdminTickets from '../controllers/AdminTickets';
 import AdminNewUser from '../controllers/AdminNewUser';
+import AdminUpdateUser from '../controllers/AdminUpdateUser';
 
 
 export default class AppController{
@@ -60,6 +61,9 @@ export default class AppController{
                 break;
                 case 'AdminNewUser':
                     new AdminNewUser();
+                break;
+                case 'AdminUpdateUser':
+                    new AdminUpdateUser();
                 break;
             }
         }

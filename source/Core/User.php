@@ -180,9 +180,9 @@ class User extends ClassModel{
                 "message"=> "Usuário já cadastrado no sistema."
             ];
 
-        }    
+        }   
 
-        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector);",[
+        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector, :pneedup);",[
             ":piduser"    => $this->getid_user(),
             ":pusername"  => $this->getusername(),
             ":pfullname"  => $this->getfull_name(),
@@ -192,7 +192,8 @@ class User extends ClassModel{
             ":pidprofile" => $this->getid_profile(),
             ":pidcompany" => $this->getid_company(),
             ":pidplace"   => $this->getid_place(),
-            ":pidsector"  => $this->getid_sector()
+            ":pidsector"  => $this->getid_sector(),
+            ":pneedup"    => ((Int) $this->getid_company() === 0 || (Int) $this->getid_place() === 0 || (Int) $this->getid_sector() === 0 ) ? 1 : 0
         ]);
 
         $this->setData($result[0]);
@@ -244,6 +245,26 @@ class User extends ClassModel{
         $resut = $dao->exec("SELECT COUNT(*) AS 'qtde' FROM tb_users;");
 
         return $resut[0];
+
+    }
+
+    /**
+     * 
+     * @param int $id Id do usuário para buscar no banco.
+     * 
+     * Busca o usuário de acordo com o id passado
+     */
+    public function find(int $id): User{
+
+        $dao = new DB();
+
+        $result = $dao->exec("SELECT * FROM tb_users JOIN tb_persons USING(id_user) WHERE id_user = :id_user",[
+            ":id_user"=>$id
+        ]);
+
+        $this->setData($result[0]);
+
+        return $this;
 
     }
 }
