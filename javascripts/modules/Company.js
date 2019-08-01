@@ -86,6 +86,24 @@ module.exports = {
 
         });
 
+    },
+
+    /**
+     * Pega os dados da empresa.
+     */
+    find(idCompany){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/company/${idCompany}/find`).then(result=>result.json()).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
+
     }
+
 
 }

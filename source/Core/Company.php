@@ -14,6 +14,22 @@ class Company extends ClassModel{
 
     /**
      * 
+     * Retorna os dados de uma empresa
+     * 
+     */
+    public function find(int $idCompany){
+
+        $dao = new DB();
+
+        $result= $dao->exec("SELECT * FROM tb_companies WHERE id_company = :id_company ", [
+            ":id_company" => $idCompany
+        ]);
+
+        $this->setData($result[0]);
+    }
+
+    /**
+     * 
      * Salva uma nova empresa no banco.
      * 
      */

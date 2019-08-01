@@ -1,4 +1,4 @@
-<div id="page" style="display: none;" data-page="AdminNewUser"></div>
+<div id="page" style="display: none;" data-page="AdminCompanyUpdate"></div>
 <div class=" content">
 
     <div class="main-content">
@@ -19,11 +19,13 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form>
+                        <form id="form-company">
+
+                            <input type="hidden" id="id_company" name="id_company">
 
                             <div class="form-group">
-                                <label for="">Nome da empresa:</label>
-                                <input type="text">
+                                <label for="company_name">Nome da empresa:</label>
+                                <input type="text" id="company_name" name="company_name">
                             </div>
     
                         </form>
@@ -34,7 +36,7 @@
 
                 <footer>
 
-                    <button class="btn btn-update">Criar</button>
+                    <button class="btn btn-update" id="btn-update">Criar</button>
 
                 </footer>
     

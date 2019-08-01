@@ -18,6 +18,7 @@ import AdminTickets from '../controllers/AdminTickets';
 import AdminUserNew from '../controllers/AdminUserNew';
 import AdminUserUpdate from '../controllers/AdminUserUpdate';
 import AdminCompanyNew from '../controllers/AdminCompanyNew';
+import AdminCompanyUpdate from '../controllers/AdminCompanyUpdate';
 
 
 export default class AppController{
@@ -68,6 +69,9 @@ export default class AppController{
                 break;
                 case 'AdminCompanyNew':
                     new AdminCompanyNew();
+                break;
+                case 'AdminCompanyUpdate':
+                    new AdminCompanyUpdate();
                 break;
             }
         }

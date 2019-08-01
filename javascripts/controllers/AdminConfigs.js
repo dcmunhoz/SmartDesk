@@ -309,7 +309,7 @@ export default class AdminConfigs {
                     <td>${row['company_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/company/4"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/company/${row['id_company']}"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 </tr>

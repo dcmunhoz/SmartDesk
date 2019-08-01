@@ -33,7 +33,7 @@ $app->group('/admin', function(Slim\App $app){
     $app->get("/user/{idUser}", Admin::class . ":userUpdate");
     $app->get("/user/{idUser}/find", Admin::class . ":userFind");
     $app->post("/user/{idUser}", Admin::class . ":postUserUpdate");
-    $app->get("/company/4", Admin::class . ":companyUpdate");
+    $app->get("/company/{idCompany}", Admin::class . ":companyUpdate");
     $app->get("/place/4", Admin::class . ":placeUpdate");
     $app->get("/sector/4", Admin::class . ":sectorUpdate");
     $app->get("/priority/4", Admin::class . ":priorityUpdate");

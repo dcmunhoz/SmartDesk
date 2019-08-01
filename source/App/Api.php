@@ -341,6 +341,19 @@ class Api{
         
     }
 
+    /**
+     * Dados da empresa
+     */
+    public function companyFind(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $company = new Company();
+
+        $company->find($args['idCompany']);
+
+        return $res->withJson($company->getData());
+
+    }
+
 }
 
 ?>
