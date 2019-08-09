@@ -76,6 +76,29 @@ module.exports = {
                 body
             }).then(result=>result.json()).then(data=>{
 
+                console.log(data);
+
+                if(data['error']){
+                    reject(data);
+                }   
+
+                resolve(data);
+
+            });
+
+        });
+
+    },
+
+    update(body){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/company/${body['id_company']}/update`, {
+                method: "POST",
+                body
+            }).then(result=>result.json()).then(data=>{
+
                 if(data['error']){
                     reject(data);
                 }   

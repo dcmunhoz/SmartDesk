@@ -354,6 +354,27 @@ class Api{
 
     }
 
+    public function companyUpdate(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $body = $req->getParsedBody();
+
+        $company = new Company();
+        $company->setid_company($body['id_company']);
+        $company->setcompany_name($body['company_name']);
+
+        $result = $company->save();
+
+        if ($result['error']) {
+
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson($result);
+
+        }
+
+        return $res->withJson($body);
+
+    }
+
 }
 
 ?>

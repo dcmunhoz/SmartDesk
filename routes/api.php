@@ -54,7 +54,8 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/tickets/list/{type}", Api::class . ":getTickets");
     $app->get("/profiles/list", Api::class . ":getProfilesList");
     $app->get("/company/{idCompany}/find", Api::class . ":companyFind");
-
+    $app->post("/company/{idCompany}/update", Api::class . ":companyUpdate");
+    
 })->add(function($req, $res, $next){
 
     User::verifyLogin(true);

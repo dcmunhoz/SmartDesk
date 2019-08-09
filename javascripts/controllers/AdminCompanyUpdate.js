@@ -5,8 +5,9 @@
  */
 
 // Utilitarios e Modulos
-let Prototype = require('../utils/Prototypes');
-let Company   = require('../modules/Company');
+let Prototype    = require('../utils/Prototypes');
+let Company      = require('../modules/Company');
+let Notification = require('../utils/Notification');
 
 export default class AdminCompanyUpdate {
 
@@ -21,9 +22,28 @@ export default class AdminCompanyUpdate {
 
     initEvents(){
 
-        document.querySelector("btn-update").on('click', e=>{
+        document.querySelector("#btn-update").on('click', e=>{
 
-            console.log("OK");
+            let form = document.querySelector("#form-company");
+
+            if (form.validateFields()) {
+                
+                let formData = new FormData(form);
+
+                Company.update(formData).then(result=>{
+
+                    Notification.pop("success", "Sucesso", "Empresa editada !");
+                    setTimeout(() => {
+                        window.location.href = "/admin/configs"
+                    }, 3000);
+
+                }).catch(fail=>{
+
+                    console.clear();
+                    Notification.pop("danger", "Erro ao editar", fail['message']);
+                });
+
+            }
 
         });
 
