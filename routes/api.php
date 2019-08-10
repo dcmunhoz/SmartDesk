@@ -55,6 +55,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/profiles/list", Api::class . ":getProfilesList");
     $app->get("/company/{idCompany}/find", Api::class . ":companyFind");
     $app->post("/company/{idCompany}/update", Api::class . ":companyUpdate");
+    $app->post("/local/new", Api::class . ":placeNew");
     
 })->add(function($req, $res, $next){
 

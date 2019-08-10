@@ -52,6 +52,33 @@ class Local extends ClassModel{
 
     }
 
+    /**
+     * 
+     *  Salva um local no banco de dados.
+     * 
+     */
+    public function save(): array{
+
+        $dao = new DB();
+
+        $exists = $dao->exec("SELECT count(*) as 'qtt' FROM tb_places WHERE local_name = :local_name", [[
+            ":local_name" => $this->getlocal_name()
+        ]]);
+
+        if((Int) $exists['qtt'] > 0){
+
+            return [
+                "error" => true,
+                "message" => "O local informado já existe."
+            ];
+
+        }
+        
+        
+
+
+    }
+
 
 }
 

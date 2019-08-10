@@ -1,4 +1,4 @@
-<div id="page" style="display: none;" data-page="AdminNewUser"></div>
+<div id="page" style="display: none;" data-page="AdminPlaceNew"></div>
 <div class=" content">
 
     <div class="main-content">
@@ -19,20 +19,26 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form>
+                        <form id="form-place">
 
                             <div class="form-group">
-                                <label for="">Nome local:</label>
-                                <input type="text">
+                                <label for="place_name">Nome local:</label>
+                                <input type="text" id="place_name" name="place_name">
                             </div>
 
                             <div class="form-group">
-                                <label for="">Empresa pertencente:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="company">Empresa pertencente:</label>
+                                <select name="company" id="company">
+                                    <option value="0">Selecione</option>
                                 </select>
                             </div>
-    
+
+                            <div class="form-group">
+                                <label for="city">Cidade:</label>
+                                <select name="city" id="city">
+                                    <option value="0">Selecione</option>
+                                </select>
+                            </div>
     
                         </form>
 
@@ -42,7 +48,7 @@
 
                 <footer>
 
-                    <button class="btn btn-enviar">Criar</button>
+                    <button class="btn btn-enviar" id="btn-new">Criar</button>
 
                 </footer>
     

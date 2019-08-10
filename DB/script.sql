@@ -286,3 +286,34 @@ BEGIN
     
 END $
 DELIMITER ; 
+
+DELIMITER $
+CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_save_local`(
+	pidlocal   INT,
+    pname	   TEXT,
+    pidcompany INT
+)
+BEGIN
+	
+    DECLARE lastLocalId INT;
+        
+    IF pidlocal >= 1 THEN
+		
+		UPDATE tb_places
+        SET local_name = pname,
+        id_company = pidcompany
+        WHERE id_place = pidlocal;
+        
+    ELSE
+		
+		INSERT INTO tb_places (local_name, id_company)
+        VALUES (pname, pidcompany);
+        
+        SELECT LAST_INSERT_ID() INTO lastLocalId;
+        
+    END IF;
+    
+	SELECT * FROM tb_places WHERE id_place = lastLocalId;
+    
+END $
+DELIMITER ;

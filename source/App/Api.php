@@ -375,6 +375,17 @@ class Api{
 
     }
 
+    public function placeNew(ServerRequestInterface $req, ResponseInterface $res){
+
+        $body = $req->getParsedBody();
+
+        $local = new Local();
+        $local->setlocal_name();
+
+
+        return $res->withJson($body);
+    }
+
 }
 
 ?>

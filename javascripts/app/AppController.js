@@ -19,6 +19,8 @@ import AdminUserNew from '../controllers/AdminUserNew';
 import AdminUserUpdate from '../controllers/AdminUserUpdate';
 import AdminCompanyNew from '../controllers/AdminCompanyNew';
 import AdminCompanyUpdate from '../controllers/AdminCompanyUpdate';
+import AdminPlaceNew from '../controllers/AdminPlaceNew';
+import AdminPlaceUpdate from '../controllers/AdminPlaceUpdate';
 
 
 export default class AppController{
@@ -72,6 +74,12 @@ export default class AppController{
                 break;
                 case 'AdminCompanyUpdate':
                     new AdminCompanyUpdate();
+                break;
+                case 'AdminPlaceNew':
+                    new AdminPlaceNew();
+                break;
+                case 'AdminPlaceUpdate':
+                    new AdminPlaceUpdate();
                 break;
             }
         }

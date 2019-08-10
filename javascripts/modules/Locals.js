@@ -62,6 +62,23 @@ module.exports = {
 
         });
 
+    },
+    
+    save(body){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/local/new`, {
+                method: 'POST',
+                body
+            }).then(response=>response.json()).then(data=>{
+
+                console.log(data);
+
+            });
+            
+        });
+        
     }
 
 }
