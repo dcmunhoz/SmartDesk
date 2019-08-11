@@ -390,7 +390,7 @@ export default class AdminConfigs {
                     <td>${row['sector_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/sector/4"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/sector/${row['id_sector']}"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;

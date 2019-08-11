@@ -454,6 +454,39 @@ class Api{
         return $res->withJson($result);
     }
 
+    public function sectorFind(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $idSector = $args['idSector'];
+        
+        $sector = new Sector();
+        $sector->setid_sector($idSector);
+        $sector->find();
+
+        return $res->withJson($sector->getData());
+
+    }
+
+    public function sectorUpdate(ServerRequestInterface $req, ResponseInterface $res){
+
+        $body = $req->getParsedBody();
+
+        $sector = new Sector();
+        $sector->setid_sector($body['id_sector']);
+        $sector->setid_local($body['id_local']);
+        $sector->setsector_name($body['sector_name']);
+
+        $result = $sector->save();
+        
+        if($result['error']){
+
+            $res = $res->withStatus(500);
+            return $res->withJson($result);
+
+        }
+
+        return $res->withJson($result);
+
+    }
 }
 
 ?>

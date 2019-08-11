@@ -1,4 +1,4 @@
-<div id="page" style="display: none;" data-page="AdminNewUser"></div>
+<div id="page" style="display: none;" data-page="AdminSectorUpdate"></div>
 <div class=" content">
 
     <div class="main-content">
@@ -11,7 +11,7 @@
                         Editar Setor
                     </h1>
                     <p>
-                        Para Editar uma setor, altere os campos abaixo.
+                        Para Editdar uma setor, altere os campos abaixo.
                     </p>
                 </header>
 
@@ -19,17 +19,19 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form>
+                        <form id="form-sector">
+
+                            <input type="hidden" id="id_sector" name="id_sector">
 
                             <div class="form-group">
-                                <label for="">Nome setor:</label>
-                                <input type="text">
+                                <label for="sector_name">Nome setor:</label>
+                                <input type="text" id="sector_name" name="sector_name">
                             </div>
 
                             <div class="form-group">
-                                <label for="">Empresa pertencente:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="id_local">Local pertencente:</label>
+                                <select name="id_local" id="id_local">
+                                    <option value="0">Selecione</option>
                                 </select>
                             </div>
     
@@ -41,7 +43,7 @@
 
                 <footer>
 
-                    <button class="btn btn-update">Criar</button>
+                    <button class="btn btn-update" id="btn-update">Atualizar</button>
 
                 </footer>
     

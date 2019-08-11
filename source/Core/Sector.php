@@ -80,6 +80,17 @@ class Sector extends ClassModel{
 
     }
 
+    public function find(){
+
+        $dao = new DB();
+        $result = $dao->exec("SELECT * FROM tb_sectors JOIN tb_locals USING(id_local) where id_sector = :id_sector", [
+            ":id_sector" => $this->getid_sector()
+        ]);
+
+        $this->setData($result[0]);
+
+    }
+
 
 }
 

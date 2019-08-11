@@ -83,6 +83,39 @@ module.exports = {
 
         });
 
+    },
+
+    find(idSector){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/sector/${idSector}/find`).then(result=>result.json()).then(data=>{
+
+                resolve(data);
+
+            });
+
+        });
+
+
+    },
+
+    update(body){
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/sector/update`, {
+                method: 'POST',
+                body
+            }).then(result=>result.json()).then(data=>{
+
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+            })
+
+        });
     }
 
 }
