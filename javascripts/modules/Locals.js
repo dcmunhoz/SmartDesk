@@ -107,8 +107,17 @@ module.exports = {
 
         return new Promise((resolve, reject)=>{
 
-            fetch(`/api/admin/local/${body}/update`).then(result=>result.json()).then(data=>{
+            fetch(`/api/admin/local/${body['id_local']}/update`, {
+                method: 'POST',
+                body
+            }).then(result=>result.json()).then(data=>{
                 
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
 
             });
 

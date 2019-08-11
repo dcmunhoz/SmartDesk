@@ -65,7 +65,7 @@ class Local extends ClassModel{
             ":local_name" => $this->getlocal_name()
         ]);
 
-        if((Int) $exists['qtt'] > 0){
+        if((Int) $exists[0]['qtt'] > '0'){
 
             return [
                 "error" => true,
@@ -81,6 +81,8 @@ class Local extends ClassModel{
             ":pcitycep"   => (Int) $this->getcity_cep(),
             ":pcityname"  => $this->getcity_name()
         ]);
+
+        $this->setData($result);
 
         return $result;
 

@@ -29,18 +29,17 @@ export default class AdminCompanyUpdate {
 
 
             if (form.validateFields()) {
+
+                document.querySelector("#city_name").disabled = false;
                 
                 let formData = new FormData(form);
 
-                console.log(formData['local_name']);
-
-                [...formData.keys()].forEach(key=>{
-                    console.log(key);
-                });
+                document.querySelector("#city_name").disabled = true;
 
                 Local.update(formData).then(result=>{
 
-                    Notification.pop("success", "Sucesso", "Empresa editada !");
+
+                    Notification.pop("success", "Sucesso", "Local editada !");
                     setTimeout(() => {
                         window.location.href = "/admin/configs"
                     }, 3000);

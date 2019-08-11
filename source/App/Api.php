@@ -414,8 +414,25 @@ class Api{
 
     public function localUpdate(ServerRequestInterface $req, ResponseInterface $res, $args){
 
-        return $res->withJson($req->getParsedBody());
+        $body = $req->getParsedBody();
+        
+        $local = new Local();
+        $local->setid_local($body['id_local']);
+        $local->setlocal_name($body['local_name']);
+        $local->setid_company($body['id_company']);
+        $local->setcity_cep($body['city_cep']);
+        $local->setcity_name($body['city_name']);
 
+        $result = $local->save();
+
+        if ($result['error']) {
+
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson($result);
+
+        }
+
+        return $res->withJson($body);
     }
 
 }
