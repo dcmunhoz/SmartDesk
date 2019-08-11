@@ -70,6 +70,24 @@ module.exports = {
 
                     }
 
+                    if (el.id === 'city-cep') {
+
+                        if (el.value.length < 8) {
+                            formGroup.classList.add('input-error');
+                            formGroup.classList.add('input-error');
+                            validation = true;
+                        }
+
+                    }
+
+                    if(el.id === 'city-name'){
+                        if(el.value === 'Inexistente'){
+                            formGroup.classList.add('input-error');
+                            formGroup.classList.add('input-error');
+                            validation = true;
+                        }
+                    }
+
                 }
                 
 

@@ -107,7 +107,7 @@ export default class AdminUserNew {
             [...data].forEach(row=>{
 
                 let option = document.createElement("option");
-                option.value = row['id_place'];
+                option.value = row['id_local'];
                 option.innerHTML = row['local_name'];
 
                 select.appendChild(option);

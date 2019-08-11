@@ -342,11 +342,12 @@ export default class AdminConfigs {
             [...result].forEach(row=>{
 
                 let tr = document.createElement('tr');
-                tr.dataset.id = row['id_place'];
+                tr.dataset.id = row['id_local'];
 
                 let body = `
-                    <td>${row['id_place']}</td>
+                    <td>${row['id_local']}</td>
                     <td>${row['local_name']}</td>
+                    <td>${row['city_name']}</td>
                     <td>
                         <div class="option-buttons">
                             <a href="/admin/place/4"> <i class="fas fa-edit"></i> </a>

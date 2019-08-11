@@ -19,11 +19,11 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form id="form-place">
+                        <form id="form-local">
 
                             <div class="form-group">
-                                <label for="place_name">Nome local:</label>
-                                <input type="text" id="place_name" name="place_name">
+                                <label for="local_name">Nome local:</label>
+                                <input type="text" id="local_name" name="local_name" placeholder="Nome do local a inserir">
                             </div>
 
                             <div class="form-group">
@@ -33,11 +33,18 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="city">Cidade:</label>
-                                <select name="city" id="city">
-                                    <option value="0">Selecione</option>
-                                </select>
+                            <div class="row row-2">
+
+                                <div class="form-group">
+                                    <label for="city-cep">CEP:</label>
+                                    <input type="text"id="city-cep" name="city-cep"  autocomplete="off" placeholder="CEP da cidade" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city-name">Cidade:</label>
+                                    <input type="text" id="city-name" name="city-name" placeholder="Nome da cidade" disabled>
+                                </div>
+
                             </div>
     
                         </form>

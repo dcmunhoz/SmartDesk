@@ -380,10 +380,22 @@ class Api{
         $body = $req->getParsedBody();
 
         $local = new Local();
-        $local->setlocal_name();
+        $local->setlocal_name($body['local_name']);
+        $local->setid_company($body['company']);
+        $local->setcity_cep($body['city-cep']);
+        $local->setcity_name($body['city-name']);
 
+        $result = $local->save();
 
-        return $res->withJson($body);
+        if($result['error']){
+
+            $newRes = $res->withStatus(500);
+
+            return $newRes->withJson($result);
+
+        }  
+
+        return $res->withJson($result);
     }
 
 }

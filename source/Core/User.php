@@ -181,7 +181,7 @@ class User extends ClassModel{
 
         }   
 
-        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidplace, :pidsector, :pneedup);",[
+        $result = $dao->exec("CALL proc_save_user(:piduser, :pusername, :pfullname, :ppassw, :pemail, :pactive, :pidprofile, :pidcompany, :pidlocal, :pidsector, :pneedup);",[
             ":piduser"    => $this->getid_user(),
             ":pusername"  => $this->getusername(),
             ":pfullname"  => $this->getfull_name(),
@@ -190,9 +190,9 @@ class User extends ClassModel{
             ":pactive"    => $this->getuser_active(),
             ":pidprofile" => $this->getid_profile(),
             ":pidcompany" => $this->getid_company(),
-            ":pidplace"   => $this->getid_place(),
+            ":pidlocal"   => $this->getid_local(),
             ":pidsector"  => $this->getid_sector(),
-            ":pneedup"    => ((Int) $this->getid_company() === 0 || (Int) $this->getid_place() === 0 || (Int) $this->getid_sector() === 0 ) ? 1 : 0
+            ":pneedup"    => ((Int) $this->getid_company() === 0 || (Int) $this->getid_local() === 0 || (Int) $this->getid_sector() === 0 ) ? 1 : 0
         ]);
 
         $this->setData($result[0]);

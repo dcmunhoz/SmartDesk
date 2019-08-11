@@ -29,7 +29,7 @@ class Local extends ClassModel{
 
         $dao = new DB();
 
-        $result = $dao->exec("SELECT * FROM tb_places WHERE local_name LIKE :name;", [
+        $result = $dao->exec("SELECT * FROM tb_locals JOIN tb_cities USING(id_city) WHERE local_name LIKE :name;", [
             ":name" => "%".$search."%"
         ]);
 
@@ -46,7 +46,7 @@ class Local extends ClassModel{
 
         $dao = new DB();
 
-        $result = $dao->exec("SELECT COUNT(*) AS 'qtde' FROM tb_places;");
+        $result = $dao->exec("SELECT COUNT(*) AS 'qtde' FROM tb_locals;");
 
         return $result[0];
 
@@ -61,9 +61,9 @@ class Local extends ClassModel{
 
         $dao = new DB();
 
-        $exists = $dao->exec("SELECT count(*) as 'qtt' FROM tb_places WHERE local_name = :local_name", [[
+        $exists = $dao->exec("SELECT count(*) as 'qtt' FROM tb_locals WHERE local_name = :local_name", [
             ":local_name" => $this->getlocal_name()
-        ]]);
+        ]);
 
         if((Int) $exists['qtt'] > 0){
 
@@ -73,9 +73,16 @@ class Local extends ClassModel{
             ];
 
         }
-        
-        
 
+        $result = $dao->exec("CALL proc_save_local(:pidlocal, :plocalname, :pidcompany, :pcitycep, :pcityname)", [
+            ":pidlocal"   => $this->getid_local(),
+            ":plocalname" => $this->getlocal_name(),
+            ":pidcompany" => (Int) $this->getid_company(),
+            ":pcitycep"   => (Int) $this->getcity_cep(),
+            ":pcityname"  => $this->getcity_name()
+        ]);
+
+        return $result;
 
     }
 

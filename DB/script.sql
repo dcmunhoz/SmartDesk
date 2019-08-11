@@ -2,13 +2,14 @@ CREATE USER 'desk'@'localhost' IDENTIFIED BY 'desk';
 CREATE USER 'desk'@'%' IDENTIFIED BY 'desk';
 CREATE USER 'desk'@'127.0.0.1' IDENTIFIED BY 'desk';
 
+drop database db_idesk;
+
 CREATE DATABASE db_idesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
 USE db_idesk;
 
 GRANT ALL PRIVILEGES ON db_idesk.* TO 'desk'@'localhost';
 GRANT ALL PRIVILEGES ON db_idesk.* TO 'desk'@'127.0.0.1';
 GRANT ALL PRIVILEGES ON db_idesk.* TO 'desk'@'%';
-
 
 CREATE TABLE tb_users(
 	id_user 	 	INT NOT NULL AUTO_INCREMENT,	# Id do usuário.
@@ -46,21 +47,22 @@ CREATE TABLE tb_persons(
     dt_alteration 	DATETIME, 						# Data de alteração.
     id_user			INT NOT NULL UNIQUE, 			# Id do usuário referente a esta pessoa.
     id_company		INT,							# Id da empresa.
-    id_place		INT,							# Id do local de atuação.
+    id_local		INT,							# Id do local de atuação.
     id_sector	 	INT,							# Id do setor de atuação.
     need_updates	BOOl DEFAULT TRUE,				# Precisa atualizar o cadastro.
     CONSTRAINT pk_person PRIMARY KEY (id_person)
 ) DEFAULT CHARACTER SET 'UTF8';
 
-INSERT INTO tb_persons(full_name, id_user, id_company, id_place, id_sector, need_updates) VALUES("iDesk Admin", 1, 1, 1, 1, 0);
+INSERT INTO tb_persons(full_name, id_user, id_company, id_local, id_sector, need_updates) VALUES("iDesk Admin", 1, 1, 1, 1, 0);
 
 CREATE TABLE tb_cities(
 	id_city		INT NOT NULL AUTO_INCREMENT,	# Id da cidade.
     city_name   VARCHAR(200) NOT NULL UNIQUE,	# Nome da cidade.
+    city_cep    INT(10) NOT NULL UNIQUE,         # CEP da cidade.
 	CONSTRAINT pk_city PRIMARY KEY (id_city)
 )DEFAULT CHARACTER SET 'UTF8';
 
-insert into tb_cities (city_name) values('Default_city');
+INSERT INTO tb_cities(city_name, city_cep) VALUES('Default City', 00000000);
 
 CREATE TABLE tb_companies(
 	id_company INT NOT NULL AUTO_INCREMENT,		# Id da empresa.
@@ -70,15 +72,15 @@ CREATE TABLE tb_companies(
 
 insert into tb_companies(company_name) values("Default Companie");
 
-CREATE TABLE tb_places(
-	id_place INT NOT NULL AUTO_INCREMENT,		# Id do local de atuação.
+CREATE TABLE tb_locals(
+	id_local INT NOT NULL AUTO_INCREMENT,		# Id do local de atuação.
     local_name VARCHAR(100) NOT NULL UNIQUE,	# Nome do local de atuação.
     id_company INT NOT NULL,					# Id da compania que este local pertence.
     id_city INT NOT NULL,						# Id da cidade que este local esta situado.
-    CONSTRAINT pk_place PRIMARY KEY (id_place)
+    CONSTRAINT pk_local PRIMARY KEY (id_local)
 )DEFAULT CHARACTER SET 'UTF8';
 
-insert into tb_places(local_name, id_company, id_city) values('Default Local', 1, 1);
+insert into tb_locals(local_name, id_company, id_city) values('Default Local', 1, 1);
 
 CREATE TABLE tb_sectors(
 	id_sector INT NOT NULL AUTO_INCREMENT,		# Id do setor.
@@ -91,11 +93,11 @@ insert into tb_sectors(sector_name, id_company) values('Default Sector', 1);
 
 ALTER TABLE tb_persons ADD CONSTRAINT fk_users_persons FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
 ALTER TABLE tb_persons ADD CONSTRAINT fk_companies_persons FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
-ALTER TABLE tb_persons ADD CONSTRAINT fk_places_persons FOREIGN KEY (id_place) REFERENCES tb_places(id_place);
+ALTER TABLE tb_persons ADD CONSTRAINT fk_locals_persons FOREIGN KEY (id_local) REFERENCES tb_locals(id_local);
 ALTER TABLE tb_persons ADD CONSTRAINT fk_sectors_persons FOREIGN KEY (id_sector) REFERENCES tb_sectors(id_sector);
 
-ALTER TABLE tb_places ADD CONSTRAINT fk_company_places FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
-ALTER TABLE tb_places ADD CONSTRAINT fk_city_places FOREIGN KEY (id_city) REFERENCES tb_cities(id_city);
+ALTER TABLE tb_locals ADD CONSTRAINT fk_company_locals FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
+ALTER TABLE tb_locals ADD CONSTRAINT fk_city_locals FOREIGN KEY (id_city) REFERENCES tb_cities(id_city);
 ALTER TABLE tb_sectors ADD CONSTRAINT fk_company_sectors FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
 
 CREATE TABLE tb_tickets(
@@ -173,7 +175,7 @@ pemail VARCHAR(255),
 pactive BOOL,
 pidprofile INT,
 pidcompany INT,
-pidplace INT,
+pidlocal INT,
 pidsector INT,
 pneedup	INT
 )
@@ -192,7 +194,7 @@ BEGIN
         UPDATE tb_persons
         SET full_name = pfullname,
 			id_company = pidcompany,
-            id_place = pidplace,
+            id_local = pidlocal,
             id_sector = pidsector,
             need_updates = pneedup
 		WHERE id_user = piduser;
@@ -205,8 +207,8 @@ BEGIN
         
         SELECT LAST_INSERT_ID() INTO lastUserId;
         
-        INSERT INTO tb_persons (full_name, id_user, id_company, id_place, id_sector, need_updates)
-        VALUES (pfullname, lastUserId, pidcompany, pidplace, pidsector, pneedup);
+        INSERT INTO tb_persons (full_name, id_user, id_company, id_local, id_sector, need_updates)
+        VALUES (pfullname, lastUserId, pidcompany, pidlocal, pidsector, pneedup);
         
     END IF;
     
@@ -290,30 +292,53 @@ DELIMITER ;
 DELIMITER $
 CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_save_local`(
 	pidlocal   INT,
-    pname	   TEXT,
-    pidcompany INT
+    plocalname TEXT,
+    pidcompany INT,
+    pcitycep   INT,
+    pcityname  TEXT
 )
 BEGIN
 	
     DECLARE lastLocalId INT;
-        
+    DECLARE lastCityId  INT;
+    DECLARE cityQtt		INT;	
+   	
+   	SELECT COUNT(*) INTO cityQtt FROM tb_cities WHERE city_name = pcityname;
+    	
+    IF cityQtt > 0 THEN
+    	
+    	SELECT id_city INTO lastCityId FROM tb_cities WHERE city_name = pcityname;   
+    
+    ELSE
+    	
+    	INSERT INTO tb_cities(city_name, city_cep) VALUES(pcityname, pcitycep);
+    
+    	SELECT LAST_INSERT_ID() INTO lastCityId;   
+       
+    END IF;    
+     
     IF pidlocal >= 1 THEN
 		
-		UPDATE tb_places
-        SET local_name = pname,
-        id_company = pidcompany
-        WHERE id_place = pidlocal;
+		UPDATE 
+			tb_locals
+        SET 
+        	local_name = plocalname,
+        	id_company = pidcompany,
+        	id_city	   = lastCityId        	
+        WHERE 
+        	id_local = pidlocal;
         
+        SELECT pidlocal INTO lastLocalId;
     ELSE
 		
-		INSERT INTO tb_places (local_name, id_company)
-        VALUES (pname, pidcompany);
+		INSERT INTO tb_locals (local_name, id_company, id_city)
+        VALUES (plocalname, pidcompany, lastCityId);
         
         SELECT LAST_INSERT_ID() INTO lastLocalId;
         
     END IF;
     
-	SELECT * FROM tb_places WHERE id_place = lastLocalId;
+	SELECT * FROM tb_locals WHERE id_local = lastLocalId;
     
 END $
 DELIMITER ;

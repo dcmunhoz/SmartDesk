@@ -125,7 +125,7 @@ class Admin {
         $user->setpassw($body['pascreate-passsw']);
         $user->setemail($body['email']);
         $user->setfull_name($body['full-name']);
-        $user->setid_place($body['local']);
+        $user->setid_local($body['local']);
         $user->setid_profile($body['profile']);
         $user->setid_sector($body['sector']);
         $user->setuser_active( ( $body['user-active'] === "on" ) ? 1 : 0 );
@@ -255,7 +255,7 @@ class Admin {
         $user->setuser_active( ($body['active'] === 'on') ? true : false );
         $user->setid_profile($body['profile']);
         $user->setid_company($body['company']);
-        $user->setid_place($body['local']);
+        $user->setid_local($body['local']);
         $user->setid_sector($body['sector']);
 
 
