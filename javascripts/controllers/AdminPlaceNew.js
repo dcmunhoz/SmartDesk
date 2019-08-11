@@ -12,7 +12,7 @@ let Notification = require('../utils/Notification');
 let Local        = require('../modules/Locals');
 let Company      = require('../modules/Company');
 
-export default class  {
+export default class AdminPlaceNew {
 
     constructor(){
 

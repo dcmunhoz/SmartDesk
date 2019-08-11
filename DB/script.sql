@@ -2,7 +2,7 @@ CREATE USER 'desk'@'localhost' IDENTIFIED BY 'desk';
 CREATE USER 'desk'@'%' IDENTIFIED BY 'desk';
 CREATE USER 'desk'@'127.0.0.1' IDENTIFIED BY 'desk';
 
-drop database db_idesk;
+DROP DATABASE IF EXISTS db_idesk;
 
 CREATE DATABASE db_idesk DEFAULT CHARSET 'UTF8' DEFAULT COLLATE 'utf8_general_ci';
 USE db_idesk;
@@ -85,11 +85,11 @@ insert into tb_locals(local_name, id_company, id_city) values('Default Local', 1
 CREATE TABLE tb_sectors(
 	id_sector INT NOT NULL AUTO_INCREMENT,		# Id do setor.
     sector_name VARCHAR(100) NOT NULL UNIQUE,	# Nome do setor.
-    id_company INT NOT NULL,					# Id da compania que este setor pertence.
+    id_local INT NOT NULL,					    # Id do local que este setor pertence.
     CONSTRAINT pk_sector PRIMARY KEY (id_sector)
 )DEFAULT CHARACTER SET 'UTF8';
 
-insert into tb_sectors(sector_name, id_company) values('Default Sector', 1);
+insert into tb_sectors(sector_name, id_local) values('Default Sector', 1);
 
 ALTER TABLE tb_persons ADD CONSTRAINT fk_users_persons FOREIGN KEY (id_user) REFERENCES tb_users(id_user);
 ALTER TABLE tb_persons ADD CONSTRAINT fk_companies_persons FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
@@ -98,7 +98,7 @@ ALTER TABLE tb_persons ADD CONSTRAINT fk_sectors_persons FOREIGN KEY (id_sector)
 
 ALTER TABLE tb_locals ADD CONSTRAINT fk_company_locals FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
 ALTER TABLE tb_locals ADD CONSTRAINT fk_city_locals FOREIGN KEY (id_city) REFERENCES tb_cities(id_city);
-ALTER TABLE tb_sectors ADD CONSTRAINT fk_company_sectors FOREIGN KEY (id_company) REFERENCES tb_companies(id_company);
+ALTER TABLE tb_sectors ADD CONSTRAINT fk_local_sectors FOREIGN KEY (id_local) REFERENCES tb_locals(id_local);
 
 CREATE TABLE tb_tickets(
 	id_ticket INT NOT NULL AUTO_INCREMENT,		# Id do ticket
@@ -341,4 +341,38 @@ BEGIN
 	SELECT * FROM tb_locals WHERE id_local = lastLocalId;
     
 END $
+DELIMITER ;
+
+DELIMITER $
+CREATE PROCEDURE proc_save_sector(
+	pidsector	INT,
+	psectorname TEXT,
+	pidlocal	INT
+)
+BEGIN
+	DECLARE lastSectorId INT;
+	
+	IF pidsector >= 1 THEN
+			
+		UPDATE tb_sectors
+		SET
+			sector_name = psectorname,
+			id_local    = pidlocal
+		WHERE
+			id_sector	= pidsector;
+			
+		SELECT pidsector INTO lastSectorId;
+			
+	ELSE
+	
+		INSERT INTO tb_sectors (sector_name, id_local)
+		VALUES (psectorname, pidlocal);
+		
+		SELECT LAST_INSERT_ID() INTO lastSectorId;
+	
+	END IF;
+		
+	SELECT * FROM tb_sectors WHERE id_sector = lastSectorId; 
+
+END$
 DELIMITER ;

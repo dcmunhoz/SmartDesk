@@ -435,6 +435,25 @@ class Api{
         return $res->withJson($body);
     }
 
+    public function sectorNew(ServerRequestInterface $req, ResponseInterface $res){
+        
+        $body = $req->getParsedBody();
+
+        $sector = new Sector();
+        $sector->setid_local($body['local']);
+        $sector->setsector_name($body['sector-name']);
+
+        $result = $sector->save();
+
+        if($result['error']){
+
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson($result);
+        }
+
+        return $res->withJson($result);
+    }
+
 }
 
 ?>

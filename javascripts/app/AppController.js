@@ -6,21 +6,22 @@
  */
 
  // Import dos controllers
-import Signup from '../controllers/Signup';
-import Signin from '../controllers/Signin';
-import Header from '../controllers/Header';
-import Home   from '../controllers/Home';
-import NewTicket from '../controllers/NewTicket';
-import TicketDetails from '../controllers/TicketDetails';
-import AdminSignin from '../controllers/AdminSignin';
-import AdminConfigs from '../controllers/AdminConfigs';
-import AdminTickets from '../controllers/AdminTickets';
-import AdminUserNew from '../controllers/AdminUserNew';
-import AdminUserUpdate from '../controllers/AdminUserUpdate';
-import AdminCompanyNew from '../controllers/AdminCompanyNew';
+import Signup             from '../controllers/Signup';
+import Signin             from '../controllers/Signin';
+import Header             from '../controllers/Header';
+import Home               from '../controllers/Home';
+import NewTicket          from '../controllers/NewTicket';
+import TicketDetails      from '../controllers/TicketDetails';
+import AdminSignin        from '../controllers/AdminSignin';
+import AdminConfigs       from '../controllers/AdminConfigs';
+import AdminTickets       from '../controllers/AdminTickets';
+import AdminUserNew       from '../controllers/AdminUserNew';
+import AdminUserUpdate    from '../controllers/AdminUserUpdate';
+import AdminCompanyNew    from '../controllers/AdminCompanyNew';
 import AdminCompanyUpdate from '../controllers/AdminCompanyUpdate';
-import AdminPlaceNew from '../controllers/AdminPlaceNew';
-import AdminPlaceUpdate from '../controllers/AdminPlaceUpdate';
+import AdminPlaceNew      from '../controllers/AdminPlaceNew';
+import AdminPlaceUpdate   from '../controllers/AdminPlaceUpdate';
+import AdminSectorNew     from '../controllers/AdminSectorNew';
 
 
 export default class AppController{
@@ -80,6 +81,9 @@ export default class AppController{
                 break;
                 case 'AdminPlaceUpdate':
                     new AdminPlaceUpdate();
+                break;
+                case 'AdminSectorNew':
+                    new AdminSectorNew();
                 break;
             }
         }

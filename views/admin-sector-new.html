@@ -1,4 +1,4 @@
-<div id="page" style="display: none;" data-page="AdminNewUser"></div>
+<div id="page" style="display: none;" data-page="AdminSectorNew"></div>
 <div class=" content">
 
     <div class="main-content">
@@ -19,17 +19,17 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form>
+                        <form id="form-sector">
 
                             <div class="form-group">
-                                <label for="">Nome setor:</label>
-                                <input type="text">
+                                <label for="sector-name">Nome setor:</label>
+                                <input type="text" id="sector-name" name="sector-name" placeholder="Informe o nome do setor">
                             </div>
                             
                             <div class="form-group">
-                                <label for="">Empresa pertencente:</label>
-                                <select name="" id="">
-                                    <option value="">--</option>
+                                <label for="local">Local pertencente:</label>
+                                <select name="local" id="local">
+                                    <option value="0">Selecione</option>
                                 </select>
                             </div>
     
@@ -41,7 +41,7 @@
 
                 <footer>
 
-                    <button class="btn btn-enviar">Criar</button>
+                    <button class="btn btn-enviar" id="btn-send">Criar</button>
 
                 </footer>
     

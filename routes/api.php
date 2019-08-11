@@ -58,6 +58,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->post("/local/new", Api::class . ":placeNew");
     $app->get("/local/{idLocal}/find", Api::class . ":localFind");
     $app->post("/local/{idLocal}/update", Api::class . ":localUpdate");
+    $app->post("/sector/new", Api::class . ":sectorNew");
     
 })->add(function($req, $res, $next){
 

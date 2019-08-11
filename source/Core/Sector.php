@@ -52,6 +52,34 @@ class Sector extends ClassModel{
 
     }
 
+    public function save(){
+
+        $dao = new DB();
+
+        $exists = $dao->exec("SELECT COUNT(*) as 'qtt' FROM tb_sectors WHERE sector_name = :sector_name AND id_local = :id_local", [
+            ":sector_name" => $this->getsector_name(),
+            ":id_local"    => $this->getid_local()
+        ]);
+
+        if ((Int) $exists[0]['qtt'] > 0) {
+
+            return [ 
+                'error' => true,
+                'message' => 'Setor já cadastrado no sistema.'
+            ];
+
+        }
+
+        $result = $dao->exec("CALL proc_save_sector(:pidsector, :psectorname, :pidlocal)",[
+            ":pidsector"   => $this->getid_sector(),
+            ":psectorname" => $this->getsector_name(),
+            ":pidlocal"    => $this->getid_local()
+        ]);
+
+        return $result;
+
+    }
+
 
 }
 
