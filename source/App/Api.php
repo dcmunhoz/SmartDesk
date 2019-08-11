@@ -398,6 +398,26 @@ class Api{
         return $res->withJson($result);
     }
 
+    public function localFind(ServerRequestInterface $req, ResponseInterface $res, $args){
+        
+        $idLocal = $args['idLocal'];
+
+        $local = new Local();
+
+        $local->setid_local($idLocal);
+        $local->find();
+
+        return $res->withJson($local->getData());
+
+
+    }
+
+    public function localUpdate(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        return $res->withJson($req->getParsedBody());
+
+    }
+
 }
 
 ?>

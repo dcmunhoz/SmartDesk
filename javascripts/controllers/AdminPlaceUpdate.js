@@ -6,17 +6,18 @@
 
 // Utilitarios e Modulos
 let Prototype    = require('../utils/Prototypes');
-let Company      = require('../modules/Company');
 let Notification = require('../utils/Notification');
+let Local        = require('../modules/Locals');
+let Company      = require('../modules/Company');
 
 export default class AdminCompanyUpdate {
 
     constructor(){
 
         Prototype.initElementsPrototypes();
+        this.loadCompanies();
 
         this.initEvents();
-        this.loadData();
 
     }
 
@@ -24,13 +25,20 @@ export default class AdminCompanyUpdate {
 
         document.querySelector("#btn-update").on('click', e=>{
 
-            let form = document.querySelector("#form-company");
+            let form = document.querySelector("#form-local");
+
 
             if (form.validateFields()) {
                 
                 let formData = new FormData(form);
 
-                Company.update(formData).then(result=>{
+                console.log(formData['local_name']);
+
+                [...formData.keys()].forEach(key=>{
+                    console.log(key);
+                });
+
+                Local.update(formData).then(result=>{
 
                     Notification.pop("success", "Sucesso", "Empresa editada !");
                     setTimeout(() => {
@@ -47,22 +55,111 @@ export default class AdminCompanyUpdate {
 
         });
 
+        document.querySelector("#city_cep").on('input focus', e => {
+            
+            let cep = e.target.value;
+
+            cep = cep.replace("-", "");
+            e.target.value = cep;
+
+            if (cep.length === 8) {
+
+                let cityNameField = document.querySelector("#city_name");
+                
+                this.getCity(cep).then(data=>{
+
+                    let { localidade } = data;
+
+                    cityNameField.value = localidade;
+
+                }).catch(fail=>{
+
+                    cityNameField.value = "Inexistente";
+
+                });
+
+            }else if (cep.length >= 8) {
+
+                e.target.value = cep.substring(0, 8);
+
+            }
+            
+
+        });
+
     }
 
+    getCity(cep){
+        
+        return new Promise((resolve, reject)=>{
+
+            fetch(`https://viacep.com.br/ws/${cep}/json/`).then(response=>response.json()).then(data=>{
+
+                if (data['erro']) {
+                    reject();
+                }
+                
+                resolve(data);
+            });
+
+        });
+    }
 
     loadData(){
 
-        let idCompany = window.location.href.split("/")[window.location.href.split("/").length - 1];
+        let idLocal = window.location.href.split("/")[window.location.href.split("/").length - 1];
 
-        Company.find(idCompany).then(data=>{
+        Local.find(idLocal).then(result=>{
 
-            let form = document.querySelector("#form-company");
 
-            Object.keys(data).forEach(key=>{
+            let form = document.querySelector("#form-local");
+            Object.keys(result).forEach(key=>{
+                
+                
+                if (form[key]) {
 
-                form[key].value = data[key];
+                    if (form[key].type == 'select-one') {
+
+
+                        [...form[key]].forEach(option=>{
+                            
+                            if (option.value == result[key]) {
+                                option.selected = true;
+                            }
+
+                        })
+                        
+                    }
+                    
+                    form[key].value = result[key];
+
+
+                } 
+
+
 
             });
+
+        });
+
+    }
+
+    loadCompanies(){
+
+        Company.getCompanies().then(data=>{
+
+            let select = document.querySelector("#id_company");
+        
+            [...data].forEach(row=>{
+
+                let option = document.createElement("option");
+                option.value = row['id_company'];
+                option.innerHTML = row['company_name'];
+
+                select.appendChild(option);
+            });
+
+            this.loadData();
 
         });
 

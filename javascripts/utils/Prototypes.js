@@ -21,7 +21,7 @@ module.exports = {
             let validation = false;
 
             [...this].forEach(el=>{
-                if (el.type !== "button") {
+                if (el.type !== "button" && el.type !== 'hidden') {
                     let formGroup = document.querySelector(`#${el.id}`).parentNode;
 
                     if (el.value.trim() === '') {

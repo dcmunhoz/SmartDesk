@@ -83,6 +83,37 @@ module.exports = {
             
         });
         
+    },
+
+    find(idLocal){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/local/${idLocal}/find`).then(response=>response.json()).then(data=>{
+
+                if (data['error']) {
+                    reject();
+                }   
+
+                resolve(data);
+
+            });
+
+        });
+
+    },
+
+    update(body){
+
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/local/${body}/update`).then(result=>result.json()).then(data=>{
+                
+
+            });
+
+        });
+
     }
 
 }

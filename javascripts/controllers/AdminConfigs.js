@@ -350,7 +350,7 @@ export default class AdminConfigs {
                     <td>${row['city_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/place/4"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/place/${row['id_local']}"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;

@@ -86,6 +86,17 @@ class Local extends ClassModel{
 
     }
 
+    public function find() {
+
+        $dao = new DB();
+
+        $result = $dao->exec("SELECT * FROM tb_locals JOIN tb_cities USING(id_city) WHERE id_local = :id_local", [
+            ":id_local" => $this->getid_local()
+        ]);
+
+        $this->setData($result[0]);
+    }
+
 
 }
 
