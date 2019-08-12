@@ -23,7 +23,8 @@ import AdminPlaceNew      from '../controllers/AdminPlaceNew';
 import AdminPlaceUpdate   from '../controllers/AdminPlaceUpdate';
 import AdminSectorNew     from '../controllers/AdminSectorNew';
 import AdminSectorUpdate  from '../controllers/AdminSectorUpdate';
-
+import AdminPriorityNew   from '../controllers/AdminPriorityNew';
+import AdminPriorityUpdate from '../controllers/AdminPriorityUpdate';
 
 export default class AppController{
 
@@ -88,6 +89,12 @@ export default class AppController{
                 break;
                 case 'AdminSectorUpdate':
                     new AdminSectorUpdate();
+                break;
+                case 'AdminPriorityNew':
+                    new AdminPriorityNew();
+                break;
+                case 'AdminPriorityUpdate':
+                    new AdminPriorityUpdate();
                 break;
             }
         }

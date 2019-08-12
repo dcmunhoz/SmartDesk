@@ -428,7 +428,7 @@ export default class AdminConfigs {
                 let body = `
                     <td>${row['id_priority']}</td>
                     <td>${row['priority_name']}</td>
-                    <td style="color:#${row['font_color']};">#${row['font_color']}</td>
+                    <td style="color:${row['priority_color']};">${row['priority_color']}</td>
                     <td>
                         <div class="option-buttons">
                             <a href="/admin/priority/4"> <i class="fas fa-edit"></i> </a>

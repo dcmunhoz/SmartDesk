@@ -1,4 +1,4 @@
-<div id="page" style="display: none;" data-page="AdminNewUser"></div>
+<div id="page" style="display: none;" data-page="AdminPriorityNew"></div>
 <div class=" content">
 
     <div class="main-content">
@@ -19,16 +19,16 @@
 
                     <div class="form-content" data-simplebar>
 
-                        <form>
+                        <form id="form-priority">
 
                             <div class="form-group">
-                                <label for="">Nome:</label>
-                                <input type="text">
+                                <label for="priority_name">Nome:</label>
+                                <input type="text" id="priority_name" name="priority_name" placeholder="Nome da nova prioridade">
                             </div>
 
                             <div class="form-group">
-                                <label for="">Cor da fonte:</label>
-                                <input type="color">
+                                <label for="priority_color">Cor da prioridade:</label>
+                                <input type="color" id="priority_color" name="priority_color">
                             </div>
 
     
@@ -40,7 +40,7 @@
 
                 <footer>
 
-                    <button class="btn btn-enviar">Criar</button>
+                    <button class="btn btn-enviar" id="btn-new">Criar</button>
 
                 </footer>
     

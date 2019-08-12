@@ -62,6 +62,27 @@ module.exports = {
 
         });
 
+    },
+
+    save(body){
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/priority/new`, {
+                method: 'POST',
+                body
+            }).then(result=>result.json()).then(data => {
+                
+                if(data['error']){
+
+                    reject(data);
+
+                }
+
+                resolve(data);
+
+            });
+
+        });
     }
 
 

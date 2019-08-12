@@ -58,11 +58,11 @@ input[type='color']{
 }
 
 input[type='color']::before{
-    position: relative;
+    /* position: relative;
     content: '⯆';
     font-size: 18px;
     box-sizing: border-box;
-    padding-top:2px;
+    padding-top:2px; */
 }
 
 input[type='color']:hover::before{

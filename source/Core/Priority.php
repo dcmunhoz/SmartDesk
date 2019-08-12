@@ -37,6 +37,34 @@ class Priority extends ClassModel{
 
     }
 
+    public function save(){
+
+        $dao =  new DB();
+
+        $exists = $dao->exec("SELECT COUNT(*) as 'qtt' FROM tb_priorities WHERE priority_name = :pname", [
+            ":pname" => $this->getpriority_name()
+        ]);
+
+        if ((Int) $exists[0]['qtt'] >= 1) {
+            
+            return [
+                "error" => true,
+                "message" => "Prioridade já cadastrada"
+            ];
+        }
+
+        $result = $dao->exec("CALL proc_save_priority(:pidpriority, :ppriorityname, :pprioritycolor)", [
+            ":pidpriority"    => $this->getid_priority(),
+            ":ppriorityname"  => $this->getpriority_name(),
+            ":pprioritycolor" => $this->getpriority_color()    
+        ]);
+
+
+
+        return $result[0];
+
+    }
+
 
 }
 

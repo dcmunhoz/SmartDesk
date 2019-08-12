@@ -487,6 +487,27 @@ class Api{
         return $res->withJson($result);
 
     }
+
+    public function priorityNew(ServerRequestInterface $req, ResponseInterface $res){
+
+        $body = $req->getParsedBody();
+
+        $priority = new Priority();
+        $priority->setpriority_name($body['priority_name']);
+        $priority->setpriority_color($body['priority_color']);
+
+        $result = $priority->save();
+
+        if($result['error']){
+            
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson($result);
+
+        }
+
+        return $res->withJson($body);
+
+    }
 }
 
 ?>

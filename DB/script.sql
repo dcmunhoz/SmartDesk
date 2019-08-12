@@ -115,8 +115,7 @@ CREATE TABLE tb_tickets(
 CREATE TABLE tb_priorities(
 	id_priority 	INT NOT NULL AUTO_INCREMENT,
     priority_name   VARCHAR(24) NOT NULL,
-    bg_color		VARCHAR(6) NOT NULL DEFAULT 'FFFFFF',
-    font_color		VARCHAR(6) NOT NULL DEFAULT '000000',
+    priority_color  VARCHAR(6) NOT NULL DEFAULT 'F5F5F5',
     CONSTRAINT pk_priority PRIMARY KEY(id_priority)
 )DEFAULT CHARACTER SET 'UTF8';
 
@@ -374,5 +373,39 @@ BEGIN
 		
 	SELECT * FROM tb_sectors WHERE id_sector = lastSectorId; 
 
+END$
+DELIMITER ;
+
+DELIMITER $
+CREATE PROCEDURE proc_save_priority(
+	pidpriority	   INT,
+	ppriorityname  TEXT,
+	pprioritycolor TEXT
+)BEGIN
+	
+	DECLARE lastPriorityId INT;
+	
+	IF pidpriority >= 1 THEN
+		
+		UPDATE tb_priorities
+		SET
+			priority_name  = ppriorityname,
+			priority_color = pprioritycolor 
+		WHERE
+			id_priority = pidpriority;
+			
+		SELECT pidpriority INTO lastPriorityId			
+		
+	ELSE
+		
+		INSERT INTO tb_priorities (priority_name, priority_color)
+		VALUES (ppriorityname, pprioritycolor);
+		
+		SELECT LAST_INSERT_ID() INTO lastPriorityId;	
+		
+	END IF;
+	
+	SELECT * FROM tb_priorities WHERE id_priority = lastPriorityId	
+	
 END$
 DELIMITER ;
