@@ -62,6 +62,8 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/sector/{idSector}/find", Api::class . ":sectorFind");
     $app->post("/sector/update", Api::class . ":sectorUpdate");
     $app->post("/priority/new", Api::class . ":priorityNew");
+    $app->get("/priority/{idPriority}/find", Api::class . ":priorityFind");
+    $app->post("/priority/update", Api::class . ":priorityUpdate");
     
 })->add(function($req, $res, $next){
 

@@ -84,6 +84,44 @@ module.exports = {
 
         });
     }
+    ,
+
+    update(body){
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/priority/update`, {
+                method: 'POST',
+                body
+            }).then(result=>result.json()).then(data => {
+                
+                if(data['error']){
+
+                    reject(data);
+
+                }
+
+                resolve(data);
+
+            });
+
+        });
+    },
+
+    find(idPriority){
+        return new Promise((resolve, reject)=>{
+
+            fetch(`/api/admin/priority/${idPriority}/find`).then(result=>result.json()).then(data=>{
+
+                if (data['error']) {
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        });
+    }
 
 
 }

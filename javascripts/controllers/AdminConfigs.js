@@ -431,7 +431,7 @@ export default class AdminConfigs {
                     <td style="color:${row['priority_color']};">${row['priority_color']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/priority/4"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/priority/${row['id_priority']}"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;

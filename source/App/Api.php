@@ -508,6 +508,40 @@ class Api{
         return $res->withJson($body);
 
     }
+
+    public function priorityUpdate(ServerRequestInterface $req, ResponseInterface $res){
+
+        $body = $req->getParsedBody();
+
+        $priority = new Priority();
+        $priority->setid_priority($body['id_priority']);
+        $priority->setpriority_name($body['priority_name']);
+        $priority->setpriority_color($body['priority_color']);
+
+        $result = $priority->save();
+
+        if($result['error']){
+            
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson($result);
+
+        }
+
+        return $res->withJson($body);
+
+    }
+
+    public function priorityFind(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $idPriority = $args['idPriority'];
+
+        $priority = new Priority();
+        $priority->setid_priority($idPriority);
+        $result = $priority->find();
+
+        return $res->withJson($result);
+
+    }
 }
 
 ?>

@@ -45,8 +45,16 @@ class Priority extends ClassModel{
             ":pname" => $this->getpriority_name()
         ]);
 
-        if ((Int) $exists[0]['qtt'] >= 1) {
-            
+        if ($this->getid_priority() >= 1) {
+
+            $data = $this->find($this->getid_priority());
+
+            $oldName = $data['priority_name'];
+
+        }
+
+        if (  $this->getid_priority() === null && (Int) $exists[0]['qtt'] >= 1 || $oldName !== $this->getpriority_name() && (Int) $exists[0]['qtt'] >=1 ) {
+
             return [
                 "error" => true,
                 "message" => "Prioridade já cadastrada"
@@ -60,6 +68,19 @@ class Priority extends ClassModel{
         ]);
 
 
+
+        return $result[0];
+
+    }
+
+    public function find(){
+
+        $dao = new DB();
+        $result = $dao->exec("SELECT * FROM tb_priorities WHERE id_priority = :id_priority",[
+            ":id_priority"=> $this->getid_priority()
+        ]);
+
+        //$this->setData($result[0]);
 
         return $result[0];
 

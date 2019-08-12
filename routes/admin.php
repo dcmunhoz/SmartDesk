@@ -35,8 +35,8 @@ $app->group('/admin', function(Slim\App $app){
     $app->post("/user/{idUser}", Admin::class . ":postUserUpdate");
     $app->get("/company/{idCompany}", Admin::class . ":companyUpdate");
     $app->get("/place/{idPlace}", Admin::class . ":placeUpdate");
-    $app->get("/sector/{idsector}", Admin::class . ":sectorUpdate");
-    $app->get("/priority/4", Admin::class . ":priorityUpdate");
+    $app->get("/sector/{idSector}", Admin::class . ":sectorUpdate");
+    $app->get("/priority/{idPriority}", Admin::class . ":priorityUpdate");
 
 })->add(function($req, $res, $next){
 
