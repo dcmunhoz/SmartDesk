@@ -38,7 +38,7 @@ INSERT INTO tb_profiles(profile_name, profile_description, administrator)
 VALUES('Padrão', 'Perfil padrão de usuário', false);
 
 INSERT INTO tb_users(username, passw, email, active, id_profile)
-VALUES('admin', md5('admin'), 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
+VALUES('administrator', md5('administrator'), 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
 
 CREATE TABLE tb_persons(
 	id_person 		INT NOT NULL AUTO_INCREMENT, 	# Id da pessoa. 
@@ -74,7 +74,7 @@ insert into tb_companies(company_name) values("Default Companie");
 
 CREATE TABLE tb_locals(
 	id_local INT NOT NULL AUTO_INCREMENT,		# Id do local de atuação.
-    local_name VARCHAR(100) NOT NULL UNIQUE,	# Nome do local de atuação.
+    local_name VARCHAR(100) NOT NULL,	        # Nome do local de atuação.
     id_company INT NOT NULL,					# Id da compania que este local pertence.
     id_city INT NOT NULL,						# Id da cidade que este local esta situado.
     CONSTRAINT pk_local PRIMARY KEY (id_local)
@@ -84,7 +84,7 @@ insert into tb_locals(local_name, id_company, id_city) values('Default Local', 1
 
 CREATE TABLE tb_sectors(
 	id_sector INT NOT NULL AUTO_INCREMENT,		# Id do setor.
-    sector_name VARCHAR(100) NOT NULL UNIQUE,	# Nome do setor.
+    sector_name VARCHAR(100) NOT NULL,		    # Nome do setor.
     id_local INT NOT NULL,					    # Id do local que este setor pertence.
     CONSTRAINT pk_sector PRIMARY KEY (id_sector)
 )DEFAULT CHARACTER SET 'UTF8';
@@ -394,7 +394,7 @@ CREATE PROCEDURE proc_save_priority(
 		WHERE
 			id_priority = pidpriority;
 			
-		SELECT pidpriority INTO lastPriorityId			
+		SELECT pidpriority INTO lastPriorityId;			
 		
 	ELSE
 		
@@ -405,7 +405,7 @@ CREATE PROCEDURE proc_save_priority(
 		
 	END IF;
 	
-	SELECT * FROM tb_priorities WHERE id_priority = lastPriorityId	
+	SELECT * FROM tb_priorities WHERE id_priority = lastPriorityId;	
 	
 END$
 DELIMITER ;

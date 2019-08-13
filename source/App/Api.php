@@ -231,7 +231,7 @@ class Api{
         $local = new Local();
         $body = $req->getParsedBody();
     
-        $result = $local->getLocals($body['search']);
+        $result = $local->getLocals($body['search'], $body['company']);
     
         return $res->withJson($result);
 
@@ -348,9 +348,9 @@ class Api{
 
         $company = new Company();
 
-        $company->find($args['idCompany']);
+        $result = $company->find($args['idCompany']);
 
-        return $res->withJson($company->getData());
+        return $res->withJson($result);
 
     }
 
@@ -405,9 +405,9 @@ class Api{
         $local = new Local();
 
         $local->setid_local($idLocal);
-        $local->find();
+        $result = $local->find();
 
-        return $res->withJson($local->getData());
+        return $res->withJson($result);
 
 
     }
@@ -460,9 +460,9 @@ class Api{
         
         $sector = new Sector();
         $sector->setid_sector($idSector);
-        $sector->find();
+        $result = $sector->find();
 
-        return $res->withJson($sector->getData());
+        return $res->withJson($result);
 
     }
 

@@ -35,9 +35,14 @@ export default class AdminUserUpdate {
 
             let formUpdate = document.querySelector("#form-user");
 
+            [...formUpdate].forEach(field=>{
+                console.log(field.id, field.type, field.value);
+            });
+
             if(formUpdate.validateFields()){
 
                 let body = new FormData(formUpdate);
+
 
                 User.update(body).then(result=>{
 
@@ -158,7 +163,7 @@ export default class AdminUserUpdate {
             [...data].forEach(row=>{
 
                 let option = document.createElement("option");
-                option.value = row['id_place'];
+                option.value = row['id_local'];
                 option.innerHTML = row['local_name'];
                 option.selected = ( row['id_place'] == this._user['id_place'] ) ? true : false;
 

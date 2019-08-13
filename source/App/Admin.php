@@ -252,12 +252,11 @@ class Admin {
         $user->setusername($body['username']);
         $user->setold_username($body['old_username']);
         $user->setemail($body['email']);
-        $user->setuser_active( ($body['active'] === 'on') ? true : false );
+        $user->setuser_active( ( isset($body['active']) ) ? 1 : 0 );
         $user->setid_profile($body['profile']);
         $user->setid_company($body['company']);
         $user->setid_local($body['local']);
         $user->setid_sector($body['sector']);
-
 
         $result = $user->save();
 

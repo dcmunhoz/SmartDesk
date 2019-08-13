@@ -27,7 +27,6 @@ export default class AdminPlaceUpdate {
 
             let form = document.querySelector("#form-local");
 
-
             if (form.validateFields()) {
 
                 document.querySelector("#city_name").disabled = false;

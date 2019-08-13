@@ -92,6 +92,7 @@ export default class AdminUserNew {
                 option.innerHTML = row['company_name'];
 
                 select.appendChild(option);
+
             });
 
         });

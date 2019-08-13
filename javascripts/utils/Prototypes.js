@@ -24,6 +24,9 @@ module.exports = {
                 if (el.type !== "button" && el.type !== 'hidden') {
                     let formGroup = document.querySelector(`#${el.id}`).parentNode;
 
+
+                    
+
                     if (el.value.trim() === '') {
                         formGroup.classList.add('input-error');
                         validation = true;
@@ -51,6 +54,16 @@ module.exports = {
                         }
                     }
 
+                    if (el.type == 'password') {
+
+                        if (el.value.length <= 5) {
+                            formGroup.classList.add('input-password-error');
+                            formGroup.classList.add('input-error');
+                            validation = true;
+                        }
+
+                    }
+
                     if(el.id === 'create-confirm-pass'){
 
                         if(this.elements['create-pass'].value !== el.value){
@@ -70,7 +83,7 @@ module.exports = {
 
                     }
 
-                    if (el.id === 'city-cep') {
+                    if (el.id === 'city-cep' || el.id === 'city_cep') {
 
                         if (el.value.length < 8) {
                             formGroup.classList.add('input-error');
@@ -80,7 +93,7 @@ module.exports = {
 
                     }
 
-                    if(el.id === 'city-name'){
+                    if(el.id === 'city-name' || el.id === 'city_name'){
                         if(el.value === 'Inexistente'){
                             formGroup.classList.add('input-error');
                             formGroup.classList.add('input-error');

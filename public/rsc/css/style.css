@@ -193,7 +193,7 @@ form .form-group{
     transition: 300ms;
 }
 
-.form-group > label::after{
+.form-group.input-email-error > label::after{
     content: "( E-mail precisa conter ' @ ' e ' . ' )";
     position: relative;
     font-size: 12px;
@@ -202,7 +202,14 @@ form .form-group{
     transition: 300ms;
 }
 
-
+.form-group.input-password-error >label::after{
+    content: "Senha deve conter no minimo 6 caracteres";
+    position: relative;
+    font-size: 12px;
+    left: 5px;
+    opacity: 0;
+    transition: 300ms;
+}
 
 .form-group.input-error > label::before{
     content: "*";
@@ -211,6 +218,13 @@ form .form-group{
 }
 
 .form-group.input-error.input-email-error > label::after{
+    /* content: "( E-mail precisa conter ' @ ' e ' . ' )"; */
+    opacity: 1;
+    left: 0;
+ 
+}
+
+.form-group.input-error.input-password-error > label::after{
     /* content: "( E-mail precisa conter ' @ ' e ' . ' )"; */
     opacity: 1;
     left: 0;

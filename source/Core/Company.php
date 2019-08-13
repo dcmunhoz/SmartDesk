@@ -25,7 +25,8 @@ class Company extends ClassModel{
             ":id_company" => $idCompany
         ]);
 
-        $this->setData($result[0]);
+        // $this->setData($result[0]);
+        return $result[0];
     }
 
     /**
@@ -41,7 +42,15 @@ class Company extends ClassModel{
             ":name" => $this->getcompany_name()
         ]);
 
-        if((Int) $exist[0]['qtt'] > 0){
+        if($this->getid_company() >= 1){
+
+            $data = $this->find($this->getid_company());
+
+            $oldName = $data['company_name'];
+
+        }
+
+        if( $this->getid_company() == null && (Int) $exist[0]['qtt'] > 0 ||  $oldName !== $this->getcompany_name() && (Int) $exist[0]['qtt'] >= 1 ){
 
             return [
                 'error'   => true,
@@ -55,9 +64,9 @@ class Company extends ClassModel{
             ":pname"      => $this->getcompany_name()
         ]);
 
-        $this->setData($result[0]);
+        //$this->setData($result[0]);
 
-        return $this->getData();
+        return $result[0];
 
     }
 

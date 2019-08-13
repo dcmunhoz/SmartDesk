@@ -347,6 +347,7 @@ export default class AdminConfigs {
                 let body = `
                     <td>${row['id_local']}</td>
                     <td>${row['local_name']}</td>
+                    <td>${row['company_name']}</td>
                     <td>${row['city_name']}</td>
                     <td>
                         <div class="option-buttons">
@@ -388,6 +389,7 @@ export default class AdminConfigs {
                 let body = `
                     <td>${row['id_sector']}</td>
                     <td>${row['sector_name']}</td>
+                    <td>${row['local_name']}</td>
                     <td>
                         <div class="option-buttons">
                             <a href="/admin/sector/${row['id_sector']}"> <i class="fas fa-edit"></i> </a>

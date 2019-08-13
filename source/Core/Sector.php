@@ -29,7 +29,7 @@ class Sector extends ClassModel{
 
         $dao = new DB();
 
-        $result = $dao->exec("SELECT * FROM tb_sectors WHERE sector_name LIKE :name;", [
+        $result = $dao->exec("SELECT * FROM tb_sectors JOIN tb_locals USING(id_local) WHERE sector_name LIKE :name;", [
             ":name" => "%".$search."%"
         ]);
 
@@ -61,7 +61,16 @@ class Sector extends ClassModel{
             ":id_local"    => $this->getid_local()
         ]);
 
-        if ((Int) $exists[0]['qtt'] > 0) {
+        if ($this->getid_sector() >= 1) {
+
+            $data = $this->find($this->getid_sector());
+
+            $oldName  = $data['sector_name'];
+            $oldLocal = $data['id_local'];
+
+        }
+
+        if ( $this->getid_sector() == null && (Int) $exists[0]['qtt'] >= 1 || $oldName !== $this->getsector_name() && (Int) $exists[0]['qtt'] >= 1 || $oldLocal !== $this->getid_local() && (Int) $exists[0]['qtt'] >= 1) {
 
             return [ 
                 'error' => true,
@@ -87,7 +96,8 @@ class Sector extends ClassModel{
             ":id_sector" => $this->getid_sector()
         ]);
 
-        $this->setData($result[0]);
+        // $this->setData($result[0]);
+        return $result[0];
 
     }
 
