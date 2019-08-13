@@ -138,10 +138,13 @@ class Ticket extends ClassModel{
      * @param string $ticket Id do ticket que quer pegar.
      * 
      * Retorna os dados de todos os tickets, ou de um ticket especifico. 
-     * Se o usuário for informado, pega o ticket somente dele, caso contrario retorna de todos os usuários(Para ADM).
+     * ** SOMENTE PARA USUÁRIOS NORMAIS **
      * 
      */
-    public function getTicket(User $user = null, $status = "0", $ticket = null){
+    public function getTicket( $status = "0", $ticket = null){
+
+        $user = new User();
+        $user->loadSessionUser();
 
         $queryUser = "";
 
@@ -258,16 +261,20 @@ class Ticket extends ClassModel{
      * Abre um novo ticket.
      * 
      */
-    public function open(User $user, $body){
+    public function open(){
+
+        $user = new User();
+        $user->loadSessionUser();
 
         $dao = new DB();
         $result = $dao->exec("CALL proc_save_ticket(:pidticket, :piduser, :ptitle, :pdesc, :pidpriority);",[
             ":pidticket"   => 0,
             ":piduser"     => $user->getid_user(),
-            ":ptitle"      => $body['ticket-title'],
-            ":pdesc"       => $body['ticket-desc'],
-            ":pidpriority" => $body['ticket-priority']
+            ":ptitle"      => $this->gettitle(),
+            ":pdesc"       => $this->getdescription(),
+            ":pidpriority" => $this->getid_priority()
         ]);
+
 
         if(count($result) > 0){
 

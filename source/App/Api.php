@@ -81,10 +81,9 @@ class Api{
             $status = $req->getQueryParams()['status'];
         }
     
-        $user = new User();
         $ticket = new Ticket();
     
-        $result = $ticket->getTicket($user, $status, null);
+        $result = $ticket->getTicket($status, null);
     
         if(!count($result) > 0){
     
@@ -117,10 +116,14 @@ class Api{
 
         $body = $req->getParsedBody();
 
+        // $user = new User();
+        // $user->loadSessionUser();
         $ticket = new Ticket();
-        $user = new User();
+        $ticket->settitle($body['ticket-title']);
+        $ticket->setdescription($body['ticket-desc']);
+        $ticket->setid_priority($body['ticket-priority']);
     
-        $result = $ticket->open($user, $body);
+        $result = $ticket->open();
     
         return $res->withJson($result);
 
@@ -145,9 +148,8 @@ class Api{
     public function ticketDetails(ServerRequestInterface $req, ResponseInterface $res, $args){
 
         $ticket = new Ticket();
-        $user = new User();
     
-        $results = $ticket->getTicket($user, "0", $args['ticketId']);
+        $results = $ticket->getTicket("0", $args['ticketId']);
     
         return $res->withJson($results);
 
