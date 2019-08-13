@@ -50,6 +50,7 @@ class Ticket extends ClassModel{
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user
             WHERE t.id_ticket $search AND t.id_status $status
+            ORDER BY t.id_ticket DESC
         ";
 
 
@@ -83,6 +84,7 @@ class Ticket extends ClassModel{
             JOIN tb_persons p ON p.id_user = t.id_user
             JOIN tb_ticket_assignment ta USING(id_ticket)
             WHERE ta.id_user = :id_user AND t.id_ticket $search AND t.id_status $status
+            ORDER BY t.id_ticket DESC
         ";
 
         $user = new User();
@@ -120,6 +122,7 @@ class Ticket extends ClassModel{
             JOIN tb_persons p ON p.id_user = t.id_user
             LEFT JOIN tb_ticket_assignment ta USING(id_ticket)
             WHERE ta.id_user IS NULL AND t.id_ticket $search AND t.id_status $status 
+            ORDER BY t.id_ticket DESC
         ";
 
         

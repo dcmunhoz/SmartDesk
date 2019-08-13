@@ -209,7 +209,7 @@ export default class AdminTickets{
                 <td>${row['full_name']}</td>
                 <td>-</td>
                 <td>${Utils.dateFormat( new Date(row['dt_creation']) )}</td>
-                <td style="color: #${row['font_color']};" >${row['priority_name']}</td>
+                <td style="color: ${row['priority_color']};" >${row['priority_name']}</td>
                 <td>${Utils.dateFormat( new Date(row['dt_updates']) )}</td>
             `;
 
