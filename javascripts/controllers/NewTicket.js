@@ -30,9 +30,10 @@ export default class NewTicket {
             
             if(frmNewTicket.validateFields()){
                 
-                let frmData = new FormData(frmNewTicket);
+                // let frmData = new FormData(frmNewTicket);
+                let body = frmNewTicket.getBody();
 
-                Ticket.open(frmData).then(data=>{
+                Ticket.open(body).then(data=>{
 
                     frmNewTicket.clear();
 

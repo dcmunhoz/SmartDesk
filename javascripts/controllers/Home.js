@@ -65,7 +65,8 @@ export default class Home {
             let formUpdateRegister = document.querySelector("#form-user-confirm-register");
             if(formUpdateRegister.validateFields()){
 
-                let body = new FormData(formUpdateRegister);
+                // let body = new FormData(formUpdateRegister);
+                let body = formUpdateRegister.getBody();
                 
                 fetch('/user/update',{
                     method: "POST",

@@ -29,7 +29,9 @@
 
             if(formSignin.validateFields()){
                 
-                let formData = new FormData(formSignin);
+                // let formData = new FormData(formSignin);
+
+                let body = formSignin.getBody();
                 
                 // Animação de loading no button.
                 let loadGif = document.createElement('img');
@@ -41,7 +43,7 @@
 
                 setTimeout(()=>{
 
-                    User.loginAdmin(formData).then(response=>{
+                    User.loginAdmin(body).then(response=>{
 
                         document.querySelector("#app").classList.add('login-fade');
                         setTimeout(()=>{

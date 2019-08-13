@@ -35,9 +35,10 @@ export default class AdminUserNew {
 
             if(frmUserCreate.validateFields()){
 
-                let formBody = new FormData(frmUserCreate);
+                // let formBody = new FormData(frmUserCreate);
+                let body = frmUserCreate.getBody();
 
-                User.newUser(formBody).then(data=>{
+                User.newUser(body).then(data=>{
 
                     Notification.pop("success", "Usuário cadastrado", "Usuário cadastrado com sucesso.");
                     

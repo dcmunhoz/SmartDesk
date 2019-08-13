@@ -30,7 +30,8 @@ export default class Signup{
             let formCreate = document.querySelector("#form-create-new-account");
             if(formCreate.validateFields()){
                 
-                let form = new FormData(formCreate);
+                // let form = new FormData(formCreate);
+                let body = formCreate.getBody();
 
                 let loadGif = document.createElement('img');
                 loadGif.src="/public/rsc/img/dual-load.gif";
@@ -40,7 +41,7 @@ export default class Signup{
                 e.target.appendChild(loadGif);
 
                 setTimeout(()=>{
-                    User.saveAccount(form).then(success=>{
+                    User.saveAccount(body).then(success=>{
                         Notification.pop("success", "Usuário cadastrado!", "Seu usuário foi cadastrado com sucesso.");
     
                         formCreate.clear(); 

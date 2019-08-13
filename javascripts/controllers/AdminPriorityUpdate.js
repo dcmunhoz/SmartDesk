@@ -27,7 +27,8 @@
  
              if(form.validateFields()){
  
-                 let body = new FormData(form);
+                //  let body = new FormData(form);
+                let body = form.getBody();
  
                  Priority.update(body).then(resolve=>{
  

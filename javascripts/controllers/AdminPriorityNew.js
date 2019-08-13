@@ -26,7 +26,8 @@ export default class AdminPriorityNew{
 
             if(form.validateFields()){
 
-                let body = new FormData(form);
+                // let body = new FormData(form);
+                let body = form.getBody();
 
                 Priority.save(body).then(resolve=>{
 

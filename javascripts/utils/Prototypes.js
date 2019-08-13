@@ -13,7 +13,21 @@ module.exports = {
 
             [...this].forEach(el=>{
                 el.value = "";
-            })
+            });
+
+        }
+
+        HTMLFormElement.prototype.getBody = function(e){
+
+            [...this].forEach(el => {
+
+                el.value = el.value.trim();
+
+            });
+
+            let body = new FormData(this);
+
+            return body;
 
         }
 

@@ -28,9 +28,10 @@ export default class AdminCompanyUpdate {
 
             if (form.validateFields()) {
                 
-                let formData = new FormData(form);
+                // let formData = new FormData(form);
+                let body = form.getBody();
 
-                Company.update(formData).then(result=>{
+                Company.update(body).then(result=>{
 
                     Notification.pop("success", "Sucesso", "Empresa editada !");
                     setTimeout(() => {

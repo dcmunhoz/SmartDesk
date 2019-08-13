@@ -30,7 +30,8 @@ export default class Signin{
             let formLogin = document.querySelector("#form-user-login")
             if(formLogin.validateFields()){   
 
-                let formBody = new FormData(formLogin);
+                // let formBody = new FormData(formLogin);
+                let body = formLogin.getBody();
                 
                 let loadGif = document.createElement('img');
                 loadGif.src="/public/rsc/img/dual-load.gif";
@@ -41,7 +42,7 @@ export default class Signin{
                 
                 setTimeout(()=>{
 
-                    User.login(formBody).then(success=>{
+                    User.login(body).then(success=>{
 
                         window.location.replace('/');
 

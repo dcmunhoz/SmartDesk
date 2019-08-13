@@ -34,7 +34,8 @@ export default class AdminPlaceNew {
 
                 document.querySelector("#city-name").disabled = false;
                 
-                let body = new FormData(form);
+                // let body = new FormData(form);
+                let body = form.getBody();
 
                 document.querySelector("#city-name").disabled = true;
 

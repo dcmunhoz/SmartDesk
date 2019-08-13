@@ -163,6 +163,7 @@ class Admin {
 
         $body = $req->getParsedBody();
 
+
         $company = new Company();
 
         $company->setcompany_name($body['name']);

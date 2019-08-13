@@ -38,10 +38,11 @@ export default class TicketDetails {
             let form = document.querySelector('#form-send-new-message');
             if(form.validateFields()){
 
-                let formData = new FormData(form);
+                // let formData = new FormData(form);
+                let body = form.getBody();
                 let ticketId = document.querySelector("#ticket-id").innerHTML;
                 
-                Ticket.addMessage(ticketId, formData).then(success=>{
+                Ticket.addMessage(ticketId, body).then(success=>{
                     
                     this.loadTicketDetails();
                     form.clear();

@@ -31,11 +31,12 @@ export default class AdminPlaceUpdate {
 
                 document.querySelector("#city_name").disabled = false;
                 
-                let formData = new FormData(form);
+                // let formData = new FormData(form);
+                let body = form.getBody();
 
                 document.querySelector("#city_name").disabled = true;
 
-                Local.update(formData).then(result=>{
+                Local.update(body).then(result=>{
 
 
                     Notification.pop("success", "Sucesso", "Local editada !");

@@ -29,9 +29,10 @@ const Sector    = require('../modules/Sector');
 
             if(form.validateFields()){
 
-                let formData = new FormData(form);
+                // let formData = new FormData(form);
+                let body = form.getBody();
 
-                Sector.save(formData).then(data=>{
+                Sector.save(body).then(data=>{
 
                     Notification.pop('success', 'Sucesso', 'O setor foi cadastrado.');
                     setTimeout(() => {

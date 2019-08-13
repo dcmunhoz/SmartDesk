@@ -29,7 +29,8 @@ export default class AdminCompanyNew {
 
             if(form.validateFields()){
 
-                let body = new FormData(form);
+                // let body = new FormData(form);
+                let body = form.getBody();
 
                 Company.save(body).then(data=>{
 

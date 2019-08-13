@@ -41,7 +41,8 @@ export default class AdminUserUpdate {
 
             if(formUpdate.validateFields()){
 
-                let body = new FormData(formUpdate);
+                // let body = new FormData(formUpdate);
+                let body = formUpdate.getBody();
 
 
                 User.update(body).then(result=>{

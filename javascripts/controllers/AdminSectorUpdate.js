@@ -71,9 +71,10 @@
 
             if (form.validateFields()) {
                 
-                let formData = new FormData(form);
+                // let formData = new FormData(form);
+                let body = form.getBody();
 
-                Sector.update(formData).then(data=>{
+                Sector.update(body).then(data=>{
 
                     Notification.pop("success", "Setor Atualizado", "O setor foi atualizado com sucesso.");
                     setTimeout(()=>{
