@@ -142,6 +142,32 @@ module.exports = {
 
         });
 
+    },
+
+    assign(idTicket, idUser){
+
+        return new Promise((resolve, reject)=>{
+
+            let body = {
+                idUser
+            }
+
+            fetch(`/api/admin/ticket/assign/${idTicket}`, {
+                method: 'POST',
+                headers:{
+                    "Content-Type":"Application/JSON"
+                },
+                body: JSON.stringify(body)
+            }).then(result=>{
+                if(result.ok){
+                    resolve();
+                }else{
+                    reject();
+                }
+            });
+
+        });
+
     }
 
 }

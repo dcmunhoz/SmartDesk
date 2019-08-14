@@ -1,4 +1,4 @@
-import { type } from 'os';
+import { resolve } from 'url';
 
 /**
  * 
@@ -8,6 +8,7 @@ import { type } from 'os';
 
 // Utilitários & Módulos
 const Prototype = require('./../utils/Prototypes');
+const Notification = require('./../utils/Notification');
 const Ticket    = require('./../modules/Ticket');
 const Utils     = require('./../utils/Utils');
 
@@ -78,7 +79,28 @@ export default class AdminTickets{
      */
     initTableRowEvents(){
         
-        
+        document.querySelectorAll(".btn-assign-me").forEach(btn => {
+
+            btn.on('click', e => {
+                let idTicket = btn.parentNode.parentNode.dataset.idTicket;
+
+                btn.parentNode.style.cursor = 'wait';
+                Ticket.assign(idTicket).then(data=>{
+                    
+                    Notification.pop("success", 'Ticket Atribuido', 'O ticket foi atribuido a você com sucesso.');
+                    btn.parentNode.style.cursor = 'pointer';
+                    
+                }).catch(error=>{
+                    
+                    console.clear();
+                    Notification.pop("danger", 'Erro', 'Não foi possivel atribuir o ticket.');
+                    btn.parentNode.style.cursor = 'pointer';
+                    
+                });                
+
+            });
+
+        });
 
     }
 
@@ -93,6 +115,9 @@ export default class AdminTickets{
         this.getTickets('assign-me');
         this.getTickets('no-assign');
 
+        setTimeout(()=>{
+            this.initTableRowEvents();
+        }, 1000);
     }
 
     /**
@@ -168,7 +193,6 @@ export default class AdminTickets{
 
             this.setTableData(`table-${type}-tickets`, result);
 
-            this.initTableRowEvents();
 
         }).catch(err=>{
             this.setTableNoData(`table-${type}-tickets`);
@@ -193,7 +217,7 @@ export default class AdminTickets{
 
         [...result].forEach(row=>{
             let tr = document.createElement('tr');
-            tr.dataset.id_ticket = row['id_ticket'];
+            tr.dataset.idTicket = row['id_ticket'];
 
             let ticketStatusClassName = "";
             switch(row['status_name']){
@@ -202,7 +226,7 @@ export default class AdminTickets{
             }
 
             let trBody = `
-                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href="/api/admin/ticket/assign-me/${row['id_ticket']}"><i class="fas fa-arrow-circle-down"></i></a> </td>
+                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me"><i class="fas fa-arrow-circle-down"></i></a> </td>
                 <td>#${row['id_ticket']}</td>
                 <td><span class="status-ticket status-${ticketStatusClassName}"></span> ${row['status_name']}</td>
                 <td>${row['ticket_title']}</td>

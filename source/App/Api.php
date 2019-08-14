@@ -544,6 +544,22 @@ class Api{
         return $res->withJson($result);
 
     }
+
+    public function assignMe(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $body = $req->getParsedBody();
+        
+        $ticket = new Ticket();
+
+        $idUser = $body['idUser'];
+        $idTicket = $args['idTicket'];
+
+        $ticket->setid_ticket($idTicket);
+        $result = $ticket->assign($idUser);
+
+        return $res;
+
+    }
 }
 
 ?>
