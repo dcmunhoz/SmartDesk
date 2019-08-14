@@ -389,15 +389,26 @@ class Ticket extends ClassModel{
 
         }
 
-        // $result = $dao->exec("SELECT COUNT(*) AS 'qtt' FROM tb_ticket_assignment WHERE id_ticket = :idTicket AND id_user = :idUser;", [
-        //     ":idTicket" => $this->getid_ticket(),
-        //     ":idUser"   => $user->getid_user()
-        // ]);
+        $result = $dao->exec("SELECT COUNT(*) AS 'qtt' FROM tb_ticket_assignment WHERE id_ticket = :idTicket AND id_user = :idUser;", [
+            ":idTicket" => $this->getid_ticket(),
+            ":idUser"   => $user->getid_user()
+        ]);
+
+        if ((Int) $result[0]['qtt'] >= 1) {
+
+            return [
+                "error" => true,
+                "message" => "Ticket já atribuido."
+            ];
+
+        }
 
         $dao->query("INSERT INTO tb_ticket_assignment(id_ticket, id_user) VALUES(:idTicket, :idUser);", [
             ":idTicket" => $this->getid_ticket(),
             ":idUser"   => $user->getid_user()
         ]);
+
+        return true;
 
 
     }

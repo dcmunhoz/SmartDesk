@@ -90,10 +90,14 @@ export default class AdminTickets{
                     Notification.pop("success", 'Ticket Atribuido', 'O ticket foi atribuido a você com sucesso.');
                     btn.parentNode.style.cursor = 'pointer';
                     
+                    this.loadInitialDatas();
+                    this.loadStatusSelect();
+                    this.loadLists();
+
                 }).catch(error=>{
                     
                     console.clear();
-                    Notification.pop("danger", 'Erro', 'Não foi possivel atribuir o ticket.');
+                    Notification.pop("danger", 'Erro', error['message']);
                     btn.parentNode.style.cursor = 'pointer';
                     
                 });                

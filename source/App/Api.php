@@ -553,11 +553,19 @@ class Api{
 
         $idUser = $body['idUser'];
         $idTicket = $args['idTicket'];
-
+        
         $ticket->setid_ticket($idTicket);
         $result = $ticket->assign($idUser);
 
-        return $res;
+        if ($result['error']) {
+
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson($result);
+
+        }
+
+        return $res->withJson($result);
+
 
     }
 }

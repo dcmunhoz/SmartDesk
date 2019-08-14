@@ -158,12 +158,12 @@ module.exports = {
                     "Content-Type":"Application/JSON"
                 },
                 body: JSON.stringify(body)
-            }).then(result=>{
-                if(result.ok){
-                    resolve();
-                }else{
-                    reject();
+            }).then(result=>result.json()).then(data=>{
+                if (data['error']) {
+                    reject(data);
                 }
+
+                resolve(data);
             });
 
         });
