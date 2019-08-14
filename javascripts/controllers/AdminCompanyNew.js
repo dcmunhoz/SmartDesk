@@ -44,7 +44,7 @@ export default class AdminCompanyNew {
 
                 }).catch(err=>{
 
-                    Notification.pop("danger", "Erro", err['message'])
+                    Notification.pop("danger", "oooops !!!", err['message'])
 
                 });
 

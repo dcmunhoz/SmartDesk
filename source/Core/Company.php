@@ -42,6 +42,17 @@ class Company extends ClassModel{
             ":name" => $this->getcompany_name()
         ]);
 
+        $maxCompanies = $dao->exec("SELECT COUNT(*) as 'qtt' FROM tb_companies;");
+
+        if ( !$this->getid_company() >= 1 && (Int) $maxCompanies[0]['qtt'] >= 1) {
+
+            return [
+                "error" => true,
+                "message" => "Quantidade máxima de empresas excedidas"
+            ];
+
+        }
+
         if($this->getid_company() >= 1){
 
             $data = $this->find($this->getid_company());

@@ -115,7 +115,7 @@ CREATE TABLE tb_tickets(
 CREATE TABLE tb_priorities(
 	id_priority 	INT NOT NULL AUTO_INCREMENT,
     priority_name   VARCHAR(24) NOT NULL,
-    priority_color  VARCHAR(6) NOT NULL DEFAULT 'F5F5F5',
+    priority_color  VARCHAR(7) NOT NULL DEFAULT '#F5F5F5',
     CONSTRAINT pk_priority PRIMARY KEY(id_priority)
 )DEFAULT CHARACTER SET 'UTF8';
 
