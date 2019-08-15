@@ -35,10 +35,6 @@ export default class AdminUserUpdate {
 
             let formUpdate = document.querySelector("#form-user");
 
-            [...formUpdate].forEach(field=>{
-                console.log(field.id, field.type, field.value);
-            });
-
             if(formUpdate.validateFields()){
 
                 // let body = new FormData(formUpdate);
@@ -63,6 +59,15 @@ export default class AdminUserUpdate {
                 });
 
             }
+
+        });
+
+        document.querySelector("#local").on('change', (e)=>{
+
+            let placeId = document.querySelector("#local").value;
+
+            this.loadSectorsList(placeId);
+            document.querySelector("#sector").disabled = false;
 
         });
 
@@ -166,7 +171,13 @@ export default class AdminUserUpdate {
                 let option = document.createElement("option");
                 option.value = row['id_local'];
                 option.innerHTML = row['local_name'];
-                option.selected = ( row['id_place'] == this._user['id_place'] ) ? true : false;
+                option.selected = ( row['id_local'] == this._user['id_local'] ) ? true : false;
+
+                if (row['id_local'] == this._user['id_local']) {
+
+                    this.loadSectorsList(row['id_local']);
+
+                }
 
                 select.appendChild(option);
             });
@@ -175,11 +186,15 @@ export default class AdminUserUpdate {
 
     }
 
-    loadSectorsList(){
+    loadSectorsList(placeId){
 
-        Sector.getSectors().then(data=>{
+        Sector.getSectors(placeId).then(data=>{
 
             let select = document.querySelector("#sector");
+            select.innerHTML = "";
+            select.innerHTML = `
+                <option value="0">Selecione uma opção</option>
+            `;
 
             [...data].forEach(row=>{
 

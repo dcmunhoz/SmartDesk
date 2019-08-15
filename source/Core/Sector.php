@@ -29,8 +29,9 @@ class Sector extends ClassModel{
 
         $dao = new DB();
 
-        $result = $dao->exec("SELECT * FROM tb_sectors JOIN tb_locals USING(id_local) WHERE sector_name LIKE :name;", [
-            ":name" => "%".$search."%"
+        $result = $dao->exec("SELECT * FROM tb_sectors JOIN tb_locals USING(id_local) WHERE id_local = :idsector OR sector_name LIKE :name;", [
+            ":name" => "%".$search."%",
+            ":idsector" => $search
         ]);
 
         return $result;

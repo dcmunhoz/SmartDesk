@@ -96,17 +96,18 @@ export default class AdminConfigs {
         document.querySelector("#search-local").on('keyup', e=>{
 
             this.getLocals(e.target.value);
-
+            
         });
-
+        
     }
-
+    
     /**
      * Eventos da tela de configuração de setores.
      */
     initSectorsEvents(){
-
+        
         document.querySelector("#search-sector").on('keyup', e=>{
+            console.log("hi");
 
             this.getSectors(e.target.value);
 
@@ -117,7 +118,7 @@ export default class AdminConfigs {
     /**
      * Eventos da tela de configuração de prioridades.
      */
-    initSectorsEvents(){
+    initPrioritiesEvents(){
 
         document.querySelector("#search-priority").on('keyup', e=>{
 
@@ -125,11 +126,6 @@ export default class AdminConfigs {
 
         });
 
-    }
-
-    initPrioritiesEvents(){
-
-        
     }
 
     /**

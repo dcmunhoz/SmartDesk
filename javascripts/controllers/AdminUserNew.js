@@ -14,17 +14,17 @@ let Sector = require('../modules/Sector');
 let Profile = require('../modules/Profile');
 
 export default class AdminUserNew {
-
+    
     constructor(){
-
+        
         Prototype.initElementsPrototypes();
 
         this.initEvents();
 
+
         this.loadProfilesList();
         this.loadCompaniesList();
-        this.loadLocalsList();
-        this.loadSectorsList();
+        this.loadLocalsList();        
     }
 
     initEvents(){
@@ -56,6 +56,15 @@ export default class AdminUserNew {
 
 
             }
+
+        });
+
+        document.querySelector("#local").on('change', (e)=>{
+
+            let placeId = document.querySelector("#local").value;
+
+            this.loadSectorsList(placeId);
+            document.querySelector("#sector").disabled = false;
 
         });
 
@@ -115,15 +124,21 @@ export default class AdminUserNew {
                 select.appendChild(option);
             });
 
+
+
         });
 
     }
 
-    loadSectorsList(){
+    loadSectorsList(idLocal){
 
-        Sector.getSectors().then(data=>{
+        Sector.getSectors(idLocal).then(data=>{
 
             let select = document.querySelector("#sector");
+            select.innerHTML = "";
+            select.innerHTML = `
+                <option value="0">Selecione uma opção</option>
+            `;
 
             [...data].forEach(row=>{
 
