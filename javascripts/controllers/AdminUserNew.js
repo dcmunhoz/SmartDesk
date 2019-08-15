@@ -31,22 +31,24 @@ export default class AdminUserNew {
 
         document.querySelector("#btn-new-user").on('click', e=>{
 
-            let frmUserCreate = document.querySelector("#user-creation");
+            let form = document.querySelector("#user-creation");
 
-            if(frmUserCreate.validateFields()){
+            if(form.validateFields()){
 
-                // let formBody = new FormData(frmUserCreate);
-                let body = frmUserCreate.getBody();
+                // let formBody = new FormData(form);
+                let body = form.getBody();
 
                 User.newUser(body).then(data=>{
 
                     Notification.pop("success", "Usuário cadastrado", "Usuário cadastrado com sucesso.");
+                    form.clear();
                     
-                    setTimeout(function(){
 
-                        window.location.replace("/admin/configs");
+                    // setTimeout(function(){
 
-                    }, 3000);
+                    //     window.location.replace("/admin/configs");
+
+                    // }, 3000);
 
                 }).catch(err=>{
                     console.clear();

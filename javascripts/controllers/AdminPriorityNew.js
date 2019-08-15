@@ -32,9 +32,11 @@ export default class AdminPriorityNew{
                 Priority.save(body).then(resolve=>{
 
                     Notification.pop('success', 'Tudo certo !', 'A prioridade foi inserida.');
-                    setTimeout(() => {
-                        window.location.href = '/admin/configs'
-                    }, 3000);
+                    form.clear();
+                    
+                    // setTimeout(() => {
+                    //     window.location.href = '/admin/configs'
+                    // }, 3000);
                     
                 }).catch(reject=>{
                     

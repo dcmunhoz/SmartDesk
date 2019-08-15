@@ -13,6 +13,10 @@ module.exports = {
 
             [...this].forEach(el=>{
                 el.value = "";
+
+                if (el.type == 'select-one') {
+                    el.value = 0;
+                }
             });
 
         }

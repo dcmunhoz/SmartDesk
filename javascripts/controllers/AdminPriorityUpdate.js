@@ -32,10 +32,12 @@
  
                  Priority.update(body).then(resolve=>{
  
-                     Notification.pop('success', 'Tudo certo !', 'A prioridade foi atualizada.');
-                     setTimeout(() => {
-                         window.location.href = '/admin/configs'
-                     }, 3000);
+                    Notification.pop('success', 'Tudo certo !', 'A prioridade foi atualizada.');
+                    form.clear(); 
+
+                    //  setTimeout(() => {
+                    //      window.location.href = '/admin/configs'
+                    //  }, 3000);
                      
                  }).catch(reject=>{
                      

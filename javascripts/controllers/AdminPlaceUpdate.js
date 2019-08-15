@@ -40,9 +40,11 @@ export default class AdminPlaceUpdate {
 
 
                     Notification.pop("success", "Sucesso", "Local editada !");
-                    setTimeout(() => {
-                        window.location.href = "/admin/configs"
-                    }, 3000);
+                    form.clear();
+                    
+                    // setTimeout(() => {
+                    //     window.location.href = "/admin/configs"
+                    // }, 3000);
 
                 }).catch(fail=>{
 

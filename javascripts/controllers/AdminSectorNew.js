@@ -35,9 +35,11 @@ const Sector    = require('../modules/Sector');
                 Sector.save(body).then(data=>{
 
                     Notification.pop('success', 'Sucesso', 'O setor foi cadastrado.');
-                    setTimeout(() => {
-                        window.location.href = '/admin/configs'
-                    }, 3000);
+                    form.clear();
+                   
+                    // setTimeout(() => {
+                    //     window.location.href = '/admin/configs'
+                    // }, 3000);
 
                 }).catch(fail=>{
                     console.clear();

@@ -43,12 +43,13 @@ export default class AdminPlaceNew {
 
 
                     Notification.pop("success", "Sucesso", "Empresa cadastrada.");
+                    form.clear();    
                     
-                    setTimeout(()=>{
+                    // setTimeout(()=>{
 
-                        window.location.href = "/admin/configs";
+                    //     window.location.href = "/admin/configs";
 
-                    }, 3000);
+                    // }, 3000);
 
                 }).catch(err=>{
 

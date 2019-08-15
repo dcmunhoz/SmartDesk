@@ -34,9 +34,11 @@ export default class AdminCompanyUpdate {
                 Company.update(body).then(result=>{
 
                     Notification.pop("success", "Sucesso", "Empresa editada !");
-                    setTimeout(() => {
-                        window.location.href = "/admin/configs"
-                    }, 3000);
+                    form.clear();
+
+                    // setTimeout(() => {
+                    //     window.location.href = "/admin/configs"
+                    // }, 3000);
 
                 }).catch(fail=>{
 

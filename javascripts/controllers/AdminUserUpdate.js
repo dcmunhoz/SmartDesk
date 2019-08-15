@@ -33,23 +33,24 @@ export default class AdminUserUpdate {
 
         document.querySelector("#btn-update").on('click', e=>{
 
-            let formUpdate = document.querySelector("#form-user");
+            let form = document.querySelector("#form-user");
 
-            if(formUpdate.validateFields()){
+            if(form.validateFields()){
 
-                // let body = new FormData(formUpdate);
-                let body = formUpdate.getBody();
+                // let body = new FormData(form);
+                let body = form.getBody();
 
 
                 User.update(body).then(result=>{
 
                     Notification.pop("success", "Usuário alterado.", "A alteração foi realizada com sucesso.");
+                    form.clear();
 
-                    setTimeout(()=>{
+                    // setTimeout(()=>{
 
-                        window.location.href = "/admin/configs";
+                    //     window.location.href = "/admin/configs";
 
-                    }, 3000);
+                    // }, 3000);
 
 
                 }).catch(err=>{
