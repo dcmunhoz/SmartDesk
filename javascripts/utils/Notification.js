@@ -28,6 +28,9 @@ module.exports = {
             <section>
                 <span> ${message} </span>
             </section>
+            <footer>
+                <div>  </div>
+            </footer>
         `;
 
         templateBody.innerHTML = body;
@@ -35,16 +38,55 @@ module.exports = {
         notification.appendChild(templateBody);
         setTimeout(()=>{
             templateBody.classList.add('popup');
+
+            templateBody.addEventListener('click', e=>{
+
+                this.pupout(notification, templateBody);
+
+            });
+
+            let timeout = 4000;
+            let frameTick = timeout * 0.010;
+
             setTimeout(()=>{
-                templateBody.classList.remove('popup');
 
-                setTimeout(()=>{
-                    notification.removeChild(templateBody);
-                }, 500);
+                this.pupout(notification, templateBody);
 
-            }, 10000);
-        }, 100)
+            }, timeout);
+
+            let footer = templateBody.lastElementChild;
+            let width = 100;
+            let id = setInterval(frame, frameTick);
+            function frame() {
+
+                if (width == 0) {
+                    clearInterval(id);
+                }else{
+                    width--;
+                    footer.style.width = width + '%';
+                }
+
+            }
+
+        }, 100);
         
+
+    },
+
+    pupout(box, notification){
+
+        if(notification.parentNode){
+
+            
+            notification.classList.remove('popup');
+            
+            setTimeout(()=>{
+                box.removeChild(notification);
+            
+            }, 500);
+
+        }
+
 
     }
 
