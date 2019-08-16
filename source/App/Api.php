@@ -575,6 +575,17 @@ class Api{
         die;
 
     }
+
+    public function getTeam(ServerRequestInterface $req, ResponseInterface $res){
+
+        $user = new User();
+
+
+        $result = $user->getTeam();
+
+        return $res->withJson($result);
+
+    }
 }
 
 ?>

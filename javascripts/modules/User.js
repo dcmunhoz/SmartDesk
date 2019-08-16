@@ -274,6 +274,24 @@ module.exports = {
 
         });
 
+    },
+
+    getTeam(){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/user/team`).then(result=>result.json()).then(data => {
+
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        });
+
     }
 
 }

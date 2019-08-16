@@ -266,6 +266,23 @@ class User extends ClassModel{
         return $this;
 
     }
+
+    /**
+     * Retorna a lista de administradores (Team)
+     */
+    public function getTeam(): Array{
+
+        $dao = new DB();
+        $result = $dao->exec('
+            SELECT pr.full_name, u.email FROM tb_users u 
+            JOIN tb_profiles p USING(id_profile) 
+            JOIN tb_persons pr USING(id_user)
+            WHERE p.administrator = 1;
+        ');
+
+        return $result;
+
+    }
 }
 
 ?>

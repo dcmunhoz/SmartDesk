@@ -10,6 +10,7 @@ import Signup             from '../controllers/Signup';
 import Signin             from '../controllers/Signin';
 import Header             from '../controllers/Header';
 import Home               from '../controllers/Home';
+import Team               from '../controllers/Team';
 import NewTicket          from '../controllers/NewTicket';
 import TicketDetails      from '../controllers/TicketDetails';
 import AdminSignin        from '../controllers/AdminSignin';
@@ -50,6 +51,9 @@ export default class AppController{
                 break;
                 case 'Home':
                     new Home();
+                break;
+                case 'Team':
+                    new Team();
                 break;
                 case 'NewTicket':
                     new NewTicket();
