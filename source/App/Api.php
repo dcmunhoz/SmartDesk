@@ -568,6 +568,13 @@ class Api{
 
 
     }
+
+    public function ticketAssigned(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        var_dump($args);
+        die;
+
+    }
 }
 
 ?>

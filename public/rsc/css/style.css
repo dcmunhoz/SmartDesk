@@ -593,13 +593,13 @@ form .form-group{
 .nav ul .nav-button a{
     background-color: rgb(255, 255, 255);
     position: relative;
-    top: 0px;
+    top: -1px;
     width: 110px;
     border-left: 1px;
     border-right: 1px;
     border-top: 1px;
-    border-bottom: 0px rgb(199, 199, 199);
     border-color: rgb(255, 255, 255);
+    border-bottom: 0px rgb(199, 199, 199);
     border-style: solid;
     padding: 15px 10px;
     border-radius: 5px 5px 0 0;
@@ -623,7 +623,7 @@ form .form-group{
     background-color: #FFF !important;
     color: var(--default-font-color) !important;
     border: 1px solid rgb(172, 172, 172) !important;
-    border-bottom: 1px solid #FFF !important;
+    border-bottom: 2px solid #FFF !important;
     margin-bottom: -1px !important;
 }
 

@@ -65,6 +65,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/priority/{idPriority}/find", Api::class . ":priorityFind");
     $app->post("/priority/update", Api::class . ":priorityUpdate");
     $app->post("/ticket/assign/{idTicket}", Api::class . ":assignMe");
+    $app->get("/ticket/{idTicket}/isAssigned", Api::class . ":ticketAssigned");
     
 })->add(function($req, $res, $next){
 

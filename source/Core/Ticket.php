@@ -27,32 +27,40 @@ class Ticket extends ClassModel{
      */
     public function getAll(string $search = "", string $status = ""): array{
 
-        $params = [];
-
+        
         if($search !== ""){
-
+            
             $search = "= " . $search;
-
+            
         }
-
+        
         if($status !== "" && $status !== "0"){
             
             $status = "= " . $status;
         }
-
+        
         if($status == '0'){
             $status = "";
         }
 
-        $query = "
-            SELECT * FROM tb_tickets t
-            JOIN tb_status s USING(id_status)
-            JOIN tb_priorities pr USING(id_priority)
-            JOIN tb_persons p ON p.id_user = t.id_user
-            WHERE t.id_ticket $search AND t.id_status $status
-            ORDER BY t.id_ticket DESC
-        ";
+        $user =  new User();
 
+        $user->loadSessionUser();
+
+        $idUser = $user->getid_user();
+        
+        $query = "
+        SELECT *, (SELECT count(*) FROM tb_ticket_assignment ta WHERE ta.id_ticket = t.id_ticket and ta.id_user = :iduser) AS 'assign' FROM tb_tickets t
+        JOIN tb_status s USING(id_status)
+        JOIN tb_priorities pr USING(id_priority)
+        JOIN tb_persons p ON p.id_user = t.id_user
+        WHERE t.id_ticket $search AND t.id_status $status
+        ORDER BY t.id_ticket DESC
+        ";
+        
+        $params = [
+            ":iduser" => $user->getid_user()
+        ];
 
         $data = $this->getTicketsList($query, $params);
         
@@ -77,8 +85,12 @@ class Ticket extends ClassModel{
             $status = "";
         }
 
+        $user =  new User();
+
+        $user->loadSessionUser();
+
         $query = "
-            SELECT * FROM tb_tickets t
+            SELECT *, (SELECT count(*) FROM tb_ticket_assignment ta WHERE ta.id_ticket = t.id_ticket and ta.id_user = :id_user) AS 'assign' FROM tb_tickets t
             JOIN tb_status s USING(id_status)
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user
@@ -87,8 +99,6 @@ class Ticket extends ClassModel{
             ORDER BY t.id_ticket DESC
         ";
 
-        $user = new User();
-        $user->loadSessionUser();
 
         $data = $this->getTicketsList($query, [
             ":id_user" => $user->getid_user()
@@ -115,8 +125,12 @@ class Ticket extends ClassModel{
             $status = "";
         }
 
+        $user =  new User();
+
+        $user->loadSessionUser();
+
         $query = "
-            SELECT * FROM tb_tickets t
+            SELECT *, (SELECT count(*) FROM tb_ticket_assignment ta WHERE ta.id_ticket = t.id_ticket and ta.id_user = :id_user) AS 'assign' FROM tb_tickets t
             JOIN tb_status s USING(id_status)
             JOIN tb_priorities pr USING(id_priority)
             JOIN tb_persons p ON p.id_user = t.id_user

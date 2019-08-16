@@ -317,6 +317,13 @@ table tbody tr td{
 
 }
 
+.btn-assign-me.disable-assign{
+    color: rgb(185, 185, 185);
+    pointer-events: none;
+    cursor: default !important; 
+}
+
+
 table tbody tr:hover{
 
     background-color: rgb(238, 238, 238);

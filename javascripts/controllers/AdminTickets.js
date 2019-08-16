@@ -215,7 +215,7 @@ export default class AdminTickets{
      * 
      */
     setTableData(tableId, result){
-        
+    
         let tbody = document.querySelector(`#${tableId} tbody`);
         tbody.innerHTML = "";
 
@@ -230,7 +230,7 @@ export default class AdminTickets{
             }
 
             let trBody = `
-                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me"><i class="fas fa-arrow-circle-down"></i></a> </td>
+                <td> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me  ${(row['assign'] == 1) ? 'disable-assign' : ''} "><i class="fas fa-arrow-circle-down"></i></a> </td>
                 <td>#${row['id_ticket']}</td>
                 <td><span class="status-ticket status-${ticketStatusClassName}"></span> ${row['status_name']}</td>
                 <td>${row['ticket_title']}</td>
