@@ -21,7 +21,7 @@ a{
 }
 
 #app aside{
-    background-color: #006586;
+    background-color: #7159c1;
     /* width: 65px; */
     height: 100%;
     box-sizing: border-box;
@@ -39,7 +39,7 @@ a{
 
 #app aside .fas{
     font-size: 32px ;
-    color: rgb(223, 243, 255);
+    color: #EDEAF7;
 }
 
 #app aside .menu-toggler{
@@ -51,12 +51,12 @@ a{
 }
 
 #app aside ul li.active{
-    background-color: rgb(0, 161, 214);
+    background-color: #554391;
 
 }
 
 #app aside ul li:hover{
-    background-color: rgb(0, 120, 160);
+    background-color: #554391;
 }
 
 #app aside ul li a{
@@ -566,7 +566,7 @@ table tbody tr:hover{
 
 .center-panel.new{
 
-    border-top: 3px solid #00a0d1;
+    border-top: 3px solid #473879;
 
 }
 

@@ -36,12 +36,12 @@ input[type='password'],
 textarea,
 select{
     padding: 7px;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(218, 218, 218);
     color: rgb(94, 94, 94);
-    border: 2px solid rgb(228, 228, 228);
+    border: 2px solid rgb(218, 218, 218);
     border-radius: 5px;
     font-size: 16px;
-    transition: 300ms;
+    transition: 150ms;
     overflow: none;
     box-sizing: border-box;
     width: 100%;
@@ -70,25 +70,27 @@ input[type='color']:hover::before{
 }
 
 input:focus,
-textarea:focus{
-    border: 2px solid #0084ac;
+textarea:focus,
+select:focus{
+    border: 2px solid #7159c1;
     background-color: #FFF;
-    box-shadow: 0px 0px 5px 2px #0084ac2f;
+    box-shadow: 0px 0px 3px 2px #0084ac11;
 }
 
 select{
-    background-color: rgb(228, 228, 228) !important;
-    transition: 100ms;
+    /* background-color: rgb(228, 228, 228) !important; */
+    /* transition: 100ms; */
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
+/* 
 select:focus{
     background-color: #9c9c9c !important;
     color: #FFF;
     border-color: #9c9c9c !important;
     outline: none;
-}
+} */
 
 textarea{
     resize: none;
@@ -116,11 +118,11 @@ input:focus{
     box-shadow: none;
 } */
 
-.dark:focus{
+/* .dark:focus{
     border: 1px solid #E5E5E5;
     border-bottom: 3px solid #0084ac;
     box-shadow: none;
-} 
+}  */
 
 
 
@@ -138,8 +140,8 @@ input:focus{
 }
 
 .btn-enviar{
-    border: #00a0d1;
-    background-color: #00a0d1;
+    border: #7159c1;
+    background-color: #7159c1;
 }
 
 .btn-update{
@@ -167,8 +169,10 @@ input:focus{
     /* border: #0073c0;
     background-color: #0073c0; */
 
-    border: #1BA156;
-    background-color: #1BA156;
+    border: #59C1A5;
+    background-color: #59C1A5;
+    /* border: #1BA156;
+    background-color: #1BA156; */
 }
 
 .btn-radio{
