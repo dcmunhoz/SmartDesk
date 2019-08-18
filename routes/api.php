@@ -26,6 +26,7 @@ $app->group("/api", function(Slim\App $app){
     $app->get("/ticket/status", Api::class . ":ticketStatus");
     $app->get("/ticket/{ticketId}/details", Api::class . ":ticketDetails");
     $app->post("/ticket/{ticketId}/add-message", Api::class . ":ticketAddMessage");
+    $app->get("/user/team", Api::class . ":getTeam");
 
 })->add(function($req, $res, $next){
 
@@ -66,7 +67,6 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->post("/priority/update", Api::class . ":priorityUpdate");
     $app->post("/ticket/assign/{idTicket}", Api::class . ":assignMe");
     $app->get("/ticket/{idTicket}/isAssigned", Api::class . ":ticketAssigned");
-    $app->get("/user/team", Api::class . ":getTeam");
     
 })->add(function($req, $res, $next){
 

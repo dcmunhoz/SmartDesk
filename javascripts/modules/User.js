@@ -280,7 +280,7 @@ module.exports = {
 
         return new Promise((resolve, reject) => {
 
-            fetch(`/api/admin/user/team`).then(result=>result.json()).then(data => {
+            fetch(`/api/user/team`).then(result=>result.json()).then(data => {
 
                 if(data['error']){
                     reject(data);

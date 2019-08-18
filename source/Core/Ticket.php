@@ -27,6 +27,7 @@ class Ticket extends ClassModel{
      */
     public function getAll(string $search = "", string $status = ""): array{
 
+        $dao = new DB();
         
         if($search !== ""){
             
@@ -63,12 +64,37 @@ class Ticket extends ClassModel{
         ];
 
         $data = $this->getTicketsList($query, $params);
+
+        foreach ($data as $key => $value) {
+            
+            $assignQuery = $dao->exec("SELECT ta.id_ticket_assignment, p.full_name FROM tb_ticket_assignment ta JOIN tb_users u USING(id_user) JOIN tb_persons p USING (id_user) WHERE ta.id_ticket = :id_ticket ORDER BY ta.id_ticket_assignment", [
+                ":id_ticket" => $data[$key]['id_ticket']
+            ]);
+
+            
+            if (count($assignQuery) > 1) {
+                
+                $assign = $assignQuery[0]['full_name'] . ", +" . (count($assignQuery)-1);
+                
+            } else if(count($assignQuery) == 1) {
+                
+                $assign = $assignQuery[0]['full_name'];
+                
+            }else { 
+                $assign = "-"; 
+            }
+
+            $data[$key]['assignments'] = $assign;
+            
+        }
         
         return $data;
 
     }
 
     public function getAssignMe(string $search = "", string $status = ""){
+
+        $dao = new DB();
 
         if($search !== ""){
 
@@ -103,12 +129,36 @@ class Ticket extends ClassModel{
         $data = $this->getTicketsList($query, [
             ":id_user" => $user->getid_user()
         ]);
-        
+    
+        foreach ($data as $key => $value) {
+            
+            $assignQuery = $dao->exec("SELECT ta.id_ticket_assignment, p.full_name FROM tb_ticket_assignment ta JOIN tb_users u USING(id_user) JOIN tb_persons p USING (id_user) WHERE ta.id_ticket = :id_ticket ORDER BY ta.id_ticket_assignment", [
+                ":id_ticket" => $data[$key]['id_ticket']
+            ]);
+            
+            if (count($assignQuery) > 1) {
+                
+                $assign = $assignQuery[0]['full_name'] . ", +" . (count($assignQuery)-1);
+                
+            } else if(count($assignQuery) == 1) {
+                
+                $assign = $assignQuery[0]['full_name'];
+                
+            }else { 
+                $assign = "-"; 
+            }
+
+            $data[$key]['assignments'] = $assign;
+            
+        }
+
         return $data;
 
     }
 
     public function getNoAssign(string $search = "", string $status = ""){
+
+        $dao = new DB();
 
         if($search !== ""){
 
@@ -143,6 +193,28 @@ class Ticket extends ClassModel{
         $data = $this->getTicketsList($query, [
             ":id_user" => (new User)->getid_user()
         ]);
+
+        foreach ($data as $key => $value) {
+            
+            $assignQuery = $dao->exec("SELECT ta.id_ticket_assignment, p.full_name FROM tb_ticket_assignment ta JOIN tb_users u USING(id_user) JOIN tb_persons p USING (id_user) WHERE ta.id_ticket = :id_ticket ORDER BY ta.id_ticket_assignment", [
+                ":id_ticket" => $data[$key]['id_ticket']
+            ]);
+            
+            if (count($assignQuery) > 1) {
+                
+                $assign = $assignQuery[0]['full_name'] . ", +" . (count($assignQuery)-1);
+                
+            } else if(count($assignQuery) == 1) {
+                
+                $assign = $assignQuery[0]['full_name'];
+                
+            }else { 
+                $assign = "-"; 
+            }
+
+            $data[$key]['assignments'] = $assign;
+            
+        }
         
         return $data;
 

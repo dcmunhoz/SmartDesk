@@ -235,7 +235,7 @@ export default class AdminTickets{
                 <td><span class="status-ticket status-${ticketStatusClassName}"></span> ${row['status_name']}</td>
                 <td>${row['ticket_title']}</td>
                 <td>${row['full_name']}</td>
-                <td>-</td>
+                <td>${row['assignments']}</td>
                 <td>${Utils.dateFormat( new Date(row['dt_creation']) )}</td>
                 <td style="color: ${row['priority_color']};" >${row['priority_name']}</td>
                 <td>${Utils.dateFormat( new Date(row['dt_updates']) )}</td>
