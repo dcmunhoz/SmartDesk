@@ -9,15 +9,17 @@
         <div class="fields-details">
 
             <div class="form-group">
-                <label for="">Requrente</label>
-                <input class="" type="text"  >
+                <label for="user-request">Requerente</label>
+                <select name="user-request" id="user-request">
+                    <option value="0">Selecione o Requrente</option>
+                </select>
             </div>
             
             <div class="form-group">
-                <label for=""> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> Atribuições</label>
+                <label for="user-assign"> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> Atribuições</label>
                 <div class="new-assign">
-                    <select name="" id="">
-                        <option value="0">Selecione...</option>
+                    <select name="user-assign" id="user-assign">
+                        <option value="0">Selecione um técnico</option>
                     </select>
                     <div class="assign-selected">
                         <a href="" title="Adicionar nova atribuição">
@@ -28,7 +30,7 @@
                 <textarea class="" name="" id=""  rows="3" disabled></textarea>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="">Cc's</label>
                 <div class="new-assign">
                     <select name="" id="">
@@ -41,7 +43,7 @@
                     </div>
                 </div>
                 <textarea class="" name="" id=""  rows="2" disabled></textarea>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="">Local</label>

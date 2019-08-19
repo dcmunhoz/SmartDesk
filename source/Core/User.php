@@ -274,7 +274,7 @@ class User extends ClassModel{
 
         $dao = new DB();
         $result = $dao->exec('
-            SELECT pr.full_name, u.email FROM tb_users u 
+            SELECT u.id_user, pr.full_name, u.email FROM tb_users u 
             JOIN tb_profiles p USING(id_profile) 
             JOIN tb_persons pr USING(id_user)
             WHERE p.administrator = 1;

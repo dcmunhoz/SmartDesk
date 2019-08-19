@@ -423,7 +423,7 @@ table tbody tr:hover{
 }
 
 .form-group .new-assign select{
-    border-radius: 1px;
+    border-radius: 3px;
     padding: 3px;
 }
 

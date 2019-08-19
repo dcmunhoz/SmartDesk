@@ -26,6 +26,7 @@ import AdminSectorNew     from '../controllers/AdminSectorNew';
 import AdminSectorUpdate  from '../controllers/AdminSectorUpdate';
 import AdminPriorityNew   from '../controllers/AdminPriorityNew';
 import AdminPriorityUpdate from '../controllers/AdminPriorityUpdate';
+import AdminTicketNew      from '../controllers/AdminTicketNew';
 
 export default class AppController{
 
@@ -99,6 +100,9 @@ export default class AppController{
                 break;
                 case 'AdminPriorityUpdate':
                     new AdminPriorityUpdate();
+                break;
+                case 'AdminTicketNew':
+                    new AdminTicketNew();
                 break;
             }
         }
