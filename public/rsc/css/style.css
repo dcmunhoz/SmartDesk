@@ -5,7 +5,7 @@
     /* --default-font-color: #47525E; */
     --default-font-color: #2a2f35;
     /* --default-sys-color: #235153; */
-    --default-sys-color: #7159c1;
+    --default-sys-color: #303030;
     
 }
 
@@ -272,12 +272,12 @@ form .form-group{
 }
 
 .box .redirect-links a{
-    color:#7519c1;
+    color:#006CC6;
     text-decoration: none;
 }
 
 .box .redirect-links a:active{
-    color:#7159c1;
+    color:rgb(0, 77, 139);
 }
 
 .form-group label{
@@ -300,7 +300,7 @@ form .form-group{
 
 .system-welcome{
 
-    background: linear-gradient(92deg, #7519c1 0%, #7159c1 100%); /* w3c */
+    background: linear-gradient(92deg, #303030 0%, #4d4d4d 100%); /* w3c */
     color:#FFF !important;
     flex-grow: 1;
     display: flex;
@@ -314,7 +314,7 @@ form .form-group{
 
 /* ================================================== Admin Login Page ================================================== */
 .admin-container{
-    background: linear-gradient(92deg, #7519c1 0%, #7159c1 100%); /* w3c */
+    background: linear-gradient(92deg, #303030 0%, #4d4d4d 100%); /* w3c */
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -416,11 +416,11 @@ form .form-group{
 
 #btn-show-user-panel:hover{
     cursor: pointer;
-    background-color: #7667A8;
+    background-color: #b9b9b9;
 }
 
 #btn-show-user-panel.active{
-    background-color: #7667A8;
+    background-color: #b9b9b9;
 }
 
 #user-panel.active{
@@ -431,8 +431,8 @@ form .form-group{
 #user-panel{
     cursor: default;
     position: absolute;
-    background-color: #7667A8;
-    color: #FFF;
+    background-color: rgb(255, 255, 255);
+    color: #303030;
     top: 80px;
     right: -50px;
     width: 190px;
@@ -445,6 +445,13 @@ form .form-group{
     flex-direction: column;
     transition: 200ms;
     z-index: 200;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-top: 0;
+    border-style: solid;
+    border-color: #bbbbbb;
+    box-shadow: 0px 3px 5px #30303028;
 }
 
 #user-panel header{
@@ -452,7 +459,7 @@ form .form-group{
     font-size: 16px;
     text-align: center;
     justify-content: center;
-    border-bottom: 1px solid #7159c1;
+    border-bottom: 1px solid #dddddd;
 }
 
 #user-panel .user-menu-option{
@@ -468,7 +475,8 @@ form .form-group{
 }
 
 #user-panel .user-menu-option span:hover{
-    background-color: #7159c1;
+    background-color: #dddddd;
+    color: #303030;
     cursor: pointer;
 }
 
@@ -485,21 +493,22 @@ form .form-group{
 
 #user-panel footer{
     pointer-events: all;
-    border-top: 1px solid #7159c1;
+    border-top: 1px solid #dddddd;
 }
 
 #btn-user-logout:hover{
-    background-color: #CA141B;
+    background-color: rgb(218, 95, 99);
     border-radius: 0 0 5px 5px;
     cursor: pointer;
 }
 
 
 #user-panel .fas{
-    color: #fff;
+    color: #303030;
     font-size: 16px !important;
     margin-right: 5px;
 }
+
 
 
 
@@ -598,7 +607,7 @@ form .form-group{
     margin-bottom: 0px;
     margin-right: 0px;
     transition: 200ms;
-    color:#7159c1;
+    color:#006CC6;
     text-decoration: none;
 
 }
@@ -607,7 +616,7 @@ form .form-group{
     border: 1px solid rgb(224, 224, 224);
     border-bottom: 0px;
     background-color: rgb(250, 250, 250);
-    color:#7519c1;
+    color:rgb(0, 80, 146);
 }
 
 .nav-button.active a{

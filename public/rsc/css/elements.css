@@ -72,9 +72,9 @@ input[type='color']:hover::before{
 input:focus,
 textarea:focus,
 select:focus{
-    border: 2px solid #7159c1;
+    border: 2px solid #303030;
     background-color: #FFF;
-    box-shadow: 0px 0px 3px 2px #0084ac11;
+    box-shadow: 0px 0px 3px 2px #30303054;
 }
 
 select{
@@ -140,8 +140,8 @@ input:focus{
 }
 
 .btn-enviar{
-    border: #7159c1;
-    background-color: #7159c1;
+    border: #303030;
+    background-color: #303030;
 }
 
 .btn-update{

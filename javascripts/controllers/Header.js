@@ -3,10 +3,12 @@ let Prototype = require('../utils/Prototypes');
 export default class Header{
 
     constructor(){
+        this.verifiNewUserTicketPage();        
 
         Prototype.initElementsPrototypes();
         this.initHeader();
         this.getUserData();
+        
 
     }
 
@@ -57,6 +59,18 @@ export default class Header{
 
 
         });
+    }
+
+    verifiNewUserTicketPage(){
+
+        let page = document.querySelector("#page").dataset.page;
+
+        let btn = document.querySelector("#btn-new-ticket");
+
+        if (page === "AdminTicketNew") {
+            btn.parentElement.classList.add('active');
+        }
+
     }
 
 }
