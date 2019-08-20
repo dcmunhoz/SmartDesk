@@ -120,6 +120,25 @@ class Local extends ClassModel{
 
     }
 
+    /**
+     * Retorna todos os locais vinculádos a um usuário
+     */
+    public function getUserLocals(int $idUser): array
+    {
+
+        $dao = new DB();
+
+        $user = (new User)->find($idUser);
+
+        $result = $dao->exec("select l.id_local, l.local_name from tb_locals l JOIN tb_persons p USING(id_local) WHERE p.id_user = :iduser", [
+            ":iduser" => $user->getid_user()
+        ]);
+            
+        return $result;
+
+
+    }
+
 
 }
 

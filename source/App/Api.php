@@ -580,10 +580,29 @@ class Api{
 
         $user = new User();
 
-
         $result = $user->getTeam();
 
         return $res->withJson($result);
+
+    }
+
+    public function getUserLocals(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $idUser = $args['idUser'];
+
+        $local = (new Local)->getUserLocals((int) $idUser);
+
+        return $res->withJson($local);
+
+    }
+
+    public function getUserSectors(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $idUser = $args['idUser'];
+
+        $sector = (new Sector)->getUserSectors((int) $idUser);
+
+        return $res->withJson($sector);
 
     }
 }

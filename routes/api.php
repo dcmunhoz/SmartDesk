@@ -67,7 +67,9 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->post("/priority/update", Api::class . ":priorityUpdate");
     $app->post("/ticket/assign/{idTicket}", Api::class . ":assignMe");
     $app->get("/ticket/{idTicket}/isAssigned", Api::class . ":ticketAssigned");
-    
+    $app->get("/user/{idUser}/getLocals", Api::class . ":getUserLocals");
+    $app->get("/user/{idUser}/getSectors", Api::class . ":getUserSectors");
+
 })->add(function($req, $res, $next){
 
     User::verifyLogin(true);

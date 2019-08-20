@@ -292,6 +292,48 @@ module.exports = {
 
         });
 
+    },
+
+    /**
+     * Pega os locais vinculados ao usuário
+     */
+    getUserLocal(userId){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/user/${userId}/getLocals`).then(result => result.json()).then(data=>{
+
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        }); 
+
+    },
+
+    /**
+     * Pega os setores vinculados ao usuário
+     */
+    getUserSector(userId){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/user/${userId}/getSectors`).then(result => result.json()).then(data=>{
+
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        }); 
+
     }
 
 }
