@@ -102,6 +102,25 @@ class Sector extends ClassModel{
 
     }
 
+    /**
+     * Retorna todos os setores vinculádos a um usuário
+     */
+    public function getUserSectors(int $idUser): array
+    {
+
+        $dao = new DB();
+
+        $user = (new User)->find($idUser);
+
+        $result = $dao->exec("select s.id_sector, s.sector_name from tb_sectors s JOIN tb_persons p USING(id_local) WHERE p.id_user = :iduser", [
+            ":iduser" => $user->getid_user()
+        ]);
+            
+        return $result;
+
+
+    }
+
 
 }
 

@@ -1,7 +1,6 @@
 {
     "require": {
-        "slim/slim": "^3.12",
-        "rain/raintpl": "3.0"
+        "slim/slim": "^3.12"
     },
     "autoload": {
         "psr-4": {
