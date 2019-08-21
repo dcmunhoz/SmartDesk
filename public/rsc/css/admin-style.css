@@ -441,6 +441,44 @@ table tbody tr:hover{
     padding: 3px;
 }
 
+.form-group .assign-box {
+
+    position: relative;
+    display: block;
+    height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+
+}
+
+.form-group .assign-box-users{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    border-radius: 5px;
+    background-color: rgb(218, 218, 218);
+    box-sizing: border-box;
+    padding: 5px;
+    overflow: auto;
+
+}
+
+.form-group .assign-box-users li {
+    margin: 5px 0;
+}
+
+.form-group .assign-box-users li span{
+
+    font-family: 'Lato', sans-serif !important;
+    font-size: 14px;
+    
+}
+
+.form-group .assign-box-users li span:nth-child(1){
+    margin-right: 5px;
+}
+
 .form-group .new-assign .assign-selected{
     width: 10%;
 }
