@@ -207,7 +207,7 @@ form .form-group{
 }
 
 .form-group.input-error > label{
-    color: rgb(250, 95, 95);
+    color: rgb(250, 95, 95) !important;
 }
 
 .form-group > label::before{

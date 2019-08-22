@@ -43,6 +43,44 @@ export default class AdminTicketNew {
 
     });
 
+    document.querySelector("#btn-add-to-assign").on('click', e => {
+
+      e.preventDefault();
+
+      let select = document.querySelector("#user-assign");
+
+      if (select.value == 0) {
+
+        select.parentNode.parentNode.classList.add('input-error');
+        
+      }else{
+        
+        select.parentNode.parentNode.classList.remove('input-error');
+
+        let user = {};
+
+        select.forEach(option => {
+
+          if(select.value == option.value){
+
+            user = {
+              "id_user": option.value,
+              "full_name": option.innerHTML
+            };
+
+          }
+
+
+        });
+
+        this.setAssignmentUser(user);
+        
+        select.value = 0;
+
+      }
+
+    });
+
   }
 
   /**
