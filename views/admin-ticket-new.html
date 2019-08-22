@@ -16,6 +16,7 @@
             </div>
             
             <div class="form-group">
+                <input type="hidden" id="logged_user" name="logged_user">
                 <label for="user-assign"> <a title="Atribuir ticket a você" id="btn-assign-me" class="btn-assign-me" href=""><i class="fas fa-arrow-circle-down"></i></a> Atribuições</label>
                 <div class="new-assign">
                     <select name="user-assign" id="user-assign">
@@ -28,7 +29,7 @@
                     </div>
                 </div>
                 <div class="assign-box">
-                    <ul class="assign-box-users">
+                    <ul class="assign-box-users" id="assign-users">
                         <!-- <li>
                             <span><i class="fas fa-times-circle" title="Remover"></i></span>
                             <span>Daniel Costa Munhoz</span>

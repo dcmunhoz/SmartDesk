@@ -57,6 +57,13 @@ export default class Header{
 
             document.querySelector("#panel-user-name").innerHTML = displayName;
 
+            let div = document.createElement('div');
+            div.style.display = 'hidden';
+            div.id = "user-data"
+            div.dataset.user = JSON.stringify(data);
+
+
+            document.querySelector("#app").appendChild(div);
 
         });
     }
