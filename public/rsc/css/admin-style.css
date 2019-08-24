@@ -175,6 +175,13 @@ background-color: #b8b8b8;
     box-sizing: border-box;
 }
 
+.content form {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
 .content .content-left-panel{
     background-color: rgb(250, 250, 250);
     width: 300px;

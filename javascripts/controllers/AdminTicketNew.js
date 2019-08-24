@@ -81,6 +81,16 @@ export default class AdminTicketNew {
 
     });
 
+    document.querySelector("#btn-new-tikcet").on('click', e => {
+
+      e.preventDefault()
+
+      let form = document.querySelector("#form-new-ticket");
+
+      console.log([form]);
+
+    });
+
   }
 
   /**
@@ -147,6 +157,7 @@ export default class AdminTicketNew {
     User.getUserLocal(userId).then(data => {
 
       const select = document.querySelector("#local");
+      select.innerHTML = "";
 
       [...data].forEach(local => {
         
@@ -179,6 +190,7 @@ export default class AdminTicketNew {
     User.getUserSector(userId).then(data => {
 
       const select = document.querySelector("#sector");
+      select.innerHTML = "";
 
       [...data].forEach(sector => {
         

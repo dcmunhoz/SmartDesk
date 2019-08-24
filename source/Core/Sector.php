@@ -112,7 +112,7 @@ class Sector extends ClassModel{
 
         $user = (new User)->find($idUser);
 
-        $result = $dao->exec("select s.id_sector, s.sector_name from tb_sectors s JOIN tb_persons p USING(id_local) WHERE p.id_user = :iduser", [
+        $result = $dao->exec("select s.id_sector, s.sector_name from tb_sectors s JOIN tb_persons p USING(id_sector) WHERE p.id_user = :iduser", [
             ":iduser" => $user->getid_user()
         ]);
             
