@@ -6,6 +6,8 @@
 const Prototype = require('../utils/Prototypes');
 const Notification = require('../utils/Notification');
 const User = require('../modules/User');
+const Ticket = require('../modules/Ticket');
+const Priority = require('../modules/Priority');
 
 export default class AdminTicketNew {
 
@@ -17,6 +19,7 @@ export default class AdminTicketNew {
 
     this.loadUsers(); // Carrega os requerentes.
     this.loadTeam();  // Carrega o time.
+    this.loadPriorities() // Carregas as prioridades.
 
     this.initEvents();
 
@@ -26,12 +29,6 @@ export default class AdminTicketNew {
    * Eventos da pagina
    */
   initEvents(){
-
-    document.querySelector("#user-request").on('change', e => {
-
-      this.loadUserLocal(e.target.value);
-
-    });
 
     document.querySelector("#btn-assign-me").on('click', e => {
 
@@ -87,7 +84,25 @@ export default class AdminTicketNew {
 
       let form = document.querySelector("#form-new-ticket");
 
-      console.log([form]);
+      if(form.validateFields()){
+
+        let body = form.getBody();
+
+        body.delete('user-assign');
+        body.delete('user_logged');
+        body.append('assignments', JSON.stringify(this._assignments));
+
+        Ticket.open(body).then(data => {
+
+          Notification.pop('success', `Ticket #${data['id_ticket']} Aberto`, "Ticket aberto com sucesso");
+          document.querySelector("#assign-users").innerHTML = "";
+          form.clear();
+
+
+
+        });
+
+      }
 
     });
 
@@ -150,61 +165,23 @@ export default class AdminTicketNew {
   }
 
   /**
-   * Carrega o local vinculado ao usuário
+   * Carrega a lista de prioridades
    */
-  loadUserLocal(userId){
+  loadPriorities(){
 
-    User.getUserLocal(userId).then(data => {
+    Priority.getPriorities().then(data => {
 
-      const select = document.querySelector("#local");
-      select.innerHTML = "";
+      const select = document.querySelector("#ticket-priority");
 
-      [...data].forEach(local => {
-        
-        const option = document.createElement('option');
-        option.value = local['id_local'];
-        option.innerHTML = local['local_name'];
-        option.selected = true;
+      [...data].forEach(priority=>{
 
+        let option = document.createElement('option');
+        option.value = priority['id_priority'];
+        option.innerHTML = priority['priority_name'];
 
         select.appendChild(option);
 
       });
-
-      select.disabled = false;
-      this.loadUserSector(userId);
-
-    });
-
-  }
-
-  /**
-   * 
-   * @param {int} userId Id do usuário
-   * 
-   * Carrega os setores vinculados ao usuário
-   *  
-   */
-  loadUserSector(userId){
-
-    User.getUserSector(userId).then(data => {
-
-      const select = document.querySelector("#sector");
-      select.innerHTML = "";
-
-      [...data].forEach(sector => {
-        
-        const option = document.createElement('option');
-        option.value = sector['id_sector'];
-        option.innerHTML = sector['sector_name'];
-        option.selected = true;
-
-
-        select.appendChild(option);
-
-      });
-
-      select.disabled = false;
 
     });
 

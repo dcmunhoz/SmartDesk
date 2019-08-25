@@ -116,12 +116,12 @@ class Api{
 
         $body = $req->getParsedBody();
 
-        // $user = new User();
-        // $user->loadSessionUser();
         $ticket = new Ticket();
         $ticket->settitle($body['ticket-title']);
         $ticket->setdescription($body['ticket-desc']);
         $ticket->setid_priority($body['ticket-priority']);
+        $ticket->setid_appl($body['user-request']);
+        $ticket->setassignments(json_decode($body['assignments']));
     
         $result = $ticket->open();
     

@@ -54,7 +54,7 @@
                 <textarea class="" name="" id=""  rows="2" disabled></textarea>
             </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="local">Local</label>
                 <select name="local" id="local" disabled>
                     <option value="0">Selecione...</option>
@@ -66,8 +66,14 @@
                 <select name="sector" id="sector" disabled>
                     <option value="0">Selecione...</option>
                 </select>
+            </div> -->
+
+            <div class="form-group">
+                <label for="ticket-priority">Prioridade</label>
+                <select name="ticket-priority" id="ticket-priority">
+                    <option value="0">Selecione ...</option>
+                </select>
             </div>
-    
 
         </div>           
     </div>
@@ -76,8 +82,8 @@
 
         <div class=" header-container ticket-details-header-container">
             <header >
-                <div class="ticket-details-title" contenteditable="true" aria-multiline="false">
-                    <input type="text" placeholder="Titulo do ticket" class="new-ticket-title">
+                <div class="ticket-details-title form-group" contenteditable="true" aria-multiline="false">
+                    <input type="text" id="ticket-title" name="ticket-title" placeholder="Titulo do ticket" class="new-ticket-title">
                 </div>
             </header>
         </div>
@@ -95,14 +101,12 @@
 
                 <footer class="messages-footer-container">
                     <div id="new-message">
-                        <form id="form-send-new-message">
-                            <div class="form-group">
-                                <textarea name="text-new-message" id="text-new-message" rows="6" placeholder="Descreva o problema detalhadamente...."></textarea>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <textarea name="ticket-desc" id="ticket-desc" rows="6" placeholder="Descreva o problema detalhadamente...."></textarea>
+                        </div>
                     </div>
                     <div>
-                        <button type="submit" id="btn-new-tikcet" class="btn btn-done"><i class="far fa-paper-plane"></i> Novo ticket</button>
+                        <button type="button" id="btn-new-tikcet" class="btn btn-done"><i class="far fa-paper-plane"></i> Novo ticket</button>
                     </div>
                 </footer>
             </div>

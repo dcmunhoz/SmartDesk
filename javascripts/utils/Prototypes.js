@@ -42,9 +42,6 @@ module.exports = {
                 if (el.type !== "button" && el.type !== 'hidden') {
                     let formGroup = document.querySelector(`#${el.id}`).parentNode;
 
-
-                    
-
                     if (el.value.trim() === '') {
                         formGroup.classList.add('input-error');
                         validation = true;
@@ -92,7 +89,7 @@ module.exports = {
     
                     }
 
-                    if(el.type === 'select-one'){
+                    if(el.type === 'select-one' && el.id !== "user-assign"){
                         if(el.value === '0'){
                             formGroup.classList.add('input-error');
                             formGroup.classList.add('input-error');

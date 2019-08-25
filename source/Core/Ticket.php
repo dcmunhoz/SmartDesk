@@ -353,8 +353,15 @@ class Ticket extends ClassModel{
     public function open(){
 
         $user = new User();
-        $user->loadSessionUser();
 
+        if ($this->getid_appl() > 0) {
+            $user->find($this->getid_appl());
+        }else{
+            $user->loadSessionUser();
+        }
+
+        
+        
         $dao = new DB();
         $result = $dao->exec("CALL proc_save_ticket(:pidticket, :piduser, :ptitle, :pdesc, :pidpriority);",[
             ":pidticket"   => 0,
@@ -363,16 +370,28 @@ class Ticket extends ClassModel{
             ":pdesc"       => $this->getdescription(),
             ":pidpriority" => $this->getid_priority()
         ]);
-
-
+            
+            
         if(count($result) > 0){
 
+            $this->setData($result[0]);
+            $assignments = $this->getassignments();
+    
+            if (count($assignments) >= 1) {
+    
+                foreach ($assignments as $assign) { 
+                    
+                    $this->assign($assign->id_user);
+    
+                }
+    
+            }
+
             return $result[0];
-        
+
         }else{
             return ['error'=>true, 'msg'=>'Ocorreu um erro ao abrir o ticket.'];
         }
-
 
     }
 
