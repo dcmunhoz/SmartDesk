@@ -20,8 +20,8 @@ $app->group('/admin', function(Slim\App $app){
     $app->get("/signin", Admin::class . ":signin");
     $app->post("/signin", Admin::class . ":signinPost");
     $app->get("/tickets", Admin::class . ":tickets");
-    $app->get("/ticket/4", Admin::class . ":ticketDetails");
     $app->get("/ticket/new", Admin::class . ":ticketNew");
+    $app->get("/ticket/{ticketId}", Admin::class . ":ticketDetails");
     $app->get("/configs", Admin::class . ":configs");
     $app->get("/user/new", Admin::class . ":userNew");
     $app->post("/user/new", Admin::class . ":postUserNew");

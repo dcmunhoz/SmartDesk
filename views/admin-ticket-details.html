@@ -9,8 +9,10 @@
         <div class="fields-details">
 
             <div class="form-group">
-                <label for="">Requrente</label>
-                <input class="dark" type="text"  value="Daniel Munhoz" disabled>
+                <label for="user-claimer">Requrente</label>
+                <select name="user-claimer" id="user-claimer">
+                    <option value="0">Selecione ...</option>
+                </select>
             </div>
             
             <div class="form-group">
@@ -25,22 +27,22 @@
                         </a>
                     </div>
                 </div>
-                <textarea class="dark" name="" id=""  rows="3" disabled>Daniel Munhoz;  Eduardo;</textarea>
+                <div class="assign-box">
+                    <ul class="assign-box-users" id="assign-users">
+                        <!-- <li>
+                            <span><i class="fas fa-times-circle" title="Remover"></i></span>
+                            <span>Daniel Costa Munhoz</span>
+                        </li> -->
+
+                    </ul>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="">CC's</label>
-                <input class="dark" type="text"  value="Daniel Munhoz" disabled>
-            </div>
-
-            <div class="form-group">
-                <label for="">Local</label>
-                <input class="dark" type="text"  value="Sede" disabled>
-            </div>
-
-            <div class="form-group">
-                <label for="">Setor</label>
-                <input class="dark" type="text"  value="T.I." disabled>
+                <label for="ticket-priority">Prioridade</label>
+                <select name="ticket-priority" id="ticket-priority">
+                    <option value="0">Selecione ...</option>
+                </select>
             </div>
     
 

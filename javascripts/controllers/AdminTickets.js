@@ -92,7 +92,7 @@ export default class AdminTickets{
                     
                     this.loadInitialDatas();
                     this.loadStatusSelect();
-                    this.loadLists();
+                    // this.loadLists();
 
                 }).catch(error=>{
                     
@@ -103,6 +103,29 @@ export default class AdminTickets{
                 });                
 
             });
+
+        });
+
+        document.querySelectorAll('tbody').forEach(tr => {
+            
+            const event = e => {
+
+                if ( e.target.localName !== 'i') {
+
+                    let row = e.target.parentNode
+                    let ticketId = row.dataset.idTicket 
+                    
+                    window.location.replace(`/admin/ticket/${ticketId}`);
+                    
+
+
+
+                }
+
+            }
+            
+            tr.removeEventListener('click', event);
+            tr.on('click', event);
 
         });
 
@@ -246,6 +269,7 @@ export default class AdminTickets{
 
 
         });
+
 
     }
 
