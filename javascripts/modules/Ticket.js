@@ -10,6 +10,7 @@ module.exports = {
         return new Promise((resolve, reject)=>{
             
             fetch(`/api/ticket/${ticketId}/details`).then(result=>result.json()).then(data=>{
+                
                 resolve(Object.values(data)[0]);
             }); 
 
@@ -164,6 +165,24 @@ module.exports = {
                 }
 
                 resolve(data);
+            });
+
+        });
+
+    },
+
+    getTicektDetails(ticketId){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/ticket/${ticketId}/details`).then(result=>result.json()).then(data=>{
+
+                if(data['error']){
+                    reject();
+                }
+
+                resolve(data);
+
             });
 
         });

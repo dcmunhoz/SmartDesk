@@ -605,6 +605,21 @@ class Api{
         return $res->withJson($sector);
 
     }
+
+    public function getTicketDetails(ServerRequestInterface $req, ResponseInterface $res, $args){
+        
+        $ticketId = $args['ticketId'];
+
+        $ticket = new Ticket();
+
+        $ticket->find($ticketId);
+
+        $result = $ticket->getData();
+
+        return $res->withJson($result);
+
+
+    }
 }
 
 ?>

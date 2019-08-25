@@ -309,7 +309,6 @@ class Ticket extends ClassModel{
             
 
         }
-
         return $data;
 
     }
@@ -515,6 +514,70 @@ class Ticket extends ClassModel{
 
         return true;
 
+
+    }
+
+    public function find(string $ticketId){
+
+        $dao = new DB();
+
+        // Ticket
+        $ticket = $dao->exec("
+            SELECT * FROM tb_tickets t 
+            JOIN tb_status s USING(id_status) 
+            JOIN tb_priorities p USING(id_priority)
+            JOIN tb_persons pr USING(id_user)
+            WHERE t.id_ticket = :id_ticket
+        ", [
+            ":id_ticket" => $ticketId
+        ])[0];
+
+        // Assignments
+        $assignments = $dao->exec("
+            SELECT * FROM tb_ticket_assignment ta
+            JOIN tb_persons p USING(id_user)
+            WHERE ta.id_ticket = :id_ticket
+        ", [ 
+            ":id_ticket" => $ticketId
+        ]);
+
+        if(count($assignments) >= 1){
+
+            foreach ($assignments as $assign) {
+                $ticket['assignments'][] = $assign;
+            }
+
+        }else{
+
+            $ticket['assignments'] = null;
+
+        }
+
+        // Messages
+        $messages = $dao->exec("
+            SELECT * FROM tb_ticket_messages tm
+            JOIN tb_persons p USING(id_user)
+            WHERE tm.id_ticket = :id_ticket
+        ", [
+            ":id_ticket" => $ticketId
+        ]);
+
+        if (count($messages) >= 1) {
+
+            foreach ($messages as $message) {
+
+                $ticket['messages'][] = $message;
+
+            }
+
+        }else{
+
+            $ticket['messages'] = null;
+
+        }
+
+
+        $this->setData($ticket);
 
     }
 
