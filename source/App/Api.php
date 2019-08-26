@@ -164,6 +164,7 @@ class Api{
         $ticketId = $args['ticketId'];
     
         $user = new User();
+        $user->loadSessionUser();
         $ticket = new Ticket();
         $result = $ticket->addMessage($ticketId, $user, $body);
     

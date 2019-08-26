@@ -436,6 +436,10 @@ table tbody tr:hover{
     margin: 0 5px;
 }
 
+#form-send-new-message{
+    background-color: red;
+}
+
 .form-group .new-assign{
     display: flex;
     flex-direction: row;
