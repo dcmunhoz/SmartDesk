@@ -4,6 +4,8 @@
  */
 
  // Utilitários e módulos
+ const Prototype = require('../utils/Prototypes');
+ const Notification = require('../utils/Notification');
  const Util = require('../utils/Utils');
  const Ticket = require('../modules/Ticket');
  const User   = require('../modules/User');
@@ -12,10 +14,44 @@
  export default class AdminTicketDesc {
 
     constructor() {
-
       this._ticket = [];
 
+      Prototype.initElementsPrototypes();
+
       this.loadTicketData();
+      this.initEvents();
+
+    }
+
+    initEvents(){
+
+      document.querySelector('#btn-new-message').on('click', e => {
+
+         let message = document.querySelector("#ticket-desc").value;
+
+         if (message.trim() !== "") {
+
+            let body = new FormData();
+            body.append('text-new-message', message);
+
+            Ticket.addMessage(this._ticket['id_ticket'], body).then(data => {
+
+               Notification.pop("success", "Ticket atualizado", "Mensagem inserida com sucesso");
+               
+               this.loadTicketData();
+               document.querySelector("#ticket-desc").value = "";
+
+            });
+
+         }  else {
+
+            alert("Informe uma mensagem antes de enviar.");
+
+         }
+         
+
+      });
+
 
     }
 
@@ -29,6 +65,9 @@
 
          // Requerente
          this.loadClaimers();
+
+         // Tecnicos
+         this.loadTeam();
 
          // Atribuições
          this.listAssignmentUsers();
@@ -103,7 +142,7 @@
    /**
    * Exibe na <ul> os usuário atribuidos
    */
-  listAssignmentUsers(){
+   listAssignmentUsers(){
 
       const ul = document.querySelector("#assign-users");
       ul.innerHTML = "";
@@ -129,13 +168,13 @@
    loadMessages(){
 
       const messageBox = document.querySelector("#messages-box");
+      messageBox.innerHTML = "";
 
       this._ticket['messages'].forEach(message => {
 
          const messageRow = document.createElement('div');
          messageRow.classList.add('message-row');
-         
-         if (message['id_user'] !== this._ticket['id_user']) {
+         if (message['id_user'] != this._ticket['id_user']) {
             messageRow.classList.add('out')
          }
 
@@ -157,7 +196,28 @@
 
       });
 
+   }
 
+   /**
+    * Carrega a lista de tecnicos
+    */
+   loadTeam(){
+
+      User.getTeam().then(data => {
+
+         let select = document.querySelector("#user-assign");
+
+         [...data].forEach(user => {
+
+            let option = document.createElement('option');
+            option.dataset.idUser = user['id_user'];
+            option.innerHTML = user['full_name'];
+
+            select.appendChild(option);
+
+         });
+
+      });
 
    }
 

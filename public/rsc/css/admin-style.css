@@ -187,6 +187,8 @@ background-color: #b8b8b8;
     width: 300px;
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .content .content-left-panel.options-menu header{
@@ -371,6 +373,12 @@ table tbody tr:hover{
 
 .content div .fields-details{
     padding: 10px 0;
+    flex-grow: 1;
+}
+
+.content div .left-panel-buttons{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .content div .fields-details .form-group{

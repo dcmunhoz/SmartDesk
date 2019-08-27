@@ -79,12 +79,10 @@ module.exports = {
             fetch(`/api/ticket/${ticketId}/add-message`,{
                 method: "POST",
                 body
-            }).then(result=>{
-                if(result.ok){
-                    resolve(result.json())
-                }
+            }).then(result=>result.json()).then(data => {
 
-                reject(result.json())
+                resolve(data);
+
             });
         });
 

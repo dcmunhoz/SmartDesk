@@ -558,6 +558,7 @@ class Ticket extends ClassModel{
             SELECT * FROM tb_ticket_messages tm
             JOIN tb_persons p USING(id_user)
             WHERE tm.id_ticket = :id_ticket
+            ORDER BY tm.id_ticket_message asc
         ", [
             ":id_ticket" => $ticketId
         ]);
