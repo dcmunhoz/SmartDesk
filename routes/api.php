@@ -70,6 +70,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/user/{idUser}/getLocals", Api::class . ":getUserLocals");
     $app->get("/user/{idUser}/getSectors", Api::class . ":getUserSectors");
     $app->get("/ticket/{ticketId}/details", Api::class . ":getTicketDetails");
+    $app->put('/ticket/{ticketId}/end', Api::class . ":putTicketEnd");
 
 })->add(function($req, $res, $next){
 

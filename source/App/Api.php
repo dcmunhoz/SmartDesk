@@ -621,6 +621,26 @@ class Api{
 
 
     }
+
+    public function putTicketEnd(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $ticketID = $args['ticketId'];
+
+        $ticket = new Ticket();
+        $ticket->find($ticketID);
+        $result = $ticket->end();
+
+        if (!$result) {
+            $newRes = $res->withStatus(500);
+            return $newRes->withJson([
+                "error" => true,
+                "message" => "Ticket já finalizado."
+            ]);
+        }
+
+        return $res->withJson(["OK" => true]);
+
+    }
 }
 
 ?>

@@ -185,6 +185,24 @@ module.exports = {
 
         });
 
+    },
+
+    end(ticketId) {
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/ticket/${ticketId}/end`, {
+                method: "PUT"
+            }).then(result => result.json()).then(data => {
+
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        });
     }
 
 }

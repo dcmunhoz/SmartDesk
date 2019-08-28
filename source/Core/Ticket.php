@@ -582,6 +582,18 @@ class Ticket extends ClassModel{
 
     }
 
+    public function end(){
+
+        $dao = new DB();
+
+        if ($this->getid_status() == 4) {
+            return false;
+        }
+
+        $dao->query("UPDATE tb_tickets SET id_status = 4 WHERE id_ticket = {$this->getid_ticket()};");
+        return true;
+    }
+
 }
 
 ?>

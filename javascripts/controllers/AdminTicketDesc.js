@@ -52,6 +52,21 @@
 
       });
 
+      document.querySelector('#btn-done').on('click', e => {
+
+         Ticket.end(this._ticket['id_ticket']).then(data => {
+
+            Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
+            this.loadTicketData();
+
+
+         }).catch(error => {
+            
+            Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
+
+         });
+
+      });
 
     }
 
@@ -147,19 +162,23 @@
       const ul = document.querySelector("#assign-users");
       ul.innerHTML = "";
 
-      this._ticket['assignments'].forEach(user => {
+      if (this._ticket['assignments'] !== null) {
 
-      let li = document.createElement('li');
-      li.dataset.idUser = user['id_user'];
+         this._ticket['assignments'].forEach(user => {
 
-      li.innerHTML = `
-         <span><a href="" class="btn-remove-assign"><i class="fas fa-times-circle" title="Remover"></i></a></span>
-         <span>${user['full_name']}</span>
-      `;
+            let li = document.createElement('li');
+            li.dataset.idUser = user['id_user'];
+   
+            li.innerHTML = `
+               <span><a href="" class="btn-remove-assign"><i class="fas fa-times-circle" title="Remover"></i></a></span>
+               <span>${user['full_name']}</span>
+            `;
+   
+            ul.appendChild(li);
+   
+         });
 
-      ul.appendChild(li);
-
-      });
+      }
       
       // this.loadListEvents();
 
