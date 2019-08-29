@@ -216,8 +216,9 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $
-CREATE PROCEDURE proc_save_ticket(
+DROP procedure PROC_SAVE_TICKET;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_save_ticket`(
 	pidticket 	INT,
     piduser  	INT,
     ptitle 		VARCHAR(255),
@@ -226,20 +227,36 @@ CREATE PROCEDURE proc_save_ticket(
 )
 BEGIN
 	
-    DECLARE lastTicket INT;
+	DECLARE lastTicket INT;
+        
+    IF pidticket >= 1 THEN
+		#UPDATE
+        UPDATE tb_tickets SET
+			ticket_title = ptitle,
+			id_priority  = pidpriority,
+			id_user 	 = piduser
+        WHERE id_ticket = pidticket;      
+        
+        SELECT pidticket INTO lastTicket;
+        
+    ELSE
+		#INSERT
     
-	INSERT INTO tb_tickets (ticket_title, ticket_details, id_user, id_status, id_priority)
-	VALUES(ptitle, pdesc, piduser, 1, pidpriority);
-	
-    SELECT LAST_INSERT_ID() INTO lastTicket;
-    
-    INSERT INTO tb_ticket_messages (id_ticket, id_user, message)
-    VALUES(lastTicket, piduser, pdesc);
+		INSERT INTO tb_tickets (ticket_title, ticket_details, id_user, id_status, id_priority)
+		VALUES(ptitle, pdesc, piduser, 1, pidpriority);
+		
+		SELECT LAST_INSERT_ID() INTO lastTicket;
+		
+		INSERT INTO tb_ticket_messages (id_ticket, id_user, message)
+		VALUES(lastTicket, piduser, pdesc);
+        
+    END IF;
 
 	SELECT * FROM tb_tickets WHERE id_ticket = lastTicket;
 
-END $
+END$$
 DELIMITER ;
+
 
 DELIMITER $
 CREATE PROCEDURE proc_save_message(

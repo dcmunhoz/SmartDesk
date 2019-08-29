@@ -68,6 +68,24 @@
 
       });
 
+      document.querySelector("#btn-update").on('click', e => {
+
+
+         this._ticket['id_user']     = document.querySelector("#user-claimer").value;
+         this._ticket['id_priority'] = document.querySelector("#ticket-priority").value;
+
+         let body = new FormData();
+
+         body.append('id_ticket', this._ticket['id_ticket']);
+         body.append('id_user', this._ticket['id_user']);
+         body.append('id_priority', this._ticket['id_priority']);
+         body.append('ticket_title', this._ticket['ticket_title']);
+         body.append('ticket_details', this._ticket['ticket_details']);
+
+         
+         
+      });
+
     }
 
     loadTicketData(){
@@ -111,7 +129,7 @@
 
             const optionClaimer = document.createElement("option");
             
-           optionClaimer.id = user['id_user'];
+           optionClaimer.value = user['id_user'];
            optionClaimer.innerHTML = user['full_name'];
 
             if(this._ticket['id_user'] == user['id_user']){
