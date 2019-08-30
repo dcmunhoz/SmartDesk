@@ -77,12 +77,17 @@
          let body = new FormData();
 
          body.append('id_ticket', this._ticket['id_ticket']);
-         body.append('id_user', this._ticket['id_user']);
-         body.append('id_priority', this._ticket['id_priority']);
-         body.append('ticket_title', this._ticket['ticket_title']);
-         body.append('ticket_details', this._ticket['ticket_details']);
+         body.append('user-request', this._ticket['id_user']);
+         body.append('ticket-priority', this._ticket['id_priority']);
+         body.append('ticket-title', this._ticket['ticket_title']);
+         body.append('ticket-details', this._ticket['ticket_details']);
 
-         
+         Ticket.open(body).then(data => {
+
+            Notification.pop("success", "Alteração realizada", "O ticket foi alterado.");
+            this.loadTicketData();
+
+         });
          
       });
 
@@ -124,6 +129,7 @@
 
       User.getUserList().then(data=>{
          const selectClaimer = document.querySelector("#user-claimer");
+         selectClaimer.innerHTML = "";
 
          [...data].forEach(user => {
 
@@ -151,11 +157,12 @@
       Priority.getPriorities().then(data => {
 
          const selectPriority = document.querySelector("#ticket-priority");
+         selectPriority.innerHTML = "";
 
          [...data].forEach(priority => {
 
             const optionPriority = document.createElement("option");
-            optionPriority.id = priority['id_priority'];
+            optionPriority.value = priority['id_priority'];
             optionPriority.innerHTML = priority['priority_name'];
 
             if ( this._ticket['id_priority'] == priority['id_priority'] ) {
@@ -243,6 +250,7 @@
       User.getTeam().then(data => {
 
          let select = document.querySelector("#user-assign");
+         select.innerHTML = "";
 
          [...data].forEach(user => {
 

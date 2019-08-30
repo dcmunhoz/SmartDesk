@@ -117,6 +117,7 @@ class Api{
         $body = $req->getParsedBody();
 
         $ticket = new Ticket();
+        $ticket->setid_ticket($body['id_ticket']);
         $ticket->settitle($body['ticket-title']);
         $ticket->setdescription($body['ticket-desc']);
         $ticket->setid_priority($body['ticket-priority']);

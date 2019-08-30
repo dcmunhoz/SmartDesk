@@ -363,7 +363,7 @@ class Ticket extends ClassModel{
         
         $dao = new DB();
         $result = $dao->exec("CALL proc_save_ticket(:pidticket, :piduser, :ptitle, :pdesc, :pidpriority);",[
-            ":pidticket"   => 0,
+            ":pidticket"   => $this->getid_ticket(),
             ":piduser"     => $user->getid_user(),
             ":ptitle"      => $this->gettitle(),
             ":pdesc"       => $this->getdescription(),
