@@ -642,6 +642,17 @@ class Api{
         return $res->withJson(["OK" => true]);
 
     }
+
+    public function unassignUser(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $ticket = new Ticket();
+
+        $ticket->setid_ticket($args['idTicket']);
+        $ticket->unassign($args['idUser']);
+
+        return $res;
+
+    }
 }
 
 ?>

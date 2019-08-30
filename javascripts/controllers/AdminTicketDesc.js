@@ -230,7 +230,7 @@
             li.dataset.idUser = user['id_user'];
    
             li.innerHTML = `
-               <span><a href="" class="btn-remove-assign"><i class="fas fa-times-circle" title="Remover"></i></a></span>
+               <span><a href="" class="btn-remove-assign" data-id-user="${user['id_user']}"><i class="fas fa-times-circle" title="Remover"></i></a></span>
                <span>${user['full_name']}</span>
             `;
    
@@ -240,7 +240,30 @@
 
       }
       
-      // this.loadListEvents();
+      this.loadListEvents();
+
+   }
+
+   loadListEvents(){
+
+      document.querySelectorAll(".btn-remove-assign").forEach(li => {
+
+         li.on('click', e=>{
+            e.preventDefault();
+
+            let idUser = li.dataset.idUser;
+
+            Ticket.unassign(this._ticket['id_ticket'], idUser).then(data => {
+
+               Notification.pop("success", "Atribuição removida", "A atribuição foi removida com sucesso.");
+
+               this.loadTicketData();
+               
+            });
+
+         });
+
+      });
 
    }
 

@@ -169,6 +169,24 @@ module.exports = {
 
     },
 
+    unassign(idTicket, idUser){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/ticket/${idTicket}/unassign/${idUser}`, {method: "DELETE"}).then(result => {
+
+                if(result.ok){
+                    resolve(result);
+                }
+
+                reject();
+
+            });
+
+        });
+
+    },
+
     getTicektDetails(ticketId){
 
         return new Promise((resolve, reject) => {

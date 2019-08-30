@@ -517,6 +517,16 @@ class Ticket extends ClassModel{
 
     }
 
+    public function unassign($idUser){
+
+        $dao = new DB();
+
+        $dao->query("DELETE FROM tb_ticket_assignment WHERE id_ticket = :idTicket AND id_user = :idUser", [
+            ":idTicket" => $this->getid_ticket(),
+            ":idUser" => $idUser
+        ]);
+    }
+
     public function find(string $ticketId){
 
         $dao = new DB();

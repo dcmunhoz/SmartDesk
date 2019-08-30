@@ -71,6 +71,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/user/{idUser}/getSectors", Api::class . ":getUserSectors");
     $app->get("/ticket/{ticketId}/details", Api::class . ":getTicketDetails");
     $app->put('/ticket/{ticketId}/end', Api::class . ":putTicketEnd");
+    $app->delete('/ticket/{idTicket}/unassign/{idUser}', Api::class . ":unassignUser");
 
 })->add(function($req, $res, $next){
 
