@@ -91,6 +91,41 @@
          
       });
 
+      document.querySelector("#btn-assign-me").on('click', e => {
+         e.preventDefault();
+
+         Ticket.assign(this._ticket['id_ticket']).then(data => {
+
+            Notification.pop("success", "Sucesso", "Ticket atribuido a você");
+            this.loadTicketData();
+            
+         }).catch(error => {
+            
+            Notification.pop("danger", "Ooops", "Ticket já atribuido a você");
+         });
+
+      });
+
+      document.querySelector("#btn-new-assign").on('click', e => {
+
+         e.preventDefault();
+
+         let idUserAssign = document.querySelector("#user-assign").value;
+
+         Ticket.assign(this._ticket['id_ticket'], idUserAssign).then(data => {
+            
+            Notification.pop("success", "Sucesso", "O ticket foi atribuido ao usuário");
+            this.loadTicketData();
+            
+         }).catch(error => {
+            
+            Notification.pop("danger", "Oooops", "O ticket já foi atribuido ao usuário");
+            console.clear();
+
+         });
+
+      });
+
     }
 
     loadTicketData(){
@@ -255,7 +290,7 @@
          [...data].forEach(user => {
 
             let option = document.createElement('option');
-            option.dataset.idUser = user['id_user'];
+            option.value = user['id_user'];
             option.innerHTML = user['full_name'];
 
             select.appendChild(option);

@@ -714,6 +714,12 @@ table tbody tr:hover{
     box-sizing: border-box;
 }
 
+.main-panel section .form-content form{
+
+    display: block;
+
+}
+
 .main-panel footer {
     padding: 10px;
     box-sizing: border-box;
