@@ -44,13 +44,10 @@ export default class AdminUserUpdate {
                 User.update(body).then(result=>{
 
                     Notification.pop("success", "Usuário alterado.", "A alteração foi realizada com sucesso.");
-                    form.clear();
 
-                    // setTimeout(()=>{
-
-                    //     window.location.href = "/admin/configs";
-
-                    // }, 3000);
+                    setTimeout(()=>{
+                        window.location.href = "/admin/configs";
+                    }, 1500);
 
 
                 }).catch(err=>{

@@ -77,11 +77,10 @@
                 Sector.update(body).then(data=>{
 
                     Notification.pop("success", "Setor Atualizado", "O setor foi atualizado com sucesso.");
-                    form.clear();
 
-                    // setTimeout(()=>{
-                    //     window.location.href = "/admin/configs"
-                    // }, 3000);
+                    setTimeout(()=>{
+                        window.location.href = "/admin/configs"
+                    }, 1500);
 
                 }).catch(fail=>{
 

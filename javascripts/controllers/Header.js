@@ -67,7 +67,6 @@ export default class Header{
 
             if (data['administrator'] == 1) {
 
-                
                 let menuOption = document.querySelector("#user-menu-options");
 
                 let panelTargetDesc = ""; 
