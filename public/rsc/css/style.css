@@ -474,6 +474,13 @@ form .form-group{
     pointer-events: auto;
 }
 
+#user-panel .user-menu-option span a{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 #user-panel .user-menu-option span:hover{
     background-color: #dddddd;
     color: #303030;

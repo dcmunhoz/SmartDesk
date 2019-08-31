@@ -47,6 +47,7 @@ export default class Header{
             });  
         });
 
+
     }
 
     getUserData(){
@@ -62,10 +63,61 @@ export default class Header{
             div.id = "user-data"
             div.dataset.user = JSON.stringify(data);
 
-
             document.querySelector("#app").appendChild(div);
 
+            if (data['administrator'] == 1) {
+
+                let menuOption = document.querySelector("#user-menu-options");
+
+                let panelTargetDesc = ""; 
+                let panelTarget     = "";
+
+                if (window.location.href.split('/')[3] === 'admin') {
+
+                    panelTargetDesc = "Usuário";
+                    panelTarget     = "user";
+
+                } else {
+
+                    panelTargetDesc = "Admin";
+                    panelTarget     = "admin";
+
+                }
+                
+                let span = document.createElement("span");
+                span.id = "btn-switch-pages";
+                span.dataset.target = panelTarget;
+                span.innerHTML = `
+                    <i class="fas fa-sync"></i> Painel ${panelTargetDesc}
+                `;
+
+                menuOption.appendChild(span);
+                this.loadSwitchEvent();
+
+            }
+
         });
+    }
+
+    loadSwitchEvent(){
+        
+        document.querySelector("#btn-switch-pages").on('click', e=>{
+
+            console.log();
+
+            switch(e.target.dataset.target){
+
+                case 'admin':
+                    window.location.replace('/admin');
+                break;
+                case 'user':
+                    window.location.replace("/");
+                break;
+
+            }
+
+        });
+
     }
 
     verifiNewUserTicketPage(){

@@ -150,7 +150,7 @@ class User extends ClassModel{
     public function getAuthenticatedPerson(){
 
         $dao = new DB();
-        $data = $dao->exec("SELECT u.id_user, u.username, u.email, p.full_name, p.need_updates FROM tb_users u JOIN tb_persons p USING(id_user) WHERE u.id_user = :id_user;", [
+        $data = $dao->exec("SELECT u.id_user, u.username, u.email, p.full_name, p.need_updates, pr.administrator FROM tb_users u JOIN tb_persons p USING(id_user) JOIN tb_profiles pr USING(id_profile) WHERE u.id_user = :id_user;", [
             ":id_user" => $this->getid_user()
         ]);
 
