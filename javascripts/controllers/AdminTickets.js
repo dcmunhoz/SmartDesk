@@ -214,7 +214,7 @@ export default class AdminTickets{
      *  Retorna a lista de tickets de acordo com os parametros passados.
      * 
      */
-    getTickets(type, search = "", select = ""){
+    getTickets(type, search = "", select = 1){
 
         Ticket.getTickets(type, search, select).then(result=>{
 

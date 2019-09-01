@@ -151,7 +151,7 @@ class Api{
         $ticket = new Ticket();
     
         $results = $ticket->getTicket("0", $args['ticketId']);
-    
+
         return $res->withJson($results);
 
     }

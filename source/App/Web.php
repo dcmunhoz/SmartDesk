@@ -11,6 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Source\Utils\View;
 use Source\Core\User;
+use Source\Core\Ticket;
 
 class Web{
 
@@ -111,6 +112,18 @@ class Web{
      * Pagina detalhes ticket.
      */
     public function ticketDetails(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $ticket = new Ticket();
+        $results = $ticket->getTicket("0", $args['ticketId']);
+
+        $user = new User;
+        $user->loadSessionUser();
+
+        if ($results[$args['ticketId']]['ticket']['id_user'] != $user->getid_user()) {
+
+            return $res->withJson(["Ooooops" => "Acesso Negado"]);
+
+        }
 
         $view = new View();
         $view->draw("ticket-details");

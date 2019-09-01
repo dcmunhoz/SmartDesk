@@ -248,7 +248,7 @@ export default class Home {
      * Pega os dados do ticket. Case o id não seja informado, retorna todos os tickets.
      *  
      */
-    getUserTickets(statusId = null){
+    getUserTickets(statusId = 1){
 
         User.getTicketList(statusId).then(tickets=>{
             let tbody = document.querySelector("#tickets-list tbody");
@@ -280,11 +280,18 @@ export default class Home {
 
                 }      
 
+                let done = "";
+                if (data['ticket']['status_name'] !== "Aberto") {
+                    done = 'done';
+                } else {
+                    done = 'open';
+                }
+
                 tr.innerHTML = `
                     <td>
                         <div class="ticket-row-details">
                             <div class="img-status">
-                                <img src="public/rsc/img/ticket-open.png" alt="#">
+                                <img src="public/rsc/img/ticket-${done}.png" alt="#">
                             </div>
                             <div class="tr-body">
                                 <h2>Ticket #${data['ticket'].id_ticket}</h2>
@@ -338,6 +345,10 @@ export default class Home {
                     let option = document.createElement('option');
                     option.value = status.id_status;
                     option.innerHTML = status.status_name;
+
+                    if (status['id_status'] == 1) {
+                        option.selected = true;
+                    }
 
                     select.appendChild(option);
 
