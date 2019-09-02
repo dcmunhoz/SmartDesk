@@ -1,5 +1,3 @@
-import { format } from 'util';
-
 /**
  * 
  * Controller da pagina nova empresa da administração.

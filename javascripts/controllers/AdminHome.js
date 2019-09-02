@@ -4,10 +4,28 @@
  * 
  */
 
+//Utilitários e Módulos
+// import { Chart } from 'chart.js';
+let Chart = require('../modules/Chart');
+
 export default class AdminHome {
 
     constructor(){
-        console.log("testeAdmin");
+        
+        this.initCharts();
+
+    }
+
+    initCharts(){
+
+        this.chart1();
+
+    }
+
+    chart1(){   
+
+        Chart.qttMonths();
+
     }
 
 }

@@ -175,6 +175,15 @@ background-color: #b8b8b8;
     box-sizing: border-box;
 }
 
+.content .charts-container{
+    background-color: #FFF;
+    flex-grow: 1;
+}
+
+.content .charts-container div {
+    width: 50%;
+}
+
 .content form {
 
     display: flex;

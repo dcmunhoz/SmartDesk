@@ -9,6 +9,7 @@
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Source\App\Api;
+use Source\Model\DB;
 use Source\Core\User;
 
 /**
@@ -72,6 +73,9 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/ticket/{ticketId}/details", Api::class . ":getTicketDetails");
     $app->put('/ticket/{ticketId}/end', Api::class . ":putTicketEnd");
     $app->delete('/ticket/{idTicket}/unassign/{idUser}', Api::class . ":unassignUser");
+
+    // Charts
+    $app->get('/chart/quantity-months', Api::class . ":getQttMonths");
 
 })->add(function($req, $res, $next){
 

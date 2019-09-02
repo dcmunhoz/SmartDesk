@@ -9,6 +9,7 @@ namespace Source\App;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Source\Model\DB;
 use Source\Core\User;
 use Source\Core\Company;
 use Source\Core\Ticket;
@@ -318,8 +319,6 @@ class Api{
         foreach (explode("-", $args['type']) as $key => $value) {
             $newType .= ucfirst($value);
         }
-    
-        User::verifyLogin(true);
     
         $ticket = new Ticket();
     
@@ -651,6 +650,41 @@ class Api{
         $ticket->unassign($args['idUser']);
 
         return $res;
+
+    }
+
+    public function getQttMonths(ServerRequestInterface $req, ResponseInterface $res){
+        
+        $dao = new DB();
+
+        $date = \date('m');
+
+        $result = $dao->exec("
+            select date_format(dt_creation, '%m') as 'Month', count(*) as 'QTT' from tb_tickets
+            where date_format(dt_creation, '%m') <= {$date}
+            group by Month
+            order by Month Desc
+            limit 5;
+        ");
+
+        $months = [
+            "01"=>"Janeiro",
+            "02"=>"Fevereiro",
+            "03"=>"Março",
+            "04"=>"Abril",
+            "05"=>"Maio",
+            "06"=>"Junho",
+            "07"=>"Julho",
+            "08"=>"Agosto",
+            "09"=>"Setembro",
+            "10"=>"Outubro",
+            "11"=>"Novembro",
+            "12"=>"Dezembro"            
+        ];
+
+        $data = [];
+
+        return $res->withJson($months["03"]);
 
     }
 }
