@@ -692,10 +692,9 @@ class Api{
 
         $dao = new DB();
 
-        $today = date('d/m');
-
+        $today = date('d/m/Y');
         
-        $result = $dao->exec("SELECT COUNT(*) as 'total' FROM tb_tickets WHERE date_format(dt_creation, '%d/%m') = :today ", [
+        $result = $dao->exec("SELECT COUNT(*) as 'total' FROM tb_tickets WHERE date_format(dt_creation, '%d/%m/%Y') = :today ", [
             ":today" => $today
         ])[0];
             
