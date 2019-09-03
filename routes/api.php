@@ -76,6 +76,7 @@ $app->group("/api/admin", function(Slim\App $app){
 
     // Charts
     $app->get('/chart/quantity-months', Api::class . ":getQttMonths");
+    $app->get('/chart/tickets-quantity', Api::class . ":getQttTickets");
 
 })->add(function($req, $res, $next){
 

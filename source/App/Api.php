@@ -687,6 +687,21 @@ class Api{
         return $res->withJson($months["03"]);
 
     }
+
+    public function getQttTickets(ServerRequestInterface $req, ResponseInterface $res){
+
+        $dao = new DB();
+
+        $today = date('d/m');
+
+        
+        $result = $dao->exec("SELECT COUNT(*) as 'total' FROM tb_tickets WHERE date_format(dt_creation, '%d/%m') = :today ", [
+            ":today" => $today
+        ])[0];
+            
+        return $res->withJson($result);        
+
+    }
 }
 
 ?>

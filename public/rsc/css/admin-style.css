@@ -178,11 +178,45 @@ background-color: #b8b8b8;
 .content .charts-container{
     background-color: #FFF;
     flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.content .charts-container div {
-    width: 50%;
+.content .charts-container .chart-box {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
 }
+
+.chart-box header{
+    margin: 20px 0 ;
+}
+
+.chart-box header h1{
+    font-size: 32px;
+    text-align: center;
+}
+
+.chart-box .chart-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-box .chart-body .ticket-count {
+
+    font-size: 100px;
+
+}
+
+.chart-box .chart-body span{
+    font-size: 30px;       
+    font-family: 'Lato'; 
+}
+
 
 .content form {
 

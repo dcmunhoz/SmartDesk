@@ -18,13 +18,24 @@ export default class AdminHome {
 
     initCharts(){
 
+        this.ticketsQuantity();
         this.chart1();
+
+
+    }
+
+    ticketsQuantity(){
+
+        fetch('/api/admin/chart/tickets-quantity').then(result => result.json()).then(data => {
+
+            document.querySelector("#ticket-count").innerHTML = data['total'];
+
+        });
 
     }
 
     chart1(){   
 
-        Chart.qttMonths();
 
     }
 
