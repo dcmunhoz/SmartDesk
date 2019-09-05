@@ -39,7 +39,7 @@ module.exports = {
             let validation = false;
 
             [...this].forEach(el=>{
-                if (el.type !== "button" && el.type !== 'hidden') {
+                if (el.type !== "button" && el.type !== 'hidden' && el.type !== "submit") {
                     let formGroup = document.querySelector(`#${el.id}`).parentNode;
 
                     if (el.value.trim() === '') {

@@ -31,7 +31,7 @@ class Web{
      */
     public function signin(){
 
-        $view = new View(false, false);
+        $view = new View(false, false, false);
         $view->draw('signin');
 
     }
@@ -71,7 +71,7 @@ class Web{
      */
     public function signup(){
 
-        $view = new View(false, false);
+        $view = new View(false, false, false);
         $view->draw("signup");
     
     }
@@ -84,7 +84,17 @@ class Web{
         $body = $req->getParsedBody();
 
         $user = new User;
-        $result = $user->createUser($body);
+
+        $user->setfull_name($body['create-name']);
+        $user->setusername($body['create-username']);
+        $user->setemail($body['create-email']);
+        $user->setpassw($body['create-pass']);
+        $user->setuser_active(1);
+        $user->setid_profile(2);
+
+        $result = $user->save();
+
+        return $res->withJson($result);
 
     }
 

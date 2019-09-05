@@ -25,8 +25,8 @@ export default class Signin{
 
         // Faz o login do usuário.
         document.querySelector("#btn-user-login").on('click', e=>{
-            console.log("teste");
-
+            e.preventDefault();
+            
             let formLogin = document.querySelector("#form-user-login")
             if(formLogin.validateFields()){   
 

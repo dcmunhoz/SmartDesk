@@ -24,7 +24,8 @@ export default class Signup{
     initEvents(){
 
         // Cria a conta do usuário.
-        document.querySelector("#btn-create-account").on('click', (e)=>{
+        document.querySelector("#btn-create-account").on('click', e=>{
+            
             e.preventDefault();
 
             let formCreate = document.querySelector("#form-create-new-account");
@@ -48,7 +49,7 @@ export default class Signup{
     
     
                     }).catch(fail=>{
-                        Notification.pop("danger", "Usuário não cadastrado!", fail['error'] );
+                        Notification.pop("danger", "Usuário não cadastrado!", fail['message'] );
                     });
     
                     e.target.removeChild(loadGif);

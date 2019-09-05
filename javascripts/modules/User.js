@@ -18,15 +18,13 @@ module.exports = {
             fetch('/signup', {
                 method: 'POST',
                 body
-            }).then(result => {
-                if(result.status !== 200){
-                    console.clear();
-                    reject({
-                        'error': 'Ocorreu um erro ao processar esta requisição.'
-                    });
+            }).then(result => result.json()).then(data => {
+
+                if(data['error']) {
+                    reject(data);
                 }
 
-                resolve(result);
+                resolve(data);
 
             });
 
