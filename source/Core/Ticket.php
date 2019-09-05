@@ -432,21 +432,21 @@ class Ticket extends ClassModel{
             select (
 
                 # Todos os tickets.
-                select count(*) from tb_tickets
+                select count(*) from tb_tickets where id_status = 1
 
             ) as 'all', (
 
                 # Tickets atribuidos ao adm.
                 select count(*) from tb_tickets t
                 join tb_ticket_assignment ta using(id_ticket)
-                where ta.id_user = :id_user
+                where ta.id_user = :id_user and id_status = 1
 
             ) as 'assign-me', (
 
                 # Tickets sem atribuição.
                 select count(*) from tb_tickets t
                 left join tb_ticket_assignment ta using(id_ticket)
-                where ta.id_user is null
+                where ta.id_user is null and id_status = 1
 
             ) as 'no-assign';
         ";
