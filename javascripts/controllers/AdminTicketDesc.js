@@ -25,48 +25,95 @@
 
     initEvents(){
 
-      document.querySelector('#btn-new-message').on('click', e => {
+      document.querySelector("#btn-action").on('click', e => {
 
-         let message = document.querySelector("#ticket-desc").value;
+         let action = e.target.dataset.target;
+         
+         if (action === 'message') {
 
-         if (message.trim() !== "") {
+            let message = document.querySelector("#ticket-desc").value;
 
-            let body = new FormData();
-            body.append('text-new-message', message);
+            if (message.trim() !== "") {
+   
+               let body = new FormData();
+               body.append('text-new-message', message);
+   
+               Ticket.addMessage(this._ticket['id_ticket'], body).then(data => {
+   
+                  Notification.pop("success", "Ticket atualizado", "Mensagem inserida com sucesso");
+                  
+                  this.loadTicketData();
+                  document.querySelector("#ticket-desc").value = "";
+               document.querySelector("#ticket-desc").parentNode.classList.remove('input-error');
+   
+               });
+   
+            }  else {
+   
+               Notification.pop("danger", "ooops !", "Informa uma mensagem para enviar.");
+               document.querySelector("#ticket-desc").parentNode.classList.add('input-error');
+            }
 
-            Ticket.addMessage(this._ticket['id_ticket'], body).then(data => {
+         } else if (action === 'end') { 
 
-               Notification.pop("success", "Ticket atualizado", "Mensagem inserida com sucesso");
-               
+            Ticket.end(this._ticket['id_ticket']).then(data => {
+
+               Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
                this.loadTicketData();
-               document.querySelector("#ticket-desc").value = "";
+
+
+            }).catch(error => {
+               
+               Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
 
             });
 
-         }  else {
-
-            alert("Informe uma mensagem antes de enviar.");
-
          }
          
-
       });
 
-      document.querySelector('#btn-done').on('click', e => {
+      // document.querySelector('#btn-new-message').on('click', e => {
 
-         Ticket.end(this._ticket['id_ticket']).then(data => {
+         // let message = document.querySelector("#ticket-desc").value;
 
-            Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
-            this.loadTicketData();
+         // if (message.trim() !== "") {
+
+         //    let body = new FormData();
+         //    body.append('text-new-message', message);
+
+         //    Ticket.addMessage(this._ticket['id_ticket'], body).then(data => {
+
+         //       Notification.pop("success", "Ticket atualizado", "Mensagem inserida com sucesso");
+               
+         //       this.loadTicketData();
+         //       document.querySelector("#ticket-desc").value = "";
+
+         //    });
+
+         // }  else {
+
+         //    alert("Informe uma mensagem antes de enviar.");
+
+         // }
+         
+
+      // });
+
+      // document.querySelector('#btn-done').on('click', e => {
+
+      //    Ticket.end(this._ticket['id_ticket']).then(data => {
+
+      //       Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
+      //       this.loadTicketData();
 
 
-         }).catch(error => {
+      //    }).catch(error => {
             
-            Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
+      //       Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
 
-         });
+      //    });
 
-      });
+      // });
 
       document.querySelector("#btn-update").on('click', e => {
 
@@ -121,6 +168,51 @@
             
             Notification.pop("danger", "Oooops", "O ticket já foi atribuido ao usuário");
             console.clear();
+
+         });
+
+      });
+
+      document.querySelector("#btn-toggle-select").on('click', e => {
+
+         document.querySelector(".button-options").classList.toggle('active');
+
+      });
+
+      document.querySelectorAll('.btn-option').forEach(btn => {
+
+         btn.on('click', e => {
+
+            let selected = btn.dataset.selected;
+
+            let btnTitle  = "";
+            let btnTarget = "";
+            let btnIcon   = "";
+            let btnColor  = "";
+
+            switch (selected) {
+               case 'message':
+                  btnTitle = "Nova mensagem";
+                  btnTarget = "message";
+                  btnIcon = `<i class="far fa-file-alt"> </i>`;
+                  btnColor = "#E34317";
+               break;
+               case 'end':
+                  btnTitle = "Finalizar";
+                  btnTarget = "end";
+                  btnIcon = `<i class="fas fa-check"> </i>`;
+                  btnColor = "rgb(18, 135, 202)";
+               break;
+            }
+
+            document.querySelector("#btn-action").innerHTML = btnIcon + ' &nbsp; ' + btnTitle;
+            document.querySelector("#btn-action").dataset.target = btnTarget;
+            document.querySelector("#btn-action").style.borderColor = btnColor;
+            document.querySelector("#btn-toggle-select").style.borderColor = btnColor;
+            document.querySelector("#btn-action").style.color = btnColor;
+
+
+         document.querySelector(".button-options").classList.remove('active');
 
          });
 

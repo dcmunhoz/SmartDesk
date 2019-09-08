@@ -94,9 +94,27 @@
                             <textarea name="ticket-desc" id="ticket-desc" rows="6" placeholder="Escreva uma nova mensagem aqui para enviar..."></textarea>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit" id="btn-new-message" class="btn btn-update"><i class="far fa-file-alt"></i> Novo Acompanhamento</button>
-                        <button type="submit" id="btn-done" class="btn btn-done"><i class="fas fa-check"></i> Finalizar</button>
+                    <div class="buttons">
+                        <!-- <button type="submit" id="btn-new-message" class="btn btn-update"><i class="far fa-file-alt"></i> Novo Acompanhamento</button>
+                        <button type="submit" id="btn-done" class="btn btn-done"><i class="fas fa-check"></i> Finalizar</button> -->
+                        
+                        <div class="button-group">
+
+                            <div class="button-options ">
+                                <div class="btn-option" data-selected="message">
+                                    Nova mensagem
+                                </div>
+                                <div class="btn-option" data-selected="end">
+                                    Finalizar
+                                </div>
+                            </div>
+
+                            <div class="button-select">
+                                <button id="btn-action" class="btn-select" data-target="message"> <i class="far fa-file-alt"> </i> &nbsp; Nova mensagem  </button>
+                                <div id="btn-toggle-select" class="btn-select-toggle"> <i class="fas fa-caret-up"></i> </div>
+                            </div>
+
+                        </div>
                     </div>
                 </footer>
             </div>

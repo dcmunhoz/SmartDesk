@@ -132,7 +132,7 @@ input:focus{
     background-color: #727272;
     color: #FFF;
     border: #727272;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 3px;
     cursor: pointer;
     transition: 150ms;
@@ -241,3 +241,96 @@ input:focus{
     background-color: #FFF;
     pointer-events: none;
 } */
+
+.buttons {
+    display: flex;
+    position: relative;
+    height: 50px;
+}
+
+.button-group{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    bottom: 0;
+}
+
+.button-options{
+    
+    display: none;
+    flex-direction: column;
+    background-color: #FFF;
+    box-sizing: border-box;
+    border: 1px solid rgb(194, 194, 194);
+    width: 187px;
+    position: relative;
+    margin-bottom: -11px;
+    margin-left: 5px;
+    border-radius: 3px 3px 0 0;
+
+}
+
+.button-options .btn-option{
+   display: flex;
+   flex-direction: column;
+   cursor: pointer;
+   box-sizing: border-box;
+   padding: 10px;
+   transition: 200ms;
+}
+
+.button-options .btn-option:hover {
+
+    background-color: rgb(241, 241, 241);
+
+}
+
+.button-options.active{
+    display: flex;
+}
+
+.button-select {
+
+    position: relative;
+
+}
+
+.button-select .btn-select,
+.btn-select-toggle{
+
+    display: flex;
+    position: relative;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 200ms;
+    border: 1px solid #E34317 ;
+    color: #E34317;     
+}
+
+.button-select .btn-select:hover,
+.btn-select-toggle:hover{
+
+    background-color: rgb(240, 240, 240);
+
+}
+
+.btn-select{
+    box-sizing: border-box;
+    padding: 0 10px;
+    font-size: 16px;
+    width: 156px;
+    border-radius: 3px 0 0 3px;
+}
+
+.btn-select-toggle{
+    top: -10px;
+    left: -6px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0 3px 3px 0;
+    color: rgb(22, 22, 22);
+
+}
