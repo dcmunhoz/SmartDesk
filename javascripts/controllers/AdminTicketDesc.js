@@ -344,20 +344,37 @@
 
          const messageRow = document.createElement('div');
          messageRow.classList.add('message-row');
-         if (message['id_user'] != this._ticket['id_user']) {
-            messageRow.classList.add('out')
+         // if (message['id_user'] != this._ticket['id_user']) {
+         //    messageRow.classList.add('out')
+         // }
+
+         let type = "";
+         switch (message['message_type']) {
+            case 'M':
+               type = "Acompanhamento";
+            break;
+            case 'S':
+               type = "Solução"
+               messageRow.classList.add('solved')
+            break;
          }
 
          let date = Util.dateFormat(new Date(message['dt_send']));
          let time = Util.timeFormat(new Date(message['dt_send']));
          
+
          messageRow.innerHTML = `
             <div class="message-body">
+               <header>
+                  <div class="header-user"> 
+                     <span class="user-name">${message['full_name']}</span>  &lt;${message['email']}&gt; 
+                  </div>
+               </header>
                <section class="ticket-message">
                   ${message['message']}
                </section>
                <footer>
-                  ${message['full_name']} ás ${time} de ${date}
+                  ${type} - ás ${time} de ${date}
                </footer>
             </div>
          `;

@@ -50,7 +50,7 @@ export default class TicketDetails {
 
                     
                 }).catch(fail=>{
-                    console.log(fail);
+                    
                 });
 
 
@@ -123,17 +123,33 @@ export default class TicketDetails {
                 message.classList.add("message-row");
 
 
-                if(messageData['id_user'] !== ticket['id_user']){
-                    message.classList.add("out");
+                // if(messageData['id_user'] !== ticket['id_user']){
+                //     message.classList.add("out");
+                // }
+
+                let type = "";
+                switch (messageData['message_type']) {
+                   case 'M':
+                      type = "Acompanhamento";
+                   break;
+                   case 'S':
+                      type = "Solução"
+                      message.classList.add("solved");
+                   break;
                 }
 
                 message.innerHTML = `
                     <div class="message-body">
+                        <header>
+                        <div class="header-user"> 
+                            <span class="user-name">${messageData['full_name']}</span>  &lt;${messageData['email']}&gt; 
+                        </div>
+                        </header>
                         <section class="ticket-message">
-                            ${messageData['message']}
+                        ${messageData['message']}
                         </section>
                         <footer>
-                            ${messageData['full_name']} ás ${time} de ${data}
+                        ${type} - ás ${time} de ${data}
                         </footer>
                     </div>
                 `

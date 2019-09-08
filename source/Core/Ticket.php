@@ -294,7 +294,7 @@ class Ticket extends ClassModel{
             foreach ($tickets as $row) {
             
                 $messages = $dao->exec("
-                    select tm.id_ticket_message, tm.dt_send, p.full_name, tm.message, tm.id_user from tb_ticket_messages tm
+                    select tm.id_ticket_message, tm.dt_send, p.full_name, tm.message, tm.id_user, u.email, tm.message_type from tb_ticket_messages tm
                     join tb_users u using(id_user)
                     join tb_persons p using(id_user)
                     where id_ticket = :idTicket
@@ -566,8 +566,9 @@ class Ticket extends ClassModel{
 
         // Messages
         $messages = $dao->exec("
-            SELECT * FROM tb_ticket_messages tm
+            SELECT p.full_name, u.email, tm.message, tm.message_type, tm.dt_send FROM tb_ticket_messages tm
             JOIN tb_persons p USING(id_user)
+            JOIN tb_users u USING(id_user)
             WHERE tm.id_ticket = :id_ticket
             ORDER BY tm.id_ticket_message asc
         ", [
