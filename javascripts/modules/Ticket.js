@@ -205,11 +205,16 @@ module.exports = {
 
     },
 
-    end(ticketId) {
+    end(ticketId, message) {
         return new Promise((resolve, reject) => {
 
             fetch(`/api/admin/ticket/${ticketId}/end`, {
-                method: "PUT"
+                headers: {
+                 'Content-Type':'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify(message)
+                
             }).then(result => result.json()).then(data => {
 
                 if(data['error']){

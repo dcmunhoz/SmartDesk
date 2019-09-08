@@ -44,7 +44,7 @@
                   
                   this.loadTicketData();
                   document.querySelector("#ticket-desc").value = "";
-               document.querySelector("#ticket-desc").parentNode.classList.remove('input-error');
+                  document.querySelector("#ticket-desc").parentNode.classList.remove('input-error');
    
                });
    
@@ -56,64 +56,40 @@
 
          } else if (action === 'end') { 
 
-            Ticket.end(this._ticket['id_ticket']).then(data => {
+            let message = document.querySelector("#ticket-desc").value;
 
-               Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
-               this.loadTicketData();
+            if (message.trim() !== "") {
+
+               let body = {
+
+                  'text-new-message': message
+
+               };
+   
+               Ticket.end(this._ticket['id_ticket'], body).then(data => {
+
+                  Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
+                  this.loadTicketData();
+   
+                  document.querySelector("#ticket-desc").value = "";
+   
+               }).catch(error => {
+                  
+                  Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
+   
+               });
+   
+            }  else {
+   
+               Notification.pop("danger", "ooops !", "Informa uma mensagem para solução.");
+               document.querySelector("#ticket-desc").parentNode.classList.add('input-error');
+            }
 
 
-            }).catch(error => {
-               
-               Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
-
-            });
 
          }
          
       });
-
-      // document.querySelector('#btn-new-message').on('click', e => {
-
-         // let message = document.querySelector("#ticket-desc").value;
-
-         // if (message.trim() !== "") {
-
-         //    let body = new FormData();
-         //    body.append('text-new-message', message);
-
-         //    Ticket.addMessage(this._ticket['id_ticket'], body).then(data => {
-
-         //       Notification.pop("success", "Ticket atualizado", "Mensagem inserida com sucesso");
-               
-         //       this.loadTicketData();
-         //       document.querySelector("#ticket-desc").value = "";
-
-         //    });
-
-         // }  else {
-
-         //    alert("Informe uma mensagem antes de enviar.");
-
-         // }
-         
-
-      // });
-
-      // document.querySelector('#btn-done').on('click', e => {
-
-      //    Ticket.end(this._ticket['id_ticket']).then(data => {
-
-      //       Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
-      //       this.loadTicketData();
-
-
-      //    }).catch(error => {
-            
-      //       Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
-
-      //    });
-
-      // });
 
       document.querySelector("#btn-update").on('click', e => {
 
@@ -198,7 +174,7 @@
                   btnColor = "#E34317";
                break;
                case 'end':
-                  btnTitle = "Finalizar";
+                  btnTitle = "Solucionar";
                   btnTarget = "end";
                   btnIcon = `<i class="fas fa-check"> </i>`;
                   btnColor = "rgb(18, 135, 202)";

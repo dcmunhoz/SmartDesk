@@ -168,7 +168,7 @@ class Api{
         $user = new User();
         $user->loadSessionUser();
         $ticket = new Ticket();
-        $result = $ticket->addMessage($ticketId, $user, $body);
+        $result = $ticket->addMessage($ticketId, $user, $body, "M");
     
         return $res->withJson($result);
 
@@ -625,11 +625,15 @@ class Api{
     public function putTicketEnd(ServerRequestInterface $req, ResponseInterface $res, $args){
 
         $ticketID = $args['ticketId'];
+        $user = new User;
+        $user->loadSessionUser();
+
+        $body = $req->getParsedBody();
 
         $ticket = new Ticket();
         $ticket->find($ticketID);
         $result = $ticket->end();
-
+        
         if (!$result) {
             $newRes = $res->withStatus(500);
             return $newRes->withJson([
@@ -637,7 +641,8 @@ class Api{
                 "message" => "Ticket já finalizado."
             ]);
         }
-
+            
+        $ticket->addMessage($ticketID, $user, $body, 'S');
         return $res->withJson(["OK" => true]);
 
     }

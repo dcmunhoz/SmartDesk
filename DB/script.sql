@@ -139,13 +139,15 @@ ALTER TABLE tb_tickets ADD CONSTRAINT fk_user_ticket FOREIGN KEY (id_user) REFER
 INSERT INTO tb_status (status_name) VALUES('Aberto');
 INSERT INTO tb_status (status_name) VALUES('Pendente Usuário');
 INSERT INTO tb_status (status_name) VALUES('Pendente Colaborador');
-INSERT INTO tb_status (status_name) VALUES('Fechado');
+INSERT INTO tb_status (status_name) VALUES('Solucionado');
+INSERT INTO tb_status (status_name) VALUES('Encerrado');
 
 CREATE TABLE tb_ticket_messages(
 	id_ticket_message 	INT NOT NULL AUTO_INCREMENT,
     id_ticket 	INT NOT NULL,
     id_user 	INT NOT NULL,
     message 	TEXT NOT NULL,
+    message_type CHAR(1) NOT NULL,
     dt_send		DATETIME DEFAULT NOW(),
     CONSTRAINT pk_ticket_message PRIMARY KEY(id_ticket_message)
 )DEFAULT CHARACTER SET 'UTF8';
@@ -247,8 +249,8 @@ BEGIN
 		
 		SELECT LAST_INSERT_ID() INTO lastTicket;
 		
-		INSERT INTO tb_ticket_messages (id_ticket, id_user, message)
-		VALUES(lastTicket, piduser, pdesc);
+		INSERT INTO tb_ticket_messages (id_ticket, id_user, message, message_type)
+		VALUES(lastTicket, piduser, pdesc, 'M');
         
     END IF;
 
@@ -262,13 +264,14 @@ DELIMITER $
 CREATE PROCEDURE proc_save_message(
 	pid_ticket  INT,
     pid_user	INT,
-    pmessage	TEXT
+    pmessage	TEXT,
+    pmtype      TEXT
 )
 BEGIN
 	
     DECLARE lastMessageId INT;
     
-    INSERT INTO tb_ticket_messages (id_ticket, id_user, message) VALUES(pid_ticket, pid_user, pmessage);
+    INSERT INTO tb_ticket_messages (id_ticket, id_user, message, message_type) VALUES(pid_ticket, pid_user, pmessage, pmtype);
     
     SELECT LAST_INSERT_ID() INTO lastMessageId;
 		

@@ -403,14 +403,15 @@ class Ticket extends ClassModel{
      * Adiciona uma mensagem a um ticket.
      * 
      */
-    public function addMessage($ticketId, $user, $body){
+    public function addMessage($ticketId, $user, $body, $mtype){
 
         $dao = new DB();
 
-        $result = $dao->exec("CALL proc_save_message(:pid_ticket, :pid_user, :pmessage)", [
+        $result = $dao->exec("CALL proc_save_message(:pid_ticket, :pid_user, :pmessage, :pmtype)", [
             ":pid_ticket" => $ticketId,
             ":pid_user"   => $user->getid_user(),
-            ":pmessage"   => $body['text-new-message']
+            ":pmessage"   => $body['text-new-message'],
+            ":pmtype"     => $mtype
         ]);
 
         return $result;
