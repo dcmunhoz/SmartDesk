@@ -226,6 +226,56 @@ module.exports = {
             });
 
         });
+    },
+
+    // Reprova uma solução
+    reprove(idTicket, message) {
+
+        return new Promise((resolve, reject) => {
+
+            let body = {
+                'text-new-message': message
+            }
+
+            fetch(`/api/ticket/${idTicket}/reject-solution`, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                method: 'PUT',
+                body: JSON.stringify(body)
+            }).then(result => result.json()).then(data => {
+
+                if (data['error']) {
+                    reject(data);
+                }
+
+                resolve(data);
+
+            })
+
+        });
+
+    },
+
+    // Aprova uma solução
+    aprove(idTicket){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/ticket/${idTicket}/aprove-solution`, {
+                method: 'PUT'
+            }).then(result => result.json()).then(data => {
+
+                if(data['error']){
+                    reject['data']
+                }
+
+                resolve(data);
+
+            });
+
+        });
+
     }
 
 }

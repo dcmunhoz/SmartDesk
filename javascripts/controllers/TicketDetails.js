@@ -14,6 +14,8 @@ export default class TicketDetails {
 
     constructor(){
         
+        this._ticket;
+
         Prototype.initElementsPrototypes();
         this.loadTicketDetails();
         this.initEvents();
@@ -31,6 +33,10 @@ export default class TicketDetails {
                 
             });
         });
+
+    }
+
+    loadMessageEvent(){
 
         // Adiciona uma nova mensagem ao ticket.
         document.querySelector("#btn-new-message").on('click', e=>{
@@ -56,6 +62,44 @@ export default class TicketDetails {
 
 
             }
+
+        });
+    }
+
+    loadSolutionButtons() {
+
+        // Reprovar solução
+        document.querySelector("#btn-reprove-solution").on('click', e => {
+    
+            let message = document.querySelector('#text-new-message').value;
+
+            if(message.trim() !== ''){
+
+                Ticket.reprove(this._ticket['id_ticket'], message).then(data=>{
+
+                    Notification.pop('success', 'Solução Rejeitada', 'A solução foi rejeitada.');
+                    document.querySelector('#text-new-message').value = "";
+                    this.loadTicketDetails();
+
+                });
+
+            }else{
+                Notification.pop('danger', 'Ooops !', 'Informe uma mensagem para rejeitar a solução');
+                document.querySelector('#text-new-message').parentNode.classList.add('input-error');
+            }
+
+        });
+
+        // Aprova uma solução
+        document.querySelector("#btn-aprove-solution").on('click', e => {
+
+            Ticket.aprove(this._ticket['id_ticket']).then(data => {
+
+                Notification.pop("success", "Ticket aprovado =D", "Você aprovou a solução com sucesso =D");
+                document.querySelector('#text-new-message').value = "";
+                this.loadTicketDetails();
+
+            });
 
         });
 
@@ -91,12 +135,14 @@ export default class TicketDetails {
 
         Ticket.get(ticketId).then(data=>{
 
+             this._ticket = data['ticket'];
+
             // Detalhes
             document.querySelector("#ticket-title").value = data['ticket']['ticket_title'];
             document.querySelector("#ticket-priority").value = data['ticket']['priority_name'];
             document.querySelector("#ticket-update").value = data['ticket']['dt_updates'].split(" ")[0];
             document.querySelector("#ticket-desc").value = data['ticket']['ticket_details'];
-            document.querySelector("#ticket-id").innerHTML = data['ticket']['id_ticket'];
+            document.querySelector("#ticket-id").innerHTML = data['ticket']['id_ticket'] + ` [${data['ticket']['status_name']}]`;
             
             if(data['assignments'].length >= 1){
                 
@@ -136,6 +182,9 @@ export default class TicketDetails {
                       type = "Solução"
                       message.classList.add("solved");
                    break;
+                   case 'R':
+                      type = "Rejeição";
+                   break;
                 }
 
                 message.innerHTML = `
@@ -156,6 +205,34 @@ export default class TicketDetails {
 
                 messagesBox.appendChild(message);
             });
+
+
+            // Adiciona botões para aprovar ou recusar solução
+            let idStatus = data['ticket']['id_status'];
+
+            console.log(idStatus);
+
+            // Solucionado
+            if (idStatus == 4) {
+
+                document.querySelector(".message-buttons").innerHTML = `
+                    <button type="sumbit" id="btn-aprove-solution"  class="btn btn-done"><i class="fas fa-check"></i> Aprovar solução</button>
+                    <button type="sumbit" id="btn-reprove-solution" class="btn btn-danger"><i class="fas fa-times"></i> Reprovar solução</button>
+                `;
+
+                this.loadSolutionButtons();
+
+            } else if (idStatus != 5){ 
+                document.querySelector(".message-buttons").innerHTML = `
+                    <button type="submit" id="btn-new-message" class="btn btn-ok"><i class="far fa-file-alt"></i> Novo Acompanhamento</button>
+                `;
+                this.loadMessageEvent();
+            } else {
+
+                console.log("deveria sair");
+                document.querySelector(".message-buttons").innerHTML = "";
+
+            }
 
         }).catch(fail=>{
             

@@ -357,6 +357,9 @@
                type = "Solução"
                messageRow.classList.add('solved')
             break;
+            case 'R':
+               type = "Rejeição";
+            break;
          }
 
          let date = Util.dateFormat(new Date(message['dt_send']));

@@ -28,6 +28,8 @@ $app->group("/api", function(Slim\App $app){
     $app->get("/ticket/{ticketId}/details", Api::class . ":ticketDetails");
     $app->post("/ticket/{ticketId}/add-message", Api::class . ":ticketAddMessage");
     $app->get("/user/team", Api::class . ":getTeam");
+    $app->put('/ticket/{idTicket}/reject-solution', Api::class . ":putRejectSolution");
+    $app->put('/ticket/{idTicket}/aprove-solution', Api::class . ":putAproveSolution");
 
 })->add(function($req, $res, $next){
 

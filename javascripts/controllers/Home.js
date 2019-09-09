@@ -254,10 +254,7 @@ export default class Home {
             let tbody = document.querySelector("#tickets-list tbody");
             tbody.innerHTML = "";
 
-
-            //console.log(Object.values(tickets));
-
-            Object.values(tickets).forEach(data=>{
+            Object.values(tickets).reverse().forEach(data=>{
                 
                 let tr = document.createElement("tr");
                 tr.dataset.ticket = data['ticket'].id_ticket;
@@ -294,7 +291,7 @@ export default class Home {
                                 <img src="public/rsc/img/ticket-${done}.png" alt="#">
                             </div>
                             <div class="tr-body">
-                                <h2>Ticket #${data['ticket'].id_ticket}</h2>
+                                <h2>Ticket #${data['ticket'].id_ticket} [${data['ticket']['status_name']}]</h2>
                                 <span class="t-title">${data['ticket'].ticket_title}</span>
                                 <span class="t-attr">${assign}</span>
                             </div>

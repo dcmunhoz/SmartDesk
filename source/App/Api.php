@@ -706,6 +706,27 @@ class Api{
         return $res->withJson($result);        
 
     }
+
+    public function putRejectSolution(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $ticket = new Ticket;
+        $ticket->find($args['idTicket']);
+        $ticket->setbody($req->getParsedBody());
+        $result = $ticket->reject();
+
+        return $res->withJson($result);
+
+    }
+
+    public function putAproveSolution(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $ticket = new Ticket;
+        $ticket->find($args['idTicket']);
+        $result = $ticket->aprove();
+
+        return $res->withJson($result);
+
+    }
 }
 
 ?>

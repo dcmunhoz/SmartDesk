@@ -950,9 +950,18 @@ table, tr, td, th{
     flex-direction: column;
 }
 
+#messages-panel footer .message-buttons{
+
+}
+
+#messages-panel footer .message-buttons button{
+    margin-left: 10px;    
+}
+
 #messages-panel footer div:nth-child(2){
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
     margin-top: 10px;
 }
 

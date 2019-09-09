@@ -237,11 +237,15 @@ class Ticket extends ClassModel{
 
         $queryUser = "";
 
-        if( $status !== "0" ){
+        if( $status === "1" ){
 
-            $status = " = " . $status;
+            $status = " in($status, 4) ";
 
-        }else{
+        }else if($status !== "0") {
+
+            $status = "in($status) ";
+
+        } else{
             $status = "";
         }
 
@@ -262,12 +266,11 @@ class Ticket extends ClassModel{
 
         $dao = new DB();
         $tickets = $dao->exec("
-            select t.id_ticket, t.ticket_title, t.ticket_details, t.dt_updates, s.status_name, p.priority_name, t.id_user from tb_tickets t
+            select t.id_ticket, t.ticket_title, t.ticket_details, t.id_status, t.dt_updates, s.status_name, p.priority_name, t.id_user, s.status_name from tb_tickets t
             join tb_status s using(id_status)
             join tb_priorities p using(id_priority)
             where t.id_user $queryUser AND t.id_status $status AND t.id_ticket $ticket 
-            order by t.id_ticket desc
-            ;
+            order by t.id_ticket desc;
         "); 
 
         foreach ($tickets as $row) {
@@ -403,9 +406,12 @@ class Ticket extends ClassModel{
      * Adiciona uma mensagem a um ticket.
      * 
      */
-    public function addMessage($ticketId, $user, $body, $mtype){
+    public function addMessage($ticketId, $user = null, $body, $mtype){
 
         $dao = new DB();
+
+        $user = new User();
+        $user->loadSessionUser();
 
         $result = $dao->exec("CALL proc_save_message(:pid_ticket, :pid_user, :pmessage, :pmtype)", [
             ":pid_ticket" => $ticketId,
@@ -604,6 +610,38 @@ class Ticket extends ClassModel{
 
         $dao->query("UPDATE tb_tickets SET id_status = 4 WHERE id_ticket = {$this->getid_ticket()};");
         return true;
+    }
+
+    public function reject(){
+
+        $dao = new DB();
+
+        $dao->query("UPDATE tb_tickets SET id_status = :idStatus WHERE id_ticket = :idTicket", [
+            ":idStatus" => 1,
+            ":idTicket" => $this->getid_ticket()
+        ]);
+
+        $result = $this->addMessage($this->getid_ticket(), null, $this->getbody(), 'R');
+
+        return [
+            'ok' => true
+        ];
+
+    }
+
+    public function aprove(){
+
+        $dao = new DB();
+
+        $dao->query("UPDATE tb_tickets SET id_status = :idStatus WHERE id_ticket = :idTicket", [
+            ':idStatus' => 5,
+            ':idTicket' => $this->getid_ticket()
+        ]);
+
+        return [
+            'ok' => true
+        ];
+
     }
 
 }
