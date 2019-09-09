@@ -142,7 +142,8 @@ export default class TicketDetails {
             document.querySelector("#ticket-priority").value = data['ticket']['priority_name'];
             document.querySelector("#ticket-update").value = data['ticket']['dt_updates'].split(" ")[0];
             document.querySelector("#ticket-desc").value = data['ticket']['ticket_details'];
-            document.querySelector("#ticket-id").innerHTML = data['ticket']['id_ticket'] + ` [${data['ticket']['status_name']}]`;
+            document.querySelector("#ticket-id").innerHTML = data['ticket']['id_ticket'];
+            document.querySelector("#ticket-status").innerHTML = `[${data['ticket']['status_name']}]`;
             
             if(data['assignments'].length >= 1){
                 
