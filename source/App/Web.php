@@ -173,7 +173,18 @@ class Web{
         $body = $req->getParsedBody();
 
         $user = new User();
-        $result = $user->save($body);
+        $user->setid_user($body['update-user-id']);
+        $user->setfull_name($body['update-full-name']);
+        $user->setusername($body['update-username']);
+        $user->setold_username($body['update-old-username']);
+        $user->setemail($body['update-email']);
+        $user->setid_company($body['update-user-company']);
+        $user->setid_local($body['update-user-place']);
+        $user->setid_sector($body['update-user-sector']);
+        $user->setuser_active(1);
+        $user->setid_profile(2);
+
+        $result = $user->save();
     
         return $res->withJson($result);
 

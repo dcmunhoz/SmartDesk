@@ -19,8 +19,8 @@ $app->group("/api", function(Slim\App $app){
 
     $app->get("/user-logged", Api::class . ":userLogged");
     $app->get("/company", Api::class . ":getCompanies");
-    $app->get("/company/{idCompany}/places", Api::class . ":getPlaces");
-    $app->get("/company/{idCompany}/sectors", Api::class . ":getSectors");
+    $app->get("/company/places", Api::class . ":getPlaces");
+    $app->get("/local/{idLocal}/sectors", Api::class . ":getSectors");
     $app->get("/tickets/list", Api::class . ":getTicketsList");
     $app->get("/priorities", Api::class . ":getPriorities");
     $app->post("/ticket/open", Api::class . ":ticketOpen");

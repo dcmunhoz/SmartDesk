@@ -122,13 +122,11 @@ class Company extends ClassModel{
      * Retorna a lista de locais.
      * 
      */
-    public function getPlaces(string $idCompany = ""): array{
+    public function getPlaces(): array{
 
         $dao = new DB();
 
-        $result = $dao->exec("SELECT * FROM tb_places WHERE id_company = :id_company;",[
-            ":id_company"=>$idCompany
-        ]);
+        $result = $dao->exec("SELECT * FROM tb_locals WHERE id_company = 1");
 
         return $result;
 
@@ -141,12 +139,12 @@ class Company extends ClassModel{
      * Retorna a lista de setores.
      * 
      */
-    public function getSectors(string $idCompany = ""): array{
+    public function getSectors(string $idLocal = ""): array{
 
         $dao = new DB();
 
-        $result = $dao->exec("SELECT * FROM tb_sectors WHERE id_company = :id_company;",[
-            ":id_company"=>$idCompany
+        $result = $dao->exec("SELECT * FROM tb_sectors WHERE id_local = :id_local;",[
+            ":id_local"=>$idLocal
         ]);
 
         return $result;

@@ -61,7 +61,7 @@ class Api{
 
         $company = new Company();
 
-        $result = $company->getSectors($args['idCompany']);
+        $result = $company->getSectors($args['idLocal']);
 
         return $res->withJson($result);
 

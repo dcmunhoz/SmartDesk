@@ -61,7 +61,7 @@ html, body{
     z-index: 999;
     pointer-events: all;
     cursor: pointer;
-    z-index: 2;
+    z-index: 3;
     overflow: hidden;
 }
 

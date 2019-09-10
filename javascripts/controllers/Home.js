@@ -9,6 +9,7 @@ const Prototype = require('./../utils/Prototypes');
 const User = require('./../modules/User');
 const Ticket = require('./../modules/Ticket');
 const Utils = require('./../utils/Utils');
+const Notification = require('./../utils/Notification');
 
 export default class Home {
 
@@ -68,18 +69,37 @@ export default class Home {
                 // let body = new FormData(formUpdateRegister);
                 let body = formUpdateRegister.getBody();
                 
+                // fetch('/user/update',{
+                //     method: "POST",
+                //     body
+                // }).then(response => {
+                //     if(response.ok){
+
+                //         let modalPanel = document.querySelector("#user-complete-register");
+                //         modalPanel.classList.remove('active');
+                //         setTimeout(()=>{
+                //             modalPanel.style.display = 'none';
+                //         }, 500);
+                //     }
+                // });
+
                 fetch('/user/update',{
                     method: "POST",
                     body
-                }).then(response => {
-                    if(response.ok){
+                }).then(response => response.json()).then(data => {
 
+                    if (data['error']) {
+                        Notification.pop("danger", 'Ooops =[', 'Você alterou seu um usuário para um que já existe.');
+                    }else{
+                        
                         let modalPanel = document.querySelector("#user-complete-register");
                         modalPanel.classList.remove('active');
                         setTimeout(()=>{
                             modalPanel.style.display = 'none';
                         }, 500);
+
                     }
+
                 });
 
             }
@@ -89,21 +109,28 @@ export default class Home {
         document.querySelector("#update-user-company").on('change', e=>{
             
             document.querySelector("#update-user-place").disabled = false;
-            document.querySelector("#update-user-sector").disabled = false;
 
-            fetch(`/api/company/${e.target.value}/places`).then(response=>response.json()).then(data=>{
+            // Locais
+            fetch(`/api/company/places`).then(response=>response.json()).then(data=>{
 
                 [...data].forEach(row=>{
                     let option = document.createElement('option');
-                    option.value = row['id_place'];
+                    option.value = row['id_local'];
                     option.innerHTML = row['local_name']
                     document.querySelector("#update-user-place").appendChild(option);
                 });
 
             });
 
-            fetch(`/api/company/${e.target.value}/sectors`).then(response=>response.json()).then(data=>{
+        })
 
+        document.querySelector("#update-user-place").on('change', e => {
+
+            document.querySelector("#update-user-sector").disabled = false;
+
+            console.log(e.target.value);
+            fetch(`/api/local/${e.target.value}/sectors`).then(response=>response.json()).then(data=>{
+                document.querySelector("#update-user-sector").innerHTML = "";
                 [...data].forEach(row=>{
                     let option = document.createElement('option');
                     option.value = row['id_sector'];
@@ -113,7 +140,8 @@ export default class Home {
 
             });
 
-        })
+
+        });
 
     }
 
@@ -153,6 +181,7 @@ export default class Home {
                         <div class="form-box">
                             <form id="form-user-confirm-register">
                                 <input type="hidden" id="update-user-id" name="update-user-id">
+                                <input type="hidden" id="update-old-username" name="update-old-username">
                                 <div class="form-group" >
                                     <label for="update-full-name">Nome:</label>
                                     <input type="text" id="update-full-name" name="update-full-name" placeholder="Seu nome completo">
@@ -219,6 +248,7 @@ export default class Home {
 
                 document.querySelector("#update-full-name").value = data['full_name'];
                 document.querySelector("#update-username").value = data['username'];
+                document.querySelector("#update-old-username").value = data['username'];
                 document.querySelector("#update-email").value = data['email'];
                 document.querySelector("#update-user-id").value = data['id_user'];
                 document.querySelector("#update-panel-user-name").innerHTML = User.getUserName(data);

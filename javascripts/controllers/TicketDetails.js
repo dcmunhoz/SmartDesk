@@ -230,7 +230,6 @@ export default class TicketDetails {
                 this.loadMessageEvent();
             } else {
 
-                console.log("deveria sair");
                 document.querySelector(".message-buttons").innerHTML = "";
 
             }
