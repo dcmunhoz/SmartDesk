@@ -318,6 +318,7 @@ input:focus{
     transition: 200ms;
     border: 1px solid #E34317 ;
     color: #E34317;     
+    background-color: #FFF;
 }
 
 .button-select .btn-select:hover,
