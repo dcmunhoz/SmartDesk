@@ -182,7 +182,8 @@ class Api{
         $user = new User();
 
         $body = $req->getParsedBody();
-        $result = $user->listUsers($body['search']);
+
+        $result = $user->listUsers($body['search'], $body['active']);
     
         return $res->withJson($result);
 
@@ -723,6 +724,19 @@ class Api{
         $ticket = new Ticket;
         $ticket->find($args['idTicket']);
         $result = $ticket->aprove();
+
+        return $res->withJson($result);
+
+    }
+
+    public function putDisableUser (ServerRequestInterface $req, ResponseInterface $res, $args) {
+        
+        $user = new User();
+
+        $user->find((Int) $args['idUser']);
+        $user->setuser_active(0);
+        $user->setold_username($user->getusername());
+        $result = $user->save();
 
         return $res->withJson($result);
 

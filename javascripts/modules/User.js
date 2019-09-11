@@ -150,12 +150,13 @@ module.exports = {
      * Retorna a lista de usuários.
      * 
      */
-    getUserList(search = null){
+    getUserList(search = null, active = true){
 
         return new Promise((resolve, reject)=>{
 
             let data = {
-                search
+                search,
+                active
             }
 
             fetch('/api/admin/users/list', {
@@ -332,6 +333,30 @@ module.exports = {
 
         }); 
 
+    },
+
+    /**
+     * Desativa um usuário
+     */
+    disable(idUser){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/admin/user/${idUser}/disable`, {
+                method: 'PUT'
+            }).then(response => response.json()).then(data => {
+
+                if(data['error']){
+                    reject(data);
+                }
+
+                resolve(data);
+
+            });
+
+        });
+
     }
+
 
 }

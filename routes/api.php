@@ -75,6 +75,7 @@ $app->group("/api/admin", function(Slim\App $app){
     $app->get("/ticket/{ticketId}/details", Api::class . ":getTicketDetails");
     $app->put('/ticket/{ticketId}/end', Api::class . ":putTicketEnd");
     $app->delete('/ticket/{idTicket}/unassign/{idUser}', Api::class . ":unassignUser");
+    $app->put('/user/{idUser}/disable', Api::class . ":putDisableUser");
 
     // Charts
     $app->get('/chart/quantity-months', Api::class . ":getQttMonths");

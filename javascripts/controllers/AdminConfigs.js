@@ -62,6 +62,31 @@ export default class AdminConfigs {
 
     }
 
+    initUserListEvents(){
+
+        document.querySelectorAll("#btn-disable-user").forEach(btn => {
+
+            btn.on('click', e => {
+                e.preventDefault();
+
+                if(confirm("Tem certeza que deseja inativar este usuário?")){
+
+                    let idUser = btn.dataset.target;
+                    console.log(idUser)
+                    User.disable(idUser).then(data=>{
+
+                        this.loadUsersList();
+
+                    });
+
+                }
+
+            })
+
+        });
+
+    }
+
     /**
      * Eventos da tela de configuração do usuário.
      */
@@ -72,6 +97,7 @@ export default class AdminConfigs {
             this.getUsers(e.target.value);
 
         });
+
 
     }
 
@@ -267,6 +293,7 @@ export default class AdminConfigs {
                     <td>
                         <div class="option-buttons">
                             <a href="/admin/user/${row['id_user']}"> <i class="fas fa-edit"></i> </a>
+                            <a href="#" data-target="${row['id_user']}" id="btn-disable-user" > <i class="fas fa-times-circle"></i> </a>
                         </div>
                     </td>
                 `;
@@ -275,6 +302,8 @@ export default class AdminConfigs {
                 tbody.appendChild(tr);
                 
             });
+
+            this.initUserListEvents();
 
         });
 

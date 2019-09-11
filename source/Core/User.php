@@ -165,7 +165,6 @@ class User extends ClassModel{
     public function save(){
         
         $dao = new DB();
-        
                 
         $exist = $dao->exec("SELECT count(*) as 'qtt' FROM tb_users WHERE username like :username",[
             ":username"=>$this->getusername()
@@ -224,12 +223,13 @@ class User extends ClassModel{
     /**
      * Lista os usuários cadastrados
      */
-    public function listUsers($search = null){
+    public function listUsers($search = "", $active = 1){
 
         $dao = new DB();
 
-        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user) WHERE p.full_name like :search OR u.username like :search ORDER BY p.full_name; ", [
-            ":search"=>"%".$search."%"
+        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user) WHERE u.active = :active AND (p.full_name like :search OR u.username like :search) ORDER BY p.full_name; ", [
+            ":search"=>"%".$search."%",
+            ":active"=>$active
         ]);
 
         return $results;
@@ -242,7 +242,7 @@ class User extends ClassModel{
     public function getQtd(){
 
         $dao = new DB();
-        $resut = $dao->exec("SELECT COUNT(*) AS 'qtde' FROM tb_users;");
+        $resut = $dao->exec("SELECT COUNT(*) AS 'qtde' FROM tb_users WHERE active = 1;");
 
         return $resut[0];
 
