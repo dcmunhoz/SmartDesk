@@ -224,7 +224,7 @@ export default class TicketDetails {
                 this.loadSolutionButtons();
 
             } else if (idStatus != 5){ 
-                document.querySelector(".message-buttons").innerHTML = `
+                document.querySelector(".message-buttons").innerHTML = `
                     <button type="submit" id="btn-new-message" class="btn btn-ok"><i class="far fa-file-alt"></i> Novo Acompanhamento</button>
                 `;
                 this.loadMessageEvent();

@@ -60,6 +60,12 @@ export default class AdminConfigs {
             });
         });
 
+        document.querySelector("#show-disables").on('change', e => {
+
+            console.log(e.target.chacked);
+
+        });
+
     }
 
     initUserListEvents(){
@@ -292,8 +298,8 @@ export default class AdminConfigs {
                     <td>${row['username']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/user/${row['id_user']}"> <i class="fas fa-edit"></i> </a>
-                            <a href="#" data-target="${row['id_user']}" id="btn-disable-user" > <i class="fas fa-times-circle"></i> </a>
+                            <a title="Editar" href="/admin/user/${row['id_user']}" class="btn-a-edit"> <i class="fas fa-edit"></i> </a>
+                            <a title="Desativar" href="#" data-target="${row['id_user']}" id="btn-disable-user" class="btn-a-disable"> <i class="fas fa-times-circle"></i> </a>
                         </div>
                     </td>
                 `;

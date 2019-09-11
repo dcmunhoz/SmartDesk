@@ -663,8 +663,17 @@ table tbody tr:hover{
 
 .buttons-table{
     display: flex;
-    justify-content: flex-end;
-    padding: 0 40px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+}
+
+.buttons-table .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
 }
 
 .config-content-panel .config-panel .panel-center-message{
@@ -813,5 +822,12 @@ table tbody tr:hover{
 .btn-panel-active:hover{
 
     background: rgb(121, 121, 121) !important;
+
+}
+
+.option-buttons a{
+
+    padding: 5px;
+    margin-left: 4px;
 
 }

@@ -345,3 +345,15 @@ input:focus{
     color: rgb(22, 22, 22);
 
 }
+
+.option-buttons, .btn-a-edit{
+
+    color: #E34317;    
+
+}
+
+.option-buttons, .btn-a-disable{
+
+    color: rgb(227, 23, 23);    
+
+}
