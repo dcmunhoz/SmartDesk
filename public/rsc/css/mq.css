@@ -16,7 +16,89 @@
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) { 
 
+    .system-welcome{
+        display: none;
+    }
 
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .box .form-box{
+        width: 100%;
+    }
+
+    .box .form-box img{
+        width: 70%;
+    }
+
+    #user-container .nav-bar{
+        padding: 0 5px;
+    }
+
+    .content-body{
+        width: 100%;
+    }
+
+    .content-body .system-description{
+        padding: 0 10px;
+        text-align: justify;
+        box-sizing: border-box;
+        margin: 10px 0 50px 0;
+    }
+
+    .content-body .system-options .nav{
+
+        padding:0 10px;
+
+    }
+
+    .ticket-row-details .img-status{
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    .ticket-row-details .img-status img{
+        
+        width: 50px;
+    }
+
+    .ticket-row-details .tr-body h2{
+        font-size: 16px;
+    }
+
+    .ticket-row-details .tr-body .t-attr{
+        display: none;
+    }
+
+    .row-2{
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    .row.row-2 .form-group{
+        width: 100% !important;
+    }
+
+    .open-ticket-panel{
+        padding: 0 5px;
+    }
+
+    .ticket-dt-panel{
+        flex-direction: column;
+    }
+
+    .ticket-dt-panel aside{
+        width: 100%;
+    }
+
+    .ticket-dt-panel .panel{
+        padding: 10px 5px;
+    }
 
  }
 
