@@ -16,9 +16,12 @@ export default class AdminConfigs {
 
     constructor(){
 
+        this._active = document.querySelector("#show-disables").checked;
+        this._search = document.querySelector("#show-disables").checked;
         Prototype.initElementsPrototypes();
 
         this.initEvents();
+
         
     }
 
@@ -62,7 +65,9 @@ export default class AdminConfigs {
 
         document.querySelector("#show-disables").on('change', e => {
 
-            console.log(e.target.chacked);
+            this._active = e.target.checked;
+
+            this.getUsers(this._search, this._active);
 
         });
 
@@ -100,7 +105,9 @@ export default class AdminConfigs {
 
         document.querySelector("#search-user").on('keyup', e=>{
 
-            this.getUsers(e.target.value);
+            this._search = e.target.value;
+
+            this.getUsers(this._search, this._active);
 
         });
 
@@ -139,7 +146,6 @@ export default class AdminConfigs {
     initSectorsEvents(){
         
         document.querySelector("#search-sector").on('keyup', e=>{
-            console.log("hi");
 
             this.getSectors(e.target.value);
 
@@ -166,7 +172,7 @@ export default class AdminConfigs {
     loadUsersList(){
 
         // Lista de usuários
-        this.getUsers();
+        this.getUsers(this._search, this._active);
 
         // Quantidade de usuários.
         User.getUserQtd().then(result=>{
@@ -281,8 +287,8 @@ export default class AdminConfigs {
      * Retorna a lsita de usuários.
      *  
      */
-    getUsers(search){
-        User.getUserList(search).then(result=>{
+    getUsers(search, active){
+        User.getUserList(search, active).then(result=>{
 
             let tbody = document.querySelector("#table-user-list tbody");
             tbody.innerHTML = "";
@@ -296,6 +302,7 @@ export default class AdminConfigs {
                     <td>${row['id_user']}</td>
                     <td>${row['full_name']}</td>
                     <td>${row['username']}</td>
+                    <td>${ ( row['active'] == true) ? 'Sim' : 'Não'}</td>
                     <td>
                         <div class="option-buttons">
                             <a title="Editar" href="/admin/user/${row['id_user']}" class="btn-a-edit"> <i class="fas fa-edit"></i> </a>
@@ -340,7 +347,7 @@ export default class AdminConfigs {
                     <td>${row['company_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/company/${row['id_company']}"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/company/${row['id_company']}" class="btn-a-edit"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 </tr>
@@ -382,7 +389,7 @@ export default class AdminConfigs {
                     <td>${row['city_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/place/${row['id_local']}"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/place/${row['id_local']}" class="btn-a-edit"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;
@@ -423,7 +430,7 @@ export default class AdminConfigs {
                     <td>${row['local_name']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/sector/${row['id_sector']}"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/sector/${row['id_sector']}" class="btn-a-edit"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;
@@ -464,7 +471,7 @@ export default class AdminConfigs {
                     <td style="color:${row['priority_color']};">${row['priority_color']}</td>
                     <td>
                         <div class="option-buttons">
-                            <a href="/admin/priority/${row['id_priority']}"> <i class="fas fa-edit"></i> </a>
+                            <a href="/admin/priority/${row['id_priority']}" class="btn-a-edit"> <i class="fas fa-edit"></i> </a>
                         </div>
                     </td>
                 `;

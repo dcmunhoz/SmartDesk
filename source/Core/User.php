@@ -223,13 +223,23 @@ class User extends ClassModel{
     /**
      * Lista os usuários cadastrados
      */
-    public function listUsers($search = "", $active = 1){
+    public function listUsers($search = "", $inactive = false){
 
         $dao = new DB();
 
-        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name FROM tb_users u JOIN tb_persons p USING(id_user) WHERE u.active = :active AND (p.full_name like :search OR u.username like :search) ORDER BY p.full_name; ", [
+        if ($inactive) {
+
+            $inactive = "";
+
+        } else {
+
+            $inactive = "u.active = 1 AND";
+
+        }
+
+        $results = $dao->exec("SELECT u.id_user, u.username, p.full_name, u.active FROM tb_users u JOIN tb_persons p USING(id_user) WHERE {$inactive} (p.full_name like :search OR u.username like :search) ORDER BY p.full_name; ", [
             ":search"=>"%".$search."%",
-            ":active"=>$active
+            ":active"=>$inactive
         ]);
 
         return $results;
