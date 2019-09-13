@@ -9,6 +9,9 @@
 // Requires.
 require "vendor/autoload.php"; // Composer
 
+use Source\Model\Config;
+$config = new Config();
+
 $configs = [
     'settings' =>[
         'displayErrorDetails' => true,
@@ -18,5 +21,13 @@ $configs = [
 // Timezone e datas
 date_default_timezone_set("America/Sao_Paulo");
 setlocale(LC_ALL, "pt_BR");
+
+//Constantes
+define("DB", [
+    "host" => $config->database->host,
+    "database" => $config->database->base,
+    "user" => $config->database->user,
+    "password" => $config->database->password
+]);
 
 

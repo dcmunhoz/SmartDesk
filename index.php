@@ -12,7 +12,6 @@ require_once "config.php";
 
 $app = new Slim\App($configs);
 
-
 // Rotas
 require "routes/site.php";  // Rotas referentes a view dos usuários.
 require "routes/admin.php"; // Rotas referentes a view da administração.

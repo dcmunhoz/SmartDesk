@@ -18,30 +18,22 @@ class DB{
      */
     public function __construct(){
 
-        // Verifica se o arquivo de configuração do banco existe.
-        if(\file_exists("configs/database.config")){
+        $host     = DB['host'];
+        $database = DB['database'];
+        $user     = DB['user'];
+        $pass     = DB['password'];
 
-            // Pega os dados do arquivo, e insere nas varaiveis
-            $file =  file("configs/database.config");
+        try{
 
-            $host     = trim(\explode("=", $file[0])[1]);
-            $database = trim(\explode("=", $file[1])[1]);
-            $user     = trim(\explode("=", $file[2])[1]);
-            $pass     = trim(\explode("=", $file[3])[1]);
+            // Cria a conexão com o banco de dados.
+            $this->conn = new \PDO("mysql:host=". $host .";dbname=". $database .";charset=utf8", $user, $pass);
+            $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-            try{
+        }catch(Exception $e){
 
-                // Cria a conexão com o banco de dados.
-                $this->conn = new \PDO("mysql:host=". $host .";dbname=". $database .";charset=utf8", $user, $pass);
-                $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            throw new Exception($e->message, 1);
 
-            }catch(Exception $e){
-
-                throw new Exception($e->message, 1);
-
-            } 
-
-        }
+        } 
 
     }
 
