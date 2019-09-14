@@ -10,6 +10,7 @@ namespace Source\App;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Source\Model\DB;
+use Source\Utils\Mailer;
 use Source\Core\User;
 use Source\Core\Company;
 use Source\Core\Ticket;
@@ -126,7 +127,32 @@ class Api{
         $ticket->setassignments(json_decode($body['assignments']));
     
         $result = $ticket->open();
-    
+        $mailer = new Mailer();
+        if ($mailer->send) {
+
+            // Enviar email para usuário solicitante
+            $user = new User();
+            $user->find((Int) $result['id_user']);
+
+            $recipients = [
+                [
+                    "email" => $user->getemail(),
+                    "name" => $user->getfull_name()
+                ]
+            ];
+
+            $mailBody = [
+                "subject" => "Acompanhamento Ticket #{$result['id_ticket']} - Ticket aberto",
+                "body" => $mailer->createHTML('user-new-ticket', [
+                    "id"=>$result['id_ticket']
+                ])
+
+            ];
+
+            $mailer->make($recipients, $mailBody);
+
+        }
+
         return $res->withJson($result);
 
     }

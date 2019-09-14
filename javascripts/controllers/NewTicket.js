@@ -33,18 +33,31 @@ export default class NewTicket {
                 // let frmData = new FormData(frmNewTicket);
                 let body = frmNewTicket.getBody();
 
+                let loadGif = document.createElement('img');
+                loadGif.src="/public/rsc/img/dual-load.gif";
+                loadGif.classList.add("button-load");
+
+                e.target.innerHTML = "";
+                e.target.appendChild(loadGif);
+
                 Ticket.open(body).then(data=>{
 
                     frmNewTicket.clear();
 
                     Notification.pop('success', `Ticket #${data.id_ticket}`, `Ticket aberto, logo um técnico irá entrar em contato.`);
-                    
+                    e.target.removeChild(loadGif);
+                    e.target.innerHTML = "Enviar Ticket";
                     
                 }).catch(error=>{
                     
                     Notification.pop('danger', `Error`, `${error.msg}`);
+
+                    e.target.removeChild(loadGif);
+                    e.target.innerHTML = "Enviar Ticket"
                     
                 });
+
+
 
             }
 

@@ -1087,3 +1087,6 @@ table, tr, td, th{
    
 }
 
+#btn-open-new-ticket{
+    width: 150px;
+}

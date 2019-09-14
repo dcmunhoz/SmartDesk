@@ -31,6 +31,7 @@ define("DB", [
 ]);
 
 define("MAILER", [
+    "send" => $config->mail->send,
     "smtpServer" => $config->mail->smtpServer,
     "username" => $config->mail->username,
     "password" => $config->mail->password,

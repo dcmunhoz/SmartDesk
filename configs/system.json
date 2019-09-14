@@ -8,6 +8,7 @@
     }, 
 
     "mail": {
+        "send": true,
         "smtpServer" : "smtp.gmail.com",
         "username" : "smartdesk.suport@gmail.com",
         "password" : "#1Smartdesk1#",

@@ -17,7 +17,14 @@ class Mailer {
      */
     private $mail;
 
+    /**
+     * @var
+     */
+    public $send;
+
     public function __construct(){
+
+        $this->send = MAILER['send'];
 
         $this->mail = new PHPMailer();
 
@@ -38,12 +45,17 @@ class Mailer {
         $this->mail->isHTML(true);                                         // Set email format to HTML
 
         $this->mail->CharSet = "UTF-8";
-
+        
     }
 
-    public function make (Array $recipient = [], Array $mailBody = []) : void{
+    public function make (Array $recipients = [], Array $mailBody = []) : void{
 
-        $this->mail->addAddress($recipient['email'], $recipient['name']);
+        foreach ($recipients as $recipient) {
+
+            $this->mail->addAddress($recipient['email'], $recipient['name']);
+
+        }
+        
         $this->mail->Subject = $mailBody['subject'];
         $this->mail->Body = $mailBody['body'];
         $this->mail->send();

@@ -16,22 +16,9 @@ use Source\Utils\Mailer;
 
 $app->get('/mail/test', function(){
 
-    $mail = new Mailer();
-    // $mail->setRecipients("dcmunhoz0@gmail.com", "Daniel Munhoz");
-    // $mail->mailBody("Teste", "<b1>Teste hahaha</b1>");
-    // $mail->mailSend();
+    $page = new League\Plates\Engine(__DIR__ . '/views/mail');   
 
-    $recipients = [
-        "email" => 'dcmunhoz0@gmail.com',
-        "name"  => 'Daniel'
-    ];
-
-    $mailBody = [
-        "subject" => "PARABEEEEENS",
-        "body" => $mail->createHTML('teste', ['nome' => 'daniel'])
-    ];
-
-    $mail->make($recipients, $mailBody);
+    echo $page->render('user-new-ticket', ['id' => '130', 'prioridade' => "Urgente", "detalhes" => "Me ajuda por favor", "solicitante" => "Daniel"]);
 
 });
 
