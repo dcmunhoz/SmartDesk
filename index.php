@@ -28,7 +28,7 @@ $app->get('/mail/test', function(){
 
     $mailBody = [
         "subject" => "PARABEEEEENS",
-        "body" => "É nois"
+        "body" => $mail->createHTML('teste', ['nome' => 'daniel'])
     ];
 
     $mail->make($recipients, $mailBody);

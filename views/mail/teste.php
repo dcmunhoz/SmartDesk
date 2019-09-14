@@ -1,9 +1,3 @@
-<?php
-
-    var_dump($_GET);
-
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,9 +5,9 @@
         <title>Mail Teste</title>
     </head>
 
-    <body style="background-color: red;">
+    <body>
 
-        <h1>Parabens, classe de email configurada com sucesso.</h1>
+        <h1>Parabens <?= $this->e($nome) ?>, classe de email configurada com sucesso.</h1>
 
         <span>
             Só implementar ela agora xD !!!!

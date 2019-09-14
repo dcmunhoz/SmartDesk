@@ -7,6 +7,8 @@ namespace Source\Utils;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use League\Plates\Engine;
+
 
 class Mailer { 
 
@@ -20,7 +22,7 @@ class Mailer {
         $this->mail = new PHPMailer();
 
         //Server settings
-        $this->mail->SMTPDebug = 1;                                       // Enable verbose debug output
+        $this->mail->SMTPDebug = 0;                                       // Enable verbose debug output
         $this->mail->isSMTP();                                            // Set mailer to use SMTP
         $this->mail->Host       = MAILER['smtpServer'];                   // Specify main and backup SMTP servers
         $this->mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -45,6 +47,14 @@ class Mailer {
         $this->mail->Subject = $mailBody['subject'];
         $this->mail->Body = $mailBody['body'];
         $this->mail->send();
+
+    }
+
+    public function createHTML(String $filename, Array $data = []){
+
+        $plates = new Engine(__DIR__ . '/../../views/mail');
+
+        return $plates->render($filename, $data);
 
     }
 
