@@ -6,10 +6,10 @@
  * 
  */
 
-// Requires.
+// Requires
 require "vendor/autoload.php"; // Composer
 
-use Source\Model\Config;
+use Source\Utils\Config;
 $config = new Config();
 
 $configs = [
@@ -30,4 +30,10 @@ define("DB", [
     "password" => $config->database->password
 ]);
 
+define("MAILER", [
+    "smtpServer" => $config->mail->smtpServer,
+    "username" => $config->mail->username,
+    "password" => $config->mail->password,
+    "port" => $config->mail->port 
 
+]);

@@ -3,7 +3,7 @@
  *  Classe para interagir com o arquivo de configurações  
  */
 
-namespace Source\Model;
+namespace Source\Utils;
 
 class Config {
 

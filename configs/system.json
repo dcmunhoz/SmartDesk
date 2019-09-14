@@ -5,6 +5,13 @@
         "user": "desk",
         "password": "desk",
         "base":"db_idesk"
+    }, 
+
+    "mail": {
+        "smtpServer" : "smtp.gmail.com",
+        "username" : "smartdesk.suport@gmail.com",
+        "password" : "#1Smartdesk1#",
+        "port" : "587"
     }
     
 }
