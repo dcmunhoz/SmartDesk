@@ -33,11 +33,22 @@
 
             let message = document.querySelector("#ticket-desc").value;
 
+            let loadGif = document.createElement('img');
+            loadGif.src="/public/rsc/img/dual-load.gif";
+            loadGif.classList.add("button-load");
+
             if (message.trim() !== "") {
    
                let body = new FormData();
                body.append('text-new-message', message);
-   
+               
+               let loadGif = document.createElement('img');
+               loadGif.src="/public/rsc/img/dual-load.gif";
+               loadGif.classList.add("button-load");
+               let inner = e.target.innerHTML;
+               e.target.innerHTML = "";
+               e.target.appendChild(loadGif);
+
                Ticket.addMessage(this._ticket['id_ticket'], body).then(data => {
    
                   Notification.pop("success", "Ticket atualizado", "Mensagem inserida com sucesso");
@@ -45,13 +56,18 @@
                   this.loadTicketData();
                   document.querySelector("#ticket-desc").value = "";
                   document.querySelector("#ticket-desc").parentNode.classList.remove('input-error');
-   
+                  
+                  e.target.removeChild(loadGif);
+                  e.target.innerHTML = inner;
+
                });
    
             }  else {
    
                Notification.pop("danger", "ooops !", "Informa uma mensagem para enviar.");
                document.querySelector("#ticket-desc").parentNode.classList.add('input-error');
+
+               
             }
 
          } else if (action === 'end') { 
@@ -65,18 +81,30 @@
                   'text-new-message': message
 
                };
-   
+
+               let loadGif = document.createElement('img');
+               loadGif.src="/public/rsc/img/dual-load.gif";
+               loadGif.classList.add("button-load");
+               let inner = e.target.innerHTML;
+               e.target.innerHTML = "";
+               e.target.appendChild(loadGif);
+
                Ticket.end(this._ticket['id_ticket'], body).then(data => {
 
                   Notification.pop("success", "Ticket finalizado", "O Ticket foi finalizado com sucesso.");
                   this.loadTicketData();
    
                   document.querySelector("#ticket-desc").value = "";
+
+                  e.target.removeChild(loadGif);
+                  e.target.innerHTML = inner;
    
                }).catch(error => {
                   
                   Notification.pop("danger", "Ooooops !", "Ticket já finalizado");
    
+                  e.target.removeChild(loadGif);
+                  e.target.innerHTML = inner;
                });
    
             }  else {

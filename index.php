@@ -18,7 +18,7 @@ $app->get('/mail/test', function(){
 
     $page = new League\Plates\Engine(__DIR__ . '/views/mail');   
 
-    echo $page->render('user-new-ticket', ['id' => '130', 'prioridade' => "Urgente", "detalhes" => "Me ajuda por favor", "solicitante" => "Daniel"]);
+    echo $page->render('ticket-solution', ['id' => '130', 'prioridade' => "Urgente", "detalhes" => "Me ajuda por favor", "solicitante" => "Daniel"]);
 
 });
 

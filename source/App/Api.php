@@ -127,6 +127,8 @@ class Api{
         $ticket->setassignments(json_decode($body['assignments']));
     
         $result = $ticket->open();
+        
+        // Enviar email;
         $mailer = new Mailer();
         if ($mailer->send) {
 
@@ -193,9 +195,39 @@ class Api{
     
         $user = new User();
         $user->loadSessionUser();
+        
+
         $ticket = new Ticket();
+        $ticket->find($ticketId);
         $result = $ticket->addMessage($ticketId, $user, $body, "M");
-    
+                
+        $mailer = new Mailer();
+        if ($user->getadministrator() == 1) {
+
+            if ($mailer->send) {
+                
+                $recipident = (new User)->find($ticket->getid_user());
+
+                $recipidents = [
+                    [
+                        "email" => $recipident->getemail(),
+                        "name" => $recipident->getfull_name()
+                    ]
+                ];
+
+                $messageBody = [
+                    "subject" => "Acompanhamento Ticket #{$ticket->getid_ticket()} - Interação com ticket",
+                    "body" => $mailer->createHTML('ticket-interaction', [
+                        "id" => $ticket->getid_ticket()
+                    ])
+                ];
+
+                $mailer->make($recipidents, $messageBody);
+
+            }
+
+        }
+
         return $res->withJson($result);
 
     }
@@ -670,6 +702,30 @@ class Api{
         }
             
         $ticket->addMessage($ticketID, $user, $body, 'S');
+    
+        $mailer = new Mailer();
+        if ($mailer->send) {
+            
+            $recipident = (new User)->find($ticket->getid_user());
+            
+            $recipidents = [
+                [
+                    "email" => $recipident->getemail(),
+                    "name" => $recipident->getfull_name()
+                ]
+            ];
+
+            $mailBody = [
+                "subject" => "Acompanhamento Ticket #{$ticket->getid_ticket()} - Ticket Solucionado",
+                "body" => $mailer->createHTML('ticket-solution', [
+                    "id" => $ticket->getid_ticket()
+                ])
+            ];
+
+            $mailer->make($recipidents, $mailBody);
+
+        }
+
         return $res->withJson(["OK" => true]);
 
     }
