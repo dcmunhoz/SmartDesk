@@ -35,6 +35,7 @@ export default class Header{
         document.querySelector("#btn-user-logout").on('click', e=>{
 
             window.location.replace('/logout');
+            localStorage.removeItem('user');
 
         });
 

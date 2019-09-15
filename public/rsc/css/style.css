@@ -1090,3 +1090,17 @@ table, tr, td, th{
 #btn-open-new-ticket{
     width: 150px;
 }
+
+.connected .form-group{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+}
+
+.connected .form-group input{
+
+    display: block;
+    position: relative;
+    top: 4px;
+
+}

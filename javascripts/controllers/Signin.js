@@ -15,6 +15,7 @@ export default class Signin{
 
         Prototype.initElementsPrototypes();
         this.initEvents();
+        this.verifyAutoLogin();
 
     }
 
@@ -44,6 +45,20 @@ export default class Signin{
 
                     User.login(body).then(success=>{
 
+                        let check = document.querySelector("#connected");
+
+                        if (check.checked) {
+
+                            let user = {
+                                "user": document.querySelector("#username").value,
+                                "pass": document.querySelector("#passw").value,
+                                "connected": check.checked
+                            };
+
+                            localStorage.setItem("user", JSON.stringify(user));
+
+                        }
+
                         window.location.replace('/');
 
                     }).catch(failure=>{
@@ -66,6 +81,28 @@ export default class Signin{
             }
 
         });
+
+    }
+
+    verifyAutoLogin(){
+
+        if (localStorage.getItem('user')) {
+
+            let body = new FormData();
+            let user = JSON.parse(localStorage.getItem('user'));
+
+            body.append('username', user['user']);
+            body.append('passw', user['pass']);
+
+            console.log(user);
+
+            User.login(body).then(success=>{
+            
+                window.location.replace('/');
+
+            });                 
+
+        }
 
     }
 
