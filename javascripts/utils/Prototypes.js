@@ -12,11 +12,15 @@ module.exports = {
         HTMLFormElement.prototype.clear = function(e){
 
             [...this].forEach(el=>{
-                el.value = "";
-
-                if (el.type == 'select-one') {
-                    el.value = 0;
+                
+                if (el.type !== 'checkbox') {
+                    el.value = "";
+    
+                    if (el.type == 'select-one') {
+                        el.value = 0;
+                    }
                 }
+                
             });
 
         }

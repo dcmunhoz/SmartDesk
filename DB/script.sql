@@ -37,6 +37,9 @@ VALUES('Administrador', 'Perfil de administração do sistema.', true);
 INSERT INTO tb_profiles(profile_name, profile_description, administrator)
 VALUES('Padrão', 'Perfil padrão de usuário', false);
 
+INSERT INTO tb_profiles(profile_name, profile_description, administrator)
+VALUES('Colaborador', 'Perfil usuário técnico', false);
+
 INSERT INTO tb_users(username, passw, email, active, id_profile)
 VALUES('administrator', md5('administrator'), 'admin@admin.com', true, (SELECT id_profile FROM tb_profiles WHERE profile_name = 'Administrador' ));
 

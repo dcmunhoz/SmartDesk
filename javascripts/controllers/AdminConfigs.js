@@ -83,7 +83,7 @@ export default class AdminConfigs {
                 if(confirm("Tem certeza que deseja inativar este usuário?")){
 
                     let idUser = btn.dataset.target;
-                    console.log(idUser)
+                    
                     User.disable(idUser).then(data=>{
 
                         this.loadUsersList();

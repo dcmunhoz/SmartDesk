@@ -81,6 +81,8 @@ export default class AdminTickets{
         
         document.querySelectorAll(".btn-assign-me").forEach(btn => {
 
+            btn.removeEventListener('click', () => {});
+
             btn.on('click', e => {
                 let idTicket = btn.parentNode.parentNode.dataset.idTicket;
 
@@ -92,7 +94,7 @@ export default class AdminTickets{
                     
                     this.loadInitialDatas();
                     this.loadStatusSelect();
-                    // this.loadLists();
+                    this.loadLists();
 
                 }).catch(error=>{
                     
