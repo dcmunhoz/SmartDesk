@@ -29,6 +29,7 @@ import AdminPriorityNew   from '../controllers/AdminPriorityNew';
 import AdminPriorityUpdate from '../controllers/AdminPriorityUpdate';
 import AdminTicketNew      from '../controllers/AdminTicketNew';
 import AdminTicketDesc      from '../controllers/AdminTicketDesc';
+import AdminUserPWDReset      from '../controllers/AdminUserPWDReset';
 
 export default class AppController{
 
@@ -111,6 +112,10 @@ export default class AppController{
                 break;
                 case 'AdminTicketDesc':
                     new AdminTicketDesc();
+                break;
+                break;
+                case 'AdminUserPWDReset':
+                    new AdminUserPWDReset();
                 break;
             }
         }

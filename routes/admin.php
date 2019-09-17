@@ -37,6 +37,7 @@ $app->group('/admin', function(Slim\App $app){
     $app->get("/place/{idPlace}", Admin::class . ":placeUpdate");
     $app->get("/sector/{idSector}", Admin::class . ":sectorUpdate");
     $app->get("/priority/{idPriority}", Admin::class . ":priorityUpdate");
+    $app->get("/user/{idUser}/password-reset", Admin::class . ":userResetPassword");
 
 })->add(function($req, $res, $next){
 

@@ -811,7 +811,7 @@ class Api{
 
     }
 
-    public function putDisableUser (ServerRequestInterface $req, ResponseInterface $res, $args) {
+    public function putDisableUser(ServerRequestInterface $req, ResponseInterface $res, $args) {
         
         $user = new User();
 
@@ -821,6 +821,30 @@ class Api{
         $result = $user->save();
 
         return $res->withJson($result);
+
+    }
+
+    public function postChangePassowrd(ServerRequestInterface $req, ResponseInterface $res, $args){
+
+        $body = $req->getParsedBody();
+
+        $user = new User();
+        $user->find((Int) $args['idUser']);
+        $user->setid_user((Int) $args['idUser']);
+        $user->setpassw($body['create-pass']);
+
+        $result = $user->save();
+
+        if ($result['error']) {
+
+            $newRes = $res->withStatus(500);
+
+            return $newRes->withJson($result);
+
+        }
+
+        return $res->withJson($result);
+
 
     }
 }

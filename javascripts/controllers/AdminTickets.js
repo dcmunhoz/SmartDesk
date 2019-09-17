@@ -1,5 +1,3 @@
-import { resolve } from 'url';
-
 /**
  * 
  * Controller que gerencia a pagina geral de tickets.

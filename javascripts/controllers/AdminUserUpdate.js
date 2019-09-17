@@ -95,6 +95,7 @@ export default class AdminUserUpdate {
         let form = document.querySelector("#form-user");
 
         form['old_username'].value = this._user['username'];
+        document.querySelector("#btn-change-passw").href = `/admin/user/${this._user['id_user']}/password-reset`;
 
         Object.keys(this._user).forEach(key=>{
 

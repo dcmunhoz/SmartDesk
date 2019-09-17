@@ -356,7 +356,29 @@ module.exports = {
 
         });
 
-    }
+    },
 
+    /**
+     * Altera a senha do usuário.
+     */
+    resetPassword(idUser, body){
+
+        return new Promise((resolve, reject) => {
+
+            fetch(`/api/user/${idUser}/change-password`,{
+                method: 'POST',
+                body
+            }).then(result => result.json()).then(data => {
+
+                if (data['error']) {
+                    reject(data);                    
+                }
+
+                resolve(data);
+
+            });
+        });
+
+    }
 
 }

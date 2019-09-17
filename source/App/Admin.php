@@ -318,6 +318,17 @@ class Admin {
 
     }
 
+    /**
+     * Pagina reset de senha
+     */
+    public function userResetPassword() {
+
+        $view = new View(true, false, false);
+
+        $view->draw('admin-user-reset-password');
+
+    }
+
 }
 
 

@@ -30,6 +30,7 @@ $app->group("/api", function(Slim\App $app){
     $app->get("/user/team", Api::class . ":getTeam");
     $app->put('/ticket/{idTicket}/reject-solution', Api::class . ":putRejectSolution");
     $app->put('/ticket/{idTicket}/aprove-solution', Api::class . ":putAproveSolution");
+    $app->post('/user/{idUser}/change-password', Api::class . ":postChangePassowrd");
 
 })->add(function($req, $res, $next){
 
