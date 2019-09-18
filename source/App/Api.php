@@ -816,7 +816,7 @@ class Api{
         $user = new User();
 
         $user->find((Int) $args['idUser']);
-        $user->setuser_active(0);
+        $user->setactive(0);
         $user->setold_username($user->getusername());
         $result = $user->save();
 
@@ -830,9 +830,8 @@ class Api{
 
         $user = new User();
         $user->find((Int) $args['idUser']);
-        $user->setid_user((Int) $args['idUser']);
-        $user->setpassw($body['create-pass']);
-
+        $user->setpassw($hash);
+        $user->setold_username($user->getusername());
         $result = $user->save();
 
         if ($result['error']) {

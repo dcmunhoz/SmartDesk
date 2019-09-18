@@ -128,7 +128,7 @@ class Admin {
         $user->setid_local($body['local']);
         $user->setid_profile($body['profile']);
         $user->setid_sector($body['sector']);
-        $user->setuser_active( ( $body['user-active'] === "on" ) ? 1 : 0 );
+        $user->setactive( ( $body['user-active'] === "on" ) ? 1 : 0 );
         $user->setusername($body['username']);
 
         $result = $user->save();
@@ -245,15 +245,15 @@ class Admin {
     public function postUserUpdate(ServerRequestInterface $req, ResponseInterface $res, $args){
 
         $body = $req->getParsedBody();
-        
-        $user = new User();
 
+        $user = new User();
+        $user->find($body['id_user']);
         $user->setid_user($body['id_user']);
         $user->setfull_name($body['full_name']);
         $user->setusername($body['username']);
         $user->setold_username($body['old_username']);
         $user->setemail($body['email']);
-        $user->setuser_active( ( isset($body['active']) ) ? 1 : 0 );
+        $user->setactive( ( isset($body['active']) ) ? 1 : 0 );
         $user->setid_profile($body['profile']);
         $user->setid_company($body['company']);
         $user->setid_local($body['local']);

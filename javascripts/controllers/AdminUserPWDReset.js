@@ -28,15 +28,23 @@
             e.preventDefault();
 
             const form = document.querySelector("#form-reset-password");
-            
-            
+
             if (form.validateFields()) {
-                let user = JSON.parse(document.querySelector("#user-data").dataset.user);
+
+                let idUser = window.location.pathname.split('/')[3];
+
                 let body = form.getBody();
 
-                User.resetPassword(user['id_user'], body).then(data => {
+                User.resetPassword(idUser, body).then(data => {
 
                     Notification.pop('success', "Sucesso =D", "Senha alterada !");
+
+                    setTimeout(() => {
+
+                        window.location.href = `/admin/user/${idUser}`;
+
+                    }, 2000);
+
 
                 });
                 

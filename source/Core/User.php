@@ -187,7 +187,7 @@ class User extends ClassModel{
             ":pfullname"  => $this->getfull_name(),
             ":ppassw"     => $this->getpassw(),
             ":pemail"     => $this->getemail(),
-            ":pactive"    => $this->getuser_active(),
+            ":pactive"    => $this->getactive(),
             ":pidprofile" => $this->getid_profile(),
             ":pidcompany" => $this->getid_company(),
             ":pidlocal"   => $this->getid_local(),

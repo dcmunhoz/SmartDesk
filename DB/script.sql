@@ -192,7 +192,8 @@ BEGIN
         SET username = pusername,
 			email = pemail,
             active = pactive,
-            id_profile = pidprofile
+            id_profile = pidprofile,
+            passw = md5(ppassw)
 		WHERE id_user = piduser;
         
         UPDATE tb_persons
