@@ -830,9 +830,8 @@ class Api{
 
         $user = new User();
         $user->find((Int) $args['idUser']);
-        $user->setpassw($hash);
-        $user->setold_username($user->getusername());
-        $result = $user->save();
+        $user->setpassw($body['create-pass']);
+        $result = $user->changePassword();
 
         if ($result['error']) {
 

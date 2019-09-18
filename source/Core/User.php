@@ -294,6 +294,23 @@ class User extends ClassModel{
         return $result;
 
     }
+
+    /**
+     * Altera a senha do usuário
+     */
+    public function changePassword(){
+
+        $dao = new DB();
+
+        $result = $dao->query("UPDATE tb_users SET passw = md5(:passw) WHERE id_user = :idUser", [
+            ":passw" => $this->getpassw(),
+            ":idUser" => $this->getid_user()
+        ]);
+
+        return ["ok" => true];
+
+    }
+
 }
 
 ?>
