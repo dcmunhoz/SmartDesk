@@ -49,7 +49,7 @@ class Api{
 
         $company = new Company();
 
-        $result = $company->getPlaces($args['idCompany']);
+        $result = $company->getPlaces();
 
         return $res->withJson($result);
 
@@ -119,12 +119,13 @@ class Api{
         $body = $req->getParsedBody();
 
         $ticket = new Ticket();
-        $ticket->setid_ticket($body['id_ticket']);
-        $ticket->settitle($body['ticket-title']);
-        $ticket->setdescription($body['ticket-desc']);
-        $ticket->setid_priority($body['ticket-priority']);
-        $ticket->setid_appl($body['user-request']);
-        $ticket->setassignments(json_decode($body['assignments']));
+
+        $ticket->setid_ticket($body['id_ticket'] ?? null);
+        $ticket->settitle($body['ticket-title'] ?? null);
+        $ticket->setdescription($body['ticket-desc'] ?? null);
+        $ticket->setid_priority($body['ticket-priority'] ?? null);
+        $ticket->setid_appl($body['user-request'] ?? null);
+        $ticket->setassignments(isset($body['assignments']) ? \json_decode($body['assignments']) : null );
     
         $result = $ticket->open();
         

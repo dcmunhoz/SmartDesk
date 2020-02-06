@@ -46,7 +46,7 @@ class Web{
         $user = new User();
         $result = $user->login($body);
     
-        if($result['error']){
+        if(isset($result['error'])){
             $newResponse = $res->withStatus(500);
         
             return $newResponse->withJson($result);
@@ -89,7 +89,7 @@ class Web{
         $user->setusername($body['create-username']);
         $user->setemail($body['create-email']);
         $user->setpassw($body['create-pass']);
-        $user->setuser_active(1);
+        $user->setactive(1);
         $user->setid_profile(2);
 
         $result = $user->save();

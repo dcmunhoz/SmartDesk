@@ -361,7 +361,6 @@ class Ticket extends ClassModel{
         }else{
             $user->loadSessionUser();
         }
-
         
         
         $dao = new DB();
@@ -379,7 +378,7 @@ class Ticket extends ClassModel{
             $this->setData($result[0]);
             $assignments = $this->getassignments();
     
-            if (count($assignments) >= 1) {
+            if (isset($assignments) && count($assignments) >= 1) {
     
                 foreach ($assignments as $assign) { 
                     

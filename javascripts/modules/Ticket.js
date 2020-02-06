@@ -38,6 +38,7 @@ module.exports = {
     // Abre um novo ticket.
     open(body){
         
+
         return new Promise((resolve, reject)=>{
 
             fetch('/api/ticket/open', {

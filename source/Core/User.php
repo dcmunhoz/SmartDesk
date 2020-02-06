@@ -25,7 +25,10 @@ class User extends ClassModel{
      */
     public function loadSessionUser(){
 
-        session_start();
+        if (session_status() == 1){
+            session_start();
+        }
+        
         if(isset($_SESSION[User::SESSION_USER])){
             $this->setData($_SESSION[User::SESSION_USER]);
         }
