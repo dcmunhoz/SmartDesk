@@ -24,5 +24,10 @@ Seu objetivo é auxiliar as empresas no gerenciamento de ordens de serviços de 
 
 Muitas empresas atendem chamados apenas por telefone, com isso, seus técnicos muitas vezes acabam 'esquecendo' ou então não tendo uma total organização dos seus chamados, por isso a necessidade de utilizar um sistema para esse gerênciamento.
 
-
+## Tecnologias
+- HTML5
+- CSS3
+- Javascript
+- Webpack
+- PHP
 
